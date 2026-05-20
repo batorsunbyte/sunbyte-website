@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Sunbyte – warmes, kontrastreiches Farbsystem */
+    --paper: #F5F1EA;       /* warmes off-white, leicht ocker */
+    --ink: #14110F;         /* fast schwarz, leicht warm */
+    --sun: #E85A1F;         /* gebranntes Orange, kein Tailwind-Orange */
+    --ember: #B8421A;       /* tieferes Rost */
+    --clay: #D4B896;        /* gedämpfter Sandton */
+    --mute: #7A7268;        /* warm-grau für Sekundär-Text */
+
+    --font-display: "Editorial New", "Canela", "Cormorant Garamond", serif;
+    --font-sans: "Söhne", "Inter Tight", "Inter", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html, body {
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--sun);
+    color: var(--paper);
+}

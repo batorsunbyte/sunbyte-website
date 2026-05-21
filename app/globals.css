@@ -231,14 +231,126 @@
     animation-delay: 0.8s;
 }
 
+/* ─── Anflug-Geste (Sektion G, Hybrid) ────────────────────────── */
+
+/* Spark-Flyer: das Element, das entlang offset-path wandert */
+.spark-flyer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    offset-rotate: 0deg;
+    offset-anchor: center;
+    will-change: offset-distance, opacity;
+}
+.spark-flyer.is-running {
+    animation: spark-fly 4.5s cubic-bezier(0.34, 0.05, 0.2, 1) forwards;
+}
+@keyframes spark-fly {
+    /* 0–7% (0–0.3s): Spark fadet am Startpunkt ein */
+    0%   { offset-distance: 0%;   opacity: 0; }
+    7%   { offset-distance: 0%;   opacity: 1; }
+    /* 7–38% (1.4s Flug): Wanderung */
+    38%  { offset-distance: 100%; opacity: 1; }
+    /* 38–100%: still an der Wien-Position */
+    100% { offset-distance: 100%; opacity: 1; }
+}
+
+/* Spark-Dot: identisch zum Hero-Wien-Marker (lit + spark glow) */
+.spark-dot {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--lit);
+    box-shadow:
+        0 0 14px 3px rgba(232, 90, 31, 0.95),
+        0 0 28px 6px rgba(232, 90, 31, 0.4);
+    will-change: transform;
+}
+
+/* Spark-Pulse-Ring: expandiert nach der Stille (ab 46% = 2.05s) */
+.spark-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--spark);
+    opacity: 0;
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+.spark-flyer.is-running .spark-pulse {
+    animation: spark-pulse-grow 4.5s linear forwards;
+}
+@keyframes spark-pulse-grow {
+    0%, 45% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    46% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    78% {
+        opacity: 0;
+        transform: scale(4.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(4.5);
+    }
+}
+
+/* Wien-Label */
+.spark-label {
+    position: absolute;
+    color: var(--lit);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: 0.16em;
+    text-transform: lowercase;
+    font-size: 0.55rem;
+    text-shadow: 0 0 6px #000;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+}
+.spark-flyer.is-running ~ .spark-label {
+    animation: spark-label 4.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes spark-label {
+    0%, 44% { opacity: 0; }
+    52% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+/* Story-Reveal: Mask-Vorhang nach oben */
+.story-line-mask {
+    overflow: hidden;
+    display: block;
+}
+.story-line-inner {
+    display: block;
+    transform: translateY(110%);
+    will-change: transform;
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-line-mask.is-revealed .story-line-inner {
+    transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .at-pulse,
     .curtain,
     .marquee-track,
     .hero-reveal,
     .hero-reveal-2,
-    .hero-reveal-3 {
-        animation: none;
+    .hero-reveal-3,
+    .spark-flyer,
+    .spark-flyer.is-running,
+    .spark-flyer.is-running .spark-pulse,
+    .spark-flyer.is-running ~ .spark-label {
+        animation: none !important;
     }
     .curtain {
         display: none;
@@ -248,5 +360,19 @@
     .hero-reveal-3 {
         opacity: 1;
         transform: none;
+    }
+    .spark-flyer {
+        offset-distance: 100%;
+        opacity: 1;
+    }
+    .spark-pulse {
+        opacity: 0;
+    }
+    .spark-label {
+        opacity: 1;
+    }
+    .story-line-inner {
+        transform: none;
+        transition: none;
     }
 }

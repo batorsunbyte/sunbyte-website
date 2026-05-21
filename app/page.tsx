@@ -2,6 +2,7 @@ import Hero from '@/components/Hero'
 import Services from '@/components/Services'
 import Cases from '@/components/Cases'
 import Studio from '@/components/Studio'
+import Contact from '@/components/Contact'
 
 export default function Home() {
     return (
@@ -10,6 +11,7 @@ export default function Home() {
             <Services />
             <Cases />
             <Studio />
+            <Contact />
         </>
     )
 }

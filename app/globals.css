@@ -117,12 +117,136 @@
     }
 }
 
+/* Hero — Globe-Halo (radial glow hinter dem Globus) */
+.globe-halo {
+    position: absolute;
+    inset: -16%;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+        circle,
+        rgba(232, 90, 31, 0.4) 0%,
+        rgba(232, 90, 31, 0.1) 55%,
+        transparent 74%
+    );
+}
+
+/* Hero — Info-Panel mit border-left Akzent */
+.info-panel {
+    border-left: 2px solid var(--spark);
+    padding: 0.3rem 0 0.3rem 1.1rem;
+    min-height: 7rem;
+    transition: opacity 0.28s ease;
+}
+
+/* Hero — Marquee (laufende Liste unten) */
+.marquee {
+    overflow: hidden;
+    border-top: 1px solid rgba(201, 184, 163, 0.16);
+    padding: 0.85rem 0;
+}
+.marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee-scroll 26s linear infinite;
+    will-change: transform;
+}
+.marquee-track > span {
+    padding: 0 2.2rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: 0.16em;
+    text-transform: lowercase;
+    font-size: 0.66rem;
+}
+.marquee-track > span > i {
+    color: var(--spark);
+    font-style: normal;
+}
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Hero — Grain Overlay */
+.grain {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+}
+
+/* Hero — Vignette */
+.vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 56%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+}
+
+/* Hero — Vertical Spine Label (rechts gedreht) */
+.spine {
+    position: absolute;
+    right: 1.2vw;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+    white-space: nowrap;
+    font-size: 0.62rem;
+    color: var(--muted);
+}
+
+/* Hero — Reveal-Animationen */
+@keyframes hero-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.hero-reveal {
+    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.4s;
+}
+.hero-reveal-2 {
+    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.6s;
+}
+.hero-reveal-3 {
+    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.8s;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .at-pulse,
-    .curtain {
+    .curtain,
+    .marquee-track,
+    .hero-reveal,
+    .hero-reveal-2,
+    .hero-reveal-3 {
         animation: none;
     }
     .curtain {
         display: none;
+    }
+    .hero-reveal,
+    .hero-reveal-2,
+    .hero-reveal-3 {
+        opacity: 1;
+        transform: none;
     }
 }

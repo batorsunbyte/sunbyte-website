@@ -272,8 +272,18 @@ export default function Globe({
             s.dirty = false
         }
         updateMarker()
+
+        // Static-Mode: Wenn weder autoRotate noch interactive aktiv ist,
+        // brauchen wir keinen Loop — der erste Render reicht (Premium-Stufe).
+        // Marker und Highlight können sich eh nicht ändern.
+        const isStatic = !autoRotate && !interactive
+        if (isStatic) {
+            s.running = false
+            return
+        }
+
         s.rafId = requestAnimationFrame(frame)
-    }, [autoRotate, reducedMotion, render, updateMarker])
+    }, [autoRotate, interactive, reducedMotion, render, updateMarker])
 
     const startLoop = useCallback(() => {
         if (stateRef.current.running) return
@@ -336,13 +346,17 @@ export default function Globe({
 
         const onResize = () => {
             sizeCanvas()
+            // Static-Mode: einen einzelnen Re-Render erzwingen (kein dauerhafter Loop).
+            if (!autoRotate && !interactive && stateRef.current.loaded) {
+                startLoop()
+            }
         }
         window.addEventListener('resize', onResize)
         return () => {
             mounted = false
             window.removeEventListener('resize', onResize)
         }
-    }, [sizeCanvas])
+    }, [sizeCanvas, autoRotate, interactive, startLoop])
 
     // 2) IntersectionObserver: Loop nur wenn im Viewport
     useEffect(() => {

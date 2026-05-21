@@ -1,16 +1,93 @@
+'use client'
+
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+
 /**
- * Studio / Gründer (§5 im Briefing) — die menschliche Sektion.
+ * Studio / Gründer — Signature-Moment (Sektion G, Hybrid).
  *
- * Layout: Foto-Slot links groß, Story rechts. Fakten als Mini-Block.
+ * Layout:
+ *   - Linke Spalte: abstraktes Globe-Echo mit Spark→Wien-Anker-Geste
+ *     („Licht sucht und kommt an"), darunter Fakten-Liste.
+ *   - Rechte Spalte: Quote + Bio-Absätze mit Mask-Reveal (Vorhang nach oben).
  *
- * Inhalte: Selbstbewusste Platzhalter, klar als „muss durch Zakir bestätigt
- * werden" markiert. Keine Floskeln, keine privaten Details — der echte
- * Text kommt von Zakir.
+ * Trigger: IntersectionObserver setzt data-anflug="true" auf #studio, sobald
+ * 25 % der Sektion sichtbar sind — ein einziger Lauf, kein Re-Play beim
+ * Zurück-Scrollen (Premium = nicht penetrant).
+ *
+ * Timing:
+ *   0.0–0.3 s  Spark fadet ein
+ *   0.3–1.7 s  Flug entlang Bezier (subtler Drop, control1 y=160)
+ *   1.7–2.05 s Stille
+ *   2.05–2.85 s Pulse-Ring (0.85 s kurz)
+ *   2.40–3.84 s Story-Zeilen reveal staggered
+ *
+ * Performance: nur offset-distance / transform / opacity. CSS-only,
+ * keine rAF-Schleife. prefers-reduced-motion → alles sofort sichtbar.
  */
+
+/**
+ * Pfad-Definition in viewBox-Koordinaten (700×525, identisch zur SVG-Bogen-
+ * Geometrie). Wird beim Mount auf Container-Pixel skaliert — sonst landet
+ * der Spark außerhalb der Box.
+ */
+const PATH_VIEWBOX = { w: 700, h: 525 }
+const PATH_POINTS = {
+    start: { x: 56, y: 95 },
+    c1: { x: 154, y: 160 },
+    c2: { x: 322, y: 14 },
+    end: { x: 420, y: 221 },
+}
+const WIEN_X_PCT = (PATH_POINTS.end.x / PATH_VIEWBOX.w) * 100
+const WIEN_Y_PCT = (PATH_POINTS.end.y / PATH_VIEWBOX.h) * 100
+
+function scaledPath(w: number, h: number): string {
+    const sx = w / PATH_VIEWBOX.w
+    const sy = h / PATH_VIEWBOX.h
+    const r = (n: number) => n.toFixed(2)
+    return (
+        `M ${r(PATH_POINTS.start.x * sx)},${r(PATH_POINTS.start.y * sy)} ` +
+        `C ${r(PATH_POINTS.c1.x * sx)},${r(PATH_POINTS.c1.y * sy)} ` +
+        `${r(PATH_POINTS.c2.x * sx)},${r(PATH_POINTS.c2.y * sy)} ` +
+        `${r(PATH_POINTS.end.x * sx)},${r(PATH_POINTS.end.y * sy)}`
+    )
+}
+
 export default function Studio() {
+    const sectionRef = useRef<HTMLElement>(null)
+    const [active, setActive] = useState(false)
+
+    useEffect(() => {
+        const el = sectionRef.current
+        if (!el) return
+        // Wenn user prefers reduced motion: Animation skippen, alles sofort sichtbar.
+        const prefersReduce = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+        ).matches
+        if (prefersReduce) {
+            setActive(true)
+            return
+        }
+
+        const io = new IntersectionObserver(
+            entries => {
+                for (const e of entries) {
+                    if (e.isIntersecting) {
+                        setActive(true)
+                        io.disconnect()
+                    }
+                }
+            },
+            { threshold: 0.22, rootMargin: '0px 0px -10% 0px' },
+        )
+        io.observe(el)
+        return () => io.disconnect()
+    }, [])
+
     return (
         <section
+            ref={sectionRef}
             id="studio"
+            data-anflug={active ? 'true' : 'false'}
             className="relative w-full container-edge"
             style={{ paddingTop: '8rem', paddingBottom: '8rem' }}
         >
@@ -26,19 +103,21 @@ export default function Studio() {
                 >
                     Hinter Sunbyte
                     <br />
-                    <span style={{ color: 'var(--spark)' }}>steht ein Mensch.</span>
+                    <span style={{ color: 'var(--spark)' }}>
+                        steht ein Mensch.
+                    </span>
                 </h2>
             </header>
 
-            {/* Inhalt: Foto + Story + Fakten */}
+            {/* Inhalt: Anker-Geste + Bio */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-start">
-                {/* Foto-Slot */}
+                {/* Linke Spalte: Anker-Geste + Fakten */}
                 <div className="md:col-span-5">
-                    <PortraitSlot />
+                    <AnchorGesture />
 
-                    {/* Fakten direkt unter Foto */}
+                    {/* Fakten direkt unter dem Anker */}
                     <dl
-                        className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm"
+                        className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 text-sm"
                         style={{ maxWidth: '32rem' }}
                     >
                         <FactRow term="Gründer" def="Zakir Daryabi" />
@@ -50,78 +129,124 @@ export default function Studio() {
                     </dl>
                 </div>
 
-                {/* Story */}
+                {/* Rechte Spalte: Quote + Story mit Mask-Reveal */}
                 <div className="md:col-span-7 md:col-start-7 md:pl-6">
-                    {/* Quote / Manifest */}
-                    <blockquote
-                        className="font-display mb-10"
+                    {/* Quote (Reveal 1) */}
+                    <div
+                        className="mb-10"
                         style={{
-                            fontSize: 'clamp(1.5rem, 2.6vw, 2.25rem)',
-                            color: 'var(--lit)',
-                            lineHeight: 1.15,
                             borderLeft: '2px solid var(--spark)',
                             paddingLeft: '1.5rem',
                         }}
                     >
-                        „Ich baue Websites so, als wären sie meine eigenen —
-                        weil ich weiß, wie sich das anfühlt, etwas von Grund auf
-                        aufzubauen."
-                        <footer
-                            className="mt-4 mono-label text-spark"
-                            style={{ fontSize: '0.66rem' }}
-                        >
-                            — zakir, gründer
-                        </footer>
-                    </blockquote>
-
-                    {/* Story-Body — Platzhalter mit Slot-Markern */}
-                    <div className="space-y-6 text-soft leading-relaxed">
-                        <p
-                            data-slot="story-paragraph-1"
-                            style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
-                        >
-                            <span className="text-lit">Sunbyte ist neu — die
-                            Person dahinter nicht.</span> Software-Lehre 2023
-                            abgeschlossen, davor und danach kontinuierlich
-                            an eigenen Produkten gebaut. PrintMyWall (Direktdruck
-                            auf Wände) ist eines davon, kfz22 das erste echte
-                            Kundenprojekt — und der Punkt, an dem aus
-                            „nebenher" eine Agentur wurde.
-                        </p>
-
-                        <p
-                            data-slot="story-paragraph-2"
-                            style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
-                        >
-                            Was Sunbyte anders macht: keine Schicht zwischen
-                            dir und der Person, die deine Seite baut. Du sprichst
-                            nicht mit einem Account-Manager, der mit der
-                            Entwicklung Rücksprache halten muss. Du sprichst
-                            mit dem, der den Code schreibt.
-                        </p>
-
-                        <p
-                            data-slot="story-paragraph-3"
-                            style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
-                        >
-                            <span className="text-lit">Ziel 2026:</span>{' '}
-                            zwei weitere Premium-Projekte, drei Lizenz-Partner,
-                            ein vollständig dokumentierter Stack, mit dem
-                            jede Branche schnell zu einer Seite kommt, die
-                            sich nicht nach Template anfühlt.
-                        </p>
-
-                        <p
-                            data-slot="story-todo"
-                            className="mono-label text-muted pt-4"
+                        <blockquote
+                            className="font-display story-line story-line-1"
                             style={{
-                                fontSize: '0.62rem',
-                                borderTop: '1px solid rgba(201, 184, 163, 0.1)',
+                                fontSize: 'clamp(1.5rem, 2.6vw, 2.25rem)',
+                                color: 'var(--lit)',
+                                lineHeight: 1.15,
                             }}
                         >
-                            ↳ slot: gründer-text wird von zakir noch verfeinert
-                            / persönlicher gemacht.
-                        </p>
+                            <span className="story-inner">
+                                „Ich baue Websites so, als wären sie meine
+                                eigenen — weil ich weiß, wie sich das anfühlt,
+                                etwas von Grund auf aufzubauen."
+                            </span>
+                        </blockquote>
+                        <div className="story-line story-line-2 mt-4">
+                            <span
+                                className="story-inner mono-label text-spark"
+                                style={{ fontSize: '0.66rem' }}
+                            >
+                                — zakir, gründer
+                            </span>
+                        </div>
+                    </div>
+
+                    {/* Bio-Absätze (Reveal 3-5) */}
+                    <div className="space-y-6 text-soft leading-relaxed">
+                        <div
+                            className="story-line story-line-3"
+                            data-slot="story-paragraph-1"
+                        >
+                            <p
+                                className="story-inner"
+                                style={{
+                                    fontSize:
+                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                }}
+                            >
+                                <span className="text-lit">
+                                    Sunbyte ist neu — die Person dahinter
+                                    nicht.
+                                </span>{' '}
+                                Software-Lehre 2023 abgeschlossen, davor und
+                                danach kontinuierlich an eigenen Produkten
+                                gebaut. PrintMyWall (Direktdruck auf Wände)
+                                ist eines davon, kfz22 das erste echte
+                                Kundenprojekt — und der Punkt, an dem aus
+                                „nebenher" eine Agentur wurde.
+                            </p>
+                        </div>
+
+                        <div
+                            className="story-line story-line-4"
+                            data-slot="story-paragraph-2"
+                        >
+                            <p
+                                className="story-inner"
+                                style={{
+                                    fontSize:
+                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                }}
+                            >
+                                Was Sunbyte anders macht: keine Schicht
+                                zwischen dir und der Person, die deine Seite
+                                baut. Du sprichst nicht mit einem
+                                Account-Manager, der mit der Entwicklung
+                                Rücksprache halten muss. Du sprichst mit
+                                dem, der den Code schreibt.
+                            </p>
+                        </div>
+
+                        <div
+                            className="story-line story-line-5"
+                            data-slot="story-paragraph-3"
+                        >
+                            <p
+                                className="story-inner"
+                                style={{
+                                    fontSize:
+                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                }}
+                            >
+                                <span className="text-lit">
+                                    Ziel 2026:
+                                </span>{' '}
+                                zwei weitere Premium-Projekte, drei
+                                Lizenz-Partner, ein vollständig
+                                dokumentierter Stack, mit dem jede Branche
+                                schnell zu einer Seite kommt, die sich nicht
+                                nach Template anfühlt.
+                            </p>
+                        </div>
+
+                        <div
+                            className="story-line story-line-6"
+                            data-slot="story-todo"
+                        >
+                            <p
+                                className="story-inner mono-label text-muted pt-4"
+                                style={{
+                                    fontSize: '0.62rem',
+                                    borderTop:
+                                        '1px solid rgba(201, 184, 163, 0.1)',
+                                }}
+                            >
+                                ↳ slot: gründer-text wird von zakir noch
+                                verfeinert / persönlicher gemacht.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -131,66 +256,130 @@ export default function Studio() {
 
 // ─── Sub-Components ─────────────────────────────────────────────
 
-function PortraitSlot() {
+/**
+ * Anker-Geste: Abstraktes Globe-Echo mit Spark→Wien-Animation.
+ * Wird via Parent-Selector #studio[data-anflug="true"] animiert.
+ *
+ * Pfad wird beim Mount + Resize auf Container-Pixel skaliert (sonst
+ * läuft der Spark außerhalb, weil offset-path absolute Pixel-Werte braucht).
+ */
+function AnchorGesture() {
+    const boxRef = useRef<HTMLDivElement>(null)
+    const [path, setPath] = useState<string | null>(null)
+
+    useLayoutEffect(() => {
+        const el = boxRef.current
+        if (!el) return
+        const update = () => {
+            const r = el.getBoundingClientRect()
+            if (r.width > 0 && r.height > 0) {
+                setPath(scaledPath(r.width, r.height))
+            }
+        }
+        update()
+        const ro = new ResizeObserver(update)
+        ro.observe(el)
+        return () => ro.disconnect()
+    }, [])
+
     return (
         <div
+            ref={boxRef}
             className="relative w-full overflow-hidden"
+            aria-hidden
             style={{
-                aspectRatio: '4 / 5',
+                aspectRatio: '4 / 3',
                 border: '1px solid rgba(201, 184, 163, 0.16)',
                 borderRadius: '4px',
-                background: 'rgba(20, 17, 15, 0.5)',
+                background:
+                    'radial-gradient(circle at 50% 65%, rgba(232,90,31,0.08) 0%, transparent 60%)',
             }}
-            data-slot="portrait-photo"
         >
-            {/* Halo-Echo */}
+            {/* Erdrand-Bogen (statisches SVG, „Welt-Echo" zum Hero) */}
+            <svg
+                viewBox="0 0 700 525"
+                className="absolute inset-0 w-full h-full"
+                preserveAspectRatio="none"
+            >
+                <path
+                    d="M -50,600 Q 350,250 750,600"
+                    fill="none"
+                    stroke="rgba(232, 90, 31, 0.08)"
+                    strokeWidth="10"
+                />
+                <path
+                    d="M -50,600 Q 350,250 750,600"
+                    fill="none"
+                    stroke="rgba(232, 90, 31, 0.28)"
+                    strokeWidth="1.5"
+                />
+                <circle
+                    cx={PATH_POINTS.end.x}
+                    cy={PATH_POINTS.end.y}
+                    r="2"
+                    fill="rgba(232, 90, 31, 0.5)"
+                />
+            </svg>
+
+            {/* Spark-Flyer (offset-path animiert, dynamisch skaliert) */}
             <div
-                aria-hidden
-                className="absolute"
+                className="anchor-spark-flyer"
                 style={{
-                    inset: '-20%',
-                    background:
-                        'radial-gradient(circle at 50% 40%, rgba(232,90,31,0.12) 0%, transparent 60%)',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 10,
+                    height: 10,
+                    offsetPath: path ? `path('${path}')` : undefined,
+                    offsetAnchor: 'center',
+                    offsetDistance: '0%',
+                    opacity: 0,
                     pointerEvents: 'none',
-                }}
-            />
-
-            {/* Diagonal accent line */}
-            <div
-                aria-hidden
-                className="absolute"
-                style={{
-                    bottom: '-1px',
-                    left: '-1px',
-                    right: '-1px',
-                    height: '2px',
-                    background:
-                        'linear-gradient(90deg, transparent 0%, var(--spark) 30%, var(--spark) 70%, transparent 100%)',
-                    opacity: 0.6,
-                }}
-            />
-
-            {/* Bottom hint */}
-            <p
-                className="absolute mono-label text-spark"
-                style={{
-                    bottom: '1.25rem',
-                    left: '1.25rem',
-                    fontSize: '0.62rem',
+                    willChange: 'offset-distance, opacity',
                 }}
             >
-                ↳ porträt folgt
-            </p>
-            <p
-                className="absolute mono-label text-muted"
+                <span
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '50%',
+                        background: 'var(--lit)',
+                        boxShadow:
+                            '0 0 14px 3px rgba(232, 90, 31, 0.95), 0 0 28px 6px rgba(232, 90, 31, 0.4)',
+                    }}
+                />
+                <span
+                    className="anchor-spark-pulse"
+                    style={{
+                        position: 'absolute',
+                        inset: 0,
+                        borderRadius: '50%',
+                        border: '1.5px solid var(--spark)',
+                        opacity: 0,
+                        transform: 'scale(1)',
+                        transformOrigin: 'center',
+                        willChange: 'transform, opacity',
+                    }}
+                />
+            </div>
+
+            {/* Wien-Label (fadet nach Ankunft ein) */}
+            <span
+                className="anchor-spark-label mono-label"
                 style={{
-                    bottom: '1.25rem',
-                    right: '1.25rem',
-                    fontSize: '0.6rem',
+                    position: 'absolute',
+                    left: `calc(${WIEN_X_PCT}% + 12px)`,
+                    top: `calc(${WIEN_Y_PCT}% - 8px)`,
+                    color: 'var(--lit)',
+                    fontSize: '0.55rem',
+                    textShadow: '0 0 6px #000',
+                    opacity: 0,
+                    pointerEvents: 'none',
+                    willChange: 'opacity, transform',
                 }}
             >
-                zakir.daryabi
-            </p>
+                wien
+            </span>
         </div>
     )
 }

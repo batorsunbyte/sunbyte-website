@@ -324,20 +324,65 @@
     100% { opacity: 1; }
 }
 
-/* Story-Reveal: Mask-Vorhang nach oben */
-.story-line-mask {
+/* ─── Studio-Anflug-Geste (scroll-getriggert, kurzer Pulse) ─── */
+
+/* Triggered via data-anflug="true" auf #studio */
+@keyframes anchor-spark-fly {
+    /* 0–18% (0–0.3s von 1.7s): fade-in am Start */
+    0% { offset-distance: 0%; opacity: 0; }
+    18% { offset-distance: 0%; opacity: 1; }
+    /* 18–100% (0.3–1.7s): straffer Flug 1.4s */
+    100% { offset-distance: 100%; opacity: 1; }
+}
+@keyframes anchor-spark-pulse {
+    /* Kurz und prägnant — 0.8s statt 1.6s im Test-Loop */
+    0%   { opacity: 1; transform: scale(1); }
+    70%  { opacity: 0.4; transform: scale(3.4); }
+    100% { opacity: 0; transform: scale(4.2); }
+}
+@keyframes anchor-spark-label {
+    from { opacity: 0; transform: translateY(2px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#studio[data-anflug="true"] .anchor-spark-flyer {
+    animation: anchor-spark-fly 1.7s cubic-bezier(0.34, 0.05, 0.2, 1) forwards;
+}
+#studio[data-anflug="true"] .anchor-spark-pulse {
+    animation: anchor-spark-pulse 0.85s cubic-bezier(0.22, 0.61, 0.36, 1)
+        2.05s forwards;
+}
+#studio[data-anflug="true"] .anchor-spark-label {
+    animation: anchor-spark-label 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.9s
+        forwards;
+}
+
+/* Story Mask-Reveal — Vorhang nach oben (Idee-2-Qualität) */
+.story-line {
     overflow: hidden;
     display: block;
 }
-.story-line-inner {
+.story-line > .story-inner {
     display: block;
-    transform: translateY(110%);
-    will-change: transform;
-    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(108%);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition:
+        transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.7s ease;
 }
-.story-line-mask.is-revealed .story-line-inner {
+#studio[data-anflug="true"] .story-line > .story-inner {
     transform: translateY(0);
+    opacity: 1;
 }
+
+/* Staggered delays — beginnt 2.4s nach scroll-trigger (= ~Pulse-Mitte) */
+#studio[data-anflug="true"] .story-line-1 > .story-inner { transition-delay: 2.40s; }
+#studio[data-anflug="true"] .story-line-2 > .story-inner { transition-delay: 2.72s; }
+#studio[data-anflug="true"] .story-line-3 > .story-inner { transition-delay: 3.00s; }
+#studio[data-anflug="true"] .story-line-4 > .story-inner { transition-delay: 3.28s; }
+#studio[data-anflug="true"] .story-line-5 > .story-inner { transition-delay: 3.56s; }
+#studio[data-anflug="true"] .story-line-6 > .story-inner { transition-delay: 3.84s; }
 
 @media (prefers-reduced-motion: reduce) {
     .at-pulse,
@@ -371,8 +416,24 @@
     .spark-label {
         opacity: 1;
     }
-    .story-line-inner {
+    /* Studio-Anker: alles sofort am Ziel, kein Pulse */
+    #studio .anchor-spark-flyer {
+        animation: none !important;
+        offset-distance: 100%;
+        opacity: 1;
+    }
+    #studio .anchor-spark-pulse {
+        animation: none !important;
+        opacity: 0;
+    }
+    #studio .anchor-spark-label {
+        animation: none !important;
+        opacity: 1;
+    }
+    /* Story-Reveal: alles sofort sichtbar */
+    .story-line > .story-inner {
         transform: none;
+        opacity: 1;
         transition: none;
     }
 }

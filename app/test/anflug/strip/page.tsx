@@ -14,9 +14,9 @@ const PATHS = [
     },
     {
         id: 'B',
-        title: 'Suchender Anflug (Cubic, zwei Phasen)',
-        desc: 'Erst leichter Drop (sucht), dann steigt hoch, fällt zu Wien.',
-        d: 'M 56,95 C 154,221 322,14 420,221',
+        title: 'Suchender Anflug (Cubic, subtle drop)',
+        desc: 'Control 1 bei y=160 statt y=221. Zögern fühlbar, nicht sichtbar als Schlenker.',
+        d: 'M 56,95 C 154,160 322,14 420,221',
     },
 ]
 

@@ -56,9 +56,9 @@ export default function AnflugTestPage() {
                 />
 
                 <Variant
-                    label="B — Suchender Anflug (Cubic, zwei Phasen)"
-                    desc="Zwei Kontrollpunkte. Erst dezenter Drop (sucht), dann steigt hoch, fällt zu Wien. Spürbarer Lichtsucht-Moment."
-                    pathD="M 56,95 C 154,221 322,14 420,221"
+                    label="B — Suchender Anflug (Cubic, subtle drop)"
+                    desc="Subtiler Drop (y=160 statt 221). Das Zögern soll man FÜHLEN, nicht als Schlenker sehen. Premium = Zurückhalten."
+                    pathD="M 56,95 C 154,160 322,14 420,221"
                     runKey={tick}
                 />
             </div>

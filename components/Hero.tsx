@@ -55,9 +55,19 @@ export default function Hero() {
                 className="absolute left-0 right-0 top-0 z-[5] flex items-center justify-between"
                 style={{ padding: '1.6rem 6vw' }}
             >
-                <span className="font-mono text-soft" style={{ fontSize: '0.66rem' }}>
-                    sunbyte.at
-                </span>
+                <a
+                    href="#hero"
+                    aria-label="Sunbyte — Startseite"
+                    className="font-display hover:text-spark transition-colors"
+                    style={{
+                        fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
+                        color: 'var(--lit)',
+                        letterSpacing: '-0.01em',
+                        lineHeight: 1,
+                    }}
+                >
+                    Sunbyte
+                </a>
                 <span
                     className="font-mono text-soft hidden md:flex gap-6"
                     style={{ fontSize: '0.66rem' }}

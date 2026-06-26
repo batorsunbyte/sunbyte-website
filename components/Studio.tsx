@@ -93,7 +93,7 @@ export default function Studio() {
         >
             {/* Sektion-Header */}
             <header className="mb-16 md:mb-24 max-w-3xl">
-                <p className="mono-label text-spark mb-4">03 — studio</p>
+                <p className="mono-label text-spark mb-4">die mission</p>
                 <h2
                     className="font-display"
                     style={{
@@ -101,11 +101,9 @@ export default function Studio() {
                         color: 'var(--lit)',
                     }}
                 >
-                    Hinter Sunbyte
+                    Von Wien aus
                     <br />
-                    <span style={{ color: 'var(--spark)' }}>
-                        steht ein Mensch.
-                    </span>
+                    <span style={{ color: 'var(--spark)' }}>in die Welt.</span>
                 </h2>
             </header>
 
@@ -120,12 +118,12 @@ export default function Studio() {
                         className="mt-10 grid grid-cols-2 gap-x-6 gap-y-4 text-sm"
                         style={{ maxWidth: '32rem' }}
                     >
-                        <FactRow term="Gründer" def="Zakir Daryabi" />
                         <FactRow term="Standort" def="Wien, Österreich" />
                         <FactRow term="Gegründet" def="2026" />
-                        <FactRow term="Modell" def="Inhabergeführt" />
+                        <FactRow term="Team" def="Zwei Brüder" />
+                        <FactRow term="Erfahrung" def="20+ Jahre IT & KI" />
+                        <FactRow term="Fokus" def="Web · KI-Sichtbarkeit" />
                         <FactRow term="Sprachen" def="Deutsch · Englisch" />
-                        <FactRow term="Stack" def="Next.js · FastAPI · Edge" />
                     </dl>
                 </div>
 
@@ -148,9 +146,8 @@ export default function Studio() {
                             }}
                         >
                             <span className="story-inner">
-                                „Ich baue Websites so, als wären sie meine
-                                eigenen — weil ich weiß, wie sich das anfühlt,
-                                etwas von Grund auf aufzubauen."
+                                „Wir fangen klein an — mit dem klaren Anspruch,
+                                ganz oben zu landen."
                             </span>
                         </blockquote>
                         <div className="story-line story-line-2 mt-4">
@@ -158,7 +155,7 @@ export default function Studio() {
                                 className="story-inner mono-label text-spark"
                                 style={{ fontSize: '0.66rem' }}
                             >
-                                — zakir, gründer
+                                — das sunbyte-team
                             </span>
                         </div>
                     </div>
@@ -167,84 +164,73 @@ export default function Studio() {
                     <div className="space-y-6 text-soft leading-relaxed">
                         <div
                             className="story-line story-line-3"
-                            data-slot="story-paragraph-1"
+                            data-slot="vision-paragraph-1"
                         >
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize:
-                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
                                 }}
                             >
                                 <span className="text-lit">
-                                    Sunbyte ist neu — die Person dahinter
-                                    nicht.
+                                    Der Funke startet in Wien.
                                 </span>{' '}
-                                Software-Lehre 2023 abgeschlossen, davor und
-                                danach kontinuierlich an eigenen Produkten
-                                gebaut. PrintMyWall (Direktdruck auf Wände)
-                                ist eines davon, kfz22 das erste echte
-                                Kundenprojekt — und der Punkt, an dem aus
-                                „nebenher" eine Agentur wurde.
+                                Zwei Brüder, über 20 Jahre kombinierte Erfahrung
+                                in IT, KI und Design — und die Überzeugung, dass
+                                Weltklasse keine Frage der Größe ist, sondern des
+                                Anspruchs.
                             </p>
                         </div>
 
                         <div
                             className="story-line story-line-4"
-                            data-slot="story-paragraph-2"
+                            data-slot="vision-paragraph-2"
                         >
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize:
-                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
                                 }}
                             >
-                                Was Sunbyte anders macht: keine Schicht
-                                zwischen dir und der Person, die deine Seite
-                                baut. Du sprichst nicht mit einem
-                                Account-Manager, der mit der Entwicklung
-                                Rücksprache halten muss. Du sprichst mit
-                                dem, der den Code schreibt.
+                                Wir bauen Sunbyte zu einer{' '}
+                                <span className="text-lit">IT-Weltmacht</span> —
+                                Schritt für Schritt, Projekt für Projekt. Was
+                                hier in Wien entsteht, soll Maßstäbe setzen, nicht
+                                hinterherlaufen.
                             </p>
                         </div>
 
                         <div
                             className="story-line story-line-5"
-                            data-slot="story-paragraph-3"
+                            data-slot="vision-paragraph-3"
                         >
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize:
-                                        'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
                                 }}
                             >
-                                <span className="text-lit">
-                                    Ziel 2026:
-                                </span>{' '}
-                                zwei weitere Premium-Projekte, drei
-                                Lizenz-Partner, ein vollständig
-                                dokumentierter Stack, mit dem jede Branche
-                                schnell zu einer Seite kommt, die sich nicht
-                                nach Template anfühlt.
+                                <span className="text-lit">Heute:</span>{' '}
+                                erstklassige Webseiten und KI-Sichtbarkeit für
+                                Unternehmen, die mehr wollen als Durchschnitt.
+                                Morgen: ein Name, den man kennt — weit über Wien
+                                hinaus.
                             </p>
                         </div>
 
                         <div
                             className="story-line story-line-6"
-                            data-slot="story-todo"
+                            data-slot="vision-close"
                         >
                             <p
-                                className="story-inner mono-label text-muted pt-4"
+                                className="story-inner mono-label text-spark pt-4"
                                 style={{
-                                    fontSize: '0.62rem',
+                                    fontSize: '0.66rem',
                                     borderTop:
                                         '1px solid rgba(201, 184, 163, 0.1)',
                                 }}
                             >
-                                ↳ slot: gründer-text wird von zakir noch
-                                verfeinert / persönlicher gemacht.
+                                ↳ von wien in die welt. das ist der plan.
                             </p>
                         </div>
                     </div>

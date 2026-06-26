@@ -1,3 +1,5 @@
+import SitePreview from '@/components/SitePreview'
+
 /**
  * Cases — echte Projekte mit Detail-Block je Case (§5 im Briefing).
  *
@@ -14,28 +16,28 @@ export default function Cases() {
         <section
             id="cases"
             className="relative w-full container-edge"
-            style={{ paddingTop: '8rem', paddingBottom: '8rem' }}
+            style={{ paddingTop: '11rem', paddingBottom: '7rem' }}
         >
             {/* Sektion-Header */}
             <header className="mb-20 md:mb-28 max-w-3xl">
-                <p className="mono-label text-spark mb-4">02 — arbeiten</p>
-                <h2
+                <p className="mono-label text-spark mb-4">referenzen</p>
+                <h1
                     className="font-display"
                     style={{
-                        fontSize: 'clamp(2.25rem, 5.5vw, 4.5rem)',
+                        fontSize: 'clamp(2.5rem, 6vw, 5rem)',
                         color: 'var(--lit)',
                     }}
                 >
                     Echte Projekte.
                     <br />
                     <span style={{ color: 'var(--spark)' }}>Live im Netz.</span>
-                </h2>
+                </h1>
                 <p
                     className="text-soft mt-6 max-w-xl leading-relaxed"
                     style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
                 >
-                    Drei Projekte, drei Geschichten. Eine Sache haben sie
-                    gemeinsam — der Kunde kennt mich persönlich.
+                    Echte Projekte, echte Geschichten. Eine Sache haben sie
+                    gemeinsam — der Kunde kennt uns persönlich.
                 </p>
             </header>
 
@@ -57,6 +59,7 @@ export default function Cases() {
                         'i18n DE / EN, responsive Mobile-First',
                     ]}
                     visualHint="screenshot folgt — von zakir"
+                    previewUrl="https://kfz22.com"
                     align="left"
                 />
 
@@ -75,6 +78,7 @@ export default function Cases() {
                         'Drop-In-Galerie, /ideen/-Sektion live',
                     ]}
                     visualHint="screenshot des neuen launches folgt"
+                    previewUrl="https://printmywall.at"
                     align="right"
                 />
 
@@ -112,6 +116,7 @@ interface CaseBlockProps {
     summary: string
     deliverables: string[]
     visualHint: string
+    previewUrl?: string
     align: 'left' | 'right'
     placeholder?: boolean
 }
@@ -126,6 +131,7 @@ function CaseBlock({
     summary,
     deliverables,
     visualHint,
+    previewUrl,
     align,
     placeholder = false,
 }: CaseBlockProps) {
@@ -193,9 +199,13 @@ function CaseBlock({
                 </ul>
             </div>
 
-            {/* Visual Placeholder */}
+            {/* Visual: echte Live-Vorschau (Webseite in Webseite) oder Platzhalter */}
             <div className={visualClass}>
-                <VisualPlaceholder hint={visualHint} placeholder={placeholder} />
+                {previewUrl ? (
+                    <SitePreview url={previewUrl} />
+                ) : (
+                    <VisualPlaceholder hint={visualHint} placeholder={placeholder} />
+                )}
             </div>
         </article>
     )

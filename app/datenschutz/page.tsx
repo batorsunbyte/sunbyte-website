@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { CONTACT } from '@/lib/seo'
 
 export const metadata: Metadata = {
     title: 'Datenschutz',
@@ -7,23 +7,15 @@ export const metadata: Metadata = {
 }
 
 /**
- * Datenschutzerklärung — DSGVO-Pflicht. Aktuelle Sunbyte-Seite ist statisch,
- * sammelt keine personenbezogenen Daten. Nur über E-Mail-Kontakt entstehen
- * Daten. Cookies werden nicht gesetzt, kein Tracking, kein Analytics.
- *
- * Slot für Zakir: sobald Analytics oder Forms hinzukommen, muss diese Seite
- * ergänzt werden.
+ * Datenschutzerklärung — DSGVO. Die Seite ist statisch, setzt keine Cookies,
+ * kein Tracking. Daten entstehen nur über E-Mail-/Telefonkontakt.
  */
 export default function DatenschutzPage() {
     return (
-        <main className="container-edge" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
-            <Link
-                href="/"
-                className="mono-label text-spark hover:text-lit transition-colors inline-flex items-center gap-2 mb-12"
-            >
-                <span aria-hidden>↩</span> sunbyte.at
-            </Link>
-
+        <div
+            className="container-edge"
+            style={{ paddingTop: '9rem', paddingBottom: '6rem' }}
+        >
             <h1
                 className="font-display mb-12"
                 style={{
@@ -39,14 +31,22 @@ export default function DatenschutzPage() {
                     <p>
                         Sunbyte — Inhaber: Zakir Daryabi
                         <br />
-                        Wien, Österreich
+                        {CONTACT.street}, {CONTACT.zip} {CONTACT.city},{' '}
+                        {CONTACT.country}
                         <br />
                         Kontakt:{' '}
                         <a
-                            href="mailto:hello@sunbyte.at"
+                            href={`mailto:${CONTACT.email}`}
                             className="text-lit hover:text-spark transition-colors"
                         >
-                            hello@sunbyte.at
+                            {CONTACT.email}
+                        </a>{' '}
+                        ·{' '}
+                        <a
+                            href={`tel:${CONTACT.phoneRaw}`}
+                            className="text-lit hover:text-spark transition-colors"
+                        >
+                            {CONTACT.phone}
                         </a>
                     </p>
                 </Block>
@@ -65,13 +65,13 @@ export default function DatenschutzPage() {
                     </p>
                 </Block>
 
-                <Block title="Kontaktaufnahme per E-Mail">
+                <Block title="Kontaktaufnahme">
                     <p>
-                        Wenn du uns über die angegebene E-Mail-Adresse
-                        kontaktierst, werden die übermittelten Daten (Name,
-                        E-Mail, Inhalt der Nachricht) gespeichert, soweit
-                        nötig, um deine Anfrage zu bearbeiten. Diese Daten
-                        werden nicht an Dritte weitergegeben.
+                        Wenn du uns per E-Mail oder Telefon kontaktierst, werden
+                        die übermittelten Daten (Name, Kontaktdaten, Inhalt der
+                        Nachricht) gespeichert, soweit nötig, um deine Anfrage
+                        zu bearbeiten. Diese Daten werden nicht an Dritte
+                        weitergegeben.
                     </p>
                 </Block>
 
@@ -94,7 +94,7 @@ export default function DatenschutzPage() {
                 </Block>
 
                 <Block title="Eingebundene Drittdienste">
-                    <p data-slot="datenschutz-drittdienste">
+                    <p>
                         Aktuell keine. Schriften (@fontsource) und Globe-Daten
                         (world-atlas) sind in den statischen Build gebundelt
                         und werden nicht zur Laufzeit von Dritten geladen.
@@ -105,8 +105,7 @@ export default function DatenschutzPage() {
                     <p>
                         Diese Website wird über GitHub Pages ausgeliefert
                         (GitHub Inc., 88 Colin P Kelly Jr St, San Francisco,
-                        CA 94107, USA). Auftragsverarbeitungsvertrag liegt
-                        vor.
+                        CA 94107, USA).
                     </p>
                 </Block>
 
@@ -117,14 +116,20 @@ export default function DatenschutzPage() {
                         borderTop: '1px solid rgba(201, 184, 163, 0.1)',
                     }}
                 >
-                    ↳ stand: 21. mai 2026 · sunbyte
+                    ↳ stand: 25. juni 2026 · sunbyte
                 </p>
             </div>
-        </main>
+        </div>
     )
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({
+    title,
+    children,
+}: {
+    title: string
+    children: React.ReactNode
+}) {
     return (
         <section>
             <h2

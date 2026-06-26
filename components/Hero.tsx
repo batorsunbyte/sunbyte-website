@@ -12,7 +12,6 @@ import {
 
 /**
  * Globe lazy laden (Code-Split):
- *   - Spart First-Load JS auf Routen ohne Hero (nicht relevant für /, aber prinzipiell sauber).
  *   - SSR off, weil Globe Canvas + Browser-APIs braucht.
  */
 const Globe = dynamic(() => import('@/components/Globe'), {
@@ -50,49 +49,12 @@ export default function Hero() {
             className="relative w-full overflow-hidden"
             style={{ minHeight: '100svh', isolation: 'isolate' }}
         >
-            {/* Top Nav */}
-            <nav
-                className="absolute left-0 right-0 top-0 z-[5] flex items-center justify-between"
-                style={{ padding: '1.6rem 6vw' }}
-            >
-                <a
-                    href="#hero"
-                    aria-label="Sunbyte — Startseite"
-                    className="font-display hover:text-spark transition-colors"
-                    style={{
-                        fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
-                        color: 'var(--lit)',
-                        letterSpacing: '-0.01em',
-                        lineHeight: 1,
-                    }}
-                >
-                    Sunbyte
-                </a>
-                <span
-                    className="font-mono text-soft hidden md:flex gap-6"
-                    style={{ fontSize: '0.66rem' }}
-                >
-                    <a href="#leistungen" className="hover:text-lit transition-colors">
-                        leistungen
-                    </a>
-                    <a href="#cases" className="hover:text-lit transition-colors">
-                        cases
-                    </a>
-                    <a href="#studio" className="hover:text-lit transition-colors">
-                        studio
-                    </a>
-                    <a href="#kontakt" className="hover:text-lit transition-colors">
-                        kontakt
-                    </a>
-                </span>
-            </nav>
-
-            {/* Kicker */}
+            {/* Kicker (Nav ist global im Header) */}
             <div
                 className="absolute z-[5] mono-label text-spark"
                 style={{ top: '5.4rem', left: '6vw' }}
             >
-                wiener studio · inhabergeführt seit 2026
+                it-dienstleister · wien · seit 2026
             </div>
 
             {/* Spine (desktop only) */}
@@ -141,7 +103,7 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Headline (FIX: nicht ändern) */}
+                    {/* Headline */}
                     <h1
                         className="font-display hero-reveal-2"
                         style={{
@@ -156,13 +118,13 @@ export default function Hero() {
                         </span>
                     </h1>
 
-                    {/* Sub (FIX: nicht ändern) */}
+                    {/* Sub */}
                     <p
                         className="text-soft max-w-[42ch] leading-relaxed hero-reveal-3"
                         style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
                     >
-                        Eine Website, die deine Identität verstärkt — und in
-                        Sekunden überzeugt.
+                        Wir bauen deinen digitalen Auftritt — und sorgen dafür,
+                        dass dich die Welt findet. Auch die KI.
                     </p>
                 </div>
 
@@ -185,9 +147,10 @@ export default function Hero() {
                             className="text-lit font-medium"
                             style={{ fontWeight: 500 }}
                         >
-                            Deine Website ist die Investition mit dem höchsten Hebel.
+                            Dein Auftritt ist die Investition mit dem höchsten
+                            Hebel.
                         </b>{' '}
-                        Sie verkauft und baut Vertrauen — rund um die Uhr,
+                        Er verkauft und baut Vertrauen — rund um die Uhr,
                         weltweit.
                     </p>
 

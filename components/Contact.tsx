@@ -1,69 +1,79 @@
+import Reveal from '@/components/Reveal'
+import ContactForm from '@/components/ContactForm'
+import { CONTACT } from '@/lib/seo'
+
 /**
- * Kontakt-Sektion + Footer (§5 im Briefing).
+ * Kontakt-Sektion (/kontakt). Footer ist global (layout.tsx).
  *
- * Schlicht, klar, eine primäre CTA. Inhabergeführt = direkter Draht,
- * kein Formular-Overhead.
- *
- * Slots, die Zakir später ersetzt:
- *   - email: hello@sunbyte.at (Platzhalter bis MX-Record steht)
- *   - tel:   auf Anfrage (Slot offen)
- *   - kalender-link (optional, später)
+ * Conversion-First: Formular als niedrigschwelliger Hauptweg (Web3Forms,
+ * static-tauglich) + direkte Kanäle (Mail / Tel / WhatsApp / Standort).
+ * Tel + Anschrift aus dem PrintMyWall-Impressum (Zakirs Wunsch).
  */
 export default function Contact() {
     return (
-        <>
-            <section
-                id="kontakt"
-                className="relative w-full container-edge"
-                style={{ paddingTop: '8rem', paddingBottom: '10rem' }}
+        <section
+            id="kontakt"
+            className="relative w-full container-edge section-pad-top"
+            style={{ paddingBottom: '7rem' }}
+        >
+            <Reveal as="p" className="mono-label text-spark mb-6">
+                kontakt
+            </Reveal>
+
+            <Reveal
+                as="h1"
+                delay={60}
+                className="font-display max-w-[16ch]"
+                style={{
+                    fontSize: 'clamp(2.5rem, 9vw, 7rem)',
+                    color: 'var(--lit)',
+                }}
             >
-                {/* Kicker */}
-                <p className="mono-label text-spark mb-6">04 — kontakt</p>
+                Lass uns
+                <br />
+                <span style={{ color: 'var(--spark)' }}>reden.</span>
+            </Reveal>
 
-                {/* Riesige Display-Headline */}
-                <h2
-                    className="font-display max-w-[16ch]"
-                    style={{
-                        fontSize: 'clamp(3rem, 11vw, 9rem)',
-                        color: 'var(--lit)',
-                    }}
-                >
-                    Lass uns
-                    <br />
-                    <span style={{ color: 'var(--spark)' }}>reden.</span>
-                </h2>
+            <Reveal
+                as="p"
+                delay={120}
+                className="mt-8 text-soft max-w-2xl leading-relaxed"
+                style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)' }}
+            >
+                Erzähl mir in einer Minute von deinem Vorhaben — neue Website,
+                Auffrischung oder KI-Sichtbarkeit.{' '}
+                <span className="text-lit">
+                    Erstgespräch gratis &amp; unverbindlich
+                </span>
+                , Antwort meist innerhalb von 24 Stunden.
+            </Reveal>
 
-                {/* Sub */}
-                <p
-                    className="mt-8 text-soft max-w-2xl leading-relaxed"
-                    style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)' }}
-                >
-                    Wenn du eine Seite brauchst, die wirkt — nicht nur eine, die
-                    existiert — dann schreib mir. Der erste Call ist gratis,
-                    der zweite zeigt dir, wie's konkret aussehen würde.
-                </p>
+            {/* Formular + direkte Kanäle */}
+            <div className="mt-14 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10">
+                {/* Formular */}
+                <Reveal className="md:col-span-7">
+                    <ContactForm />
+                </Reveal>
 
-                {/* Kontakt-Kanäle */}
-                <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
-                    {/* E-Mail */}
-                    <div className="md:col-span-5">
+                {/* Direkte Kanäle */}
+                <div className="md:col-span-5 flex flex-col gap-8">
+                    <Reveal>
                         <p
-                            className="mono-label text-muted mb-3"
+                            className="mono-label text-muted mb-2"
                             style={{ fontSize: '0.66rem' }}
                         >
-                            ↳ schreib direkt
+                            ↳ lieber direkt?
                         </p>
                         <a
-                            href="mailto:hello@sunbyte.at"
+                            href={`mailto:${CONTACT.email}`}
                             className="font-display block hover:opacity-80 transition-opacity"
                             style={{
-                                fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                                fontSize: 'clamp(1.25rem, 2.4vw, 1.9rem)',
                                 color: 'var(--lit)',
-                                lineHeight: 1.1,
+                                lineHeight: 1.15,
                             }}
-                            data-slot="contact-email"
                         >
-                            hello@sunbyte.at
+                            {CONTACT.email}
                             <span
                                 aria-hidden
                                 className="text-spark ml-2"
@@ -72,167 +82,63 @@ export default function Contact() {
                                 ↗
                             </span>
                         </a>
-                        <p
-                            className="mt-3 text-soft text-sm leading-snug"
-                            style={{ fontSize: 'clamp(0.85rem, 1vw, 0.95rem)' }}
-                        >
-                            Direkt zum Gründer. Antwort meist innerhalb von 24 h.
-                        </p>
-                    </div>
+                    </Reveal>
 
-                    {/* Persönlich / Anruf */}
-                    <div className="md:col-span-5 md:col-start-8">
+                    <Reveal delay={60}>
                         <p
-                            className="mono-label text-muted mb-3"
+                            className="mono-label text-muted mb-2"
                             style={{ fontSize: '0.66rem' }}
                         >
-                            ↳ persönlich
+                            ↳ anruf / whatsapp
                         </p>
-                        <p
-                            className="font-display"
+                        <a
+                            href={`tel:${CONTACT.phoneRaw}`}
+                            className="font-display block hover:opacity-80 transition-opacity"
                             style={{
-                                fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                                fontSize: 'clamp(1.25rem, 2.4vw, 1.9rem)',
                                 color: 'var(--lit)',
-                                lineHeight: 1.1,
+                                lineHeight: 1.15,
                             }}
-                            data-slot="contact-meeting"
                         >
-                            Wien · Donaustadt
+                            {CONTACT.phone}
+                        </a>
+                        <a
+                            href={`https://wa.me/${CONTACT.whatsapp}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mono-label text-spark hover:text-lit transition-colors inline-flex items-center gap-1.5 mt-2"
+                        >
+                            auf whatsapp schreiben <span aria-hidden>↗</span>
+                        </a>
+                    </Reveal>
+
+                    <Reveal delay={120}>
+                        <p
+                            className="mono-label text-muted mb-2"
+                            style={{ fontSize: '0.66rem' }}
+                        >
+                            ↳ standort
                         </p>
                         <p
-                            className="mt-3 text-soft text-sm leading-snug"
-                            style={{ fontSize: 'clamp(0.85rem, 1vw, 0.95rem)' }}
+                            className="text-soft leading-snug"
+                            style={{
+                                fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)',
+                            }}
                         >
-                            Café, Atelier oder dein Geschäft — wir treffen uns
-                            dort, wo es Sinn ergibt. Tel auf Anfrage.
+                            {CONTACT.street}, {CONTACT.zip} {CONTACT.city},{' '}
+                            {CONTACT.country}
                         </p>
-                    </div>
+                    </Reveal>
                 </div>
-
-                {/* Bottom-Hinweis */}
-                <p
-                    className="mt-20 mono-label text-muted"
-                    style={{ fontSize: '0.66rem' }}
-                >
-                    ↳ aktuell offen für premium-projekte ab h2 2026
-                </p>
-            </section>
-
-            <Footer />
-        </>
-    )
-}
-
-// ─── Footer ─────────────────────────────────────────────────────
-
-function Footer() {
-    return (
-        <footer
-            className="relative w-full container-edge"
-            style={{
-                paddingTop: '3rem',
-                paddingBottom: '3rem',
-                borderTop: '1px solid rgba(201, 184, 163, 0.12)',
-            }}
-        >
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-start">
-                {/* Marke + Tagline */}
-                <div className="md:col-span-5">
-                    <p
-                        className="font-display"
-                        style={{
-                            fontSize: 'clamp(1.5rem, 2vw, 1.75rem)',
-                            color: 'var(--lit)',
-                        }}
-                    >
-                        sunbyte
-                    </p>
-                    <p
-                        className="text-soft mt-2 max-w-sm leading-snug"
-                        style={{ fontSize: 'clamp(0.8rem, 0.95vw, 0.9rem)' }}
-                    >
-                        Inhabergeführtes Web-Studio aus Wien. Premium-Web,
-                        ehrlich gerechnet.
-                    </p>
-                </div>
-
-                {/* Sitemap */}
-                <nav
-                    aria-label="Sitemap"
-                    className="md:col-span-3 md:col-start-7 flex flex-col gap-2"
-                >
-                    <p
-                        className="mono-label text-muted mb-1"
-                        style={{ fontSize: '0.6rem' }}
-                    >
-                        sitemap
-                    </p>
-                    <a href="#leistungen" className="text-soft hover:text-lit transition-colors text-sm">
-                        Leistungen
-                    </a>
-                    <a href="#cases" className="text-soft hover:text-lit transition-colors text-sm">
-                        Arbeiten
-                    </a>
-                    <a href="#studio" className="text-soft hover:text-lit transition-colors text-sm">
-                        Studio
-                    </a>
-                    <a href="#kontakt" className="text-soft hover:text-lit transition-colors text-sm">
-                        Kontakt
-                    </a>
-                </nav>
-
-                {/* Legal */}
-                <nav
-                    aria-label="Rechtliches"
-                    className="md:col-span-3 md:col-start-10 flex flex-col gap-2"
-                >
-                    <p
-                        className="mono-label text-muted mb-1"
-                        style={{ fontSize: '0.6rem' }}
-                    >
-                        rechtliches
-                    </p>
-                    <a
-                        href="/impressum"
-                        className="text-soft hover:text-lit transition-colors text-sm"
-                        data-slot="legal-impressum"
-                    >
-                        Impressum
-                    </a>
-                    <a
-                        href="/datenschutz"
-                        className="text-soft hover:text-lit transition-colors text-sm"
-                        data-slot="legal-datenschutz"
-                    >
-                        Datenschutz
-                    </a>
-                    <a
-                        href="mailto:hello@sunbyte.at"
-                        className="text-soft hover:text-lit transition-colors text-sm"
-                    >
-                        hello@sunbyte.at
-                    </a>
-                </nav>
             </div>
 
-            {/* Bottom-Strich */}
-            <div
-                className="mt-10 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-                style={{ borderTop: '1px solid rgba(201, 184, 163, 0.08)' }}
+            {/* Bottom-Hinweis */}
+            <p
+                className="mt-16 mono-label text-muted"
+                style={{ fontSize: '0.66rem' }}
             >
-                <p
-                    className="mono-label text-muted"
-                    style={{ fontSize: '0.6rem' }}
-                >
-                    © 2026 sunbyte · zakir daryabi · wien
-                </p>
-                <p
-                    className="mono-label text-muted"
-                    style={{ fontSize: '0.6rem' }}
-                >
-                    handgebaut in wien · next.js · gh-pages
-                </p>
-            </div>
-        </footer>
+                ↳ aktuell offen für projekte ab h2 2026
+            </p>
+        </section>
     )
 }

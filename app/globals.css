@@ -85,6 +85,131 @@
         padding-left: 6vw;
         padding-right: 6vw;
     }
+
+    /* Section-Maß für die Unterseiten (konsistente vertikale Rhythmik) */
+    .section-pad {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+    }
+    @media (min-width: 768px) {
+        .section-pad {
+            padding-top: 9rem;
+            padding-bottom: 9rem;
+        }
+    }
+    /* Erste Sektion einer Unterseite: extra Luft unter dem fixen Header */
+    .section-pad-top {
+        padding-top: 9rem;
+    }
+    @media (min-width: 768px) {
+        .section-pad-top {
+            padding-top: 12rem;
+        }
+    }
+}
+
+/* Mobile-Overlay-Menü — sanfter Fade/Slide beim Öffnen */
+.mobile-menu {
+    animation: mobile-menu-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes mobile-menu-in {
+    from {
+        opacity: 0;
+        transform: translateY(-0.75rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* KI-Chat-Demo: Tipp-Cursor + Denk-Punkte */
+.ai-caret {
+    color: var(--spark);
+    animation: ai-blink 1s steps(2, start) infinite;
+}
+@keyframes ai-blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    50.01%, 100% {
+        opacity: 0;
+    }
+}
+.ai-dots i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--spark);
+    animation: ai-dot 1.2s ease-in-out infinite;
+}
+.ai-dots i:nth-child(2) {
+    animation-delay: 0.18s;
+}
+.ai-dots i:nth-child(3) {
+    animation-delay: 0.36s;
+}
+@keyframes ai-dot {
+    0%, 60%, 100% {
+        opacity: 0.25;
+        transform: translateY(0);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* Wiederverwendbare Scroll-Reveal-Utility (getrieben von <Reveal>) */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+.reveal-item.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* A11y: Skip-Link + sichtbarer Tastatur-Fokus */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 200;
+    background: var(--spark);
+    color: var(--bg);
+    padding: 0.7rem 1.1rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+    left: 0;
+}
+:focus-visible {
+    outline: 2px solid var(--spark);
+    outline-offset: 2px;
+}
+/* Dunkle Dropdown-Optionen (Kontaktformular) */
+select option {
+    background: #0e0a05;
+    color: var(--lit);
+}
+@media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+        animation: none;
+    }
+    .reveal-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 /* Wien-Marker (für Globe shopMarker prop) */

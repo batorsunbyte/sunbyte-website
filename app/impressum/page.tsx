@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { CONTACT } from '@/lib/seo'
 
 export const metadata: Metadata = {
     title: 'Impressum',
@@ -8,20 +8,15 @@ export const metadata: Metadata = {
 
 /**
  * Impressum — Pflichtangaben gem. §5 ECG, §25 MedienG, §14 UGB (AT).
- *
- * Inhalte sind Platzhalter mit Slot-Markern. Zakir füllt sie sobald
- * Gewerbeschein-Daten und genaue Anschrift bestätigt sind.
+ * Kontaktdaten aus dem PrintMyWall-Impressum übernommen.
+ * Gewerbeschein / UID: Slots, bis Gewerbeanmeldung erfolgt.
  */
 export default function ImpressumPage() {
     return (
-        <main className="container-edge" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
-            <Link
-                href="/"
-                className="mono-label text-spark hover:text-lit transition-colors inline-flex items-center gap-2 mb-12"
-            >
-                <span aria-hidden>↩</span> sunbyte.at
-            </Link>
-
+        <div
+            className="container-edge"
+            style={{ paddingTop: '9rem', paddingBottom: '6rem' }}
+        >
             <h1
                 className="font-display mb-12"
                 style={{
@@ -34,34 +29,41 @@ export default function ImpressumPage() {
 
             <div className="space-y-10 max-w-2xl text-soft leading-relaxed">
                 <Block title="Medieninhaber & Diensteanbieter">
-                    <p data-slot="impressum-anbieter">
+                    <p>
                         Sunbyte — Inhaber: Zakir Daryabi
                         <br />
-                        [Anschrift folgt — Slot offen]
+                        {CONTACT.street}
                         <br />
-                        1220 Wien, Österreich
+                        {CONTACT.zip} {CONTACT.city}, {CONTACT.country}
                     </p>
                 </Block>
 
                 <Block title="Kontakt">
-                    <p data-slot="impressum-kontakt">
+                    <p>
                         E-Mail:{' '}
                         <a
-                            href="mailto:hello@sunbyte.at"
+                            href={`mailto:${CONTACT.email}`}
                             className="text-lit hover:text-spark transition-colors"
                         >
-                            hello@sunbyte.at
+                            {CONTACT.email}
                         </a>
                         <br />
-                        Telefon: auf Anfrage
+                        Telefon:{' '}
+                        <a
+                            href={`tel:${CONTACT.phoneRaw}`}
+                            className="text-lit hover:text-spark transition-colors"
+                        >
+                            {CONTACT.phone}
+                        </a>
                     </p>
                 </Block>
 
                 <Block title="Unternehmensgegenstand">
                     <p>
-                        Konzeption, Gestaltung, Entwicklung und Betrieb von
-                        Websites und digitalen Auftritten. Beratung in Web,
-                        Performance und Markenführung.
+                        IT-Dienstleistungen: Konzeption, Gestaltung,
+                        Entwicklung und Betrieb von Websites und digitalen
+                        Auftritten. Beratung zu KI-Sichtbarkeit, Performance
+                        und Online-Präsenz.
                     </p>
                 </Block>
 
@@ -70,14 +72,14 @@ export default function ImpressumPage() {
                         Gewerbeschein: [Slot offen — wird ergänzt, sobald
                         Gewerbeanmeldung erfolgt]
                         <br />
-                        Berufsbezeichnung: Web-Studio / IT-Dienstleistung
+                        Berufsbezeichnung: IT-Dienstleistung
                         <br />
                         Verleihungsstaat: Österreich
                     </p>
                 </Block>
 
                 <Block title="Aufsichtsbehörde / Kammer">
-                    <p data-slot="impressum-kammer">
+                    <p>
                         Wirtschaftskammer Wien — Fachgruppe UBIT
                         <br />
                         Magistratisches Bezirksamt Wien
@@ -115,14 +117,20 @@ export default function ImpressumPage() {
                         borderTop: '1px solid rgba(201, 184, 163, 0.1)',
                     }}
                 >
-                    ↳ stand: 21. mai 2026 · sunbyte
+                    ↳ stand: 25. juni 2026 · sunbyte
                 </p>
             </div>
-        </main>
+        </div>
     )
 }
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({
+    title,
+    children,
+}: {
+    title: string
+    children: React.ReactNode
+}) {
     return (
         <section>
             <h2

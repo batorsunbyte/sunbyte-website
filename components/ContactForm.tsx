@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * Kontaktformular — funktioniert auf statischem Export (GitHub Pages) ohne
@@ -30,9 +30,20 @@ export default function ContactForm() {
     const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>(
         'idle',
     )
+    const okRef = useRef<HTMLDivElement>(null)
+
+    // Fokus auf die Erfolgsmeldung setzen (A11y: Statuswechsel ansagen)
+    useEffect(() => {
+        if (status === 'ok') okRef.current?.focus()
+    }, [status])
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
+        // Ohne echten Key NICHT an den US-Dienst senden (kein Datenabfluss).
+        if (WEB3FORMS_ACCESS_KEY === 'DEIN-WEB3FORMS-ACCESS-KEY') {
+            setStatus('err')
+            return
+        }
         setStatus('sending')
         const form = e.currentTarget
         const data = new FormData(form)
@@ -60,6 +71,10 @@ export default function ContactForm() {
     if (status === 'ok') {
         return (
             <div
+                ref={okRef}
+                role="status"
+                aria-live="polite"
+                tabIndex={-1}
                 style={{
                     border: '1px solid rgba(232,90,31,0.35)',
                     borderRadius: '6px',
@@ -179,7 +194,11 @@ export default function ContactForm() {
             </button>
 
             {status === 'err' && (
-                <p className="text-soft" style={{ fontSize: '0.85rem' }}>
+                <p
+                    role="alert"
+                    className="text-soft"
+                    style={{ fontSize: '0.85rem' }}
+                >
                     Hat nicht geklappt — bitte direkt per{' '}
                     <a
                         href="mailto:hallo@sunbyte.at"
@@ -195,8 +214,8 @@ export default function ContactForm() {
                 className="mono-label text-muted"
                 style={{ fontSize: '0.58rem' }}
             >
-                ↳ erstgespräch gratis &amp; unverbindlich · keine weitergabe
-                deiner daten
+                ↳ erstgespräch gratis &amp; unverbindlich · deine daten nur
+                für deine anfrage
             </p>
         </form>
     )

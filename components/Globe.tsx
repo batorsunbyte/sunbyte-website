@@ -93,6 +93,7 @@ export default function Globe({
         width: 0,
         dpr: 1,
         loaded: false,
+        dragging: false,
     })
 
     const [ready, setReady] = useState(false)
@@ -282,6 +283,14 @@ export default function Globe({
             return
         }
 
+        // Schlafen legen, wenn nichts zu animieren ist (prefers-reduced-motion
+        // oder Auto-Rotation pausiert) — kein Dauer-Loop ohne Bildänderung.
+        // Pointer-Handler wecken den Loop bei Interaktion via startLoop() wieder.
+        if (!s.autoRot && !s.dragging) {
+            s.running = false
+            return
+        }
+
         s.rafId = requestAnimationFrame(frame)
     }, [autoRotate, interactive, reducedMotion, render, updateMarker])
 
@@ -415,12 +424,14 @@ export default function Globe({
             lx = e.clientX
             ly = e.clientY
             stateRef.current.autoRot = false
+            stateRef.current.dragging = true
             if (resumeT) {
                 clearTimeout(resumeT)
                 resumeT = null
             }
             canvas.classList.add('cursor-grabbing')
             canvas.setPointerCapture(e.pointerId)
+            startLoop()
         }
 
         const onMove = (e: PointerEvent) => {
@@ -446,6 +457,7 @@ export default function Globe({
                             stateRef.current.selected ??
                             null,
                     )
+                    startLoop()
                 }
             }
         }
@@ -453,6 +465,7 @@ export default function Globe({
         const onRelease = (e: PointerEvent) => {
             if (!down) return
             down = false
+            stateRef.current.dragging = false
             canvas.classList.remove('cursor-grabbing')
             if (moved < 6 && showInsights && cachedWorld) {
                 const c = pick(e.clientX, e.clientY)
@@ -466,8 +479,11 @@ export default function Globe({
             if (!reducedMotion && autoRotate) {
                 resumeT = window.setTimeout(() => {
                     stateRef.current.autoRot = true
+                    startLoop()
                 }, 2600)
             }
+            // Endzustand (Auswahl / Drag-Ende) rendern
+            startLoop()
         }
 
         const onLeave = () => {
@@ -475,6 +491,7 @@ export default function Globe({
                 stateRef.current.hovered = null
                 stateRef.current.dirty = true
                 notify(stateRef.current.selected ?? null)
+                startLoop()
             }
         }
 
@@ -500,6 +517,7 @@ export default function Globe({
         autoRotate,
         pick,
         notify,
+        startLoop,
     ])
 
     // Cursor + touch-action

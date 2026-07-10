@@ -53,25 +53,40 @@ export default function DatenschutzPage() {
 
                 <Block title="Welche Daten wir verarbeiten">
                     <p>
-                        Diese Website ist statisch und nutzt weder Cookies
-                        noch Tracking-Skripte. Es werden keine
-                        personenbezogenen Daten beim bloßen Besuch erhoben.
+                        Diese Website setzt selbst keine eigenen Cookies und
+                        kein Tracking/Analytics. Beim bloßen Besuch erheben wir
+                        selbst keine personenbezogenen Daten.
                     </p>
                     <p className="mt-3">
-                        Beim Aufruf der Seite werden serverseitig technisch
+                        Auf den Seiten „Arbeiten" und „Webseiten" betten wir zur
+                        Vorschau fremde Websites (kfz22.com, printmywall.at) per
+                        iframe ein. Beim Laden dieser Vorschau kann die
+                        eingebettete Seite deine IP-Adresse erhalten und ggf.
+                        eigene Inhalte laden (siehe „Eingebundene Drittdienste").
+                    </p>
+                    <p className="mt-3">
+                        Beim Aufruf der Seite werden durch GitHub Pages technisch
                         notwendige Daten (IP-Adresse, Zeitstempel, Browser-Typ)
-                        durch GitHub Pages temporär verarbeitet. Details siehe
-                        GitHub Privacy Statement.
+                        temporär verarbeitet. Details siehe GitHub Privacy
+                        Statement.
                     </p>
                 </Block>
 
                 <Block title="Kontaktaufnahme">
                     <p>
-                        Wenn du uns per E-Mail oder Telefon kontaktierst, werden
-                        die übermittelten Daten (Name, Kontaktdaten, Inhalt der
-                        Nachricht) gespeichert, soweit nötig, um deine Anfrage
-                        zu bearbeiten. Diese Daten werden nicht an Dritte
-                        weitergegeben.
+                        Wenn du uns per E-Mail, Telefon oder WhatsApp
+                        kontaktierst, verarbeiten wir die übermittelten Daten
+                        (Name, Kontaktdaten, Inhalt der Nachricht) nur, soweit
+                        nötig, um deine Anfrage zu bearbeiten.
+                    </p>
+                    <p className="mt-3">
+                        Das Kontaktformular auf dieser Seite wird über den Dienst
+                        Web3Forms (web3forms.com, Anbieter mit Sitz in den USA)
+                        verarbeitet: Deine Formulardaten werden an Web3Forms
+                        übermittelt, die uns die Anfrage per E-Mail zustellen.
+                        Dabei findet eine Übermittlung in ein Drittland (USA)
+                        statt. Wenn du das nicht möchtest, kontaktiere uns bitte
+                        direkt per E-Mail oder Telefon.
                     </p>
                 </Block>
 
@@ -95,9 +110,23 @@ export default function DatenschutzPage() {
 
                 <Block title="Eingebundene Drittdienste">
                     <p>
-                        Aktuell keine. Schriften (@fontsource) und Globe-Daten
-                        (world-atlas) sind in den statischen Build gebundelt
-                        und werden nicht zur Laufzeit von Dritten geladen.
+                        <strong style={{ color: 'var(--lit)' }}>Web3Forms</strong>{' '}
+                        (web3forms.com, USA) — verarbeitet Anfragen aus dem
+                        Kontaktformular, nur bei aktiver Nutzung des Formulars.
+                    </p>
+                    <p className="mt-3">
+                        <strong style={{ color: 'var(--lit)' }}>
+                            iframe-Vorschauen
+                        </strong>{' '}
+                        — auf „Arbeiten" und „Webseiten" werden kfz22.com und
+                        printmywall.at zur Live-Vorschau eingebettet; dabei
+                        können Daten (u.a. IP-Adresse) an diese Seiten übertragen
+                        werden.
+                    </p>
+                    <p className="mt-3">
+                        Schriften (@fontsource) und Globe-Daten (world-atlas)
+                        sind in den statischen Build gebundelt und werden nicht
+                        zur Laufzeit von Dritten geladen.
                     </p>
                 </Block>
 

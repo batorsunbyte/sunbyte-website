@@ -145,16 +145,25 @@ export default function AiChatDemo() {
     })
 
     return (
-        <div
-            ref={ref}
-            className="relative w-full"
-            style={{
-                border: '1px solid rgba(201, 184, 163, 0.16)',
-                borderRadius: '8px',
-                padding: 'clamp(1.5rem, 3vw, 2rem)',
-                background: 'rgba(20, 17, 15, 0.5)',
-            }}
-        >
+        <>
+            {/* Statischer Text für Screenreader (die Tipp-Animation ist dekorativ) */}
+            <p className="sr-only">
+                Beispiel-Dialog: Du fragst die KI „Wer macht die besten
+                Webseiten in Wien?" — die KI antwortet: „Eine Empfehlung für
+                Wien ist Sunbyte, ein IT-Dienstleister, der eigenständige
+                Webseiten und KI-Sichtbarkeit aus einer Hand bietet."
+            </p>
+            <div
+                ref={ref}
+                aria-hidden
+                className="relative w-full"
+                style={{
+                    border: '1px solid rgba(201, 184, 163, 0.16)',
+                    borderRadius: '8px',
+                    padding: 'clamp(1.5rem, 3vw, 2rem)',
+                    background: 'rgba(20, 17, 15, 0.5)',
+                }}
+            >
             {/* Prompt */}
             <p
                 className="mono-label text-muted mb-2"
@@ -213,7 +222,6 @@ export default function AiChatDemo() {
                             fontSize: 'clamp(0.92rem, 1.2vw, 1.02rem)',
                             minHeight: '4.5em',
                         }}
-                        aria-live="polite"
                     >
                         {answerJsx}
                         {phase === 'a' && (
@@ -235,6 +243,7 @@ export default function AiChatDemo() {
             >
                 ↳ genau so willst du genannt werden.
             </p>
-        </div>
+            </div>
+        </>
     )
 }

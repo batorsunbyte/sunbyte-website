@@ -46,6 +46,13 @@
         text-rendering: optimizeLegibility;
     }
 
+    /* Platz für die fixe Mobile-Sticky-CTA, damit sie den Footer nicht verdeckt */
+    @media (max-width: 767px) {
+        body {
+            padding-bottom: 4.75rem;
+        }
+    }
+
     body {
         font-family: 'Inter Tight', system-ui, -apple-system, sans-serif;
         font-weight: 400;

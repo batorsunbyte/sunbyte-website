@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CONTACT } from '@/lib/seo'
 
 /**
@@ -27,6 +27,8 @@ export default function Header() {
     const pathname = usePathname()
     const [scrolled, setScrolled] = useState(false)
     const [open, setOpen] = useState(false)
+    const toggleRef = useRef<HTMLButtonElement>(null)
+    const menuRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 24)
@@ -45,6 +47,30 @@ export default function Header() {
         document.body.style.overflow = open ? 'hidden' : ''
         return () => {
             document.body.style.overflow = ''
+        }
+    }, [open])
+
+    // Mobile-Menü A11y: Fokus ins Menü, Escape schließt, Hintergrund inert,
+    // Fokus zurück auf den Toggle beim Schließen.
+    useEffect(() => {
+        if (!open) return
+        menuRef.current?.querySelector('a')?.focus()
+        const main = document.getElementById('main')
+        const footer = document.querySelector('footer')
+        const setInert = (el: Element | null, v: boolean) => {
+            if (el) (el as HTMLElement & { inert: boolean }).inert = v
+        }
+        setInert(main, true)
+        setInert(footer, true)
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setOpen(false)
+        }
+        window.addEventListener('keydown', onKey)
+        return () => {
+            window.removeEventListener('keydown', onKey)
+            setInert(main, false)
+            setInert(footer, false)
+            toggleRef.current?.focus()
         }
     }, [open])
 
@@ -127,10 +153,12 @@ export default function Header() {
 
                     {/* Mobile-Toggle */}
                     <button
+                        ref={toggleRef}
                         type="button"
                         onClick={() => setOpen(o => !o)}
                         aria-label={open ? 'Menü schließen' : 'Menü öffnen'}
                         aria-expanded={open}
+                        aria-controls="mobile-menu"
                         className="md:hidden flex flex-col items-end justify-center gap-[5px] p-2 -mr-2"
                     >
                         <span
@@ -168,6 +196,8 @@ export default function Header() {
             {/* Mobile-Overlay-Menü */}
             {open && (
                 <div
+                    ref={menuRef}
+                    id="mobile-menu"
                     className="mobile-menu fixed inset-0 z-40 flex flex-col justify-center md:hidden"
                     style={{
                         background: 'var(--bg)',
@@ -205,8 +235,9 @@ export default function Header() {
                 </div>
             )}
 
-            {/* Sticky-Mobile-CTA — erscheint beim Scrollen (Conversion) */}
-            {scrolled && !open && (
+            {/* Sticky-Mobile-CTA — erscheint beim Scrollen (Conversion).
+                Nicht auf /kontakt (dort ist das Formular das Ziel). */}
+            {scrolled && !open && pathname !== '/kontakt' && (
                 <div
                     className="md:hidden fixed bottom-0 left-0 right-0 z-40 flex gap-2"
                     style={{

@@ -170,7 +170,7 @@ function CaseBlock({
                     {name}
                 </p>
 
-                <h3
+                <h2
                     className="font-display mb-4"
                     style={{
                         fontSize: 'clamp(1.75rem, 4vw, 3.25rem)',
@@ -178,7 +178,7 @@ function CaseBlock({
                     }}
                 >
                     {headline}
-                </h3>
+                </h2>
 
                 <p
                     className="text-soft mb-6 max-w-xl leading-relaxed"

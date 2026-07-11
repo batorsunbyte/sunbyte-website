@@ -65,6 +65,46 @@ export default function Cases() {
 
                 <CaseBlock
                     index="02"
+                    status="live · mstyle.beauty"
+                    statusLink="https://mstyle.beauty"
+                    name="mstyle beauty"
+                    headline="MStyle Beauty Lounge — Wien"
+                    role="Mehrsprachiger Webauftritt für einen Beautysalon"
+                    summary="Damen-Beautysalon am Floridsdorfer Markt. Wir haben einen hellen, edlen Auftritt gebaut — dreisprachig (Deutsch, Englisch, Arabisch inkl. RTL), mit VIP-Bereich und digitaler QR-Visitenkarte."
+                    deliverables={[
+                        'Eigenständiges, helles Design (Rosé, editorial)',
+                        'Dreisprachig DE / EN / AR inkl. RTL-Layout',
+                        'VIP-Seite + QR-Visitenkarte',
+                        'Lokale SEO für Wien-Floridsdorf',
+                        'Statischer Export, mobil-first & schnell',
+                    ]}
+                    visualHint="live-vorschau"
+                    previewUrl="https://mstyle.beauty"
+                    align="right"
+                />
+
+                <CaseBlock
+                    index="03"
+                    status="live · safetypro-electrical.au"
+                    statusLink="https://safetypro-electrical.au"
+                    name="safety pro electrical"
+                    headline="Safety Pro Electrical — Melbourne"
+                    role="Lead-Gen-Webauftritt für einen Elektriker in Melbourne"
+                    summary="A-Grade-Elektriker im Südosten Melbournes. Ein englischsprachiger Lead-Gen-Auftritt, der Vertrauen aufbaut und Anfragen bringt — klare Services, lokale SEO, schnelle Ladezeiten."
+                    deliverables={[
+                        'Eigenständiges Design & klare Service-Struktur',
+                        'Lead-Gen-Funnel für Anfragen',
+                        'Lokale SEO für Südost-Melbourne',
+                        'Englischsprachig, mobil-first',
+                        'Statischer Hochleistungs-Build',
+                    ]}
+                    visualHint="live-vorschau"
+                    previewUrl="https://safetypro-electrical.au"
+                    align="left"
+                />
+
+                <CaseBlock
+                    index="04"
                     status="in entwicklung"
                     name="printmywall"
                     headline="PrintMyWall — Direktdruck auf Wände"
@@ -83,7 +123,7 @@ export default function Cases() {
                 />
 
                 <CaseBlock
-                    index="03"
+                    index="05"
                     status="bald"
                     name="mehr kommt"
                     headline="Dein Projekt — wäre das hier."

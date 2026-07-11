@@ -18,7 +18,7 @@ import { CONTACT } from '@/lib/seo'
 const NAV = [
     { href: '/webseiten', label: 'webseiten' },
     { href: '/ki-sichtbarkeit', label: 'ki-sichtbarkeit' },
-    { href: '/arbeiten', label: 'arbeiten' },
+    { href: '/arbeiten', label: 'referenzen' },
     { href: '/ueber-uns', label: 'über uns' },
     { href: '/kontakt', label: 'kontakt' },
 ]

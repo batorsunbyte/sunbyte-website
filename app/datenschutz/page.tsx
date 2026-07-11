@@ -58,9 +58,10 @@ export default function DatenschutzPage() {
                         selbst keine personenbezogenen Daten.
                     </p>
                     <p className="mt-3">
-                        Auf den Seiten „Arbeiten" und „Webseiten" betten wir zur
-                        Vorschau fremde Websites (kfz22.com, printmywall.at) per
-                        iframe ein. Beim Laden dieser Vorschau kann die
+                        Auf den Seiten „Referenzen" und „Webseiten" betten wir
+                        zur Vorschau fremde Websites (u.a. kfz22.com,
+                        mstyle.beauty, safetypro-electrical.au, printmywall.at)
+                        per iframe ein. Beim Laden dieser Vorschau kann die
                         eingebettete Seite deine IP-Adresse erhalten und ggf.
                         eigene Inhalte laden (siehe „Eingebundene Drittdienste").
                     </p>
@@ -118,7 +119,8 @@ export default function DatenschutzPage() {
                         <strong style={{ color: 'var(--lit)' }}>
                             iframe-Vorschauen
                         </strong>{' '}
-                        — auf „Arbeiten" und „Webseiten" werden kfz22.com und
+                        — auf „Referenzen" und „Webseiten" werden u.a.
+                        kfz22.com, mstyle.beauty, safetypro-electrical.au und
                         printmywall.at zur Live-Vorschau eingebettet; dabei
                         können Daten (u.a. IP-Adresse) an diese Seiten übertragen
                         werden.

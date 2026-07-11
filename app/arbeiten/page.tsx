@@ -3,9 +3,9 @@ import Cases from '@/components/Cases'
 import { CtaBand, Spark } from '@/components/ui'
 
 export const metadata: Metadata = {
-    title: 'Arbeiten — Referenzen aus Wien',
+    title: 'Referenzen — Projekte von Sunbyte',
     description:
-        'Ausgewählte Projekte von Sunbyte: kfz22 (live), PrintMyWall und mehr. Premium-Webauftritte und digitale Arbeit aus Wien.',
+        'Ausgewählte Referenzen von Sunbyte: kfz22 (Wien), MStyle Beauty Lounge (Wien), Safety Pro Electrical (Melbourne), PrintMyWall und mehr. Premium-Webauftritte, live im Netz.',
     alternates: { canonical: '/arbeiten' },
 }
 

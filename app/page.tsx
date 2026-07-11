@@ -56,7 +56,7 @@ export default function Home() {
             {/* ── 02 Arbeiten (Teaser) ────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="02 — arbeiten"
+                    kicker="02 — referenzen"
                     title={
                         <>
                             Echte Projekte.
@@ -91,7 +91,7 @@ export default function Home() {
 
                 <Reveal className="mt-10">
                     <CtaButton href="/arbeiten" variant="ghost">
-                        alle arbeiten
+                        alle referenzen
                     </CtaButton>
                 </Reveal>
             </section>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import LiveFrame from '@/components/LiveFrame'
 import Reveal from '@/components/Reveal'
 import { CtaButton } from '@/components/ui'
 
@@ -77,24 +78,25 @@ export const CASES: CaseItem[] = [
 ]
 
 /**
- * Screenshot im Browser-Frame — das Premium-Visual.
- * Desktop: echtes Scroll-Fenster (Full-Page-Screenshot, overflow-y) —
- * man scrollt die komplette Kundenseite. Klick auf den Frame = Live-Site
- * (der <a>-Wrapper kommt von außen). Mobile: statischer Hero-Ausschnitt,
- * kein Nested-Scrolling.
+ * Browser-Fenster-Visual.
+ * variant "live": echte Live-Website (skaliertes Desktop-iframe, scrollbar
+ * und klickbar) — Mobile zeigt den statischen Hero-Screenshot.
+ * variant "static": Hero-Screenshot (Home-Teaser, Paket-Karten) — schnell.
  */
 export function CaseVisual({
     slug,
     domain,
     name,
+    href,
     priority = false,
-    scrollable = true,
+    live = false,
 }: {
     slug: string
     domain?: string
     name: string
+    href?: string
     priority?: boolean
-    scrollable?: boolean
+    live?: boolean
 }) {
     return (
         <div
@@ -135,35 +137,47 @@ export function CaseVisual({
                         {domain}
                     </span>
                 )}
-                {scrollable && (
+                {live && (
                     <span
-                        className="mono-label text-spark hidden md:inline"
+                        className="mono-label text-spark hidden md:inline-flex items-center gap-1.5"
                         style={{ fontSize: '0.55rem' }}
                         aria-hidden
                     >
-                        ↕ scrollen
+                        <span
+                            className="live-dot"
+                            style={{
+                                width: 6,
+                                height: 6,
+                                borderRadius: '50%',
+                                background: 'var(--spark)',
+                            }}
+                        />
+                        live · scrollen &amp; klicken
                     </span>
                 )}
             </div>
 
-            {scrollable ? (
-                <div
-                    className="case-scroll relative w-full overflow-hidden md:overflow-y-auto"
-                    style={{
-                        aspectRatio: '8 / 5',
-                        overscrollBehavior: 'contain',
-                    }}
-                >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={`/images/cases/${slug}-full.webp`}
-                        alt={`Website von ${name} — komplette Startseite`}
-                        width={1000}
-                        height={4800}
-                        loading={priority ? 'eager' : 'lazy'}
-                        decoding="async"
-                        className="w-full h-auto block"
-                    />
+            {live && href ? (
+                <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
+                    {/* Desktop: echte Live-Seite */}
+                    <div className="hidden md:block w-full h-full">
+                        <LiveFrame
+                            url={href}
+                            title={`${name} — Live-Vorschau`}
+                            poster={`/images/cases/${slug}.webp`}
+                        />
+                    </div>
+                    {/* Mobile: statischer Ausschnitt (kein Nested-Scroll) */}
+                    <div className="md:hidden absolute inset-0">
+                        <Image
+                            src={`/images/cases/${slug}.webp`}
+                            alt={`Website von ${name}`}
+                            fill
+                            priority={priority}
+                            sizes="100vw"
+                            className="object-cover object-top"
+                        />
+                    </div>
                 </div>
             ) : (
                 <div
@@ -275,7 +289,9 @@ function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
             slug={item.slug}
             domain={item.domain}
             name={item.name}
+            href={item.href}
             priority={index === 0}
+            live
         />
     )
 
@@ -325,41 +341,40 @@ function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
         </div>
     )
 
-    const inner = (
-        <article className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
-            <div
-                className={
-                    left
-                        ? 'md:col-span-7'
-                        : 'md:col-span-7 md:order-2'
-                }
-            >
-                {visual}
-            </div>
-            <div
-                className={
-                    left
-                        ? 'md:col-span-5'
-                        : 'md:col-span-5 md:order-1'
-                }
-            >
-                {content}
-            </div>
-        </article>
-    )
-
-    if (item.href)
-        return (
-            <Reveal>
-                <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${item.name} — Website öffnen`}
+    return (
+        <Reveal>
+            <article className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div
+                    className={
+                        left
+                            ? 'md:col-span-7'
+                            : 'md:col-span-7 md:order-2'
+                    }
                 >
-                    {inner}
-                </a>
-            </Reveal>
-        )
-    return <Reveal>{inner}</Reveal>
+                    {visual}
+                </div>
+                <div
+                    className={
+                        left
+                            ? 'md:col-span-5'
+                            : 'md:col-span-5 md:order-1'
+                    }
+                >
+                    {item.href ? (
+                        <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${item.name} — Website öffnen`}
+                            className="block"
+                        >
+                            {content}
+                        </a>
+                    ) : (
+                        content
+                    )}
+                </div>
+            </article>
+        </Reveal>
+    )
 }

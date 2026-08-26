@@ -11,7 +11,7 @@ import { serviceLd, faqLd, PRICING } from '@/lib/seo'
 const FAQ_ITEMS = [
     {
         q: 'Was kostet eine Website bei Sunbyte?',
-        a: 'Der Einstieg (Paket Standard) liegt bei ab 1.500 €. Premium mit vollem interaktivem Erlebnis ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
+        a: 'Der Einstieg (Paket Standard) liegt bei ab 2.000 €. Premium mit vollem interaktivem Erlebnis ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
     },
     {
         q: 'Wie lange dauert es, bis meine Seite live ist?',
@@ -32,10 +32,10 @@ const FAQ_ITEMS = [
 ]
 
 export const metadata: Metadata = {
-    title: 'Webseite erstellen lassen in Wien — ab 1.500 €',
+    title: 'Webseite erstellen lassen in Wien — ab 2.000 €',
     description:
-        'Webdesign aus Wien, ab 1.500 €: neue Website erstellen oder bestehende Seite modernisieren. Eigenständiges Design, mobile-first, SEO-sauber, blitzschnell. Erstgespräch gratis.',
-    alternates: { canonical: '/webseiten' },
+        'Webdesign aus Wien, ab 2.000 €: neue Website erstellen oder bestehende Seite modernisieren. Eigenständiges Design, mobile-first, SEO-sauber, blitzschnell. Erstgespräch gratis.',
+    alternates: { canonical: '/webseiten/' },
 }
 
 const SERVICE_LD = serviceLd({
@@ -104,7 +104,7 @@ export default function WebseitenPage() {
                             bekommst einen Auftritt, der in Sekunden Vertrauen
                             schafft — schnell, eigenständig und ohne
                             Template-Look.{' '}
-                            <span className="text-lit">Ab 1.500 €.</span>
+                            <span className="text-lit">Ab 2.000 €.</span>
                         </Reveal>
                         <Reveal
                             delay={180}

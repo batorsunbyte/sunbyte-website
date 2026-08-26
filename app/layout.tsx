@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd'
 import { ORGANIZATION, WEBSITE, SITE_URL, OG_IMAGE } from '@/lib/seo'
 
 const DESCRIPTION =
-    'Sunbyte ist dein IT-Dienstleister aus Wien: professionelle Webseiten (ab 1.500 €) und KI-Sichtbarkeit (700 €) — damit dich Google UND ChatGPT finden und weiterempfehlen. Erstgespräch gratis.'
+    'Sunbyte ist dein IT-Dienstleister aus Wien: professionelle Webseiten (ab 2.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google UND ChatGPT finden und weiterempfehlen. Erstgespräch gratis.'
 
 export const viewport = {
     width: 'device-width',

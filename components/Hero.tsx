@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import {
@@ -49,14 +50,6 @@ export default function Hero() {
             className="relative w-full overflow-hidden"
             style={{ minHeight: '100svh', isolation: 'isolate' }}
         >
-            {/* Kicker (Nav ist global im Header) */}
-            <div
-                className="absolute z-[5] mono-label text-spark"
-                style={{ top: '5.4rem', left: '6vw' }}
-            >
-                it-dienstleister · wien · seit 2026
-            </div>
-
             {/* Spine (desktop only) */}
             <div className="spine font-mono hidden md:block">
                 light / spark — est. 2026
@@ -75,15 +68,20 @@ export default function Hero() {
                 {/* COL-LEFT: Info-Panel + Headline + Sub */}
                 <div
                     className="
-                        order-2 md:order-1
-                        flex flex-col justify-center gap-9
+                        order-1
+                        flex flex-col justify-center gap-7 md:gap-9
                         px-[6vw]
                         z-[3]
                     "
                 >
+                    {/* Kicker */}
+                    <p className="mono-label text-spark hero-reveal -mb-2">
+                        it-dienstleister · wien · seit 2026
+                    </p>
+
                     {/* Info-Panel (zeigt Kontinent-Texte) */}
                     <div
-                        className="info-panel hero-reveal"
+                        className="info-panel hero-reveal hidden md:block"
                         style={{ opacity: 1 }}
                         aria-live="polite"
                     >
@@ -120,18 +118,50 @@ export default function Hero() {
 
                     {/* Sub */}
                     <p
-                        className="text-soft max-w-[42ch] leading-relaxed hero-reveal-3"
+                        className="text-soft max-w-[40ch] leading-relaxed hero-reveal-3"
                         style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
                     >
-                        Wir bauen deinen digitalen Auftritt — und sorgen dafür,
-                        dass dich die Welt findet. Auch die KI.
+                        Premium-Webauftritte und KI-Sichtbarkeit aus Wien.
+                        Damit dich Kunden finden — und die KI dich empfiehlt.
                     </p>
+
+                    {/* CTA-Zeile — Conversion im ersten Viewport */}
+                    <div className="flex flex-wrap items-center gap-4 hero-reveal-3">
+                        <Link
+                            href="/kontakt"
+                            className="inline-flex items-center gap-2 font-mono transition-all duration-300 hover:opacity-90"
+                            style={{
+                                background: 'var(--spark)',
+                                color: 'var(--bg)',
+                                padding: '0.9rem 1.7rem',
+                                borderRadius: '3px',
+                                fontSize: '0.7rem',
+                                letterSpacing: '0.16em',
+                            }}
+                        >
+                            projekt anfragen <span aria-hidden>→</span>
+                        </Link>
+                        <Link
+                            href="/arbeiten"
+                            className="inline-flex items-center gap-2 font-mono transition-all duration-300 hover:border-spark hover:text-spark"
+                            style={{
+                                border: '1px solid rgba(201, 184, 163, 0.3)',
+                                color: 'var(--lit)',
+                                padding: '0.9rem 1.7rem',
+                                borderRadius: '3px',
+                                fontSize: '0.7rem',
+                                letterSpacing: '0.16em',
+                            }}
+                        >
+                            referenzen ansehen <span aria-hidden>→</span>
+                        </Link>
+                    </div>
                 </div>
 
                 {/* COL-RIGHT: Investitions-Zeile + Globe + Hint */}
                 <div
                     className="
-                        order-1 md:order-2
+                        order-2
                         relative flex flex-col items-center justify-center
                         gap-6
                         px-[6vw] md:px-[2vw]
@@ -140,7 +170,7 @@ export default function Hero() {
                 >
                     {/* Investitions-Zeile (über Globe) */}
                     <p
-                        className="text-center text-soft max-w-[30ch] leading-relaxed font-normal hero-reveal"
+                        className="text-center text-soft max-w-[30ch] leading-relaxed font-normal hero-reveal hidden md:block"
                         style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1.05rem)' }}
                     >
                         <b
@@ -191,10 +221,16 @@ export default function Hero() {
                                 kfz22 <i>↗</i>
                             </span>
                             <span>
-                                printmywall <i>↗</i>
+                                mstyle beauty <i>↗</i>
                             </span>
                             <span>
-                                mehr kommt <i>↗</i>
+                                impulsiv fitness <i>↗</i>
+                            </span>
+                            <span>
+                                safety pro <i>↗</i>
+                            </span>
+                            <span>
+                                printmywall <i>↗</i>
                             </span>
                         </span>
                     ))}

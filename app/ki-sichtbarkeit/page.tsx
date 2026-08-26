@@ -8,10 +8,10 @@ import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
 import { serviceLd, faqLd, PRICING } from '@/lib/seo'
 
 export const metadata: Metadata = {
-    title: 'KI-Sichtbarkeit Wien — von ChatGPT empfohlen werden (700 €)',
+    title: 'KI-Sichtbarkeit Wien — von ChatGPT empfohlen werden (1.000 €)',
     description:
-        'KI-Sichtbarkeit für 700 €: damit ChatGPT, Perplexity & Gemini dein Unternehmen kennen und weiterempfehlen. Analyse, strukturierte Daten und KI-lesbare Präsenz — aus Wien.',
-    alternates: { canonical: '/ki-sichtbarkeit' },
+        'KI-Sichtbarkeit für 1.000 €: damit ChatGPT, Perplexity & Gemini dein Unternehmen kennen und weiterempfehlen. Analyse, strukturierte Daten und KI-lesbare Präsenz — aus Wien.',
+    alternates: { canonical: '/ki-sichtbarkeit/' },
 }
 
 const STEPS = [
@@ -53,7 +53,7 @@ const FAQ_ITEMS = [
     },
     {
         q: 'Was kostet das?',
-        a: 'KI-Sichtbarkeit kostet 700 € als klares Paket. Du weißt von Anfang an, was du bekommst — Analyse, Umsetzung und einen belegten Vorher/Nachher-Report.',
+        a: 'KI-Sichtbarkeit kostet 1.000 € als klares Paket. Du weißt von Anfang an, was du bekommst — Analyse, Umsetzung und einen belegten Vorher/Nachher-Report.',
     },
     {
         q: 'Brauche ich dafür schon eine Website?',
@@ -111,7 +111,7 @@ export default function KiSichtbarkeitPage() {
                             Deine Kunden fragen heute ChatGPT statt Google. Wir
                             sorgen dafür, dass die KI dein Unternehmen kennt —
                             und weiterempfiehlt.{' '}
-                            <span className="text-lit">Fixpreis 700 €.</span>
+                            <span className="text-lit">Fixpreis 1.000 €.</span>
                         </Reveal>
                         <Reveal delay={180} className="mt-9 flex flex-wrap gap-4">
                             <CtaButton href="/kontakt">
@@ -224,7 +224,7 @@ export default function KiSichtbarkeitPage() {
                                     lineHeight: 1,
                                 }}
                             >
-                                700&nbsp;€
+                                1.000&nbsp;€
                             </p>
                             <p
                                 className="text-soft mt-3 leading-snug"

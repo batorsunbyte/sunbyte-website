@@ -1,16 +1,147 @@
-import SitePreview from '@/components/SitePreview'
+import Image from 'next/image'
+import Reveal from '@/components/Reveal'
+import { CtaButton } from '@/components/ui'
 
 /**
- * Cases — echte Projekte mit Detail-Block je Case (§5 im Briefing).
+ * Cases — Referenzen als Premium-Showcase.
  *
- * Layout: vertikale Editorial-Cards, jede mit großer Display-Headline links,
- * Visual-Placeholder rechts. Asymmetrisch (Case 1 spiegelverkehrt zu Case 2).
+ * Prinzip: Das Bild verkauft, nicht der Text. Jeder Case ist ein großer
+ * Screenshot im Browser-Frame + genau EIN Outcome-Satz + Meta-Zeile.
+ * Keine Feature-Listen — wer Details will, klickt auf die Live-Site.
  *
- * Inhalte:
- *   - kfz22 — live (Premium-Stufe).
- *   - PrintMyWall — in Entwicklung (Standard/Premium-Stufe folgt).
- *   - „Mehr kommt" — Platzhalter-Slot.
+ * Screenshots: public/images/cases/*.webp (1200px, via Playwright + sharp).
  */
+
+export interface CaseItem {
+    slug: string
+    name: string
+    domain?: string
+    href?: string
+    /** Ein Satz. Ergebnis, nicht Feature. */
+    outcome: string
+    meta: string
+    status: 'live' | 'entwicklung'
+}
+
+export const CASES: CaseItem[] = [
+    {
+        slug: 'kfz22',
+        name: 'KFZ Technik 22',
+        domain: 'kfz22.com',
+        href: 'https://kfz22.com',
+        outcome:
+            'Vorher ohne Website — heute der Meisterbetrieb, den man in der Donaustadt findet.',
+        meta: 'kfz-werkstatt · wien 1220',
+        status: 'live',
+    },
+    {
+        slug: 'mstyle',
+        name: 'MStyle Beauty Lounge',
+        domain: 'mstyle.beauty',
+        href: 'https://mstyle.beauty',
+        outcome:
+            'Drei Sprachen, ein Look: Eleganz, die aus Besucherinnen Termine macht.',
+        meta: 'beautysalon · wien 1210',
+        status: 'live',
+    },
+    {
+        slug: 'impulsiv',
+        name: 'Impulsiv Fitness',
+        domain: 'impulsiv-fitness.at',
+        href: 'https://impulsiv-fitness.at',
+        outcome:
+            'Ein 4,9-Sterne-Studio hatte keinen Auftritt auf diesem Niveau. Jetzt schon.',
+        meta: 'ems-studio · wien 1210',
+        status: 'live',
+    },
+    {
+        slug: 'safetypro',
+        name: 'Safety Pro Electrical',
+        domain: 'safetypro-electrical.au',
+        href: 'https://safetypro-electrical.au',
+        outcome:
+            'Vertrauen auf den ersten Blick — Anfragen aus ganz Südost-Melbourne.',
+        meta: 'elektriker · melbourne au',
+        status: 'live',
+    },
+    {
+        slug: 'printmywall',
+        name: 'PrintMyWall',
+        domain: 'printmywall.at',
+        href: 'https://printmywall.at',
+        outcome:
+            'Unsere eigene Marke — hier testen wir alles, bevor wir es Kunden verkaufen.',
+        meta: 'eigene marke · direktdruck auf wände',
+        status: 'live',
+    },
+]
+
+/** Screenshot im Browser-Frame — das Premium-Visual */
+export function CaseVisual({
+    slug,
+    domain,
+    name,
+    priority = false,
+}: {
+    slug: string
+    domain?: string
+    name: string
+    priority?: boolean
+}) {
+    return (
+        <div
+            className="overflow-hidden w-full"
+            style={{
+                borderRadius: '8px',
+                border: '1px solid rgba(201, 184, 163, 0.18)',
+                background: 'rgba(20, 17, 15, 0.6)',
+                boxShadow: '0 24px 60px -24px rgba(0,0,0,0.55)',
+            }}
+        >
+            {/* Browser-Topbar */}
+            <div
+                className="flex items-center gap-2 px-4"
+                style={{
+                    height: '2.1rem',
+                    borderBottom: '1px solid rgba(201, 184, 163, 0.12)',
+                }}
+            >
+                <span className="flex gap-1.5" aria-hidden>
+                    {[0, 1, 2].map(i => (
+                        <span
+                            key={i}
+                            style={{
+                                width: 7,
+                                height: 7,
+                                borderRadius: '50%',
+                                background: 'rgba(201,184,163,0.25)',
+                            }}
+                        />
+                    ))}
+                </span>
+                {domain && (
+                    <span
+                        className="mono-label text-muted mx-auto"
+                        style={{ fontSize: '0.58rem' }}
+                    >
+                        {domain}
+                    </span>
+                )}
+            </div>
+            <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
+                <Image
+                    src={`/images/cases/${slug}.webp`}
+                    alt={`Website von ${name}`}
+                    fill
+                    priority={priority}
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
+                />
+            </div>
+        </div>
+    )
+}
+
 export default function Cases() {
     return (
         <section
@@ -19,7 +150,7 @@ export default function Cases() {
             style={{ paddingTop: '11rem', paddingBottom: '7rem' }}
         >
             {/* Sektion-Header */}
-            <header className="mb-20 md:mb-28 max-w-3xl">
+            <header className="mb-16 md:mb-24 max-w-3xl">
                 <p className="mono-label text-spark mb-4">referenzen</p>
                 <h1
                     className="font-display"
@@ -28,117 +159,66 @@ export default function Cases() {
                         color: 'var(--lit)',
                     }}
                 >
-                    Echte Projekte.
+                    Sieh selbst.
                     <br />
-                    <span style={{ color: 'var(--spark)' }}>Live im Netz.</span>
+                    <span style={{ color: 'var(--spark)' }}>
+                        Alles live im Netz.
+                    </span>
                 </h1>
                 <p
                     className="text-soft mt-6 max-w-xl leading-relaxed"
                     style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
                 >
-                    Echte Projekte, echte Geschichten. Eine Sache haben sie
-                    gemeinsam — der Kunde kennt uns persönlich.
+                    Keine Mockups, keine Konzepte — jede dieser Seiten
+                    arbeitet gerade für ihren Betrieb.
                 </p>
             </header>
 
-            {/* Cases Liste */}
-            <div className="space-y-24 md:space-y-32">
-                <CaseBlock
-                    index="01"
-                    status="live · kfz22.com"
-                    statusLink="https://kfz22.com"
-                    name="kfz22"
-                    headline="KFZ Technik 22 — Wien 1220"
-                    role="Premium-Webauftritt für Wiener Meisterbetrieb"
-                    summary="Eine §57a-Prüfstelle, deren Online-Auftritt vorher inexistent war. Wir haben einen Premium-Webauftritt entwickelt — multipage, lokal SEO-optimiert, Pickerl-Termin-Funnel, Galerie der Werkstatt."
-                    deliverables={[
-                        'Eigenständiges visuelles System & Typo',
-                        'Multipage-Architektur (Galerie, Über, Kontakt, Datenschutz)',
-                        'Lokale SEO für 1220 Wien — Donaustadt',
-                        'Statischer Export via Next.js, GH-Pages-Deploy',
-                        'i18n DE / EN, responsive Mobile-First',
-                    ]}
-                    visualHint="screenshot folgt — von zakir"
-                    previewUrl="https://kfz22.com"
-                    align="left"
-                />
+            {/* Cases */}
+            <div className="space-y-24 md:space-y-36">
+                {CASES.map((c, i) => (
+                    <CaseBlock key={c.slug} item={c} index={i} />
+                ))}
 
-                <CaseBlock
-                    index="02"
-                    status="live · mstyle.beauty"
-                    statusLink="https://mstyle.beauty"
-                    name="mstyle beauty"
-                    headline="MStyle Beauty Lounge — Wien"
-                    role="Mehrsprachiger Webauftritt für einen Beautysalon"
-                    summary="Damen-Beautysalon am Floridsdorfer Markt. Wir haben einen hellen, edlen Auftritt gebaut — dreisprachig (Deutsch, Englisch, Arabisch inkl. RTL), mit VIP-Bereich und digitaler QR-Visitenkarte."
-                    deliverables={[
-                        'Eigenständiges, helles Design (Rosé, editorial)',
-                        'Dreisprachig DE / EN / AR inkl. RTL-Layout',
-                        'VIP-Seite + QR-Visitenkarte',
-                        'Lokale SEO für Wien-Floridsdorf',
-                        'Statischer Export, mobil-first & schnell',
-                    ]}
-                    visualHint="live-vorschau"
-                    previewUrl="https://mstyle.beauty"
-                    align="right"
-                />
-
-                <CaseBlock
-                    index="03"
-                    status="live · safetypro-electrical.au"
-                    statusLink="https://safetypro-electrical.au"
-                    name="safety pro electrical"
-                    headline="Safety Pro Electrical — Melbourne"
-                    role="Lead-Gen-Webauftritt für einen Elektriker in Melbourne"
-                    summary="A-Grade-Elektriker im Südosten Melbournes. Ein englischsprachiger Lead-Gen-Auftritt, der Vertrauen aufbaut und Anfragen bringt — klare Services, lokale SEO, schnelle Ladezeiten."
-                    deliverables={[
-                        'Eigenständiges Design & klare Service-Struktur',
-                        'Lead-Gen-Funnel für Anfragen',
-                        'Lokale SEO für Südost-Melbourne',
-                        'Englischsprachig, mobil-first',
-                        'Statischer Hochleistungs-Build',
-                    ]}
-                    visualHint="live-vorschau"
-                    previewUrl="https://safetypro-electrical.au"
-                    align="left"
-                />
-
-                <CaseBlock
-                    index="04"
-                    status="in entwicklung"
-                    name="printmywall"
-                    headline="PrintMyWall — Direktdruck auf Wände"
-                    role="Eigene Marke — Standard- & Premium-Web parallel"
-                    summary="Direktdruck-Service für Wände in Wien. Eigene Marke, eigene Pipeline. Aktuell im Re-Launch — neuer Stack (FastAPI + HTMX + Supabase + Railway), Astro-Website überarbeitet, Welle-Workflow von 11 Wellen."
-                    deliverables={[
-                        'Eigene Brand-Voice + Begriffs-Lexikon',
-                        'Astro-Marketing-Site (printmywall.at)',
-                        'Onboarding-Formular mit Whisper-Transkription',
-                        'OneDrive-Speicherung + Make.com-Integration',
-                        'Drop-In-Galerie, /ideen/-Sektion live',
-                    ]}
-                    visualHint="screenshot des neuen launches folgt"
-                    previewUrl="https://printmywall.at"
-                    align="right"
-                />
-
-                <CaseBlock
-                    index="05"
-                    status="bald"
-                    name="mehr kommt"
-                    headline="Dein Projekt — wäre das hier."
-                    role="Premium-Slot für H2 2026"
-                    summary="Wir nehmen 2026 noch zwei Premium-Projekte an. Wenn dein Vorhaben den Anspruch hat, neben kfz22 zu stehen — sprich mit Zakir."
-                    deliverables={[
-                        'Konzept-Workshop + Brand-Voice-Arbeit',
-                        'Eigenständige Designsprache, kein Template',
-                        'Performance-Audit als Default, nicht Add-on',
-                        'Direktdraht zum Gründer vom ersten Call an',
-                    ]}
-                    visualHint="dieser slot wartet auf dich"
-                    align="left"
-                    placeholder
-                />
+                {/* Slot-Karte — Verknappung */}
+                <Reveal>
+                    <div
+                        className="relative overflow-hidden px-8 py-14 md:px-14 md:py-20"
+                        style={{
+                            border: '1px solid rgba(232, 90, 31, 0.35)',
+                            borderRadius: '8px',
+                            background:
+                                'radial-gradient(circle at 80% 20%, rgba(232,90,31,0.14) 0%, transparent 55%)',
+                        }}
+                    >
+                        <p className="mono-label text-spark mb-4">
+                            freier slot · 2026
+                        </p>
+                        <h2
+                            className="font-display mb-5"
+                            style={{
+                                fontSize: 'clamp(1.9rem, 4vw, 3.25rem)',
+                                color: 'var(--lit)',
+                                maxWidth: '20ch',
+                            }}
+                        >
+                            Der nächste Screenshot hier ist{' '}
+                            <span style={{ color: 'var(--spark)' }}>
+                                dein Projekt.
+                            </span>
+                        </h2>
+                        <p
+                            className="text-soft mb-8 leading-relaxed"
+                            style={{ maxWidth: '44ch' }}
+                        >
+                            Wir nehmen 2026 noch zwei Projekte an — mehr geht
+                            nicht, ohne dass die Qualität leidet.
+                        </p>
+                        <CtaButton href="/kontakt">
+                            slot anfragen
+                        </CtaButton>
+                    </div>
+                </Reveal>
             </div>
         </section>
     )
@@ -146,162 +226,98 @@ export default function Cases() {
 
 // ─── Sub-Component ──────────────────────────────────────────────
 
-interface CaseBlockProps {
-    index: string
-    status: string
-    statusLink?: string
-    name: string
-    headline: string
-    role: string
-    summary: string
-    deliverables: string[]
-    visualHint: string
-    previewUrl?: string
-    align: 'left' | 'right'
-    placeholder?: boolean
-}
+function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
+    const left = index % 2 === 0
+    const visual = (
+        <CaseVisual
+            slug={item.slug}
+            domain={item.domain}
+            name={item.name}
+            priority={index === 0}
+        />
+    )
 
-function CaseBlock({
-    index,
-    status,
-    statusLink,
-    name,
-    headline,
-    role,
-    summary,
-    deliverables,
-    visualHint,
-    previewUrl,
-    align,
-    placeholder = false,
-}: CaseBlockProps) {
-    const leftCols = align === 'left'
-    const contentClass = leftCols
-        ? 'md:col-start-1 md:col-span-7'
-        : 'md:col-start-6 md:col-span-7 md:order-2'
-    const visualClass = leftCols
-        ? 'md:col-start-9 md:col-span-4'
-        : 'md:col-start-1 md:col-span-4 md:order-1 md:row-start-1'
-
-    return (
-        <article className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
-            {/* Content */}
-            <div className={contentClass}>
-                <div className="flex items-center gap-6 mb-6">
-                    <span className="mono-label text-spark">{index}</span>
-                    {statusLink ? (
-                        <a
-                            href={statusLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="mono-label text-soft hover:text-spark transition-colors inline-flex items-center gap-1.5"
-                        >
-                            {status} <span aria-hidden>↗</span>
-                        </a>
-                    ) : (
-                        <span className="mono-label text-muted">{status}</span>
-                    )}
-                </div>
-
-                <p
-                    className="font-mono text-spark mb-3"
-                    style={{ fontSize: '0.66rem' }}
-                >
-                    {name}
-                </p>
-
-                <h2
-                    className="font-display mb-4"
+    const content = (
+        <div className="flex flex-col justify-center h-full">
+            <div className="flex items-center gap-5 mb-5">
+                <span className="mono-label text-spark">
+                    {String(index + 1).padStart(2, '0')}
+                </span>
+                <span
+                    className="mono-label"
                     style={{
-                        fontSize: 'clamp(1.75rem, 4vw, 3.25rem)',
-                        color: placeholder ? 'var(--spark)' : 'var(--lit)',
+                        color:
+                            item.status === 'live'
+                                ? 'var(--soft)'
+                                : 'var(--muted)',
                     }}
                 >
-                    {headline}
-                </h2>
-
-                <p
-                    className="text-soft mb-6 max-w-xl leading-relaxed"
-                    style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)' }}
-                >
-                    <span className="text-lit">{role}.</span> {summary}
-                </p>
-
-                <ul className="space-y-2 text-soft text-sm leading-relaxed max-w-lg">
-                    {deliverables.map((d, i) => (
-                        <li key={i} className="flex gap-2.5">
-                            <span aria-hidden className="text-spark">
-                                ↳
-                            </span>
-                            <span>{d}</span>
-                        </li>
-                    ))}
-                </ul>
+                    {item.status === 'live' ? 'live' : 'in entwicklung'}
+                    {item.href && <span aria-hidden> ↗</span>}
+                </span>
             </div>
 
-            {/* Visual: echte Live-Vorschau (Webseite in Webseite) oder Platzhalter */}
-            <div className={visualClass}>
-                {previewUrl ? (
-                    <SitePreview url={previewUrl} />
-                ) : (
-                    <VisualPlaceholder hint={visualHint} placeholder={placeholder} />
-                )}
+            <h2
+                className="font-display mb-4"
+                style={{
+                    fontSize: 'clamp(1.75rem, 3.4vw, 2.9rem)',
+                    color: 'var(--lit)',
+                }}
+            >
+                {item.name}
+            </h2>
+
+            <p
+                className="text-soft leading-relaxed mb-6"
+                style={{
+                    fontSize: 'clamp(1rem, 1.35vw, 1.18rem)',
+                    maxWidth: '36ch',
+                }}
+            >
+                {item.outcome}
+            </p>
+
+            <p className="mono-label text-muted" style={{ fontSize: '0.62rem' }}>
+                {item.meta}
+            </p>
+        </div>
+    )
+
+    const inner = (
+        <article className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <div
+                className={
+                    left
+                        ? 'md:col-span-7'
+                        : 'md:col-span-7 md:order-2'
+                }
+            >
+                {visual}
+            </div>
+            <div
+                className={
+                    left
+                        ? 'md:col-span-5'
+                        : 'md:col-span-5 md:order-1'
+                }
+            >
+                {content}
             </div>
         </article>
     )
-}
 
-function VisualPlaceholder({
-    hint,
-    placeholder,
-}: {
-    hint: string
-    placeholder?: boolean
-}) {
-    return (
-        <div
-            className="relative w-full overflow-hidden"
-            style={{
-                aspectRatio: '4 / 5',
-                border: '1px solid rgba(201, 184, 163, 0.16)',
-                borderRadius: '4px',
-                background: placeholder
-                    ? 'linear-gradient(135deg, rgba(232,90,31,0.06), rgba(20,17,15,0.6))'
-                    : 'rgba(20, 17, 15, 0.5)',
-            }}
-        >
-            {/* Subtle Globe-halo as decorative element */}
-            <div
-                className="absolute"
-                aria-hidden
-                style={{
-                    inset: '-20%',
-                    background: placeholder
-                        ? 'radial-gradient(circle at 65% 35%, rgba(232,90,31,0.18) 0%, transparent 60%)'
-                        : 'radial-gradient(circle at 75% 25%, rgba(232,90,31,0.08) 0%, transparent 55%)',
-                    pointerEvents: 'none',
-                }}
-            />
-
-            {/* Bottom-right hint label */}
-            <div
-                className="absolute"
-                style={{
-                    bottom: '1.25rem',
-                    left: '1.25rem',
-                    right: '1.25rem',
-                }}
-            >
-                <p
-                    className="mono-label"
-                    style={{
-                        color: placeholder ? 'var(--spark)' : 'var(--muted)',
-                        fontSize: '0.6rem',
-                    }}
+    if (item.href)
+        return (
+            <Reveal>
+                <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.name} — Website öffnen`}
                 >
-                    ↳ {hint}
-                </p>
-            </div>
-        </div>
-    )
+                    {inner}
+                </a>
+            </Reveal>
+        )
+    return <Reveal>{inner}</Reveal>
 }

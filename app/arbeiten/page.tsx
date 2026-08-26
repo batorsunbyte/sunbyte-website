@@ -5,8 +5,8 @@ import { CtaBand, Spark } from '@/components/ui'
 export const metadata: Metadata = {
     title: 'Referenzen — Projekte von Sunbyte',
     description:
-        'Ausgewählte Referenzen von Sunbyte: kfz22 (Wien), MStyle Beauty Lounge (Wien), Safety Pro Electrical (Melbourne), PrintMyWall und mehr. Premium-Webauftritte, live im Netz.',
-    alternates: { canonical: '/arbeiten' },
+        'Referenzen von Sunbyte: kfz22, MStyle Beauty Lounge, Impulsiv Fitness (Wien), Safety Pro Electrical (Melbourne), PrintMyWall. Premium-Webauftritte, live im Netz.',
+    alternates: { canonical: '/arbeiten/' },
 }
 
 export default function ArbeitenPage() {
@@ -19,7 +19,7 @@ export default function ArbeitenPage() {
                         Dein Projekt <Spark>wäre das nächste.</Spark>
                     </>
                 }
-                sub="Wir nehmen 2026 noch Projekte an. Wenn dein Vorhaben den Anspruch hat, neben kfz22 zu stehen — sprich mit uns."
+                sub="Noch 2 Slots für 2026. Wenn dein Vorhaben den Anspruch hat, neben diesen Projekten zu stehen — sprich mit uns."
             />
         </>
     )

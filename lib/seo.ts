@@ -25,8 +25,8 @@ export const CONTACT = {
 
 /** Preise zentral — eine Quelle der Wahrheit */
 export const PRICING = {
-    website: { from: 1500, label: 'ab 1.500 €' },
-    aiVisibility: { fixed: 700, label: '700 €' },
+    website: { from: 2000, label: 'ab 2.000 €' },
+    aiVisibility: { fixed: 1000, label: '1.000 €' },
 } as const
 
 /**
@@ -56,7 +56,7 @@ export const ORGANIZATION: Record<string, unknown> = {
     foundingDate: '2026',
     email: CONTACT.email,
     telephone: CONTACT.phoneRaw,
-    priceRange: 'ab 700 €',
+    priceRange: 'ab 1.000 €',
     currenciesAccepted: 'EUR',
     address: {
         '@type': 'PostalAddress',

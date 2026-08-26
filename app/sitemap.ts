@@ -17,7 +17,7 @@ const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
 
 export default function sitemap(): MetadataRoute.Sitemap {
     return ROUTES.map(r => ({
-        url: `${SITE_URL}${r.path}`,
+        url: `${SITE_URL}${r.path}/`,
         changeFrequency: r.freq,
         priority: r.priority,
     }))

@@ -24,7 +24,7 @@ export default function WebPackages() {
             <Reveal>
                 <PackageCard
                     tier="standard"
-                    price="ab 1.500 €"
+                    price="ab 2.000 €"
                     promise="Ein eigenständiges, hochwertiges visuelles System — wirkt sofort professionell. Wie kfz22."
                     bullets={[
                         'Eigenständige Designsprache, kein Template',
@@ -58,7 +58,7 @@ export default function WebPackages() {
                         'Alles aus Standard — inklusive',
                         'Voll interaktive Hero-Sektion',
                         'Custom-Animationen & narratives Scrollen',
-                        'Signature-Interaktion (wie unser Sonnensystem)',
+                        'Signature-Interaktion (wie unser Welt-Globus)',
                         'Performance-Audit ohne Kompromisse',
                     ]}
                 >

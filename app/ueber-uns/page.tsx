@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Über uns — zwei Brüder aus Wien',
     description:
         'Hinter Sunbyte stehen zwei Brüder aus Wien: Zakir Daryabi (Gründer, Designer, 6+ Jahre IT & KI) und ein KI/IT-Senior mit über 15 Jahren Erfahrung. Über 20 Jahre kombinierte Erfahrung.',
-    alternates: { canonical: '/ueber-uns' },
+    alternates: { canonical: '/ueber-uns/' },
 }
 
 export default function UeberUnsPage() {

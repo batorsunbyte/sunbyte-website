@@ -1,24 +1,24 @@
-import Link from 'next/link'
 import Hero from '@/components/Hero'
 import ServiceTeaserCards from '@/components/ServiceTeaserCards'
 import Reveal from '@/components/Reveal'
 import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
+import { CASES, CaseVisual } from '@/components/Cases'
 import { faqLd } from '@/lib/seo'
 
 const FAQ_ITEMS = [
     {
         q: 'Was macht Sunbyte?',
-        a: 'Sunbyte ist ein IT-Dienstleister aus Wien mit zwei Diensten: professionelle Webseiten (erstellen oder modernisieren, ab 1.500 €) und KI-Sichtbarkeit (700 €) — damit dich Google und KI wie ChatGPT finden und weiterempfehlen.',
+        a: 'Sunbyte ist ein IT-Dienstleister aus Wien mit zwei Diensten: professionelle Webseiten (erstellen oder modernisieren, ab 2.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google und KI wie ChatGPT finden und weiterempfehlen.',
     },
     {
         q: 'Was kostet eine Website?',
-        a: 'Der Einstieg liegt bei ab 1.500 € (Paket Standard). Premium ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis.',
+        a: 'Der Einstieg liegt bei ab 2.000 € (Paket Standard). Premium ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis.',
     },
     {
         q: 'Was kostet KI-Sichtbarkeit?',
-        a: 'KI-Sichtbarkeit kostet 700 € als fixes Paket — inklusive Analyse, Umsetzung und einem belegten Vorher/Nachher-Report.',
+        a: 'KI-Sichtbarkeit kostet 1.000 € als fixes Paket — inklusive Analyse, Umsetzung und einem belegten Vorher/Nachher-Report.',
     },
     {
         q: 'Für wen und wo arbeitet ihr?',
@@ -30,11 +30,41 @@ const FAQ_ITEMS = [
     },
 ]
 
+/** Die 4 stärksten Live-Cases für den Home-Teaser */
+const HOME_CASES = CASES.filter(c => c.status === 'live').slice(0, 4)
+
 export default function Home() {
     return (
         <>
             <JsonLd data={faqLd(FAQ_ITEMS)} />
             <Hero />
+
+            {/* ── Proof-Strip ─────────────────────────────── */}
+            <section
+                className="container-edge"
+                style={{
+                    borderBottom: '1px solid rgba(201, 184, 163, 0.10)',
+                }}
+            >
+                <Reveal>
+                    <div className="flex flex-wrap items-center gap-x-10 gap-y-3 py-7">
+                        {[
+                            '5 projekte live im netz',
+                            'wien · melbourne',
+                            'antwort < 24 h',
+                            'noch 2 slots für 2026',
+                        ].map(t => (
+                            <span
+                                key={t}
+                                className="mono-label text-muted"
+                                style={{ fontSize: '0.62rem' }}
+                            >
+                                ↳ {t}
+                            </span>
+                        ))}
+                    </div>
+                </Reveal>
+            </section>
 
             {/* ── 01 Leistungen ───────────────────────────── */}
             <section className="container-edge section-pad">
@@ -47,49 +77,65 @@ export default function Home() {
                             <Spark>Ein Ziel: dass man dich sieht.</Spark>
                         </>
                     }
-                    sub="Eine Seite, die in Sekunden überzeugt — und KI-Sichtbarkeit, damit dich auch ChatGPT weiterempfiehlt. Beides aus einer Hand, in Wien gebaut."
+                    sub="Eine Seite, die in Sekunden überzeugt — und KI-Sichtbarkeit, damit dich auch ChatGPT empfiehlt."
                     className="mb-14 md:mb-20"
                 />
                 <ServiceTeaserCards />
             </section>
 
-            {/* ── 02 Arbeiten (Teaser) ────────────────────── */}
+            {/* ── 02 Referenzen (Bild-Teaser) ─────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
                     kicker="02 — referenzen"
                     title={
                         <>
-                            Echte Projekte.
+                            Sieh selbst.
                             <br />
-                            <Spark>Live im Netz.</Spark>
+                            <Spark>Alles live im Netz.</Spark>
                         </>
                     }
                     className="mb-12 md:mb-16"
                 />
 
-                <div className="flex flex-col">
-                    <CaseRow
-                        name="kfz22"
-                        meta="live · kfz22.com"
-                        desc="Premium-Webauftritt für einen Wiener KFZ-Meisterbetrieb."
-                        href="https://kfz22.com"
-                        external
-                    />
-                    <CaseRow
-                        name="printmywall"
-                        meta="in entwicklung"
-                        desc="Eigene Marke — Direktdruck auf Wände, kompletter Re-Launch."
-                    />
-                    <CaseRow
-                        name="dein projekt"
-                        meta="freier slot · 2026"
-                        desc="Wäre das hier — wir nehmen noch Projekte an."
-                        href="/kontakt"
-                        accent
-                    />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-9">
+                    {HOME_CASES.map((c, i) => (
+                        <Reveal key={c.slug} delay={(i % 2) * 80}>
+                            <a
+                                href={c.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group block"
+                                aria-label={`${c.name} — Website öffnen`}
+                            >
+                                <CaseVisual
+                                    slug={c.slug}
+                                    domain={c.domain}
+                                    name={c.name}
+                                />
+                                <div className="flex items-baseline justify-between mt-4 gap-4">
+                                    <h3
+                                        className="font-display"
+                                        style={{
+                                            fontSize:
+                                                'clamp(1.2rem, 2vw, 1.6rem)',
+                                            color: 'var(--lit)',
+                                        }}
+                                    >
+                                        {c.name}
+                                    </h3>
+                                    <span
+                                        className="mono-label text-muted group-hover:text-spark transition-colors shrink-0"
+                                        style={{ fontSize: '0.6rem' }}
+                                    >
+                                        {c.meta.split('·')[0].trim()} ↗
+                                    </span>
+                                </div>
+                            </a>
+                        </Reveal>
+                    ))}
                 </div>
 
-                <Reveal className="mt-10">
+                <Reveal className="mt-12">
                     <CtaButton href="/arbeiten" variant="ghost">
                         alle referenzen
                     </CtaButton>
@@ -126,12 +172,11 @@ export default function Home() {
                     className="text-soft mt-8 leading-relaxed"
                     style={{
                         fontSize: 'clamp(1rem, 1.4vw, 1.2rem)',
-                        maxWidth: '52ch',
+                        maxWidth: '44ch',
                     }}
                 >
-                    Von Wien aus, von Grund auf. Zwei Brüder, über 20 Jahre
-                    kombinierte Erfahrung in IT, KI und Design — mit dem
-                    Anspruch, Weltklasse zu liefern, nicht Durchschnitt.
+                    Zwei Brüder, über 20 Jahre kombinierte Erfahrung — mit dem
+                    Anspruch, Weltklasse zu liefern. Nicht Durchschnitt.
                 </Reveal>
                 <Reveal delay={180} className="mt-9">
                     <CtaButton href="/ueber-uns" variant="ghost">
@@ -161,74 +206,8 @@ export default function Home() {
                         Lass uns über dein <Spark>Projekt reden.</Spark>
                     </>
                 }
-                sub="Der erste Call ist gratis — danach weißt du, wie dein Auftritt konkret aussehen würde. Antwort meist innerhalb von 24 Stunden."
+                sub="Noch 2 Projekt-Slots für 2026. Der erste Call ist gratis — danach weißt du, wie dein Auftritt aussehen würde."
             />
         </>
-    )
-}
-
-// ── Sub-Component: kompakte Case-Zeile (Home-Teaser) ──────────
-function CaseRow({
-    name,
-    meta,
-    desc,
-    href,
-    external = false,
-    accent = false,
-}: {
-    name: string
-    meta: string
-    desc: string
-    href?: string
-    external?: boolean
-    accent?: boolean
-}) {
-    const inner = (
-        <div
-            className="group grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 items-baseline py-6 md:py-7"
-            style={{ borderTop: '1px solid rgba(201, 184, 163, 0.12)' }}
-        >
-            <div className="md:col-span-4 flex items-baseline gap-4">
-                <h3
-                    className="font-display"
-                    style={{
-                        fontSize: 'clamp(1.5rem, 3vw, 2.25rem)',
-                        color: accent ? 'var(--spark)' : 'var(--lit)',
-                    }}
-                >
-                    {name}
-                </h3>
-            </div>
-            <p
-                className="md:col-span-6 text-soft leading-snug"
-                style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)' }}
-            >
-                {desc}
-            </p>
-            <div className="md:col-span-2 md:text-right">
-                <span
-                    className="mono-label text-muted group-hover:text-spark transition-colors"
-                    style={{ fontSize: '0.6rem' }}
-                >
-                    {meta}
-                    {href && <span aria-hidden> {external ? '↗' : '→'}</span>}
-                </span>
-            </div>
-        </div>
-    )
-
-    if (!href) return <Reveal>{inner}</Reveal>
-    if (external)
-        return (
-            <Reveal>
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                    {inner}
-                </a>
-            </Reveal>
-        )
-    return (
-        <Reveal>
-            <Link href={href}>{inner}</Link>
-        </Reveal>
     )
 }

@@ -35,9 +35,10 @@ export const PRICING = {
  * SLOT: Zakir trägt echte Profile ein (Google Business, LinkedIn, Instagram …).
  */
 export const SOCIAL: string[] = [
-    // 'https://www.linkedin.com/company/sunbyte',
-    // 'https://www.instagram.com/sunbyte.at',
-    // 'https://g.page/sunbyte',
+    // Google Business Profile (verifiziert, bator.sunbyte)
+    'https://maps.google.com/?cid=10635698540192696563',
+    // SLOT: 'https://www.linkedin.com/company/sunbyte',
+    // SLOT: 'https://www.instagram.com/sunbyte.at',
 ]
 
 /** Organization / LocalBusiness — site-weit (in layout.tsx) */

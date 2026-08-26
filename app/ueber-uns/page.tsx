@@ -4,7 +4,7 @@ import TeamBlock from '@/components/TeamBlock'
 import Studio from '@/components/Studio'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand } from '@/components/ui'
-import { PERSON_ZAKIR } from '@/lib/seo'
+import { PERSON_ZAKIR, breadcrumbLd } from '@/lib/seo'
 
 export const metadata: Metadata = {
     title: 'Über uns — zwei Brüder aus Wien',
@@ -17,6 +17,7 @@ export default function UeberUnsPage() {
     return (
         <>
             <JsonLd data={PERSON_ZAKIR} />
+            <JsonLd data={breadcrumbLd([{ name: 'Start', path: '/' }, { name: 'Über uns', path: '/ueber-uns/' }])} />
 
             <AboutHero />
 

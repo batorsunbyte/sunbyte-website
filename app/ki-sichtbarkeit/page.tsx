@@ -5,7 +5,7 @@ import Faq from '@/components/Faq'
 import AiChatDemo from '@/components/AiChatDemo'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
-import { serviceLd, faqLd, PRICING } from '@/lib/seo'
+import { serviceLd, faqLd, breadcrumbLd, PRICING } from '@/lib/seo'
 
 export const metadata: Metadata = {
     title: 'KI-Sichtbarkeit Wien — von ChatGPT empfohlen werden (1.000 €)',
@@ -79,6 +79,7 @@ export default function KiSichtbarkeitPage() {
         <>
             <JsonLd data={SERVICE_LD} />
             <JsonLd data={faqLd(FAQ_ITEMS)} />
+            <JsonLd data={breadcrumbLd([{ name: 'Start', path: '/' }, { name: 'KI-Sichtbarkeit', path: '/ki-sichtbarkeit/' }])} />
 
             {/* Intro */}
             <section className="container-edge section-pad-top pb-4 md:pb-8">

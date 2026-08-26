@@ -76,17 +76,25 @@ export const CASES: CaseItem[] = [
     },
 ]
 
-/** Screenshot im Browser-Frame — das Premium-Visual */
+/**
+ * Screenshot im Browser-Frame — das Premium-Visual.
+ * Desktop: echtes Scroll-Fenster (Full-Page-Screenshot, overflow-y) —
+ * man scrollt die komplette Kundenseite. Klick auf den Frame = Live-Site
+ * (der <a>-Wrapper kommt von außen). Mobile: statischer Hero-Ausschnitt,
+ * kein Nested-Scrolling.
+ */
 export function CaseVisual({
     slug,
     domain,
     name,
     priority = false,
+    scrollable = true,
 }: {
     slug: string
     domain?: string
     name: string
     priority?: boolean
+    scrollable?: boolean
 }) {
     return (
         <div
@@ -127,17 +135,51 @@ export function CaseVisual({
                         {domain}
                     </span>
                 )}
+                {scrollable && (
+                    <span
+                        className="mono-label text-spark hidden md:inline"
+                        style={{ fontSize: '0.55rem' }}
+                        aria-hidden
+                    >
+                        ↕ scrollen
+                    </span>
+                )}
             </div>
-            <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
-                <Image
-                    src={`/images/cases/${slug}.webp`}
-                    alt={`Website von ${name}`}
-                    fill
-                    priority={priority}
-                    sizes="(max-width: 768px) 100vw, 60vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
-                />
-            </div>
+
+            {scrollable ? (
+                <div
+                    className="case-scroll relative w-full overflow-hidden md:overflow-y-auto"
+                    style={{
+                        aspectRatio: '8 / 5',
+                        overscrollBehavior: 'contain',
+                    }}
+                >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        src={`/images/cases/${slug}-full.webp`}
+                        alt={`Website von ${name} — komplette Startseite`}
+                        width={1000}
+                        height={4800}
+                        loading={priority ? 'eager' : 'lazy'}
+                        decoding="async"
+                        className="w-full h-auto block"
+                    />
+                </div>
+            ) : (
+                <div
+                    className="relative w-full"
+                    style={{ aspectRatio: '8 / 5' }}
+                >
+                    <Image
+                        src={`/images/cases/${slug}.webp`}
+                        alt={`Website von ${name}`}
+                        fill
+                        priority={priority}
+                        sizes="(max-width: 768px) 100vw, 60vw"
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
+                    />
+                </div>
+            )}
         </div>
     )
 }

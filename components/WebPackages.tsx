@@ -37,13 +37,19 @@ export default function WebPackages() {
                         'Auch: bestehende Seite modernisieren',
                     ]}
                 >
-                    <div className="relative mx-auto w-full">
+                    <a
+                        href="https://kfz22.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative mx-auto w-full block"
+                        aria-label="kfz22.com öffnen"
+                    >
                         <CaseVisual
                             slug="kfz22"
                             domain="kfz22.com"
                             name="KFZ Technik 22"
                         />
-                    </div>
+                    </a>
                 </PackageCard>
             </Reveal>
 

@@ -6,7 +6,7 @@ import Steps from '@/components/Steps'
 import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
-import { serviceLd, faqLd, PRICING } from '@/lib/seo'
+import { serviceLd, faqLd, breadcrumbLd, PRICING } from '@/lib/seo'
 
 const FAQ_ITEMS = [
     {
@@ -71,6 +71,7 @@ export default function WebseitenPage() {
         <>
             <JsonLd data={SERVICE_LD} />
             <JsonLd data={faqLd(FAQ_ITEMS)} />
+            <JsonLd data={breadcrumbLd([{ name: 'Start', path: '/' }, { name: 'Webseiten', path: '/webseiten/' }])} />
 
             {/* Intro */}
             <section className="container-edge section-pad-top pb-4 md:pb-8">

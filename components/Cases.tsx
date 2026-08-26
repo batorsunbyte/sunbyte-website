@@ -25,6 +25,26 @@ export interface CaseItem {
 
 export const CASES: CaseItem[] = [
     {
+        slug: 'printmywall',
+        name: 'PrintMyWall',
+        domain: 'printmywall.at',
+        href: 'https://printmywall.at',
+        outcome:
+            'Unsere eigene Marke, unser Schaufenster — hier zeigen wir, was wir können, bevor wir es verkaufen.',
+        meta: 'eigene marke · direktdruck auf wände',
+        status: 'live',
+    },
+    {
+        slug: 'impulsiv',
+        name: 'Impulsiv Fitness',
+        domain: 'impulsiv-fitness.at',
+        href: 'https://impulsiv-fitness.at',
+        outcome:
+            'Ein 4,9-Sterne-Studio hatte keinen Auftritt auf diesem Niveau. Jetzt schon.',
+        meta: 'ems-studio · wien 1210',
+        status: 'live',
+    },
+    {
         slug: 'kfz22',
         name: 'KFZ Technik 22',
         domain: 'kfz22.com',
@@ -45,16 +65,6 @@ export const CASES: CaseItem[] = [
         status: 'live',
     },
     {
-        slug: 'impulsiv',
-        name: 'Impulsiv Fitness',
-        domain: 'impulsiv-fitness.at',
-        href: 'https://impulsiv-fitness.at',
-        outcome:
-            'Ein 4,9-Sterne-Studio hatte keinen Auftritt auf diesem Niveau. Jetzt schon.',
-        meta: 'ems-studio · wien 1210',
-        status: 'live',
-    },
-    {
         slug: 'safetypro',
         name: 'Safety Pro Electrical',
         domain: 'safetypro-electrical.au',
@@ -62,16 +72,6 @@ export const CASES: CaseItem[] = [
         outcome:
             'Vertrauen auf den ersten Blick — Anfragen aus ganz Südost-Melbourne.',
         meta: 'elektriker · melbourne au',
-        status: 'live',
-    },
-    {
-        slug: 'printmywall',
-        name: 'PrintMyWall',
-        domain: 'printmywall.at',
-        href: 'https://printmywall.at',
-        outcome:
-            'Unsere eigene Marke — hier testen wir alles, bevor wir es Kunden verkaufen.',
-        meta: 'eigene marke · direktdruck auf wände',
         status: 'live',
     },
 ]

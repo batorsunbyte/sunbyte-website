@@ -281,11 +281,11 @@ select option {
 .marquee-track {
     display: inline-flex;
     white-space: nowrap;
-    animation: marquee-scroll 26s linear infinite;
+    animation: marquee-scroll 130s linear infinite;
     will-change: transform;
 }
 .marquee-track > span {
-    padding: 0 2.2rem;
+    padding: 0 3rem;
     color: var(--muted);
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     letter-spacing: 0.16em;

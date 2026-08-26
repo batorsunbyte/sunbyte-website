@@ -26,6 +26,7 @@ export const CONTACT = {
 /** Preise zentral — eine Quelle der Wahrheit */
 export const PRICING = {
     website: { from: 2000, label: 'ab 2.000 €' },
+    websitePremium: { from: 5000, label: 'ab 5.000 €' },
     aiVisibility: { fixed: 1000, label: '1.000 €' },
 } as const
 
@@ -110,6 +111,15 @@ export const ORGANIZATION: Record<string, unknown> = {
                 },
                 priceCurrency: 'EUR',
                 price: PRICING.website.from,
+            },
+            {
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'Webseite Premium — voll interaktives Erlebnis',
+                },
+                priceCurrency: 'EUR',
+                price: PRICING.websitePremium.from,
             },
             {
                 '@type': 'Offer',

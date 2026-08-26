@@ -215,8 +215,14 @@ export default function Hero() {
             {/* Marquee unten */}
             <div className="marquee absolute left-0 right-0 bottom-0 z-[5]">
                 <div className="marquee-track">
-                    {Array.from({ length: 2 }).map((_, i) => (
+                    {Array.from({ length: 10 }).map((_, i) => (
                         <span key={i} style={{ display: 'inline-flex' }}>
+                            <span>
+                                printmywall <i>↗</i>
+                            </span>
+                            <span>
+                                impulsiv fitness <i>↗</i>
+                            </span>
                             <span>
                                 kfz22 <i>↗</i>
                             </span>
@@ -224,13 +230,7 @@ export default function Hero() {
                                 mstyle beauty <i>↗</i>
                             </span>
                             <span>
-                                impulsiv fitness <i>↗</i>
-                            </span>
-                            <span>
                                 safety pro <i>↗</i>
-                            </span>
-                            <span>
-                                printmywall <i>↗</i>
                             </span>
                         </span>
                     ))}

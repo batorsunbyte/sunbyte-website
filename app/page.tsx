@@ -14,7 +14,7 @@ const FAQ_ITEMS = [
     },
     {
         q: 'Was kostet eine Website?',
-        a: 'Der Einstieg liegt bei ab 2.000 € (Paket Standard). Premium ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis.',
+        a: 'Der Einstieg liegt bei ab 2.000 € (Paket Standard). Premium — das voll interaktive Erlebnis — startet ab 5.000 €. Du bekommst vorab einen klaren Fixpreis.',
     },
     {
         q: 'Was kostet KI-Sichtbarkeit?',

@@ -11,7 +11,7 @@ import { serviceLd, faqLd, PRICING } from '@/lib/seo'
 const FAQ_ITEMS = [
     {
         q: 'Was kostet eine Website bei Sunbyte?',
-        a: 'Der Einstieg (Paket Standard) liegt bei ab 2.000 €. Premium mit vollem interaktivem Erlebnis ist ein individuelles Angebot. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
+        a: 'Der Einstieg (Paket Standard) liegt bei ab 2.000 €. Premium mit vollem interaktivem Erlebnis startet ab 5.000 €. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
     },
     {
         q: 'Wie lange dauert es, bis meine Seite live ist?',

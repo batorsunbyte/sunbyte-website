@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { type ReactNode } from 'react'
 import Reveal from '@/components/Reveal'
+import { CaseVisual } from '@/components/Cases'
+import { PRICING } from '@/lib/seo'
 
 const Globe = dynamic(() => import('@/components/Globe'), { ssr: false })
 
@@ -14,8 +16,8 @@ const Globe = dynamic(() => import('@/components/Globe'), { ssr: false })
  *   - Standard = eigenständiges visuelles System, statischer Globe (kfz22-Niveau).
  *   - Premium  = das volle interaktive Erlebnis, voll animierter Globe (wie diese Seite).
  *
- * Perf: nur EINE Loop auf der Seite — Standard-Globe ist statisch (ein Render,
- * kein rAF), nur der Premium-Globe läuft. IntersectionObserver pausiert offscreen.
+ * Visuals: Standard zeigt einen echten Kunden-Screenshot (kfz22) — Premium den
+ * voll interaktiven Globe. Perf: nur EIN Canvas auf der Seite (Premium-Globe).
  */
 export default function WebPackages() {
     return (
@@ -24,7 +26,7 @@ export default function WebPackages() {
             <Reveal>
                 <PackageCard
                     tier="standard"
-                    price="ab 2.000 €"
+                    price={PRICING.website.label}
                     promise="Ein eigenständiges, hochwertiges visuelles System — wirkt sofort professionell. Wie kfz22."
                     bullets={[
                         'Eigenständige Designsprache, kein Template',
@@ -35,13 +37,11 @@ export default function WebPackages() {
                         'Auch: bestehende Seite modernisieren',
                     ]}
                 >
-                    <div
-                        className="relative mx-auto w-full"
-                        style={{ maxWidth: 220 }}
-                    >
-                        <Globe
-                            ariaLabel="Standard-Paket: eigenständiges visuelles System (statischer Globus)"
-                            className="opacity-90"
+                    <div className="relative mx-auto w-full">
+                        <CaseVisual
+                            slug="kfz22"
+                            domain="kfz22.com"
+                            name="KFZ Technik 22"
                         />
                     </div>
                 </PackageCard>
@@ -51,7 +51,7 @@ export default function WebPackages() {
             <Reveal delay={100}>
                 <PackageCard
                     tier="premium"
-                    price="individuelles Angebot"
+                    price={PRICING.websitePremium.label}
                     promise="Das volle Erlebnis — voll interaktiv, mit narrativem Scrollen und Custom-Animationen. Wie diese Seite."
                     accent
                     bullets={[

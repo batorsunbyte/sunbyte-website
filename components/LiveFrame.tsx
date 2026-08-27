@@ -9,11 +9,12 @@ import { useEffect, useRef, useState } from 'react'
  * per transform auf Containerbreite verkleinert) — man scrollt und klickt
  * die ECHTE Seite im Fenster.
  *
- * Perf-Schutz:
- *   - iframe wird erst gemountet, wenn der Container in Viewport-Nähe ist
- *     (IntersectionObserver, 300px rootMargin) — kein Initial-Load-Gewicht.
+ * Perf-Schutz (iOS-Memory-Fix, volle Interaktivität bleibt):
+ *   - iframe lebt NUR, solange das Fenster in Viewport-Nähe ist (±500px).
+ *     Scrollt es weit raus, wird es nach kurzer Karenz entladen (Poster
+ *     kehrt zurück) — so sind nie mehr als 1–2 fremde Websites gleichzeitig
+ *     im Speicher. Behebt den Safari-iOS-Zwangs-Reload bei 5 iframes.
  *   - Bis zum Laden liegt der Screenshot als Poster darüber (kein Flackern).
- *   - display:none (Mobile) → Container hat keine Fläche → iframe lädt nie.
  *
  * Sicherheit: sandbox ohne allow-top-navigation — die eingebettete Seite
  * kann sunbyte.at nicht wegnavigieren; _blank-Links öffnen normal.
@@ -33,7 +34,7 @@ export default function LiveFrame({
     const hostRef = useRef<HTMLDivElement | null>(null)
     const [scale, setScale] = useState(0)
     const [boxH, setBoxH] = useState(0)
-    const [visible, setVisible] = useState(false)
+    const [active, setActive] = useState(false)
     const [loaded, setLoaded] = useState(false)
 
     useEffect(() => {
@@ -51,20 +52,30 @@ export default function LiveFrame({
         const ro = new ResizeObserver(measure)
         ro.observe(el)
 
+        // Mount in Viewport-Nähe, Unmount mit Karenz wenn weit draußen —
+        // hält den Speicher klein (max. 1–2 lebende iframes).
+        let unmountTimer: ReturnType<typeof setTimeout> | undefined
         const io = new IntersectionObserver(
             entries => {
                 for (const e of entries) {
                     if (e.isIntersecting) {
-                        setVisible(true)
-                        io.disconnect()
+                        clearTimeout(unmountTimer)
+                        setActive(true)
+                    } else {
+                        clearTimeout(unmountTimer)
+                        unmountTimer = setTimeout(() => {
+                            setActive(false)
+                            setLoaded(false)
+                        }, 1200)
                     }
                 }
             },
-            { rootMargin: '300px 0px' },
+            { rootMargin: '500px 0px' },
         )
         io.observe(el)
 
         return () => {
+            clearTimeout(unmountTimer)
             ro.disconnect()
             io.disconnect()
         }
@@ -72,7 +83,7 @@ export default function LiveFrame({
 
     return (
         <div ref={hostRef} className="relative w-full h-full overflow-hidden">
-            {visible && scale > 0 && (
+            {active && scale > 0 && (
                 <iframe
                     src={url}
                     title={title}

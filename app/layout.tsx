@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
+import IdlePrefetch from '@/components/IdlePrefetch'
 import { ORGANIZATION, WEBSITE, SITE_URL, OG_IMAGE } from '@/lib/seo'
 
 const DESCRIPTION =
@@ -81,6 +82,7 @@ export default function RootLayout({
                 <Header />
                 <main id="main">{children}</main>
                 <Footer />
+                <IdlePrefetch />
             </body>
         </html>
     )

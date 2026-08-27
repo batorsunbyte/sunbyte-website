@@ -10,11 +10,11 @@ import { faqLd } from '@/lib/seo'
 const FAQ_ITEMS = [
     {
         q: 'Was macht Sunbyte?',
-        a: 'Sunbyte ist ein IT-Dienstleister aus Wien mit zwei Diensten: professionelle Webseiten (erstellen oder modernisieren, ab 2.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google und KI wie ChatGPT finden und weiterempfehlen.',
+        a: 'Sunbyte ist ein IT-Dienstleister aus Wien mit zwei Diensten: professionelle Webseiten (erstellen oder modernisieren, ab 3.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google und KI wie ChatGPT finden und weiterempfehlen.',
     },
     {
         q: 'Was kostet eine Website?',
-        a: 'Der Einstieg liegt bei ab 2.000 € (Paket Standard). Premium — das voll interaktive Erlebnis — startet ab 5.000 €. Du bekommst vorab einen klaren Fixpreis.',
+        a: 'Der Einstieg liegt bei ab 3.000 € (Paket Standard). Premium — das voll interaktive Erlebnis — startet ab 6.000 €. Du bekommst vorab einen klaren Fixpreis.',
     },
     {
         q: 'Was kostet KI-Sichtbarkeit?',

@@ -597,3 +597,16 @@ select option {
 @media (prefers-reduced-motion: reduce) {
     .live-dot { animation: none; }
 }
+
+/* ── Live-Fenster Erklär-Hinweis ───────────────────────────── */
+.hint-scroll-icon {
+    display: inline-block;
+    animation: hint-bounce 1.6s ease-in-out infinite;
+}
+@keyframes hint-bounce {
+    0%, 100% { transform: translateY(-3px); }
+    50% { transform: translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hint-scroll-icon { animation: none; }
+}

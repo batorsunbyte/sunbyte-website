@@ -215,8 +215,9 @@ export default function Cases() {
                     className="text-soft mt-6 max-w-xl leading-relaxed"
                     style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
                 >
-                    Keine Mockups, keine Konzepte — jede dieser Seiten
-                    arbeitet gerade für ihren Betrieb.
+                    Keine Mockups, keine Screenshots — jedes Fenster hier
+                    ist die echte, live eingebettete Website. Scroll und
+                    klick direkt hinein.
                 </p>
             </header>
 

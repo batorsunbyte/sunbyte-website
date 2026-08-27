@@ -161,37 +161,50 @@ export function CaseVisual({
             </div>
 
             {live && href ? (
-                <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
+                <div className="relative w-full">
                     {/* Desktop: echte Live-Seite, scroll- & klickbar */}
-                    <div className="hidden md:block w-full h-full">
+                    <div
+                        className="hidden md:block w-full"
+                        style={{ aspectRatio: '8 / 5' }}
+                    >
                         <LiveFrame
                             url={href}
                             title={`${name} — Live-Vorschau`}
                             poster={`/images/cases/${slug}.webp`}
                         />
                     </div>
-                    {/* Handy: scharfes Standbild, Tipp öffnet die Website —
-                        Live-iframes ruckeln auf Phones (Zakir-Test, iPhone) */}
-                    <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="md:hidden absolute inset-0 block"
-                        aria-label={`${name} — Website öffnen`}
+                    {/* Handy: Mobile-Ansicht der Seite als scrollbares Bild —
+                        butterweich, 0 iframes (Zakir: mobil scrollbar, ohne
+                        das iPhone-Ruckeln echter iframes) */}
+                    <div
+                        className="md:hidden relative w-full"
+                        style={{ aspectRatio: '4 / 5' }}
                     >
-                        <Image
-                            src={`/images/cases/${slug}.webp`}
-                            alt={`Website von ${name}`}
-                            fill
-                            priority={priority}
-                            sizes="100vw"
-                            className="object-cover object-top"
-                        />
-                        <span
+                        <div
+                            className="case-scroll absolute inset-0 overflow-y-auto"
+                            style={{ overscrollBehavior: 'contain' }}
+                        >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src={`/images/cases/${slug}-mobile.webp`}
+                                alt={`Website von ${name} — mobile Ansicht, scrollbar`}
+                                width={750}
+                                height={3600}
+                                loading={priority ? 'eager' : 'lazy'}
+                                decoding="async"
+                                className="w-full h-auto block"
+                            />
+                        </div>
+                        <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="mono-label absolute inline-flex items-center gap-1.5"
+                            aria-label={`${name} — Website öffnen`}
                             style={{
                                 right: '0.7rem',
                                 bottom: '0.7rem',
+                                zIndex: 5,
                                 background: 'rgba(14, 10, 5, 0.78)',
                                 color: 'var(--lit)',
                                 border: '1px solid rgba(232, 90, 31, 0.45)',
@@ -202,8 +215,8 @@ export function CaseVisual({
                             }}
                         >
                             webseite öffnen <span aria-hidden>↗</span>
-                        </span>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             ) : (
                 <div

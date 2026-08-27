@@ -23,6 +23,14 @@ const ROUTES = [
     '/kontakt/',
 ]
 
+const CASE_ORIGINS = [
+    'https://printmywall.at',
+    'https://impulsiv-fitness.at',
+    'https://kfz22.com',
+    'https://mstyle.beauty',
+    'https://safetypro-electrical.au',
+]
+
 const CASE_IMAGES = [
     '/images/cases/printmywall.webp',
     '/images/cases/impulsiv.webp',
@@ -61,6 +69,16 @@ export default function IdlePrefetch() {
                 l.rel = 'prefetch'
                 l.as = 'image'
                 l.href = href
+                document.head.appendChild(l)
+            }
+
+            // 3) DNS+TLS zu den Kunden-Domains vorwärmen (Live-Fenster
+            //    verbinden dann ohne Handshake-Wartezeit)
+            for (const origin of CASE_ORIGINS) {
+                const l = document.createElement('link')
+                l.rel = 'preconnect'
+                l.href = origin
+                l.crossOrigin = ''
                 document.head.appendChild(l)
             }
         }

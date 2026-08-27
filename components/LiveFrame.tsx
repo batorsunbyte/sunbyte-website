@@ -9,11 +9,10 @@ import { useEffect, useRef, useState } from 'react'
  * per transform auf Containerbreite verkleinert) — man scrollt und klickt
  * die ECHTE Seite im Fenster.
  *
- * Perf-Schutz (iOS-Memory-Fix, volle Interaktivität bleibt):
- *   - iframe lebt NUR, solange das Fenster in Viewport-Nähe ist (±500px).
- *     Scrollt es weit raus, wird es nach kurzer Karenz entladen (Poster
- *     kehrt zurück) — so sind nie mehr als 1–2 fremde Websites gleichzeitig
- *     im Speicher. Behebt den Safari-iOS-Zwangs-Reload bei 5 iframes.
+ * Perf (Desktop-only — Mobile rendert CaseVisual ein scrollbares Bild):
+ *   - iframe mountet SEHR früh (1600px Vorlauf) und bleibt dann geladen —
+ *     beim Einscrollen ist die Seite praktisch immer schon fertig, kein
+ *     sichtbares Nachladen mehr (Zakir-Feedback: 1–2 s Wartegefühl).
  *   - Bis zum Laden liegt der Screenshot als Poster darüber (kein Flackern).
  *
  * Sicherheit: sandbox ohne allow-top-navigation — die eingebettete Seite
@@ -56,25 +55,17 @@ export default function LiveFrame({
         const ro = new ResizeObserver(measure)
         ro.observe(el)
 
-        // Mount in Viewport-Nähe, Unmount mit Karenz wenn weit draußen —
-        // hält den Speicher klein (max. 1–2 lebende iframes).
-        let unmountTimer: ReturnType<typeof setTimeout> | undefined
+        // Sehr früh mounten, geladen lassen — Wartegefühl eliminieren.
         const io = new IntersectionObserver(
             entries => {
                 for (const e of entries) {
                     if (e.isIntersecting) {
-                        clearTimeout(unmountTimer)
                         setActive(true)
-                    } else {
-                        clearTimeout(unmountTimer)
-                        unmountTimer = setTimeout(() => {
-                            setActive(false)
-                            setLoaded(false)
-                        }, 1200)
+                        io.disconnect()
                     }
                 }
             },
-            { rootMargin: '500px 0px' },
+            { rootMargin: '1600px 0px' },
         )
         io.observe(el)
 
@@ -88,7 +79,6 @@ export default function LiveFrame({
         ioView.observe(el)
 
         return () => {
-            clearTimeout(unmountTimer)
             clearTimeout(hintTimer.current)
             ro.disconnect()
             io.disconnect()

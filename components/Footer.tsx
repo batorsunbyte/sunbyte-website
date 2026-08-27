@@ -70,10 +70,10 @@ export default function Footer() {
                     <FooterLink href="/impressum">Impressum</FooterLink>
                     <FooterLink href="/datenschutz">Datenschutz</FooterLink>
                     <a
-                        href="mailto:hallo@sunbyte.at"
+                        href="mailto:office@sunbyte.at"
                         className="text-soft hover:text-lit transition-colors text-sm"
                     >
-                        hallo@sunbyte.at
+                        office@sunbyte.at
                     </a>
                     <a
                         href={`https://wa.me/${CONTACT.whatsapp}`}

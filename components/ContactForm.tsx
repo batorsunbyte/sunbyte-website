@@ -201,7 +201,7 @@ export default function ContactForm() {
                 >
                     Hat nicht geklappt — bitte direkt per{' '}
                     <a
-                        href="mailto:hallo@sunbyte.at"
+                        href="mailto:office@sunbyte.at"
                         className="text-spark hover:text-lit transition-colors"
                     >
                         E-Mail

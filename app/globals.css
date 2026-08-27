@@ -599,14 +599,16 @@ select option {
 }
 
 /* ── Live-Fenster Erklär-Hinweis ───────────────────────────── */
-.hint-scroll-icon {
+.hint-swipe-icon {
     display: inline-block;
-    animation: hint-bounce 1.6s ease-in-out infinite;
+    animation: hint-swipe-up 1.8s ease-in-out infinite;
 }
-@keyframes hint-bounce {
-    0%, 100% { transform: translateY(-3px); }
-    50% { transform: translateY(3px); }
+@keyframes hint-swipe-up {
+    0%   { transform: translateY(9px); opacity: 0.45; }
+    45%  { transform: translateY(-7px); opacity: 1; }
+    70%  { transform: translateY(-7px); opacity: 1; }
+    100% { transform: translateY(9px); opacity: 0.45; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .hint-scroll-icon { animation: none; }
+    .hint-swipe-icon { animation: none; }
 }

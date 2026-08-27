@@ -167,11 +167,11 @@ export function CtaBand({
                 <Reveal delay={140} className="mt-9 flex flex-wrap gap-4">
                     <CtaButton href="/kontakt">{primaryLabel}</CtaButton>
                     <CtaButton
-                        href="mailto:hallo@sunbyte.at"
+                        href="mailto:office@sunbyte.at"
                         variant="ghost"
                         external
                     >
-                        hallo@sunbyte.at
+                        office@sunbyte.at
                     </CtaButton>
                 </Reveal>
                 <Reveal

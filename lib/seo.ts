@@ -11,7 +11,7 @@ export const OG_IMAGE = `${SITE_URL}/og-image.png`
 
 /** Kontaktdaten (aus PrintMyWall-Impressum übernommen) */
 export const CONTACT = {
-    email: 'hallo@sunbyte.at',
+    email: 'office@sunbyte.at',
     phone: '+43 660 3610642',
     phoneRaw: '+436603610642',
     whatsapp: '436603610642', // wa.me/<dieser Wert>

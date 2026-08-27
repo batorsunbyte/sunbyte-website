@@ -227,10 +227,10 @@ export default function Header() {
                     </nav>
 
                     <a
-                        href="mailto:hallo@sunbyte.at"
+                        href="mailto:office@sunbyte.at"
                         className="mono-label text-spark mt-12 inline-block"
                     >
-                        ↳ hallo@sunbyte.at
+                        ↳ office@sunbyte.at
                     </a>
                 </div>
             )}

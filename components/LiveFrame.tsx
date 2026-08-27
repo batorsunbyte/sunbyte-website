@@ -140,40 +140,49 @@ export default function LiveFrame({
                 <div
                     className="flex items-center gap-3.5"
                     style={{
-                        background: 'rgba(14, 10, 5, 0.82)',
-                        border: '1px solid rgba(232, 90, 31, 0.45)',
-                        borderRadius: '6px',
+                        background: 'rgba(30, 24, 18, 0.35)',
+                        border: '1px solid rgba(255, 255, 255, 0.28)',
+                        borderRadius: '10px',
                         padding: '0.9rem 1.3rem',
-                        backdropFilter: 'blur(6px)',
-                        boxShadow: '0 18px 50px -12px rgba(0,0,0,0.7)',
+                        backdropFilter: 'blur(14px) saturate(1.15)',
+                        WebkitBackdropFilter: 'blur(14px) saturate(1.15)',
+                        boxShadow:
+                            '0 18px 50px -12px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.22)',
                         maxWidth: '86%',
                     }}
                 >
                     <span
-                        className="hint-scroll-icon"
+                        className="hint-swipe-icon"
                         style={{
-                            fontSize: '1.35rem',
-                            color: 'var(--spark)',
+                            fontSize: '1.6rem',
                             lineHeight: 1,
                         }}
+                        role="img"
+                        aria-label="Nach oben wischen"
                     >
-                        ↕
+                        👆
                     </span>
                     <span>
                         <span
                             className="block"
                             style={{
-                                color: 'var(--lit)',
+                                color: '#fff',
                                 fontSize: '0.85rem',
                                 fontWeight: 600,
                                 lineHeight: 1.35,
+                                textShadow: '0 1px 6px rgba(0,0,0,0.55)',
                             }}
                         >
                             Das ist die echte Website — live.
                         </span>
                         <span
-                            className="block text-soft"
-                            style={{ fontSize: '0.78rem', lineHeight: 1.35 }}
+                            className="block"
+                            style={{
+                                color: 'rgba(255,255,255,0.85)',
+                                fontSize: '0.78rem',
+                                lineHeight: 1.35,
+                                textShadow: '0 1px 6px rgba(0,0,0,0.55)',
+                            }}
                         >
                             Scroll sie direkt hier im Fenster.
                         </span>

@@ -107,11 +107,37 @@ export default function Home() {
                                 className="group block"
                                 aria-label={`${c.name} — Website öffnen`}
                             >
-                                <CaseVisual
-                                    slug={c.slug}
-                                    domain={c.domain}
-                                    name={c.name}
-                                />
+                                <div className="relative">
+                                    <CaseVisual
+                                        slug={c.slug}
+                                        domain={c.domain}
+                                        name={c.name}
+                                    />
+                                    {/* Hover: verspricht das Live-Erlebnis */}
+                                    <span
+                                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        style={{
+                                            background: 'rgba(14,10,5,0.45)',
+                                            borderRadius: '8px',
+                                        }}
+                                        aria-hidden
+                                    >
+                                        <span
+                                            className="mono-label"
+                                            style={{
+                                                color: 'var(--lit)',
+                                                border: '1px solid rgba(255,243,228,0.35)',
+                                                background: 'rgba(14,10,5,0.6)',
+                                                padding: '0.7rem 1.2rem',
+                                                borderRadius: '3px',
+                                                fontSize: '0.65rem',
+                                                letterSpacing: '0.16em',
+                                            }}
+                                        >
+                                            live ansehen ↗
+                                        </span>
+                                    </span>
+                                </div>
                                 <div className="flex items-baseline justify-between mt-4 gap-4">
                                     <h3
                                         className="font-display"
@@ -137,7 +163,7 @@ export default function Home() {
 
                 <Reveal className="mt-12">
                     <CtaButton href="/arbeiten" variant="ghost">
-                        alle referenzen
+                        alle referenzen — live ansehen
                     </CtaButton>
                 </Reveal>
             </section>

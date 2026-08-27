@@ -34,6 +34,7 @@ export default function WebPackages() {
                         'Hochwertige Visuals & Bewegtbild',
                         'Konversions-getriebenes Layout',
                         'Lokale SEO & mehrsprachig optional',
+                        'E-Mail-Signatur zur Marke — inklusive',
                         'Auch: bestehende Seite modernisieren',
                     ]}
                 >

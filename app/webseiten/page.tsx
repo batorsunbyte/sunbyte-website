@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Reveal from '@/components/Reveal'
 import WebPackages from '@/components/WebPackages'
-import SitePreview from '@/components/SitePreview'
+import { CaseVisual } from '@/components/Cases'
 import Steps from '@/components/Steps'
 import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
@@ -114,12 +114,8 @@ export default function WebseitenPage() {
                             <CtaButton href="/kontakt">
                                 Projekt anfragen
                             </CtaButton>
-                            <CtaButton
-                                href="https://kfz22.com"
-                                variant="ghost"
-                                external
-                            >
-                                Referenz: kfz22
+                            <CtaButton href="/arbeiten" variant="ghost">
+                                alle referenzen
                             </CtaButton>
                         </Reveal>
                     </div>
@@ -127,13 +123,23 @@ export default function WebseitenPage() {
                     {/* Live-Vorschau: echte Seite, die wir gebaut haben */}
                     <div className="lg:col-span-6">
                         <Reveal delay={140}>
-                            <SitePreview url="https://kfz22.com" />
-                            <p
-                                className="mono-label text-muted mt-3"
+                            <CaseVisual
+                                slug="impulsiv"
+                                domain="impulsiv-fitness.at"
+                                name="Impulsiv Fitness"
+                                href="https://impulsiv-fitness.at"
+                                live
+                            />
+                            <a
+                                href="https://impulsiv-fitness.at"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
                                 style={{ fontSize: '0.58rem' }}
                             >
-                                ↳ kfz22.com — von uns gebaut, live im Netz
-                            </p>
+                                ↳ impulsiv-fitness.at — von uns gebaut, live im
+                                Netz ↗
+                            </a>
                         </Reveal>
                     </div>
                 </div>

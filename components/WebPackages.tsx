@@ -13,11 +13,11 @@ const Globe = dynamic(() => import('@/components/Globe'), { ssr: false })
  * Webseiten-Pakete: Standard + Premium.
  *
  * Tier-Mapping (Zakir 2026-06-26):
- *   - Standard = eigenständiges visuelles System, statischer Globe (kfz22-Niveau).
+ *   - Standard = eigenständiges visuelles System (mstyle.beauty-Niveau).
  *   - Premium  = das volle interaktive Erlebnis, voll animierter Globe (wie diese Seite).
  *
- * Visuals: Standard zeigt einen echten Kunden-Screenshot (kfz22) — Premium den
- * voll interaktiven Globe. Perf: nur EIN Canvas auf der Seite (Premium-Globe).
+ * Visuals: Standard zeigt die echte Kundenseite live (mstyle.beauty) — Premium
+ * den voll interaktiven Globe. Perf: 1 Canvas + IO-lazy Live-Frames.
  */
 export default function WebPackages() {
     return (
@@ -27,7 +27,7 @@ export default function WebPackages() {
                 <PackageCard
                     tier="standard"
                     price={PRICING.website.label}
-                    promise="Ein eigenständiges, hochwertiges visuelles System — wirkt sofort professionell. Wie kfz22."
+                    promise="Ein eigenständiges, hochwertiges visuelles System — wirkt sofort professionell. Wie mstyle.beauty."
                     bullets={[
                         'Eigenständige Designsprache, kein Template',
                         'Mehrseitige Architektur',
@@ -37,19 +37,24 @@ export default function WebPackages() {
                         'Auch: bestehende Seite modernisieren',
                     ]}
                 >
-                    <a
-                        href="https://kfz22.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative mx-auto w-full block"
-                        aria-label="kfz22.com öffnen"
-                    >
+                    <div className="relative mx-auto w-full">
                         <CaseVisual
-                            slug="kfz22"
-                            domain="kfz22.com"
-                            name="KFZ Technik 22"
+                            slug="mstyle"
+                            domain="mstyle.beauty"
+                            name="MStyle Beauty Lounge"
+                            href="https://mstyle.beauty"
+                            live
                         />
-                    </a>
+                        <a
+                            href="https://mstyle.beauty"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
+                            style={{ fontSize: '0.58rem' }}
+                        >
+                            ↳ mstyle.beauty ↗
+                        </a>
+                    </div>
                 </PackageCard>
             </Reveal>
 

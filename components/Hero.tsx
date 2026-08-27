@@ -217,21 +217,11 @@ export default function Hero() {
                 <div className="marquee-track">
                     {Array.from({ length: 10 }).map((_, i) => (
                         <span key={i} style={{ display: 'inline-flex' }}>
-                            <span>
-                                printmywall <i>↗</i>
-                            </span>
-                            <span>
-                                impulsiv fitness <i>↗</i>
-                            </span>
-                            <span>
-                                kfz22 <i>↗</i>
-                            </span>
-                            <span>
-                                mstyle beauty <i>↗</i>
-                            </span>
-                            <span>
-                                safety pro <i>↗</i>
-                            </span>
+                            <span>printmywall</span>
+                            <span>impulsiv fitness</span>
+                            <span>kfz22</span>
+                            <span>mstyle beauty</span>
+                            <span>safety pro</span>
                         </span>
                     ))}
                 </div>

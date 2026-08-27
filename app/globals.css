@@ -285,7 +285,7 @@ select option {
     will-change: transform;
 }
 .marquee-track > span {
-    padding: 0 3rem;
+    padding: 0 4.75rem;
     color: var(--muted);
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     letter-spacing: 0.16em;

@@ -139,7 +139,7 @@ export function CaseVisual({
                 )}
                 {live && (
                     <span
-                        className="mono-label text-spark hidden md:inline-flex items-center gap-1.5"
+                        className="mono-label text-spark inline-flex items-center gap-1.5"
                         style={{ fontSize: '0.55rem' }}
                         aria-hidden
                     >
@@ -152,32 +152,22 @@ export function CaseVisual({
                                 background: 'var(--spark)',
                             }}
                         />
-                        live · scrollen &amp; klicken
+                        live
+                        <span className="hidden md:inline">
+                            · scrollen &amp; klicken
+                        </span>
                     </span>
                 )}
             </div>
 
             {live && href ? (
                 <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
-                    {/* Desktop: echte Live-Seite */}
-                    <div className="hidden md:block w-full h-full">
-                        <LiveFrame
-                            url={href}
-                            title={`${name} — Live-Vorschau`}
-                            poster={`/images/cases/${slug}.webp`}
-                        />
-                    </div>
-                    {/* Mobile: statischer Ausschnitt (kein Nested-Scroll) */}
-                    <div className="md:hidden absolute inset-0">
-                        <Image
-                            src={`/images/cases/${slug}.webp`}
-                            alt={`Website von ${name}`}
-                            fill
-                            priority={priority}
-                            sizes="100vw"
-                            className="object-cover object-top"
-                        />
-                    </div>
+                    {/* Echte Live-Seite — auf allen Geräten scrollbar */}
+                    <LiveFrame
+                        url={href}
+                        title={`${name} — Live-Vorschau`}
+                        poster={`/images/cases/${slug}.webp`}
+                    />
                 </div>
             ) : (
                 <div

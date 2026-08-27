@@ -139,7 +139,7 @@ export function CaseVisual({
                 )}
                 {live && (
                     <span
-                        className="mono-label text-spark hidden md:inline-flex items-center gap-1.5"
+                        className="mono-label text-spark inline-flex items-center gap-1.5"
                         style={{ fontSize: '0.55rem' }}
                         aria-hidden
                     >
@@ -152,63 +152,22 @@ export function CaseVisual({
                                 background: 'var(--spark)',
                             }}
                         />
-                        live · scrollen
+                        live
+                        <span className="hidden md:inline">
+                            · scrollen &amp; klicken
+                        </span>
                     </span>
                 )}
             </div>
 
             {live && href ? (
-                <div className="relative w-full">
-                    {/* Desktop: Live-Vitrine — Container scrollt, iframe ist klick-tot */}
-                    <div
-                        className="case-scroll hidden md:block w-full"
-                        style={{
-                            aspectRatio: '8 / 5',
-                            overflowY: 'auto',
-                            overscrollBehavior: 'contain',
-                        }}
-                    >
-                        <LiveFrame
-                            url={href}
-                            title={`${name} — Live-Vorschau`}
-                            poster={`/images/cases/${slug}.webp`}
-                        />
-                    </div>
-                    {/* Mobile: statisch & federleicht (iOS-Memory!) */}
-                    <div
-                        className="md:hidden relative w-full"
-                        style={{ aspectRatio: '8 / 5' }}
-                    >
-                        <Image
-                            src={`/images/cases/${slug}.webp`}
-                            alt={`Website von ${name}`}
-                            fill
-                            priority={priority}
-                            sizes="100vw"
-                            className="object-cover object-top"
-                        />
-                    </div>
-                    {/* Eck-Button — der EINZIGE Weg zur Live-Site */}
-                    <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute mono-label inline-flex items-center gap-1.5 transition-all duration-300 hover:gap-2.5"
-                        style={{
-                            right: '0.9rem',
-                            bottom: '0.9rem',
-                            zIndex: 10,
-                            background: 'var(--spark)',
-                            color: 'var(--bg)',
-                            padding: '0.6rem 0.95rem',
-                            borderRadius: '3px',
-                            fontSize: '0.6rem',
-                            letterSpacing: '0.14em',
-                            boxShadow: '0 10px 28px -8px rgba(0,0,0,0.6)',
-                        }}
-                    >
-                        webseite besuchen <span aria-hidden>↗</span>
-                    </a>
+                <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
+                    {/* Echte Live-Seite — auf allen Geräten scrollbar */}
+                    <LiveFrame
+                        url={href}
+                        title={`${name} — Live-Vorschau`}
+                        poster={`/images/cases/${slug}.webp`}
+                    />
                 </div>
             ) : (
                 <div

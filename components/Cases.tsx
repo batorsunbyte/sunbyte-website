@@ -139,7 +139,7 @@ export function CaseVisual({
                 )}
                 {live && (
                     <span
-                        className="mono-label text-spark inline-flex items-center gap-1.5"
+                        className="mono-label text-spark hidden md:inline-flex items-center gap-1.5"
                         style={{ fontSize: '0.55rem' }}
                         aria-hidden
                     >
@@ -162,12 +162,48 @@ export function CaseVisual({
 
             {live && href ? (
                 <div className="relative w-full" style={{ aspectRatio: '8 / 5' }}>
-                    {/* Echte Live-Seite — auf allen Geräten scrollbar */}
-                    <LiveFrame
-                        url={href}
-                        title={`${name} — Live-Vorschau`}
-                        poster={`/images/cases/${slug}.webp`}
-                    />
+                    {/* Desktop: echte Live-Seite, scroll- & klickbar */}
+                    <div className="hidden md:block w-full h-full">
+                        <LiveFrame
+                            url={href}
+                            title={`${name} — Live-Vorschau`}
+                            poster={`/images/cases/${slug}.webp`}
+                        />
+                    </div>
+                    {/* Handy: scharfes Standbild, Tipp öffnet die Website —
+                        Live-iframes ruckeln auf Phones (Zakir-Test, iPhone) */}
+                    <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="md:hidden absolute inset-0 block"
+                        aria-label={`${name} — Website öffnen`}
+                    >
+                        <Image
+                            src={`/images/cases/${slug}.webp`}
+                            alt={`Website von ${name}`}
+                            fill
+                            priority={priority}
+                            sizes="100vw"
+                            className="object-cover object-top"
+                        />
+                        <span
+                            className="mono-label absolute inline-flex items-center gap-1.5"
+                            style={{
+                                right: '0.7rem',
+                                bottom: '0.7rem',
+                                background: 'rgba(14, 10, 5, 0.78)',
+                                color: 'var(--lit)',
+                                border: '1px solid rgba(232, 90, 31, 0.45)',
+                                padding: '0.45rem 0.7rem',
+                                borderRadius: '3px',
+                                fontSize: '0.56rem',
+                                letterSpacing: '0.14em',
+                            }}
+                        >
+                            webseite öffnen <span aria-hidden>↗</span>
+                        </span>
+                    </a>
                 </div>
             ) : (
                 <div

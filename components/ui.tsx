@@ -123,10 +123,12 @@ export function CtaBand({
     headline,
     sub,
     primaryLabel = 'projekt anfragen',
+    primaryHref = '/kontakt',
 }: {
     headline: ReactNode
     sub?: ReactNode
     primaryLabel?: string
+    primaryHref?: string
 }) {
     return (
         <section className="container-edge section-pad">
@@ -165,7 +167,7 @@ export function CtaBand({
                     </Reveal>
                 )}
                 <Reveal delay={140} className="mt-9 flex flex-wrap gap-4">
-                    <CtaButton href="/kontakt">{primaryLabel}</CtaButton>
+                    <CtaButton href={primaryHref}>{primaryLabel}</CtaButton>
                     <CtaButton
                         href="mailto:office@sunbyte.at"
                         variant="ghost"

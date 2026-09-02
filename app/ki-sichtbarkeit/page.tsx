@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import Steps from '@/components/Steps'
 import Faq from '@/components/Faq'
@@ -54,6 +55,10 @@ const FAQ_ITEMS = [
     {
         q: 'Was kostet das?',
         a: 'KI-Sichtbarkeit kostet 1.000 € als klares Paket. Du weißt von Anfang an, was du bekommst — Analyse, Umsetzung und einen belegten Vorher/Nachher-Report.',
+    },
+    {
+        q: 'Wie lange dauert das?',
+        a: 'Die Umsetzung selbst ist kompakt — den konkreten Zeitplan bekommst du im Erstgespräch. Ehrlich dazu: KI-Modelle übernehmen Änderungen nicht über Nacht. Der Vorher/Nachher-Report kommt, sobald der Effekt messbar ist.',
     },
     {
         q: 'Brauche ich dafür schon eine Website?',
@@ -115,7 +120,7 @@ export default function KiSichtbarkeitPage() {
                             <span className="text-lit">Fixpreis 1.000 €.</span>
                         </Reveal>
                         <Reveal delay={180} className="mt-9 flex flex-wrap gap-4">
-                            <CtaButton href="/kontakt">
+                            <CtaButton href="/kontakt/?thema=ki">
                                 Sichtbarkeit starten
                             </CtaButton>
                         </Reveal>
@@ -234,13 +239,40 @@ export default function KiSichtbarkeitPage() {
                                 und belegter Vorher/Nachher-Report.
                             </p>
                             <div className="mt-8">
-                                <CtaButton href="/kontakt">
+                                <CtaButton href="/kontakt/?thema=ki">
                                     Jetzt anfragen
                                 </CtaButton>
                             </div>
                         </Reveal>
                     </div>
                 </div>
+
+                {/* Cross-Sell: Basis-Argument fuer die Kombi */}
+                <Reveal className="mt-12 md:mt-16">
+                    <p
+                        className="mono-label text-spark mb-2"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ↳ noch keine website?
+                    </p>
+                    <p
+                        className="text-soft leading-relaxed"
+                        style={{
+                            fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
+                            maxWidth: '52ch',
+                        }}
+                    >
+                        Die stärkste Basis für KI-Sichtbarkeit ist eine saubere
+                        eigene Seite — wir bauen beides aus einer Hand.
+                    </p>
+                    <Link
+                        href="/webseiten"
+                        className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        webseiten ansehen →
+                    </Link>
+                </Reveal>
             </section>
 
             {/* FAQ */}
@@ -255,6 +287,7 @@ export default function KiSichtbarkeitPage() {
 
             {/* CTA */}
             <CtaBand
+                primaryHref="/kontakt/?thema=ki"
                 headline={
                     <>
                         Lass die KI für dich <Spark>arbeiten.</Spark>

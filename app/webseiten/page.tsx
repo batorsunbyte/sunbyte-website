@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 import WebPackages from '@/components/WebPackages'
 import { CaseVisual } from '@/components/Cases'
@@ -12,6 +13,10 @@ const FAQ_ITEMS = [
     {
         q: 'Was kostet eine Website bei Sunbyte?',
         a: 'Der Einstieg (Paket Standard) liegt bei ab 3.000 €. Premium mit vollem interaktivem Erlebnis startet ab 6.000 €. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
+    },
+    {
+        q: 'Was, wenn mir das Design nicht gefällt?',
+        a: 'Dann bauen wir nicht. Das Design wird vor dem Bau abgestimmt — du gibst Feedback, wir überarbeiten, bis es passt. Gebaut wird erst, wenn du sagst: genau so.',
     },
     {
         q: 'Wie lange dauert es, bis meine Seite live ist?',
@@ -28,6 +33,10 @@ const FAQ_ITEMS = [
     {
         q: 'Kann ich die Seite später selbst pflegen?',
         a: 'Klar. Wir richten dich so ein, dass du Inhalte selbst ändern kannst — oder wir übernehmen die laufende Pflege. Du entscheidest.',
+    },
+    {
+        q: 'Was kostet die Seite nach dem Launch?',
+        a: 'Nach der Übergabe gehört die Seite dir — samt allen Zugängen. Wenn du willst, übernehmen wir die laufende Betreuung für 500 € pro Quartal: Pflege, Updates, kleine Änderungen, direkter Draht. Optional, kein Muss.',
     },
 ]
 
@@ -111,7 +120,7 @@ export default function WebseitenPage() {
                             delay={180}
                             className="mt-9 flex flex-wrap gap-4"
                         >
-                            <CtaButton href="/kontakt">
+                            <CtaButton href="/kontakt/?thema=webseite">
                                 Projekt anfragen
                             </CtaButton>
                             <CtaButton href="/arbeiten" variant="ghost">
@@ -160,6 +169,59 @@ export default function WebseitenPage() {
                     className="mb-14 md:mb-20"
                 />
                 <WebPackages />
+
+                {/* Folgekosten-Einwand direkt bei den Preisen beantworten */}
+                <Reveal delay={120} className="mt-10 md:mt-12">
+                    <p
+                        className="mono-label text-spark mb-3"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ↳ und danach?
+                    </p>
+                    <p
+                        className="text-lit font-display-card"
+                        style={{ fontSize: 'clamp(1.15rem, 1.8vw, 1.4rem)' }}
+                    >
+                        Betreuung — 500 € pro Quartal
+                    </p>
+                    <p
+                        className="text-soft mt-2 leading-relaxed"
+                        style={{ maxWidth: '58ch' }}
+                    >
+                        Deine Seite bleibt schnell, sicher und aktuell. Pflege,
+                        Updates, kleine Änderungen — und ein direkter Draht zu
+                        dem, der sie gebaut hat. Optional: die Seite gehört dir
+                        auch ohne.
+                    </p>
+                </Reveal>
+
+                {/* Cross-Sell: die Kombi aktiv verkaufen */}
+                <Reveal className="mt-10 md:mt-12">
+                    <p
+                        className="mono-label text-spark mb-2"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ↳ dazu passt
+                    </p>
+                    <p
+                        className="text-soft leading-relaxed"
+                        style={{
+                            fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
+                            maxWidth: '52ch',
+                        }}
+                    >
+                        Deine neue Seite kann mehr, als gefunden werden — mit
+                        KI-Sichtbarkeit (1.000 € fix) machen wir sie auch für
+                        ChatGPT &amp; Co. lesbar.
+                    </p>
+                    <Link
+                        href="/ki-sichtbarkeit"
+                        className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ki-sichtbarkeit ansehen →
+                    </Link>
+                </Reveal>
             </section>
 
             {/* Ablauf */}

@@ -161,7 +161,7 @@ function PackageCard({
             </ul>
 
             <Link
-                href="/kontakt"
+                href="/kontakt/?thema=webseite"
                 className="mt-7 inline-flex items-center gap-2 font-mono transition-all hover:gap-3"
                 style={{
                     alignSelf: 'flex-start',

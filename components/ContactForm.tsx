@@ -26,10 +26,30 @@ const inputBase: React.CSSProperties = {
 
 const labelCls = 'mono-label text-muted'
 
+/* Vorauswahl je nach Absprungseite: /kontakt/?thema=webseite|ki|beides */
+const THEMA_MAP: Record<string, string> = {
+    webseite: 'Webseite',
+    ki: 'KI-Sichtbarkeit',
+    beides: 'Beides',
+}
+
 export default function ContactForm() {
     const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>(
         'idle',
     )
+    const [interesse, setInteresse] = useState('Webseite')
+
+    // Vorauswahl aus ?thema= lesen (rein clientseitig, static-export-sicher)
+    useEffect(() => {
+        try {
+            const thema = new URLSearchParams(window.location.search).get(
+                'thema',
+            )
+            if (thema && THEMA_MAP[thema]) setInteresse(THEMA_MAP[thema])
+        } catch {
+            /* egal — Default bleibt */
+        }
+    }, [])
     const okRef = useRef<HTMLDivElement>(null)
 
     // Fokus auf die Erfolgsmeldung setzen (A11y: Statuswechsel ansagen)
@@ -149,7 +169,8 @@ export default function ContactForm() {
                     <select
                         id="cf-service"
                         name="interesse"
-                        defaultValue="Webseite"
+                        value={interesse}
+                        onChange={e => setInteresse(e.target.value)}
                         className="mt-2 focus:border-spark"
                         style={inputBase}
                     >

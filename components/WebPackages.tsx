@@ -21,16 +21,17 @@ const Globe = dynamic(() => import('@/components/Globe'), { ssr: false })
  */
 export default function WebPackages() {
     return (
+        <>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
             {/* ─── Standard (= altes Premium) ─── */}
             <Reveal>
                 <PackageCard
                     tier="standard"
                     price={PRICING.website.label}
-                    promise="Ein eigenständiges, hochwertiges visuelles System — wirkt sofort professionell. Wie mstyle.beauty."
+                    promise="Deine Seite sieht aus wie für dich gemacht — nicht wie ein Baukasten. Überzeugt in Sekunden. Unten live: mstyle.beauty."
                     bullets={[
                         'Eigenständige Designsprache, kein Template',
-                        'Mehrseitige Architektur',
+                        'Mehrere Unterseiten, sauber strukturiert',
                         'Hochwertige Visuals & Bewegtbild',
                         'Konversions-getriebenes Layout',
                         'Lokale SEO & mehrsprachig optional',
@@ -64,14 +65,14 @@ export default function WebPackages() {
                 <PackageCard
                     tier="premium"
                     price={PRICING.websitePremium.label}
-                    promise="Das volle Erlebnis — voll interaktiv, mit narrativem Scrollen und Custom-Animationen. Wie diese Seite."
+                    promise="Eine Seite, die selbst zum Erlebnis wird — Animationen, die hängen bleiben. Du bist gerade auf so einer."
                     accent
                     bullets={[
                         'Alles aus Standard — inklusive',
                         'Voll interaktive Hero-Sektion',
                         'Custom-Animationen & narratives Scrollen',
                         'Signature-Interaktion (wie unser Welt-Globus)',
-                        'Performance-Audit ohne Kompromisse',
+                        'Aufwendige Animationen — trotzdem schnell. Wir messen nach.',
                     ]}
                 >
                     <div
@@ -89,6 +90,14 @@ export default function WebPackages() {
                 </PackageCard>
             </Reveal>
         </div>
+        <p
+            className="mono-label text-muted mt-8"
+            style={{ fontSize: '0.62rem' }}
+        >
+            ↳ unsicher, welches passt? sag im erstgespräch, was du vorhast —
+            wir sagen dir ehrlich, was reicht.
+        </p>
+        </>
     )
 }
 

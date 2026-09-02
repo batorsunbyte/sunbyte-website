@@ -22,7 +22,7 @@ const STEPS = [
     },
     {
         title: 'Strukturierte Daten',
-        text: 'Wir versehen deine Seite mit sauberem schema.org-Markup (JSON-LD), das LLMs eindeutig verstehen — wer du bist, was du tust, wo.',
+        text: 'Deine Seite bekommt einen Steckbrief im Format, das KI-Modelle eindeutig lesen (schema.org) — wer du bist, was du tust, wo.',
     },
     {
         title: 'KI-lesbare Präsenz',
@@ -36,9 +36,9 @@ const STEPS = [
 
 const DELIVERABLES = [
     'KI-Sichtbarkeits-Analyse: Ist-Stand mit echten Abfragen',
-    'Vollständiges schema.org / JSON-LD für deine Seite',
+    'Ein Steckbrief deiner Firma, den KI-Modelle eindeutig lesen (schema.org)',
     'KI-lesbare, klar strukturierte Inhalte',
-    'Konsistente Unternehmensdaten in den relevanten Quellen',
+    'Deine Firmendaten überall gleich — in den Quellen, aus denen KI lernt',
     'Vorher/Nachher-Report — belegt, nicht behauptet',
     'Konkrete Empfehlungen für die nächsten Schritte',
 ]
@@ -91,7 +91,7 @@ export default function KiSichtbarkeitPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div className="lg:col-span-7">
                         <Reveal as="p" className="mono-label text-spark mb-5">
-                            leistung · ki-sichtbarkeit
+                            ki-sichtbarkeit · wien
                         </Reveal>
                         <Reveal
                             as="h1"
@@ -235,8 +235,11 @@ export default function KiSichtbarkeitPage() {
                                 className="text-soft mt-3 leading-snug"
                                 style={{ fontSize: '0.95rem' }}
                             >
-                                Klares Paket, fixer Preis. Analyse, Umsetzung
-                                und belegter Vorher/Nachher-Report.
+                                Ein Paket, ein Fixpreis. Am Ende hältst du den
+                                Beweis in der Hand: derselbe Fragenkatalog an
+                                ChatGPT, Perplexity und Gemini — vor unserer
+                                Arbeit und danach. Kein Versprechen — ein
+                                Messergebnis.
                             </p>
                             <div className="mt-8">
                                 <CtaButton href="/kontakt/?thema=ki">

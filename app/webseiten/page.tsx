@@ -12,7 +12,11 @@ import { serviceLd, faqLd, breadcrumbLd, PRICING } from '@/lib/seo'
 const FAQ_ITEMS = [
     {
         q: 'Was kostet eine Website bei Sunbyte?',
-        a: 'Der Einstieg (Paket Standard) liegt bei ab 3.000 €. Premium mit vollem interaktivem Erlebnis startet ab 6.000 €. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten.',
+        a: 'Der Einstieg (Paket Standard) liegt bei ab 3.000 €. Premium mit vollem interaktivem Erlebnis startet ab 6.000 €. Du bekommst vorab einen klaren Fixpreis — keine versteckten Kosten. Was deinen Preis bestimmt: der Umfang der Seite, ob Inhalte schon da sind oder entstehen, und Extras wie Mehrsprachigkeit.',
+    },
+    {
+        q: 'Was genau ist im Preis enthalten?',
+        a: 'Alles, was deine Seite zum Laufen braucht: Konzept, Struktur, alle Texte, Design, Umsetzung, Bild-Aufbereitung, SEO-Basics und der Launch auf deiner Domain. Du lieferst dein Wissen und dein Feedback — den Rest übernehmen wir. Der Fixpreis steht schriftlich fest, bevor wir starten.',
     },
     {
         q: 'Was, wenn mir das Design nicht gefällt?',
@@ -62,8 +66,8 @@ const STEPS = [
         text: 'Wir verstehen dein Geschäft, deine Ziele und deine Zielgruppe. Gratis und unverbindlich.',
     },
     {
-        title: 'Konzept & Design',
-        text: 'Struktur, Texte und ein eigenständiges Design — abgestimmt, bevor eine Zeile Code entsteht.',
+        title: 'Konzept & Fixpreis',
+        text: 'Struktur, Texte, ein eigenständiges Design — und dein Fixpreis, schriftlich. Alles steht, bevor eine Zeile Code entsteht.',
     },
     {
         title: 'Build',
@@ -87,7 +91,7 @@ export default function WebseitenPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
                     <div className="lg:col-span-6">
                         <Reveal as="p" className="mono-label text-spark mb-5">
-                            leistung · webseiten
+                            webdesign wien · ab 3.000 €
                         </Reveal>
                         <Reveal
                             as="h1"
@@ -165,7 +169,7 @@ export default function WebseitenPage() {
                             <Spark>Sieh den Unterschied.</Spark>
                         </>
                     }
-                    sub="Beide hochwertig. Standard bringt dir ein eigenständiges visuelles System — Premium legt das volle interaktive Erlebnis obendrauf, wie auf dieser Seite."
+                    sub="Beide hochwertig, beide ohne Baukasten. Der Unterschied: Standard überzeugt deine Kunden — Premium bleibt ihnen im Kopf."
                     className="mb-14 md:mb-20"
                 />
                 <WebPackages />
@@ -227,7 +231,57 @@ export default function WebseitenPage() {
             {/* Ablauf */}
             <section className="container-edge section-pad pt-0 md:pt-0">
                 <SectionHeader
-                    kicker="02 — ablauf"
+                    kicker="02 — was drin ist"
+                    title={
+                        <>
+                            Ein Fixpreis. <Spark>Alles drin.</Spark>
+                        </>
+                    }
+                    sub="Fixpreis heißt bei uns: Da kommt keine Position später dazu. So teilen wir uns die Arbeit."
+                    className="mb-12 md:mb-16"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+                    <div>
+                        <p className="mono-label text-spark mb-4">wir liefern</p>
+                        <ul className="space-y-2.5 text-soft text-[0.95rem] leading-relaxed">
+                            {[
+                                'Konzept und Seitenstruktur — auf dein Geschäft gebaut',
+                                'Alle Texte — aus deinem Wissen, in deiner Sprache',
+                                'Design, Bau und Launch auf deiner Domain',
+                                'Auswahl und Aufbereitung deiner Bilder',
+                                'Saubere Technik, die schnell lädt und gefunden wird',
+                                'Persönliche Übergabe — du verstehst, was du bekommst',
+                            ].map(t => (
+                                <li key={t} className="flex gap-2.5">
+                                    <span aria-hidden className="text-spark">↳</span>
+                                    <span>{t}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <p className="mono-label text-spark mb-4">du lieferst</p>
+                        <ul className="space-y-2.5 text-soft text-[0.95rem] leading-relaxed">
+                            {[
+                                'Ein Gespräch über dein Geschäft — mehr Vorbereitung brauchst du nicht',
+                                'Fotos, falls du welche hast — sonst finden wir eine Lösung',
+                                'Feedback zu Konzept und Design — bevor gebaut wird',
+                                'Dein Go zum Launch',
+                            ].map(t => (
+                                <li key={t} className="flex gap-2.5">
+                                    <span aria-hidden className="text-spark">↳</span>
+                                    <span>{t}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            {/* Ablauf */}
+            <section className="container-edge section-pad pt-0 md:pt-0">
+                <SectionHeader
+                    kicker="03 — ablauf"
                     title={
                         <>
                             Klar von Anfang <Spark>bis Launch.</Spark>
@@ -241,7 +295,7 @@ export default function WebseitenPage() {
             {/* FAQ */}
             <section className="container-edge section-pad pt-0 md:pt-0">
                 <SectionHeader
-                    kicker="03 — faq"
+                    kicker="04 — faq"
                     title={<>Häufige Fragen.</>}
                     className="mb-10 md:mb-14"
                 />

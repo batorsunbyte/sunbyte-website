@@ -20,6 +20,8 @@ export interface CaseItem {
     href?: string
     /** Ein Satz. Ergebnis, nicht Feature. */
     outcome: string
+    /** Zwei Sätze Kontext — nur belegbare Fakten, Branchen-Keyword zuerst. */
+    desc: string
     meta: string
     status: 'live' | 'entwicklung'
 }
@@ -33,6 +35,7 @@ export const CASES: CaseItem[] = [
         outcome:
             'Unsere eigene Marke, unser Schaufenster — hier zeigen wir, was wir können, bevor wir es verkaufen.',
         meta: 'eigene marke · direktdruck auf wände',
+        desc: 'Website für unsere eigene Marke — Direktdruck auf Wände, Wien. Hier testen wir zuerst, was wir Kunden verkaufen.',
         status: 'live',
     },
     {
@@ -43,6 +46,7 @@ export const CASES: CaseItem[] = [
         outcome:
             'Ein 4,9-Sterne-Studio hatte keinen Auftritt auf diesem Niveau. Jetzt schon.',
         meta: 'ems-studio · wien 1210',
+        desc: 'Website für ein EMS-Fitnessstudio in Wien-Floridsdorf — Lead-Generierung mit WhatsApp-Kontakt, lokalem SEO und Live-Öffnungsstatus.',
         status: 'live',
     },
     {
@@ -53,6 +57,7 @@ export const CASES: CaseItem[] = [
         outcome:
             'Vorher ohne Website — heute der Meisterbetrieb, den man in der Donaustadt findet.',
         meta: 'kfz-werkstatt · wien 1220',
+        desc: 'Website für eine KFZ-Werkstatt in Wien-Donaustadt — mit Leistungsübersicht vom §57a-Pickerl bis zum Reifenservice und direkter Kontaktaufnahme.',
         status: 'live',
     },
     {
@@ -63,6 +68,7 @@ export const CASES: CaseItem[] = [
         outcome:
             'Drei Sprachen, ein Look: Eleganz, die aus Besucherinnen Termine macht.',
         meta: 'beautysalon · wien 1210',
+        desc: 'Website für einen Damen-Beautysalon am Floridsdorfer Markt, Wien — dreisprachig (Deutsch, Englisch, Arabisch) inklusive QR-Visitenkarte.',
         status: 'live',
     },
     {
@@ -73,6 +79,7 @@ export const CASES: CaseItem[] = [
         outcome:
             'Vertrauen auf den ersten Blick — Anfragen aus ganz Südost-Melbourne.',
         meta: 'elektriker · melbourne au',
+        desc: 'Website für einen Elektriker in Melbourne, Australien — Lead-Generierung für Südost-Melbourne. Zeigt: wir bauen nicht nur für Wien.',
         status: 'live',
     },
 ]
@@ -264,9 +271,9 @@ export default function Cases() {
                     className="text-soft mt-6 max-w-xl leading-relaxed"
                     style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                 >
-                    Keine Mockups, keine Screenshots — jedes Fenster hier
-                    ist die echte, live eingebettete Website. Scroll und
-                    klick direkt hinein.
+                    Webdesign-Referenzen aus Wien — jedes Fenster hier ist
+                    die echte, live eingebettete Website. Kein Mockup, kein
+                    Konzept-PDF. Scroll und klick direkt hinein.
                 </p>
             </header>
 
@@ -373,6 +380,13 @@ function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
                 }}
             >
                 {item.outcome}
+            </p>
+
+            <p
+                className="text-muted leading-relaxed mb-6"
+                style={{ fontSize: '0.85rem', maxWidth: '40ch' }}
+            >
+                {item.desc}
             </p>
 
             <p className="mono-label text-muted" style={{ fontSize: '0.62rem' }}>

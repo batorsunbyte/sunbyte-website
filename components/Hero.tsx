@@ -120,7 +120,7 @@ export default function Hero() {
                         className="text-soft max-w-[40ch] leading-relaxed hero-reveal-3"
                         style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                     >
-                        Premium-Webauftritte und KI-Sichtbarkeit aus Wien.
+                        Webdesign und KI-Sichtbarkeit aus Wien.
                         Damit dich Kunden finden — und die KI dich empfiehlt.
                     </p>
 

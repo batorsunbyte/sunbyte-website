@@ -311,7 +311,7 @@ export default function Cases() {
                             nicht, ohne dass die Qualität leidet.
                         </p>
                         <CtaButton href="/kontakt">
-                            slot anfragen
+                            projekt anfragen
                         </CtaButton>
                     </div>
                 </Reveal>

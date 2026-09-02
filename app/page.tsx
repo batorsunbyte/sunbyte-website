@@ -5,6 +5,7 @@ import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
 import { CASES, CaseVisual } from '@/components/Cases'
+import ProofBar from '@/components/ProofBar'
 import { faqLd } from '@/lib/seo'
 
 const FAQ_ITEMS = [
@@ -39,32 +40,7 @@ export default function Home() {
             <JsonLd data={faqLd(FAQ_ITEMS)} />
             <Hero />
 
-            {/* ── Proof-Strip ─────────────────────────────── */}
-            <section
-                className="container-edge"
-                style={{
-                    borderBottom: '1px solid rgba(201, 184, 163, 0.10)',
-                }}
-            >
-                <Reveal>
-                    <div className="flex flex-wrap items-center gap-x-10 gap-y-3 py-7">
-                        {[
-                            '5 projekte live im netz',
-                            'wien · melbourne',
-                            'antwort < 24 h',
-                            'noch 2 slots für 2026',
-                        ].map(t => (
-                            <span
-                                key={t}
-                                className="mono-label text-muted"
-                                style={{ fontSize: '0.62rem' }}
-                            >
-                                ↳ {t}
-                            </span>
-                        ))}
-                    </div>
-                </Reveal>
-            </section>
+            <ProofBar />
 
             {/* ── 01 Leistungen ───────────────────────────── */}
             <section className="container-edge section-pad">
@@ -166,6 +142,70 @@ export default function Home() {
                         alle referenzen — live ansehen
                     </CtaButton>
                 </Reveal>
+            </section>
+
+            {/* ── 03 So läuft's ───────────────────────────── */}
+            <section className="container-edge section-pad">
+                <SectionHeader
+                    kicker="03 — ablauf"
+                    title={
+                        <>
+                            So läuft das.
+                            <br />
+                            <Spark>Ohne Überraschungen.</Spark>
+                        </>
+                    }
+                    sub="Du weißt vorher, was passiert, was es kostet und wann du was siehst."
+                    className="mb-12 md:mb-16"
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                    {[
+                        {
+                            n: '01',
+                            t: 'gespräch',
+                            d: 'Gratis und unverbindlich. Du erzählst, wir hören zu — Antwort in unter 24 Stunden.',
+                        },
+                        {
+                            n: '02',
+                            t: 'konzept & fixpreis',
+                            d: 'Struktur, Texte und Design werden abgestimmt, bevor eine Zeile Code entsteht. Dazu ein Angebot mit klarem Fixpreis.',
+                        },
+                        {
+                            n: '03',
+                            t: 'bau & übergabe',
+                            d: 'Du siehst laufend Fortschritt, nicht erst am Ende. Am Schluss gehört die Seite dir — inklusive Zugängen.',
+                        },
+                    ].map((s, i) => (
+                        <Reveal key={s.n} delay={i * 80}>
+                            <div
+                                style={{
+                                    borderTop: '1px solid rgba(232, 90, 31, 0.35)',
+                                    paddingTop: '1.4rem',
+                                }}
+                            >
+                                <span className="mono-label text-spark">
+                                    {s.n}
+                                </span>
+                                <h3
+                                    className="font-display mt-3 mb-3"
+                                    style={{
+                                        fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
+                                        color: 'var(--lit)',
+                                    }}
+                                >
+                                    {s.t}
+                                </h3>
+                                <p
+                                    className="text-soft leading-relaxed"
+                                    style={{ fontSize: '0.98rem', maxWidth: '30ch' }}
+                                >
+                                    {s.d}
+                                </p>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
             </section>
 
             {/* ── Vision-Zeile ────────────────────────────── */}

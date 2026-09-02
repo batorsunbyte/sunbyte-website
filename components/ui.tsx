@@ -122,7 +122,7 @@ export function CtaButton({
 export function CtaBand({
     headline,
     sub,
-    primaryLabel = 'Projekt anfragen',
+    primaryLabel = 'projekt anfragen',
 }: {
     headline: ReactNode
     sub?: ReactNode
@@ -180,8 +180,8 @@ export function CtaBand({
                     className="mono-label text-muted mt-4"
                     style={{ fontSize: '0.6rem' }}
                 >
-                    ↳ erstgespräch gratis &amp; unverbindlich · antwort meist
-                    in 24 h
+                    ↳ erstgespräch gratis &amp; unverbindlich · fixpreis vor
+                    dem start · du redest mit dem, der baut
                 </Reveal>
             </div>
         </section>

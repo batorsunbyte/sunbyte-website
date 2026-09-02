@@ -63,10 +63,15 @@ const FAQ_ITEMS = [
     {
         q: 'Brauche ich dafür schon eine Website?',
         a: 'Eine eigene Seite ist die stärkste Basis, weil wir sie technisch sauber für KI aufbereiten können. Falls du noch keine hast, kombinieren wir das gern mit unserem Webseiten-Dienst.',
+        more: { label: 'webseite erstellen lassen — ab 3.000 €', href: '/webseiten' },
     },
     {
         q: 'Könnt ihr garantieren, dass ChatGPT mich nennt?',
         a: 'Seriös kann das niemand zu 100 % garantieren — die Modelle ändern sich laufend. Was wir garantieren: die Arbeit, die deine Chancen messbar erhöht, plus einen ehrlichen Report, der den Effekt zeigt.',
+    },
+    {
+        q: 'Und wenn sich die KI-Modelle wieder ändern?',
+        a: 'Das tun sie — laufend. Deshalb gibt es auf Wunsch Betreuung um 500 € pro Quartal: Wir prüfen regelmäßig, wie du genannt wirst, und halten deine Daten aktuell. Ohne Betreuung bekommst du im Report konkrete Empfehlungen, wie du selbst dranbleibst.',
     },
 ]
 

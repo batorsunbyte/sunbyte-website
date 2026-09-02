@@ -124,7 +124,17 @@ export default function Studio() {
                         <FactRow term="Erfahrung" def="20+ Jahre IT & KI" />
                         <FactRow term="Fokus" def="Web · KI-Sichtbarkeit" />
                         <FactRow term="Sprachen" def="Deutsch · Englisch" />
+                        <FactRow term="Rechtsform" def="Sunbyte e.U." />
+                        <FactRow term="UID" def="ATU82574019" />
                     </dl>
+                    {/* Amtlich prüfbar — der einzige Vertrauensanker, den
+                        niemand behaupten kann */}
+                    <p
+                        className="mono-label text-muted mt-4"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ↳ gewerbe öffentlich prüfbar im gisa — nr. 39725530
+                    </p>
                 </div>
 
                 {/* Rechte Spalte: Quote + Story mit Mask-Reveal */}
@@ -193,9 +203,10 @@ export default function Studio() {
                             >
                                 Wir bauen Sunbyte zu einer{' '}
                                 <span className="text-lit">IT-Weltmacht</span> —
-                                Schritt für Schritt, Projekt für Projekt. Was
-                                hier in Wien entsteht, soll Maßstäbe setzen, nicht
-                                hinterherlaufen.
+                                Schritt für Schritt, Projekt für Projekt. Das
+                                heißt für dich: Wir können uns kein
+                                mittelmäßiges Projekt leisten. Jede Seite, die
+                                wir übergeben, muss für uns werben.
                             </p>
                         </div>
 

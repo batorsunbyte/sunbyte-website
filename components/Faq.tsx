@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 
 /**
@@ -8,6 +9,8 @@ import Reveal from '@/components/Reveal'
 export interface FaqItem {
     q: string
     a: string
+    /** Optionaler Weiterlese-Link unter der Antwort (interne Verlinkung) */
+    more?: { label: string; href: string }
 }
 
 export default function Faq({ items }: { items: FaqItem[] }) {
@@ -43,7 +46,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
                             </span>
                         </summary>
                         <p
-                            className="text-soft leading-relaxed pb-6 pr-10"
+                            className={`text-soft leading-relaxed pr-10 ${it.more ? 'pb-4' : 'pb-6'}`}
                             style={{
                                 fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
                                 maxWidth: '60ch',
@@ -51,6 +54,15 @@ export default function Faq({ items }: { items: FaqItem[] }) {
                         >
                             {it.a}
                         </p>
+                        {it.more && (
+                            <Link
+                                href={it.more.href}
+                                className="mono-label text-spark inline-flex items-center gap-2 hover:gap-3 transition-all mb-6"
+                                style={{ fontSize: '0.66rem' }}
+                            >
+                                <span aria-hidden>↳</span> {it.more.label}
+                            </Link>
+                        )}
                     </details>
                 </Reveal>
             ))}

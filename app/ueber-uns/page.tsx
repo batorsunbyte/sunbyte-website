@@ -45,10 +45,10 @@ export default function UeberUnsPage() {
             <CtaBand
                 headline={
                     <>
-                        Werd Teil der <Spark>Geschichte.</Spark>
+                        Überzeug dich <Spark>selbst.</Spark>
                     </>
                 }
-                sub="Ob Website oder KI-Sichtbarkeit — wir bauen deinen Auftritt mit demselben Anspruch, mit dem wir Sunbyte bauen."
+                sub="Erzähl uns, was du vorhast — du bekommst eine ehrliche Einschätzung, ob und wie wir es bauen würden. Entscheiden kannst du danach."
             />
         </>
     )

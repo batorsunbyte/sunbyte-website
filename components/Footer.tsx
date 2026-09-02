@@ -51,6 +51,9 @@ export default function Footer() {
                     <FooterLink href="/ki-sichtbarkeit">
                         KI-Sichtbarkeit
                     </FooterLink>
+                    <FooterLink href="/was-kostet-eine-website">
+                        Was kostet eine Website?
+                    </FooterLink>
                     <FooterLink href="/arbeiten">Referenzen</FooterLink>
                     <FooterLink href="/ueber-uns">Über uns</FooterLink>
                     <FooterLink href="/kontakt">Kontakt</FooterLink>

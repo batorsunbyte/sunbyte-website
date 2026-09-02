@@ -14,6 +14,8 @@ interface Service {
     price: string
     promise: string
     bullets: string[]
+    /** Sprechender Link-Text — Keyword-Signal statt 'mehr erfahren' */
+    cta: string
     accent?: boolean
 }
 
@@ -29,6 +31,7 @@ const SERVICES: Service[] = [
             'Mobile-first, schnell, SEO-sauber',
             'Pakete: Standard & Premium',
         ],
+        cta: 'webseite erstellen lassen',
     },
     {
         href: '/ki-sichtbarkeit',
@@ -42,6 +45,7 @@ const SERVICES: Service[] = [
             'Strukturierte Daten, die LLMs lesen',
             'Präsenz in den Quellen, die KI nutzt',
         ],
+        cta: "ki-sichtbarkeit — so funktioniert's",
         accent: true,
     },
 ]
@@ -110,7 +114,7 @@ export default function ServiceTeaserCards() {
                             className="mt-auto inline-flex items-center gap-2 mono-label text-spark group-hover:gap-3 transition-all"
                             style={{ fontSize: '0.7rem' }}
                         >
-                            mehr erfahren <span aria-hidden>→</span>
+                            {s.cta} <span aria-hidden>→</span>
                         </span>
                     </Link>
                 </Reveal>

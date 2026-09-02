@@ -33,14 +33,15 @@ const FAQ_ITEMS = [
     {
         q: 'Ist SEO inklusive?',
         a: 'SEO-Basics (saubere Technik, Struktur, Meta-Daten, mobil & schnell) sind immer dabei. Auf Wunsch erweitern wir um lokale SEO für Wien und KI-Sichtbarkeit.',
+        more: { label: 'mehr zu ki-sichtbarkeit — 1.000 € fix', href: '/ki-sichtbarkeit' },
     },
     {
         q: 'Kann ich die Seite später selbst pflegen?',
-        a: 'Klar. Wir richten dich so ein, dass du Inhalte selbst ändern kannst — oder wir übernehmen die laufende Pflege. Du entscheidest.',
+        a: 'Ja. Die Seite gehört dir — fertig bezahlt, keine Pflicht zu laufenden Kosten bei uns. Wir richten dich so ein, dass du Inhalte selbst ändern kannst. Oder wir übernehmen die Betreuung — siehe nächste Frage. Du entscheidest, die Seite läuft auch ohne uns.',
     },
     {
         q: 'Was kostet die Seite nach dem Launch?',
-        a: 'Nach der Übergabe gehört die Seite dir — samt allen Zugängen. Wenn du willst, übernehmen wir die laufende Betreuung für 500 € pro Quartal: Pflege, Updates, kleine Änderungen, direkter Draht. Optional, kein Muss.',
+        a: 'Nach der Übergabe gehört die Seite dir — samt allen Zugängen. Laufend bleiben nur Domain und Hosting. Wenn du willst, übernehmen wir die Betreuung: 500 € pro Quartal für Updates, kleine Anpassungen, Technik-Checks und einen direkten Draht, wenn etwas ist. Optional, kein Muss.',
     },
 ]
 
@@ -75,7 +76,7 @@ const STEPS = [
     },
     {
         title: 'Launch & Betreuung',
-        text: 'Live-Schaltung, Übergabe und auf Wunsch laufende Pflege. Direkter Draht, kein Ticket-System.',
+        text: 'Live-Schaltung und persönliche Übergabe. Danach auf Wunsch: Betreuung um 500 € pro Quartal — direkter Draht, kein Ticket-System.',
     },
 ]
 
@@ -228,10 +229,50 @@ export default function WebseitenPage() {
                 </Reveal>
             </section>
 
-            {/* Ablauf */}
+            {/* Preise — die Frage, die jeder googelt, offen beantwortet */}
             <section className="container-edge section-pad pt-0 md:pt-0">
                 <SectionHeader
-                    kicker="02 — was drin ist"
+                    kicker="02 — preise"
+                    title={
+                        <>
+                            Was kostet eine Website <Spark>in Wien?</Spark>
+                        </>
+                    }
+                    className="mb-8 md:mb-10"
+                />
+                <Reveal
+                    as="p"
+                    className="text-soft leading-relaxed"
+                    style={{
+                        fontSize: 'clamp(1rem, 1.4vw, 1.2rem)',
+                        maxWidth: '62ch',
+                    }}
+                >
+                    Ehrliche Antwort: bei uns ab 3.000 €. Dafür bekommst du
+                    keine Template-Seite, sondern ein eigenständiges Design,
+                    sauberes SEO und einen Auftritt, der verkauft. Premium —
+                    das volle interaktive Erlebnis, wie auf dieser Seite —
+                    startet ab 6.000 €. Der Preis hängt am Umfang: wie viele
+                    Seiten, wie viel Inhalt, wie viel Interaktion. Was er nie
+                    tut: sich nachträglich ändern. Du bekommst vor dem Start
+                    einen Fixpreis — und der gilt. Keine Stundensätze, die
+                    davonlaufen.
+                </Reveal>
+                <Reveal delay={80} className="mt-5">
+                    <Link
+                        href="/was-kostet-eine-website"
+                        className="mono-label text-muted hover:text-spark transition-colors"
+                        style={{ fontSize: '0.62rem' }}
+                    >
+                        ↳ ausführlich: was kostet eine website in österreich? →
+                    </Link>
+                </Reveal>
+            </section>
+
+            {/* Was drin ist */}
+            <section className="container-edge section-pad pt-0 md:pt-0">
+                <SectionHeader
+                    kicker="03 — was drin ist"
                     title={
                         <>
                             Ein Fixpreis. <Spark>Alles drin.</Spark>
@@ -281,7 +322,7 @@ export default function WebseitenPage() {
             {/* Ablauf */}
             <section className="container-edge section-pad pt-0 md:pt-0">
                 <SectionHeader
-                    kicker="03 — ablauf"
+                    kicker="04 — ablauf"
                     title={
                         <>
                             Klar von Anfang <Spark>bis Launch.</Spark>
@@ -295,7 +336,7 @@ export default function WebseitenPage() {
             {/* FAQ */}
             <section className="container-edge section-pad pt-0 md:pt-0">
                 <SectionHeader
-                    kicker="04 — faq"
+                    kicker="05 — faq"
                     title={<>Häufige Fragen.</>}
                     className="mb-10 md:mb-14"
                 />

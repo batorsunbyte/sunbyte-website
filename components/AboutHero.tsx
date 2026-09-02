@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Reveal from '@/components/Reveal'
 
 /**
@@ -105,7 +106,19 @@ export default function AboutHero() {
                         <Reveal as="p" delay={90} style={paraStyle}>
                             Ich komme vom Machen, nicht vom Reden. Was ich
                             verspreche, baue ich selbst — und gebe es erst aus der
-                            Hand, wenn es mich selbst überzeugt.
+                            Hand, wenn es mich selbst überzeugt. Glauben musst du
+                            mir das nicht —{' '}
+                            <Link
+                                href="/arbeiten"
+                                className="text-lit hover:text-spark transition-colors"
+                                style={{
+                                    textDecoration: 'underline',
+                                    textUnderlineOffset: '3px',
+                                }}
+                            >
+                                fünf Projekte sind live, klick sie an
+                            </Link>
+                            .
                         </Reveal>
 
                         <Reveal as="p" delay={120} style={paraStyle}>

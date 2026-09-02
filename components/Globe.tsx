@@ -402,9 +402,9 @@ export default function Globe({
 
     // 3) Sync autoRotate-Prop -> stateRef
     useEffect(() => {
-        stateRef.current.autoRot = autoRotate && !reducedMotion
+        stateRef.current.autoRot = autoRotate && !reducedMotion && !isTouch
         stateRef.current.dirty = true
-    }, [autoRotate, reducedMotion])
+    }, [autoRotate, reducedMotion, isTouch])
 
     // 4) Interactive: Pointer-Handler
     useEffect(() => {
@@ -546,7 +546,9 @@ export default function Globe({
                 aria-label={ariaLabel}
                 role="img"
                 className={`relative block w-full ${cursorClass}`}
-                style={{ zIndex: 1 }}
+                /* aspectRatio reserviert die Flaeche ab dem ersten Frame —
+                   ohne das springt das Layout, sobald JS den Canvas misst (CLS). */
+                style={{ zIndex: 1, aspectRatio: '1 / 1' }}
             />
 
             {/* Wien-Marker */}

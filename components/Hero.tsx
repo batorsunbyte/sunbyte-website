@@ -103,7 +103,7 @@ export default function Hero() {
 
                     {/* Headline */}
                     <h1
-                        className="font-display hero-reveal-2"
+                        className="font-display hero-headline"
                         style={{
                             fontSize: 'clamp(3rem, 9.5vw, 7rem)',
                             color: 'var(--lit)',

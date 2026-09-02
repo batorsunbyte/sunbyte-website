@@ -73,6 +73,33 @@ export default function RootLayout({
 }) {
     return (
         <html lang="de-AT">
+            <head>
+                {/* Schriften vorladen: startet den Download parallel zum CSS
+                    statt erst danach. Spart eine komplette Wasserfall-Stufe —
+                    auf Mobilfunk der groesste Einzelgewinn beim ersten Laden.
+                    Nur die drei Schnitte, die im ersten Bildschirm vorkommen. */}
+                <link
+                    rel="preload"
+                    href="/fonts/fraunces-900.woff2"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/inter-tight-400.woff2"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="anonymous"
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/jetbrains-mono-400.woff2"
+                    as="font"
+                    type="font/woff2"
+                    crossOrigin="anonymous"
+                />
+            </head>
             <body>
                 <a href="#main" className="skip-link">
                     Zum Inhalt springen

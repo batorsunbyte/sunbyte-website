@@ -11,32 +11,20 @@ import { useEffect } from 'react'
  *      Safari/Firefox ignorieren das Script einfach.
  *   2. <link rel="prefetch"> für die Referenz-Screenshots (Poster der
  *      Live-Fenster) — /arbeiten fühlt sich sofort "fertig" an.
- *   3. Die Route-Payloads für Client-Navigation prefetcht Next über die
+ *   2b. Die Route-Payloads für Client-Navigation prefetcht Next über die
  *      <Link>s im Header bereits selbst.
  */
 
-const ROUTES = [
-    '/webseiten/',
-    '/ki-sichtbarkeit/',
-    '/arbeiten/',
-    '/ueber-uns/',
-    '/kontakt/',
-]
+// Nur die zwei Routen, die von der Startseite aus real am haeufigsten
+// angesteuert werden. Frueher standen hier alle 5 — das war Datenvolumen
+// fuer Seiten, die die meisten Besucher nie oeffnen.
+const ROUTES = ['/webseiten/', '/arbeiten/']
 
-const CASE_ORIGINS = [
-    'https://printmywall.at',
-    'https://impulsiv-fitness.at',
-    'https://kfz22.com',
-    'https://mstyle.beauty',
-    'https://safetypro-electrical.au',
-]
-
+// Nur die Bilder, die auf /arbeiten zuerst sichtbar werden.
+// safetypro lag frueher mit drin, kommt aber auf der Startseite gar nicht vor.
 const CASE_IMAGES = [
     '/images/cases/printmywall.webp',
     '/images/cases/impulsiv.webp',
-    '/images/cases/kfz22.webp',
-    '/images/cases/mstyle.webp',
-    '/images/cases/safetypro.webp',
 ]
 
 export default function IdlePrefetch() {
@@ -45,6 +33,23 @@ export default function IdlePrefetch() {
         const run = () => {
             if (done) return
             done = true
+
+            // Auf langsamer Verbindung oder im Datensparmodus NICHT vorladen —
+            // dort konkurriert der Vorlauf mit dem, was der Nutzer gerade sieht.
+            const conn = (
+                navigator as Navigator & {
+                    connection?: { saveData?: boolean; effectiveType?: string }
+                }
+            ).connection
+            if (
+                conn &&
+                (conn.saveData === true ||
+                    conn.effectiveType === 'slow-2g' ||
+                    conn.effectiveType === '2g' ||
+                    conn.effectiveType === '3g')
+            ) {
+                return
+            }
 
             // 1) Speculation Rules (progressive enhancement)
             try {
@@ -72,15 +77,6 @@ export default function IdlePrefetch() {
                 document.head.appendChild(l)
             }
 
-            // 3) DNS+TLS zu den Kunden-Domains vorwärmen (Live-Fenster
-            //    verbinden dann ohne Handshake-Wartezeit)
-            for (const origin of CASE_ORIGINS) {
-                const l = document.createElement('link')
-                l.rel = 'preconnect'
-                l.href = origin
-                l.crossOrigin = ''
-                document.head.appendChild(l)
-            }
         }
 
         const idle = () => {

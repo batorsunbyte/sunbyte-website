@@ -1,10 +1,55 @@
-/* Self-hosted fonts via @fontsource (Open-Source, kein CDN) */
-@import '@fontsource/fraunces/latin-400.css';
-@import '@fontsource/fraunces/latin-900.css';
-@import '@fontsource/fraunces/latin-900-italic.css';
-@import '@fontsource/inter-tight/latin-400.css';
-@import '@fontsource/inter-tight/latin-500.css';
-@import '@fontsource/jetbrains-mono/latin-400.css';
+/* Schriften: selbst gehostet, selbst zugeschnitten (kein CDN, kein @import).
+ *
+ * Warum eigene @font-face statt @fontsource-Imports (Perf-Fix 02.09.2026):
+ *   1. Die Dateien liegen unter /fonts/ (public/) und haben damit stabile URLs
+ *      ohne Build-Hash — nur so laesst sich <link rel="preload"> in layout.tsx
+ *      zuverlaessig setzen. Das spart eine komplette Wasserfall-Stufe:
+ *      frueher HTML -> CSS -> Schrift, jetzt starten HTML und Schrift zugleich.
+ *   2. Zugeschnitten auf die tatsaechlich benoetigten Zeichen (Latin + Umlaute
+ *      + Typografie): 106 KB -> 85 KB.
+ *   3. Fraunces 400 ist ersatzlos entfallen — keine einzige Regel hat den
+ *      Schnitt je selektiert (spart weitere 18 KB).
+ * Erzeugt mit: py -3 -m fontTools.subset (Skript siehe scripts/ bzw. Doku).
+ */
+
+/* --- kritisch: wird in app/layout.tsx preloadet --- */
+@font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('/fonts/fraunces-900.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter Tight';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/inter-tight-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+}
+
+/* --- unkritisch: laedt erst, wenn wirklich gebraucht --- */
+@font-face {
+    font-family: 'Inter Tight';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/inter-tight-500.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Fraunces';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url('/fonts/fraunces-900-italic.woff2') format('woff2');
+}
 
 @tailwind base;
 @tailwind components;
@@ -170,16 +215,24 @@
 
 /* Wiederverwendbare Scroll-Reveal-Utility (getrieben von <Reveal>) */
 .reveal-item {
+    /* Sichtbar per Default! Frueher stand hier opacity:0 — damit war die
+       komplette Seite unterhalb des Hero unsichtbar, bis React geladen und
+       hydriert hatte. Auf langsamen Handys hiess das: leere Seite.
+       Die Einblende-Animation wird jetzt erst scharf geschaltet, wenn JS
+       laeuft UND das Element ausserhalb des Sichtfelds liegt (.is-armed). */
+    transition:
+        opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-item.is-armed {
     opacity: 0;
     transform: translateY(1.5rem);
-    transition:
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 .reveal-item.is-visible {
     opacity: 1;
     transform: none;
+    will-change: auto;
 }
 
 /* A11y: Skip-Link + sichtbarer Tastatur-Fokus */
@@ -241,7 +294,7 @@ select option {
     z-index: 6;
     background: var(--bg);
     pointer-events: none;
-    animation: lights-up 1.1s ease forwards;
+    animation: lights-up 0.45s ease forwards;
 }
 @keyframes lights-up {
     to {
@@ -351,16 +404,29 @@ select option {
     }
 }
 .hero-reveal {
-    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.4s;
+    animation: hero-reveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0s;
+}
+/* H1: NIE per opacity verstecken — sie ist das LCP-Element und muss ab dem
+   ersten Frame lesbar sein. Nur eine dezente Aufwaerts-Bewegung. */
+.hero-headline {
+    animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes hero-rise {
+    from {
+        transform: translateY(0.6rem);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 .hero-reveal-2 {
-    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.6s;
+    animation: hero-reveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.06s;
 }
 .hero-reveal-3 {
-    animation: hero-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.8s;
+    animation: hero-reveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.14s;
 }
 
 /* ─── Anflug-Geste (Sektion G, Hybrid) ────────────────────────── */
@@ -521,6 +587,7 @@ select option {
     .curtain,
     .marquee-track,
     .hero-reveal,
+    .hero-headline,
     .hero-reveal-2,
     .hero-reveal-3,
     .spark-flyer,
@@ -533,8 +600,14 @@ select option {
         display: none;
     }
     .hero-reveal,
+    .hero-headline,
     .hero-reveal-2,
     .hero-reveal-3 {
+        opacity: 1;
+        transform: none;
+    }
+    .reveal-item,
+    .reveal-item.is-armed {
         opacity: 1;
         transform: none;
     }

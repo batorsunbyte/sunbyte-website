@@ -48,7 +48,7 @@ export function SectionHeader({
                     delay={120}
                     className="text-soft mt-6 leading-relaxed"
                     style={{
-                        fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                        fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
                         maxWidth: '36rem',
                     }}
                 >
@@ -157,7 +157,7 @@ export function CtaBand({
                         delay={80}
                         className="text-soft mt-5 leading-relaxed"
                         style={{
-                            fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                            fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
                             maxWidth: '46ch',
                         }}
                     >
@@ -177,8 +177,12 @@ export function CtaBand({
                 <Reveal
                     as="p"
                     delay={200}
-                    className="mono-label text-muted mt-4"
-                    style={{ fontSize: '0.6rem' }}
+                    className="mono-label text-soft mt-5"
+                    style={{
+                        fontSize: '0.72rem',
+                        lineHeight: 1.9,
+                        maxWidth: '52ch',
+                    }}
                 >
                     ↳ erstgespräch gratis &amp; unverbindlich · fixpreis vor
                     dem start · du redest mit dem, der baut

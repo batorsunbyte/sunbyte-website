@@ -132,7 +132,7 @@ export function CaseVisual({
                 {domain && (
                     <span
                         className="mono-label text-muted mx-auto"
-                        style={{ fontSize: '0.58rem' }}
+                        style={{ fontSize: '0.62rem' }}
                     >
                         {domain}
                     </span>
@@ -140,7 +140,7 @@ export function CaseVisual({
                 {live && (
                     <span
                         className="mono-label text-spark hidden md:inline-flex items-center gap-1.5"
-                        style={{ fontSize: '0.55rem' }}
+                        style={{ fontSize: '0.62rem' }}
                         aria-hidden
                     >
                         <span
@@ -208,9 +208,9 @@ export function CaseVisual({
                                 background: 'rgba(14, 10, 5, 0.78)',
                                 color: 'var(--lit)',
                                 border: '1px solid rgba(232, 90, 31, 0.45)',
-                                padding: '0.45rem 0.7rem',
+                                padding: '0.6rem 0.95rem',
+                                minHeight: '44px',
                                 borderRadius: '3px',
-                                fontSize: '0.56rem',
                                 letterSpacing: '0.14em',
                             }}
                         >
@@ -262,7 +262,7 @@ export default function Cases() {
                 </h1>
                 <p
                     className="text-soft mt-6 max-w-xl leading-relaxed"
-                    style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
+                    style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                 >
                     Keine Mockups, keine Screenshots — jedes Fenster hier
                     ist die echte, live eingebettete Website. Scroll und
@@ -291,7 +291,7 @@ export default function Cases() {
                             freier slot · 2026
                         </p>
                         <h2
-                            className="font-display mb-5"
+                            className="font-display-card mb-5"
                             style={{
                                 fontSize: 'clamp(1.9rem, 4vw, 3.25rem)',
                                 color: 'var(--lit)',
@@ -356,7 +356,7 @@ function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
             </div>
 
             <h2
-                className="font-display mb-4"
+                className="font-display-card mb-4"
                 style={{
                     fontSize: 'clamp(1.75rem, 3.4vw, 2.9rem)',
                     color: 'var(--lit)',

@@ -212,7 +212,7 @@ export default function ContactForm() {
 
             <p
                 className="mono-label text-muted"
-                style={{ fontSize: '0.58rem' }}
+                style={{ fontSize: '0.62rem' }}
             >
                 ↳ erstgespräch gratis &amp; unverbindlich · deine daten nur
                 für deine anfrage

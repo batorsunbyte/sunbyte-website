@@ -134,7 +134,6 @@ function Block({
         <section>
             <h2
                 className="mono-label text-spark mb-3"
-                style={{ fontSize: '0.66rem' }}
             >
                 {title}
             </h2>

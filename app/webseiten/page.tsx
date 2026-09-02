@@ -135,7 +135,7 @@ export default function WebseitenPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
-                                style={{ fontSize: '0.58rem' }}
+                                style={{ fontSize: '0.62rem' }}
                             >
                                 ↳ impulsiv-fitness.at — von uns gebaut, live im
                                 Netz ↗

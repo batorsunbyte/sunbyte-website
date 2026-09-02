@@ -123,11 +123,18 @@
         text-transform: lowercase;
     }
 
-    .mono-label {
+    .font-display-card {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+
+.mono-label {
         font-family: 'JetBrains Mono', ui-monospace, monospace;
         letter-spacing: 0.16em;
         text-transform: lowercase;
-        font-size: 0.66rem;
+        font-size: 0.7rem;
         font-weight: 400;
     }
 }
@@ -343,7 +350,7 @@ select option {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     letter-spacing: 0.16em;
     text-transform: lowercase;
-    font-size: 0.66rem;
+    font-size: 0.7rem;
 }
 .marquee-track > span > i {
     color: var(--spark);
@@ -507,7 +514,7 @@ select option {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     letter-spacing: 0.16em;
     text-transform: lowercase;
-    font-size: 0.55rem;
+    font-size: 0.62rem;
     text-shadow: 0 0 6px #000;
     pointer-events: none;
     opacity: 0;

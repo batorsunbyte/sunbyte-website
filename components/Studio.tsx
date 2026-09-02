@@ -153,7 +153,6 @@ export default function Studio() {
                         <div className="story-line story-line-2 mt-4">
                             <span
                                 className="story-inner mono-label text-spark"
-                                style={{ fontSize: '0.66rem' }}
                             >
                                 — das sunbyte-team
                             </span>
@@ -169,7 +168,7 @@ export default function Studio() {
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
                                 }}
                             >
                                 <span className="text-lit">
@@ -189,7 +188,7 @@ export default function Studio() {
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
                                 }}
                             >
                                 Wir bauen Sunbyte zu einer{' '}
@@ -207,7 +206,7 @@ export default function Studio() {
                             <p
                                 className="story-inner"
                                 style={{
-                                    fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)',
+                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
                                 }}
                             >
                                 <span className="text-lit">Heute:</span>{' '}
@@ -225,7 +224,6 @@ export default function Studio() {
                             <p
                                 className="story-inner mono-label text-spark pt-4"
                                 style={{
-                                    fontSize: '0.66rem',
                                     borderTop:
                                         '1px solid rgba(201, 184, 163, 0.1)',
                                 }}
@@ -357,7 +355,7 @@ function AnchorGesture() {
                     left: `calc(${WIEN_X_PCT}% + 12px)`,
                     top: `calc(${WIEN_Y_PCT}% - 8px)`,
                     color: 'var(--lit)',
-                    fontSize: '0.55rem',
+                    fontSize: '0.62rem',
                     textShadow: '0 0 6px #000',
                     opacity: 0,
                     pointerEvents: 'none',

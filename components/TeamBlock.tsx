@@ -73,7 +73,7 @@ export default function TeamBlock() {
 
                     <p
                         className="text-soft leading-relaxed mb-7"
-                        style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)' }}
+                        style={{ fontSize: 'clamp(1rem, 1.2vw, 1.05rem)' }}
                     >
                         {m.line}
                     </p>
@@ -84,7 +84,7 @@ export default function TeamBlock() {
                                 key={t}
                                 className="mono-label text-soft"
                                 style={{
-                                    fontSize: '0.58rem',
+                                    fontSize: '0.62rem',
                                     border: '1px solid rgba(201, 184, 163, 0.2)',
                                     borderRadius: '3px',
                                     padding: '0.35rem 0.6rem',

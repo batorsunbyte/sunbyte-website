@@ -45,7 +45,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
                         <p
                             className="text-soft leading-relaxed pb-6 pr-10"
                             style={{
-                                fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)',
+                                fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
                                 maxWidth: '60ch',
                             }}
                         >

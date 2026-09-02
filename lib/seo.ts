@@ -15,7 +15,7 @@ export const CONTACT = {
     phone: '+43 660 3610642',
     phoneRaw: '+436603610642',
     whatsapp: '436603610642', // wa.me/<dieser Wert>
-    street: 'Jeldersdorfer Straße',
+    street: 'Jedlersdorfer Straße',
     zip: '1210',
     city: 'Wien',
     country: 'Österreich',

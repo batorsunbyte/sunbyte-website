@@ -116,7 +116,7 @@ export default function Home() {
                                 </div>
                                 <div className="flex items-baseline justify-between mt-4 gap-4">
                                     <h3
-                                        className="font-display"
+                                        className="font-display-card"
                                         style={{
                                             fontSize:
                                                 'clamp(1.2rem, 2vw, 1.6rem)',
@@ -188,7 +188,7 @@ export default function Home() {
                                     {s.n}
                                 </span>
                                 <h3
-                                    className="font-display mt-3 mb-3"
+                                    className="font-display-card mt-3 mb-3"
                                     style={{
                                         fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
                                         color: 'var(--lit)',
@@ -198,7 +198,7 @@ export default function Home() {
                                 </h3>
                                 <p
                                     className="text-soft leading-relaxed"
-                                    style={{ fontSize: '0.98rem', maxWidth: '30ch' }}
+                                    style={{ fontSize: '1rem', maxWidth: '30ch' }}
                                 >
                                     {s.d}
                                 </p>

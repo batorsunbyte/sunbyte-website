@@ -60,7 +60,6 @@ export default function Contact() {
                     <Reveal>
                         <p
                             className="mono-label text-muted mb-2"
-                            style={{ fontSize: '0.66rem' }}
                         >
                             ↳ lieber direkt?
                         </p>
@@ -87,7 +86,6 @@ export default function Contact() {
                     <Reveal delay={60}>
                         <p
                             className="mono-label text-muted mb-2"
-                            style={{ fontSize: '0.66rem' }}
                         >
                             ↳ anruf / whatsapp
                         </p>
@@ -115,14 +113,13 @@ export default function Contact() {
                     <Reveal delay={120}>
                         <p
                             className="mono-label text-muted mb-2"
-                            style={{ fontSize: '0.66rem' }}
                         >
                             ↳ standort
                         </p>
                         <p
                             className="text-soft leading-snug"
                             style={{
-                                fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)',
+                                fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
                             }}
                         >
                             {CONTACT.street}, {CONTACT.zip} {CONTACT.city},{' '}
@@ -135,9 +132,8 @@ export default function Contact() {
             {/* Bottom-Hinweis */}
             <p
                 className="mt-16 mono-label text-muted"
-                style={{ fontSize: '0.66rem' }}
             >
-                ↳ aktuell offen für projekte ab h2 2026
+                ↳ noch 2 projekt-slots für 2026
             </p>
         </section>
     )

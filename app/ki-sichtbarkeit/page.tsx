@@ -184,7 +184,7 @@ export default function KiSichtbarkeitPage() {
                                     delay={i * 50}
                                     className="flex gap-3 text-soft leading-relaxed"
                                     style={{
-                                        fontSize: 'clamp(0.98rem, 1.2vw, 1.1rem)',
+                                        fontSize: 'clamp(1rem, 1.2vw, 1.1rem)',
                                         borderBottom:
                                             '1px solid rgba(201,184,163,0.1)',
                                         paddingBottom: '1rem',
@@ -213,7 +213,6 @@ export default function KiSichtbarkeitPage() {
                         >
                             <p
                                 className="mono-label text-spark mb-4"
-                                style={{ fontSize: '0.66rem' }}
                             >
                                 ki-sichtbarkeit
                             </p>
@@ -289,7 +288,6 @@ function EnginesPanel() {
         >
             <p
                 className="mono-label text-spark mb-6"
-                style={{ fontSize: '0.66rem' }}
             >
                 ↳ wo deine kunden jetzt fragen
             </p>
@@ -334,7 +332,7 @@ function EnginesPanel() {
             <p
                 className="text-soft leading-snug mt-6 pt-5"
                 style={{
-                    fontSize: 'clamp(0.9rem, 1.1vw, 0.98rem)',
+                    fontSize: '1rem',
                     borderTop: '1px solid rgba(201, 184, 163, 0.1)',
                 }}
             >

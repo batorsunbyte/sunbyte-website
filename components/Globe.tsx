@@ -592,7 +592,7 @@ export default function Globe({
                             color: 'var(--lit)',
                             whiteSpace: 'nowrap',
                             textShadow: '0 0 6px #000',
-                            fontSize: '0.56rem',
+                            fontSize: '0.62rem',
                         }}
                     >
                         wien

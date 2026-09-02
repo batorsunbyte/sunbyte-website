@@ -51,7 +51,7 @@ export default function WebPackages() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="mono-label text-muted hover:text-spark transition-colors mt-3 inline-block"
-                            style={{ fontSize: '0.58rem' }}
+                            style={{ fontSize: '0.62rem' }}
                         >
                             ↳ mstyle.beauty ↗
                         </a>
@@ -149,7 +149,7 @@ function PackageCard({
                 {children}
             </div>
 
-            <ul className="space-y-2.5 text-soft text-sm leading-relaxed mt-auto">
+            <ul className="space-y-2.5 text-soft text-[0.95rem] leading-relaxed mt-auto">
                 {bullets.map((b, i) => (
                     <li key={i} className="flex gap-2.5">
                         <span aria-hidden className="text-spark">
@@ -172,7 +172,6 @@ function PackageCard({
                         : '1px solid rgba(201, 184, 163, 0.3)',
                     padding: '0.75rem 1.3rem',
                     borderRadius: '3px',
-                    fontSize: '0.66rem',
                     letterSpacing: '0.16em',
                 }}
             >

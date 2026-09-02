@@ -406,7 +406,7 @@ export default function SolarSystem({
                     aria-label="Sonnensystem vergrößern"
                     className="absolute top-2 right-2 inline-flex items-center gap-1.5 mono-label transition-colors hover:text-lit"
                     style={{
-                        fontSize: '0.56rem',
+                        fontSize: '0.62rem',
                         color: 'var(--soft)',
                         background: 'rgba(14,10,5,0.55)',
                         border: '1px solid rgba(201,184,163,0.2)',
@@ -481,7 +481,7 @@ export default function SolarSystem({
                                             className="text-soft leading-relaxed"
                                             style={{
                                                 fontSize:
-                                                    'clamp(0.95rem, 1.4vw, 1.15rem)',
+                                                    'clamp(1rem, 1.4vw, 1.15rem)',
                                             }}
                                         >
                                             {sel.detail}
@@ -492,7 +492,7 @@ export default function SolarSystem({
                                         className="text-soft leading-relaxed"
                                         style={{
                                             fontSize:
-                                                'clamp(0.95rem, 1.4vw, 1.15rem)',
+                                                'clamp(1rem, 1.4vw, 1.15rem)',
                                         }}
                                     >
                                         {touchRef.current ? 'Tippe' : 'Klick'}{' '}

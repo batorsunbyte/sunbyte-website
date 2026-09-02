@@ -40,7 +40,7 @@ export default function Steps({ steps }: { steps: Step[] }) {
                     </h3>
                     <p
                         className="text-soft leading-relaxed"
-                        style={{ fontSize: 'clamp(0.9rem, 1.1vw, 0.98rem)' }}
+                        style={{ fontSize: '1rem' }}
                     >
                         {s.text}
                     </p>

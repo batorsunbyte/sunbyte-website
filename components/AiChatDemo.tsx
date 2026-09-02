@@ -167,7 +167,7 @@ export default function AiChatDemo() {
             {/* Prompt */}
             <p
                 className="mono-label text-muted mb-2"
-                style={{ fontSize: '0.58rem' }}
+                style={{ fontSize: '0.62rem' }}
             >
                 du fragst die ki
             </p>
@@ -197,7 +197,7 @@ export default function AiChatDemo() {
             >
                 <p
                     className="mono-label text-spark mb-2"
-                    style={{ fontSize: '0.58rem' }}
+                    style={{ fontSize: '0.62rem' }}
                 >
                     die ki antwortet
                 </p>
@@ -236,7 +236,7 @@ export default function AiChatDemo() {
             <p
                 className="mono-label text-muted mt-6"
                 style={{
-                    fontSize: '0.56rem',
+                    fontSize: '0.62rem',
                     opacity: phase === 'done' ? 1 : 0,
                     transition: 'opacity 0.5s ease',
                 }}

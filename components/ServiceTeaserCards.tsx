@@ -76,7 +76,7 @@ export default function ServiceTeaserCards() {
                         </div>
 
                         <h3
-                            className="font-display mb-3"
+                            className="font-display-card mb-3"
                             style={{
                                 fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)',
                                 color: 'var(--lit)',
@@ -95,7 +95,7 @@ export default function ServiceTeaserCards() {
                             {s.promise}
                         </p>
 
-                        <ul className="space-y-2.5 mb-9 text-soft text-sm leading-relaxed">
+                        <ul className="space-y-2.5 mb-9 text-soft text-[0.95rem] leading-relaxed">
                             {s.bullets.map((b, j) => (
                                 <li key={j} className="flex gap-2.5">
                                     <span aria-hidden className="text-spark">

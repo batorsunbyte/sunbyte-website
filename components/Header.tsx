@@ -115,7 +115,7 @@ export default function Header() {
                     <nav
                         aria-label="Hauptnavigation"
                         className="hidden md:flex items-center gap-7 font-mono"
-                        style={{ fontSize: '0.66rem' }}
+                        style={{ fontSize: '0.72rem' }}
                     >
                         {NAV.map(item => (
                             <Link
@@ -144,7 +144,7 @@ export default function Header() {
                             color: 'var(--bg)',
                             padding: '0.6rem 1.1rem',
                             borderRadius: '3px',
-                            fontSize: '0.66rem',
+                            fontSize: '0.72rem',
                             letterSpacing: '0.16em',
                         }}
                     >

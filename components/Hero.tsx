@@ -87,14 +87,13 @@ export default function Hero() {
                     >
                         <div
                             className="mono-label text-spark mb-2"
-                            style={{ fontSize: '0.66rem' }}
                         >
                             {info.n}
                         </div>
                         <div
                             className="text-soft leading-relaxed max-w-[34ch]"
                             style={{
-                                fontSize: 'clamp(0.95rem, 1.4vw, 1.12rem)',
+                                fontSize: 'clamp(1rem, 1.4vw, 1.12rem)',
                             }}
                         >
                             {info.t}
@@ -119,7 +118,7 @@ export default function Hero() {
                     {/* Sub */}
                     <p
                         className="text-soft max-w-[40ch] leading-relaxed hero-reveal-3"
-                        style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
+                        style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                     >
                         Premium-Webauftritte und KI-Sichtbarkeit aus Wien.
                         Damit dich Kunden finden — und die KI dich empfiehlt.

@@ -108,7 +108,7 @@ export default function SitePreview({
                     </span>
                     <span
                         className="mono-label text-muted ml-2 truncate"
-                        style={{ fontSize: '0.58rem' }}
+                        style={{ fontSize: '0.62rem' }}
                     >
                         {dom}
                     </span>
@@ -175,7 +175,7 @@ export default function SitePreview({
                         <span
                             className="mono-label opacity-0 group-hover:opacity-100 transition-opacity"
                             style={{
-                                fontSize: '0.58rem',
+                                fontSize: '0.62rem',
                                 color: 'var(--lit)',
                                 background: 'rgba(14,10,5,0.8)',
                                 border: '1px solid rgba(232,90,31,0.4)',

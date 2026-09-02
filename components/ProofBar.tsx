@@ -23,10 +23,7 @@ export default function ProofBar() {
             aria-label="Referenzen von Sunbyte"
         >
             <div className="py-7 md:py-8">
-                <p
-                    className="mono-label text-muted mb-4"
-                    style={{ fontSize: '0.6rem' }}
-                >
+                <p className="mono-label text-muted mb-4">
                     gebaut und live — jede seite ist anklickbar
                 </p>
 
@@ -42,7 +39,8 @@ export default function ProofBar() {
                             style={{
                                 border: '1px solid rgba(201, 184, 163, 0.18)',
                                 borderRadius: '999px',
-                                padding: '0.42rem 0.85rem',
+                                padding: '0.55rem 0.95rem',
+                                minHeight: '2.75rem',
                             }}
                         >
                             <span
@@ -57,7 +55,7 @@ export default function ProofBar() {
                             />
                             <span
                                 className="mono-label text-soft group-hover:text-lit transition-colors"
-                                style={{ fontSize: '0.62rem' }}
+                                style={{ fontSize: '0.7rem' }}
                             >
                                 {c.domain}
                             </span>
@@ -74,8 +72,8 @@ export default function ProofBar() {
                     ].map(t => (
                         <span
                             key={t}
-                            className="mono-label text-muted"
-                            style={{ fontSize: '0.6rem' }}
+                            className="mono-label text-soft"
+                            style={{ fontSize: '0.68rem' }}
                         >
                             ↳ {t}
                         </span>

@@ -50,7 +50,7 @@ export default function Services() {
                 </h2>
                 <p
                     className="text-soft mt-6 max-w-xl leading-relaxed"
-                    style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
+                    style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                 >
                     Statt es zu erklären, zeigen wir es. Dieselbe Welt-Idee —
                     dreimal, schrittweise abgespeckt. So fühlt sich jede Stufe
@@ -155,7 +155,6 @@ export default function Services() {
             {/* Footer-Hinweis */}
             <p
                 className="mt-16 md:mt-24 mono-label text-muted text-center max-w-2xl mx-auto"
-                style={{ fontSize: '0.66rem' }}
             >
                 ↳ welche stufe passt? sprich mit zakir —{' '}
                 <a
@@ -235,7 +234,7 @@ function ServiceCard({
             {/* Promise */}
             <p
                 className="text-soft leading-snug mb-8"
-                style={{ fontSize: 'clamp(0.95rem, 1.2vw, 1.05rem)' }}
+                style={{ fontSize: 'clamp(1rem, 1.2vw, 1.05rem)' }}
             >
                 {promise}
             </p>
@@ -249,7 +248,7 @@ function ServiceCard({
             </div>
 
             {/* Bullets */}
-            <ul className="space-y-2 mb-8 text-soft text-sm leading-relaxed">
+            <ul className="space-y-2 mb-8 text-soft text-[0.95rem] leading-relaxed">
                 {bullets.map((b, i) => (
                     <li key={i} className="flex gap-2.5">
                         <span

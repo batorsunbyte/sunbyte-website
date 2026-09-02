@@ -69,8 +69,7 @@ export default function ImpressumPage() {
 
                 <Block title="Berufsrechtliche Angaben">
                     <p data-slot="impressum-gewerbe">
-                        Gewerbeschein: [Slot offen — wird ergänzt, sobald
-                        Gewerbeanmeldung erfolgt]
+                        GISA-Zahl: 39725530
                         <br />
                         Berufsbezeichnung: IT-Dienstleistung
                         <br />
@@ -87,7 +86,7 @@ export default function ImpressumPage() {
                 </Block>
 
                 <Block title="UID-Nummer">
-                    <p data-slot="impressum-uid">[wird ergänzt]</p>
+                    <p data-slot="impressum-uid">ATU82574019</p>
                 </Block>
 
                 <Block title="Haftungsausschluss">

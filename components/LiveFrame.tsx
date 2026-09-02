@@ -21,6 +21,36 @@ import { useEffect, useRef, useState } from 'react'
 
 const DESIGN_W = 1280
 
+/* ── Ladeschlange ──────────────────────────────────────────────
+ * Auf /arbeiten stehen fuenf dieser Fenster. Ohne Schlange starten sie
+ * praktisch gleichzeitig — fuenf komplette fremde Websites (mit Video und
+ * Canvas) auf einmal legen den Browser beim ersten Laden lahm.
+ * Deshalb: hoechstens ZWEI gleichzeitig. Jedes weitere wartet, bis eines
+ * fertig geladen ist (oder nach 6 s aufgegeben wird, damit eine haengende
+ * Fremdseite die anderen nicht blockiert).
+ */
+const MAX_PARALLEL = 2
+let laufend = 0
+const warteschlange: Array<() => void> = []
+
+function platzAnfordern(starten: () => void) {
+    if (laufend < MAX_PARALLEL) {
+        laufend++
+        starten()
+    } else {
+        warteschlange.push(starten)
+    }
+}
+
+function platzFreigeben() {
+    laufend = Math.max(0, laufend - 1)
+    const naechstes = warteschlange.shift()
+    if (naechstes) {
+        laufend++
+        naechstes()
+    }
+}
+
 export default function LiveFrame({
     url,
     title,
@@ -39,6 +69,14 @@ export default function LiveFrame({
     const [inView, setInView] = useState(false)
     const hintShown = useRef(false)
     const hintTimer = useRef<ReturnType<typeof setTimeout>>()
+    const freigegeben = useRef(false)
+
+    // Platz in der Schlange genau einmal zurueckgeben
+    const freigeben = () => {
+        if (freigegeben.current) return
+        freigegeben.current = true
+        platzFreigeben()
+    }
 
     useEffect(() => {
         const el = hostRef.current
@@ -55,17 +93,18 @@ export default function LiveFrame({
         const ro = new ResizeObserver(measure)
         ro.observe(el)
 
-        // Sehr früh mounten, geladen lassen — Wartegefühl eliminieren.
+        // Früh mounten (damit beim Hinscrollen nichts nachlädt), aber über
+        // die Schlange — sonst starten auf /arbeiten fünf Websites zugleich.
         const io = new IntersectionObserver(
             entries => {
                 for (const e of entries) {
                     if (e.isIntersecting) {
-                        setActive(true)
                         io.disconnect()
+                        platzAnfordern(() => setActive(true))
                     }
                 }
             },
-            { rootMargin: '1600px 0px' },
+            { rootMargin: '800px 0px' },
         )
         io.observe(el)
 
@@ -86,6 +125,15 @@ export default function LiveFrame({
         }
     }, [])
 
+    // Notbremse: Wenn eine Fremdseite nicht innerhalb von 6 s meldet, dass sie
+    // fertig ist, geben wir den Platz trotzdem frei — sonst haengt die Schlange.
+    useEffect(() => {
+        if (!active) return
+        const t = setTimeout(freigeben, 6000)
+        return () => clearTimeout(t)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [active])
+
     // Erklär-Hinweis: einmalig, erst wenn geladen UND wirklich im Blickfeld —
     // kaum jemand kennt live eingebettete, scrollbare Websites.
     useEffect(() => {
@@ -104,7 +152,10 @@ export default function LiveFrame({
                     title={title}
                     loading="lazy"
                     sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                    onLoad={() => setLoaded(true)}
+                    onLoad={() => {
+                        setLoaded(true)
+                        freigeben()
+                    }}
                     style={{
                         width: DESIGN_W,
                         height: boxH / (scale || 1),
@@ -180,14 +231,22 @@ export default function LiveFrame({
                 </div>
             </div>
 
-            {/* Poster (Screenshot) bis das iframe steht */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-                src={poster}
-                alt=""
+            {/* Poster (Screenshot) bis das iframe steht.
+                Bewusst als background-image statt <img>: Der Elternteil ist auf
+                dem Handy `display:none` (dort läuft die Bild-Variante). Ein <img>
+                wird trotzdem geladen — ein background-image nicht, weil der
+                Browser Hintergründe unsichtbarer Elemente überspringt.
+                Spart auf /arbeiten rund 244 KB, die jedes Handy sonst umsonst holt. */}
+            <div
                 aria-hidden
-                className="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700"
-                style={{ opacity: loaded ? 0 : 1, pointerEvents: 'none' }}
+                className="absolute inset-0 w-full h-full transition-opacity duration-700"
+                style={{
+                    backgroundImage: `url(${poster})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top center',
+                    opacity: loaded ? 0 : 1,
+                    pointerEvents: 'none',
+                }}
             />
         </div>
     )

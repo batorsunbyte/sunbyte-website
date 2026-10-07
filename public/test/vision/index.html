@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sunbyte – Entwurf (Testseite)</title>
+<meta name="description" content="Testseite: Entwurf einer neuen Startseite für sunbyte.at. Nicht öffentlich verlinkt.">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/fraunces-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-tight-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-tight-500.woff2" as="font" type="font/woff2" crossorigin>
+<script>if('IntersectionObserver' in window)document.documentElement.className='js'</script>
+<style>
+/* ── Schriften (dieselben Dateien wie die Live-Seite) ─────────── */
+@font-face{font-family:'Fraunces';font-weight:900;font-style:normal;font-display:swap;src:url(/fonts/fraunces-900.woff2) format('woff2')}
+@font-face{font-family:'Fraunces';font-weight:900;font-style:italic;font-display:swap;src:url(/fonts/fraunces-900-italic.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-weight:400;font-display:swap;src:url(/fonts/inter-tight-400.woff2) format('woff2')}
+@font-face{font-family:'Inter Tight';font-weight:500;font-display:swap;src:url(/fonts/inter-tight-500.woff2) format('woff2')}
+
+/* ── Token: Papier und Tinte, eine Signalfarbe für eine Handlung ── */
+:root{
+  --papier:#F5EFE5;
+  --papier-2:#ECE4D7;
+  --tinte:#17130F;
+  --tinte-2:#4A423A;
+  --grau:#7C7267;
+  --linie:rgba(23,19,15,.13);
+  --signal:#E8551C;
+  --live:#2E9E5B;
+  --dunkel:#14100B;
+  --hell:#F5EFE5;
+  --gutter:clamp(1.25rem,4vw,3rem);
+  --max:1200px;
+  --display:'Fraunces',Georgia,serif;
+  --text:'Inter Tight',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--papier);color:var(--tinte);font-family:var(--text);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+::selection{background:var(--signal);color:#fff}
+
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(2.5rem,5.8vw,4.8rem)}
+h2{font-size:clamp(2rem,4.8vw,3.6rem);max-width:18ch}
+h3{font-size:clamp(1.35rem,2.2vw,1.7rem);letter-spacing:-.015em;line-height:1.1}
+p{max-width:58ch}
+.lead{font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.5;color:var(--tinte-2);max-width:46ch}
+.still{color:var(--grau)}
+.sec{padding-block:clamp(4.5rem,10vw,8.5rem)}
+.sec+.sec{border-top:1px solid var(--linie)}
+.kopf{margin-bottom:clamp(2rem,4vw,3.5rem)}
+.kopf p{margin-top:1rem;color:var(--tinte-2)}
+.kopf p+p{margin-top:.75rem}
+
+/* ── Knöpfe ───────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.25rem;padding:.85rem 1.5rem;border-radius:999px;border:1px solid transparent;font-weight:500;text-decoration:none;transition:transform .2s,background .2s,border-color .2s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-signal{background:var(--signal);color:#fff}
+.btn-signal:hover{background:#d44a14}
+.btn-ruhig{border-color:var(--linie);color:var(--tinte);background:transparent}
+.btn-ruhig:hover{border-color:var(--tinte)}
+.link{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px;color:var(--tinte)}
+.link:hover{color:var(--signal)}
+
+/* ── Kopfzeile ────────────────────────────────────────────────── */
+.top{position:sticky;top:0;z-index:40;background:rgba(245,239,229,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--linie)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:4.25rem;gap:1rem}
+.marke{font-family:var(--display);font-weight:900;font-size:1.5rem;letter-spacing:-.03em;text-decoration:none}
+.nav{display:none;gap:1.75rem}
+.nav a{text-decoration:none;color:var(--tinte-2);font-weight:500}
+.nav a:hover{color:var(--tinte)}
+.top .btn{min-height:2.75rem;padding:.6rem 1.15rem}
+@media(min-width:900px){.nav{display:flex}}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero{padding-top:clamp(2.5rem,7vw,5.5rem)}
+.hero-grid{display:grid;gap:3rem}
+.hero h1{max-width:13ch}
+.hero .lead{margin-top:1.5rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem 1.25rem;align-items:center;margin-top:2rem}
+.beleg{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;color:var(--tinte-2);font-size:.95rem}
+.beleg span::before{content:'';display:inline-block;width:.4rem;height:.4rem;border-radius:50%;background:var(--tinte);margin-right:.55rem;vertical-align:.15em}
+.stapel{display:none;position:relative;aspect-ratio:4/3}
+.stapel .fenster{position:absolute;width:84%}
+.stapel .k1{top:0;left:0;transform:rotate(-4deg)}
+.stapel .k2{right:0;bottom:0}
+.stapel .fenster:hover{z-index:2}
+@media(min-width:1024px){
+  .hero-grid{grid-template-columns:7fr 6fr;gap:4rem;align-items:center}
+  .stapel{display:block}
+}
+
+/* ── Fenster: echte Seiten im Browser-Rahmen ──────────────────── */
+.fenster{text-decoration:none;color:inherit;display:block}
+.fenster .rahmen{border:1px solid var(--linie);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 0 rgba(23,19,15,.04),0 20px 40px -28px rgba(23,19,15,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.fenster:hover .rahmen{transform:translateY(-5px);box-shadow:0 1px 0 rgba(23,19,15,.04),0 30px 50px -28px rgba(23,19,15,.45)}
+.leiste{display:flex;align-items:center;gap:.5rem;padding:.6rem .85rem;background:var(--papier-2);border-bottom:1px solid var(--linie);font-size:.8rem;color:var(--grau)}
+.leiste i{width:.55rem;height:.55rem;border-radius:50%;background:rgba(23,19,15,.18)}
+.leiste .dom{margin-left:.35rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leiste .live{margin-left:auto;display:inline-flex;align-items:center;gap:.4rem;color:var(--tinte-2);flex:0 0 auto}
+.leiste .live::before{content:'';width:.5rem;height:.5rem;border-radius:50%;background:var(--live);animation:puls 2.2s ease-in-out infinite}
+.fenster img{aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}
+.fenster figcaption{display:flex;justify-content:space-between;gap:1rem;margin-top:.8rem;font-size:.95rem}
+.fenster figcaption b{font-weight:500}
+.fenster figcaption span{color:var(--grau);text-align:right}
+@keyframes puls{0%,100%{box-shadow:0 0 0 0 rgba(46,158,91,.5)}60%{box-shadow:0 0 0 .45rem rgba(46,158,91,0)}}
+
+/* ── Schiene: läuft bis zum Bildschirmrand ─────────────────────── */
+.schiene-kopf{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-top:clamp(3rem,7vw,5.5rem);margin-bottom:1.25rem}
+.schiene-kopf h2{font-size:clamp(1.4rem,2.4vw,1.9rem);max-width:none}
+.schiene-kopf .still{font-size:.95rem;text-align:right}
+.schiene{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.25rem 0 1.5rem;padding-left:max(var(--gutter),calc((100% - var(--max))/2 + var(--gutter)));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.schiene::-webkit-scrollbar{display:none}
+.schiene::after{content:'';flex:0 0 var(--gutter)}
+.schiene .fenster{flex:0 0 min(80vw,520px);scroll-snap-align:start}
+
+/* ── Der Deal in drei Zahlen ──────────────────────────────────── */
+.zahl{display:grid;gap:.5rem 2rem;border-top:1px solid var(--tinte);padding-block:1.5rem}
+.zahl:last-child{border-bottom:1px solid var(--tinte)}
+.zahl strong{font-family:var(--display);font-weight:900;font-size:clamp(2.1rem,4vw,3.2rem);letter-spacing:-.03em;line-height:1;white-space:nowrap}
+.zahl p{color:var(--tinte-2);max-width:40ch}
+@media(min-width:720px){.zahl{grid-template-columns:minmax(0,6fr) minmax(0,6fr);align-items:baseline;padding-block:2rem}}
+
+/* ── Preise als Tabelle ───────────────────────────────────────── */
+.tabelle{width:100%;border-collapse:collapse;font-size:1rem;table-layout:fixed}
+.tabelle th,.tabelle td{text-align:left;padding:1rem .5rem;border-bottom:1px solid var(--linie);vertical-align:top}
+.tabelle th{font-weight:400}
+.tabelle th.paket{text-align:center;width:11rem;padding-bottom:1.25rem;border-bottom:1px solid var(--tinte);vertical-align:bottom}
+.tabelle th.paket b{display:block;font-family:var(--display);font-weight:900;font-size:1.35rem;letter-spacing:-.02em;line-height:1.1}
+.tabelle th.paket strong{display:block;font-weight:500;font-size:1.05rem;margin-top:.35rem;white-space:nowrap}
+.tabelle th.paket small{display:block;font-weight:400;font-size:.85rem;color:var(--grau);margin-top:.2rem}
+.tabelle td.ja,.tabelle td.nein{text-align:center}
+.tabelle td.ja::before{content:'';display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:var(--tinte)}
+.tabelle td.nein{color:var(--grau)}
+.tabelle td.nein::before{content:'–'}
+.tabelle .hinweis{color:var(--grau);font-size:.9rem;border-bottom:1px solid var(--tinte);vertical-align:bottom}
+@media(max-width:600px){
+  .tabelle{font-size:.92rem}
+  .tabelle th,.tabelle td{padding:.85rem .3rem}
+  .tabelle th.paket{width:5.6rem}
+  .tabelle th.paket b{font-size:1.1rem}
+  .tabelle th.paket strong{font-size:.85rem}
+  .tabelle th.paket small{display:none}
+}
+.extras{display:grid;gap:1rem;margin-top:2.5rem}
+.extra{border:1px solid var(--linie);border-radius:12px;padding:1.5rem;display:grid;gap:.5rem;align-content:start}
+.extra h3{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;flex-wrap:wrap}
+.extra h3 span{font-size:1.1rem;white-space:nowrap}
+.extra p{color:var(--tinte-2);font-size:.98rem}
+@media(min-width:720px){.extras{grid-template-columns:1fr 1fr}}
+.preis-fuss{margin-top:2rem;color:var(--tinte-2);max-width:60ch}
+
+/* ── Dunkle Zone: wer baut ────────────────────────────────────── */
+.dunkel{background:var(--dunkel);color:var(--hell)}
+.dunkel .sec{border-top:0}
+.wer{display:grid;gap:2.5rem}
+.wer img{border-radius:12px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.wer blockquote{font-family:var(--display);font-weight:900;font-size:clamp(1.7rem,3.4vw,2.6rem);letter-spacing:-.02em;line-height:1.08;max-width:16ch}
+.wer .text{margin-top:1.5rem;color:rgba(245,239,229,.78);max-width:52ch}
+.wer .text+.text{margin-top:1rem}
+.fakten{margin-top:2rem;display:grid;grid-template-columns:auto 1fr;gap:.45rem 1.5rem;font-size:.95rem}
+.fakten dt{color:rgba(245,239,229,.5)}
+.fakten dd{color:var(--hell)}
+.wer .link{color:var(--hell);display:inline-block;margin-top:1.75rem}
+@media(min-width:800px){.wer{grid-template-columns:5fr 7fr;gap:4rem;align-items:center}}
+
+/* ── Ablauf ───────────────────────────────────────────────────── */
+.ablauf{display:grid;gap:1.5rem;counter-reset:s}
+.schritt{border-top:1px solid var(--linie);padding-top:1.25rem}
+.schritt::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-family:var(--display);font-weight:900;font-size:1.4rem;color:var(--grau);display:block;margin-bottom:.6rem}
+.schritt p{margin-top:.5rem;color:var(--tinte-2);font-size:.98rem}
+@media(min-width:720px){.ablauf{grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}}
+
+/* ── KI ───────────────────────────────────────────────────────── */
+.ki{display:grid;gap:2.5rem}
+.chat{border:1px solid var(--linie);border-radius:14px;background:#fff;padding:1.25rem;display:grid;gap:.9rem;font-size:.98rem}
+.bubble{padding:.85rem 1rem;border-radius:12px;max-width:34ch;line-height:1.45}
+.frage{background:var(--papier-2);justify-self:end;border-bottom-right-radius:4px}
+.antwort{background:var(--tinte);color:var(--hell);border-bottom-left-radius:4px;width:100%;max-width:none}
+.antwort ol{list-style:none;display:grid;gap:.6rem;margin-top:.6rem}
+.antwort li{display:flex;align-items:center;gap:.7rem;color:rgba(245,239,229,.6)}
+.antwort li i{display:block;height:.7rem;border-radius:4px;background:rgba(245,239,229,.18)}
+.antwort li:nth-child(1) i{width:52%}.antwort li:nth-child(2) i{width:38%}.antwort li:nth-child(3) i{width:45%}
+.chat-fuss{font-size:.85rem;color:var(--grau)}
+@media(min-width:800px){.ki{grid-template-columns:1fr 1fr;align-items:center;gap:4rem}}
+
+/* ── FAQ ──────────────────────────────────────────────────────── */
+.faq details{border-top:1px solid var(--linie)}
+.faq details:last-child{border-bottom:1px solid var(--linie)}
+.faq summary{list-style:none;cursor:pointer;padding:1.25rem 0;display:flex;justify-content:space-between;gap:1.5rem;align-items:center;font-family:var(--display);font-weight:900;font-size:clamp(1.15rem,2vw,1.45rem);letter-spacing:-.015em;line-height:1.15}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--text);font-weight:400;font-size:1.6rem;color:var(--grau);flex:0 0 auto;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding-bottom:1.5rem;color:var(--tinte-2);max-width:60ch}
+
+/* ── Kontakt ──────────────────────────────────────────────────── */
+.kontakt{display:grid;gap:2rem}
+.wege{display:grid;gap:1rem}
+.weg{border:1px solid var(--linie);border-radius:12px;padding:1.25rem 1.5rem;text-decoration:none;display:grid;gap:.2rem;transition:border-color .2s}
+a.weg:hover{border-color:var(--tinte)}
+.weg small{color:var(--grau);font-size:.85rem}
+.weg b{font-weight:500;font-size:1.15rem}
+@media(min-width:800px){.kontakt{grid-template-columns:1fr 1fr;gap:4rem;align-items:start}}
+
+/* ── Fuß ──────────────────────────────────────────────────────── */
+.fuss{border-top:1px solid var(--linie);padding:2.5rem 0 6.5rem;font-size:.9rem;color:var(--grau)}
+.fuss .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem}
+.fuss a{text-decoration:none}
+.fuss a:hover{color:var(--tinte)}
+@media(min-width:900px){.fuss{padding-bottom:2.5rem}}
+
+/* ── Mobile Leiste ────────────────────────────────────────────── */
+.leiste-mobil{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;gap:.6rem;padding:.65rem var(--gutter) calc(.65rem + env(safe-area-inset-bottom));background:rgba(245,239,229,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--linie);transform:translateY(110%);transition:transform .3s}
+.leiste-mobil.da{transform:none}
+.leiste-mobil .btn{flex:1;min-height:3rem}
+@media(min-width:900px){.leiste-mobil{display:none}}
+
+/* ── Bewegung: ein Moment, der die Sache erklärt ──────────────── */
+.js .r{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .r.in{opacity:1;transform:none}
+.js .hero .fenster{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .hero .fenster.in{opacity:1;transform:none}
+.js .hero .stapel .k1.in{transform:rotate(-4deg)}
+@media(prefers-reduced-motion:reduce){
+  .js .r,.js .hero .fenster{opacity:1;transform:none;transition:none}
+  .js .hero .stapel .k1{transform:rotate(-4deg)}
+  .leiste .live::before{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="marke" href="#">sunbyte</a>
+    <nav class="nav" aria-label="Seite">
+      <a href="#referenzen">Referenzen</a>
+      <a href="#preise">Preise</a>
+      <a href="#wer">Wer baut</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="btn btn-signal" href="/kontakt/">Projekt anfragen</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ── Hero ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Deine Website soll Kunden bringen. Nicht nur existieren.</h1>
+      <p class="lead">Sunbyte baut Websites und KI-Sichtbarkeit für Betriebe in Wien. Fixpreis vor dem Start, du sprichst mit dem, der baut, und jede Referenz ist live im Netz.</p>
+      <div class="cta">
+        <a class="btn btn-signal" href="/kontakt/">Projekt anfragen</a>
+        <a class="link" href="#referenzen">Fünf Seiten live ansehen</a>
+      </div>
+      <div class="beleg" aria-label="Eckdaten">
+        <span>Standard ab 3.000 €</span>
+        <span>Antwort in unter 24 Stunden</span>
+        <span>Erstgespräch gratis</span>
+      </div>
+    </div>
+    <div class="stapel" aria-hidden="true">
+      <a class="fenster k1" href="https://printmywall.at" target="_blank" rel="noopener" tabindex="-1">
+        <div class="rahmen">
+          <div class="leiste"><i></i><i></i><i></i><span class="dom">printmywall.at</span><span class="live">live</span></div>
+          <img src="/images/cases/printmywall.webp" alt="" width="1200" height="750" loading="eager" fetchpriority="high">
+        </div>
+      </a>
+      <a class="fenster k2" href="https://impulsiv-fitness.at" target="_blank" rel="noopener" tabindex="-1">
+        <div class="rahmen">
+          <div class="leiste"><i></i><i></i><i></i><span class="dom">impulsiv-fitness.at</span><span class="live">live</span></div>
+          <img src="/images/cases/impulsiv.webp" alt="" width="1200" height="750" loading="eager" fetchpriority="high">
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="schiene-kopf" id="referenzen">
+      <h2>Gebaut und live. Klick rein.</h2>
+      <span class="still">echte Websites, keine Entwürfe</span>
+    </div>
+  </div>
+  <div class="schiene" aria-label="Referenzen">
+    <a class="fenster" href="https://printmywall.at" target="_blank" rel="noopener">
+      <figure>
+        <div class="rahmen">
+          <div class="leiste" aria-hidden="true"><i></i><i></i><i></i><span class="dom">printmywall.at</span><span class="live">live</span></div>
+          <img src="/images/cases/printmywall.webp" alt="Website von PrintMyWall" width="1200" height="750" loading="eager">
+        </div>
+        <figcaption><b>PrintMyWall</b><span>eigene Marke, Direktdruck auf Wände</span></figcaption>
+      </figure>
+    </a>
+    <a class="fenster" href="https://impulsiv-fitness.at" target="_blank" rel="noopener">
+      <figure>
+        <div class="rahmen">
+          <div class="leiste" aria-hidden="true"><i></i><i></i><i></i><span class="dom">impulsiv-fitness.at</span><span class="live">live</span></div>
+          <img src="/images/cases/impulsiv.webp" alt="Website von Impulsiv Fitness" width="1200" height="750" loading="eager">
+        </div>
+        <figcaption><b>Impulsiv Fitness</b><span>EMS-Studio, Wien-Floridsdorf</span></figcaption>
+      </figure>
+    </a>
+    <a class="fenster" href="https://kfz22.com" target="_blank" rel="noopener">
+      <figure>
+        <div class="rahmen">
+          <div class="leiste" aria-hidden="true"><i></i><i></i><i></i><span class="dom">kfz22.com</span><span class="live">live</span></div>
+          <img src="/images/cases/kfz22.webp" alt="Website von KFZ Technik 22" width="1200" height="750" loading="lazy">
+        </div>
+        <figcaption><b>KFZ Technik 22</b><span>Werkstatt, Wien-Donaustadt</span></figcaption>
+      </figure>
+    </a>
+    <a class="fenster" href="https://mstyle.beauty" target="_blank" rel="noopener">
+      <figure>
+        <div class="rahmen">
+          <div class="leiste" aria-hidden="true"><i></i><i></i><i></i><span class="dom">mstyle.beauty</span><span class="live">live</span></div>
+          <img src="/images/cases/mstyle.webp" alt="Website von MStyle Beauty Lounge" width="1200" height="750" loading="lazy">
+        </div>
+        <figcaption><b>MStyle Beauty Lounge</b><span>Beautysalon, dreisprachig</span></figcaption>
+      </figure>
+    </a>
+    <a class="fenster" href="https://safetypro-electrical.au" target="_blank" rel="noopener">
+      <figure>
+        <div class="rahmen">
+          <div class="leiste" aria-hidden="true"><i></i><i></i><i></i><span class="dom">safetypro-electrical.au</span><span class="live">live</span></div>
+          <img src="/images/cases/safetypro.webp" alt="Website von Safety Pro Electrical" width="1200" height="750" loading="lazy">
+        </div>
+        <figcaption><b>Safety Pro Electrical</b><span>Elektriker, Melbourne</span></figcaption>
+      </figure>
+    </a>
+  </div>
+</section>
+
+<!-- ── Der Deal ─────────────────────────────────────────────── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="kopf r">
+      <h2>Der Deal, in drei Zahlen.</h2>
+    </div>
+    <div class="zahl r"><strong>ab 3.000 €</strong><p>Eine Website, die aussieht wie für dich gemacht, kein Baukasten. Der Fixpreis steht schriftlich, bevor wir starten.</p></div>
+    <div class="zahl r"><strong>2 bis 4 Wochen</strong><p>Von der Freigabe des Konzepts bis die Seite live ist. Du siehst laufend Fortschritt, nicht erst am Ende ein Ergebnis.</p></div>
+    <div class="zahl r"><strong>1 Ansprechpartner</strong><p>Der dich berät, baut und danach betreut. Kein Account-Manager, kein Ticket-System.</p></div>
+  </div>
+</section>
+
+<!-- ── Preise ───────────────────────────────────────────────── -->
+<section class="sec" id="preise">
+  <div class="wrap">
+    <div class="kopf r">
+      <h2>Zwei Pakete. Ein Preis, der gilt.</h2>
+      <p>Beide ohne Baukasten, beide mit allen Texten, beide auf deiner Domain. Der Unterschied ist, wie viel die Seite kann.</p>
+    </div>
+    <table class="tabelle r">
+      <thead>
+        <tr>
+          <th scope="col" class="hinweis">Was drin ist</th>
+          <th scope="col" class="paket"><b>Standard</b><strong>ab 3.000 €</strong><small>überzeugt deine Kunden</small></th>
+          <th scope="col" class="paket"><b>Premium</b><strong>ab 6.000 €</strong><small>bleibt ihnen im Kopf</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Eigenständiges Design, kein Template</th><td class="ja"></td><td class="ja"></td></tr>
+        <tr><th scope="row">Mehrere Unterseiten, sauber strukturiert</th><td class="ja"></td><td class="ja"></td></tr>
+        <tr><th scope="row">Alle Texte, aus deinem Wissen geschrieben</th><td class="ja"></td><td class="ja"></td></tr>
+        <tr><th scope="row">Mobil zuerst, schnell, SEO-Basics und lokale SEO für Wien</th><td class="ja"></td><td class="ja"></td></tr>
+        <tr><th scope="row">E-Mail-Signatur zur Marke</th><td class="ja"></td><td class="ja"></td></tr>
+        <tr><th scope="row">Voll interaktiver Startbereich, eigene Animationen</th><td class="nein"></td><td class="ja"></td></tr>
+        <tr><th scope="row">Nachmessen: die Seite bleibt trotz Animationen schnell</th><td class="nein"></td><td class="ja"></td></tr>
+      </tbody>
+    </table>
+
+    <div class="extras">
+      <div class="extra r">
+        <h3>KI-Sichtbarkeit <span>1.000 € fix</span></h3>
+        <p>Damit ChatGPT, Perplexity und Gemini dein Unternehmen kennen und nennen. Analyse, ein Steckbrief deiner Firma, den KI-Modelle lesen, und ein Vorher/Nachher-Report mit echten Abfragen.</p>
+      </div>
+      <div class="extra r">
+        <h3>Betreuung <span>500 € pro Quartal</span></h3>
+        <p>Optional, nach dem Launch: Updates, kleine Anpassungen, Technik-Checks und ein direkter Draht, wenn etwas ist. Die Seite gehört dir auch ohne.</p>
+      </div>
+    </div>
+    <p class="preis-fuss r">Was deinen Preis bestimmt: der Umfang der Seite, ob Inhalte schon da sind oder entstehen, und Extras wie Mehrsprachigkeit. Du bekommst vor dem Start eine Zahl, und die ändert sich nicht mehr.</p>
+  </div>
+</section>
+
+<!-- ── Wer baut (dunkle Zone) ───────────────────────────────── -->
+<div class="dunkel" id="wer">
+  <section class="sec">
+    <div class="wrap wer">
+      <img class="r" src="/images/zakir-portrait.jpg" alt="Zakir Daryabi, Gründer von Sunbyte" width="1067" height="1600" loading="lazy">
+      <div>
+        <blockquote class="r">Sunbyte ist neu. Die Erfahrung dahinter nicht.</blockquote>
+        <p class="text r">Ich bin Zakir Daryabi, Gründer von Sunbyte. Seit über sechs Jahren arbeite ich mit IT und KI, 2023 habe ich meine Lehre als Software-Entwickler abgeschlossen. Ich bin Entwickler und Designer in einem: Mir ist wichtig, wie etwas aussieht, und wie es funktioniert.</p>
+        <p class="text r">An meiner Seite baut mein Bruder, Senior-Entwickler mit über 15 Jahren Erfahrung, spezialisiert auf Künstliche Intelligenz. Zwischen dir und uns gibt es keine Schicht. Du sprichst mit denen, die deine Seite bauen.</p>
+        <dl class="fakten r">
+          <dt>Firma</dt><dd>Sunbyte e.U., 1210 Wien</dd>
+          <dt>UID</dt><dd>ATU82574019</dd>
+          <dt>Gewerbe</dt><dd>GISA 39725530, öffentlich prüfbar</dd>
+          <dt>Sprachen</dt><dd>Deutsch, Englisch</dd>
+        </dl>
+        <a class="link r" href="/ueber-uns/">Mehr über uns</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ── Ablauf ───────────────────────────────────────────────── -->
+<section class="sec" id="ablauf">
+  <div class="wrap">
+    <div class="kopf r">
+      <h2>So läuft es. Ohne Überraschungen.</h2>
+    </div>
+    <div class="ablauf">
+      <div class="schritt r"><h3>Gespräch</h3><p>Gratis und unverbindlich. Du erzählst, was du vorhast, wir hören zu. Antwort in unter 24 Stunden.</p></div>
+      <div class="schritt r"><h3>Konzept und Fixpreis</h3><p>Struktur, Texte, ein eigenes Design. Dazu dein Preis, schriftlich. Gebaut wird erst, wenn du sagst: genau so.</p></div>
+      <div class="schritt r"><h3>Bau</h3><p>Schnell, mobil zuerst, technisch sauber. Du siehst Fortschritt, nicht erst am Ende ein Ergebnis.</p></div>
+      <div class="schritt r"><h3>Launch und Betreuung</h3><p>Live-Schaltung und persönliche Übergabe mit allen Zugängen. Danach auf Wunsch Betreuung, 500 € pro Quartal.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── KI ───────────────────────────────────────────────────── -->
+<section class="sec">
+  <div class="wrap ki">
+    <div>
+      <div class="kopf r">
+        <h2>Deine Kunden fragen inzwischen die KI.</h2>
+        <p>Immer mehr Menschen stellen ihre Fragen ChatGPT, Perplexity oder Gemini statt Google. Wer dort nicht vorkommt, existiert für diese Kunden nicht. KI-Sichtbarkeit sorgt dafür, dass die Modelle dein Unternehmen kennen und bei passenden Fragen nennen.</p>
+        <p>Am Ende hältst du den Beweis in der Hand: derselbe Fragenkatalog, vor unserer Arbeit und danach. Kein Versprechen, ein Messergebnis. 1.000 € fix.</p>
+      </div>
+      <a class="link r" href="/ki-sichtbarkeit/">Wie KI-Sichtbarkeit funktioniert</a>
+    </div>
+    <div class="r">
+      <div class="chat" aria-label="Schematische Darstellung einer KI-Anfrage">
+        <div class="bubble frage">Wer macht gute Websites für eine Werkstatt in Wien?</div>
+        <div class="bubble antwort">Drei Empfehlungen in Wien:
+          <ol aria-hidden="true"><li>1.<i></i></li><li>2.<i></i></li><li>3.<i></i></li></ol>
+        </div>
+      </div>
+      <p class="chat-fuss" style="margin-top:.75rem">Schema. Welche drei Firmen hier stehen, entscheidet die KI anhand der Daten, die sie über dich findet. Wir sorgen dafür, dass sie dich findet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────────────────────── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="kopf r"><h2>Kurz geklärt.</h2></div>
+    <div class="faq r">
+      <details><summary>Was ist im Preis enthalten?</summary><p>Alles, was deine Seite zum Laufen braucht: Konzept, Struktur, alle Texte, Design, Umsetzung, Bild-Aufbereitung, SEO-Basics und der Launch auf deiner Domain. Du lieferst dein Wissen und dein Feedback, den Rest übernehmen wir.</p></details>
+      <details><summary>Was, wenn mir das Design nicht gefällt?</summary><p>Dann bauen wir nicht. Das Design wird vor dem Bau abgestimmt. Du gibst Feedback, wir überarbeiten, bis es passt. Gebaut wird erst, wenn du sagst: genau so.</p></details>
+      <details><summary>Was kostet die Seite nach dem Launch?</summary><p>Die Seite gehört dir, samt allen Zugängen. Laufend bleiben nur Domain und Hosting. Wenn du willst, übernehmen wir die Betreuung für 500 € pro Quartal. Optional, kein Muss.</p></details>
+      <details><summary>Könnt ihr meine bestehende Seite modernisieren?</summary><p>Ja. Wir modernisieren bestehende Seiten in Design, Technik, Tempo und SEO, oder bauen komplett neu. Was für dich mehr Sinn ergibt, klären wir im Erstgespräch.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ── Kontakt ──────────────────────────────────────────────── -->
+<section class="sec" id="kontakt">
+  <div class="wrap kontakt">
+    <div class="r">
+      <h2>Erzähl mir, was du vorhast.</h2>
+      <p class="lead" style="margin-top:1rem">Du bekommst eine ehrliche Einschätzung, ob und wie wir es bauen würden, und eine Zahl, die hält. Entscheiden kannst du danach.</p>
+      <div class="cta"><a class="btn btn-signal" href="/kontakt/">Projekt anfragen</a></div>
+    </div>
+    <div class="wege r">
+      <a class="weg" href="https://wa.me/436603610642" target="_blank" rel="noopener"><small>Telefon / WhatsApp</small><b>+43 660 3610642</b></a>
+      <a class="weg" href="mailto:office@sunbyte.at"><small>E-Mail</small><b>office@sunbyte.at</b></a>
+      <div class="weg"><small>Antwort</small><b>meist innerhalb von 24 Stunden</b></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <div class="wrap">
+    <span>Sunbyte e.U. · Zakir Daryabi · Jedlersdorfer Straße 99/9/43, 1210 Wien</span>
+    <span><a href="/impressum/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a> · <a href="/">zur aktuellen Seite</a></span>
+  </div>
+</footer>
+
+<div class="leiste-mobil" id="leiste">
+  <a class="btn btn-ruhig" href="https://wa.me/436603610642" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-signal" href="/kontakt/">Projekt anfragen</a>
+</div>
+
+<script>
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.r').forEach(function(el){io.observe(el)});
+  /* Hero-Fenster: gestaffelt einfahren, erklärt „das sind echte Seiten“ */
+  document.querySelectorAll('.hero .fenster').forEach(function(el,i){setTimeout(function(){el.classList.add('in')},150+i*110)});
+  /* Mobile Leiste erst, wenn der Hero vorbei ist */
+  var l=document.getElementById('leiste'),h=document.querySelector('.hero');
+  new IntersectionObserver(function(es){l.classList.toggle('da',!es[0].isIntersecting)},{threshold:0}).observe(h);
+})();
+</script>
+</body>
+</html>

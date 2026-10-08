@@ -154,3 +154,12 @@ Nach jeder Phase: Self-Review + git pull/push-Disziplin (PC ↔ Laptop).
 - Zwei Live-Globes vermeiden (§3, §6) — Vorschlag machen, falls Konflikt.
 - Bundle-Größe der Weltdaten checken; ggf. `110m` reicht, nicht `50m`.
 - Kontinent-Zuordnung läuft über grobe Geo-Zonen (siehe Spike `continentOf`). Falls Grenzfälle (Russland/Naher Osten) falsch eingefärbt: Zonen verfeinern oder auf ISO-Code→Kontinent-Mapping umstellen — Zakir kurz fragen.
+
+---
+
+## Nächste Aufgabe (08.10.2026): PrintMyWall als Referenz-Fall
+
+Siehe **`AUFGABE-2026-10-08-printmywall-referenz.md`** im Repo-Root — Auftrag von Zakir aus der
+PrintMyWall-Session. Kurz: Seit 08.10. verlinkt der Fuß von printmywall.at (und von impulsiv-fitness.at,
+kfz22.com, mstyle.beauty) auf sunbyte.at mit „Website gebaut und betreut von SunByte, Wien." — auf
+sunbyte.at muss der Fall PrintMyWall das einlösen. Fakten, Regeln und Grenzen stehen in der Datei.

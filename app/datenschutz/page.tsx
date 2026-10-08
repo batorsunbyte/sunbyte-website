@@ -132,6 +132,27 @@ export default function DatenschutzPage() {
                     </p>
                 </Block>
 
+                <Block title="Reichweitenmessung">
+                    <p>
+                        Wir nutzen Plausible Analytics, einen
+                        datenschutzfreundlichen Webanalysedienst der Plausible
+                        Insights OÜ (Västriku tn 2, 50403 Tartu, Estland — EU).
+                        Plausible arbeitet ohne Cookies und ohne
+                        geräteübergreifende Verfolgung. Erhoben werden
+                        ausschließlich aggregierte Nutzungsdaten: aufgerufene
+                        Seiten, Klicks auf Links zu externen Seiten, Referrer,
+                        Browser, Betriebssystem, Gerätetyp und ungefähre
+                        Herkunft (Land, Region, Stadt). Deine IP-Adresse wird
+                        dabei nicht gespeichert — einzelne Besucher können nicht
+                        identifiziert werden. Rechtsgrundlage ist unser
+                        berechtigtes Interesse an einer statistischen Auswertung
+                        der Website-Nutzung (Art. 6 Abs. 1 lit. f DSGVO). Die
+                        Verarbeitung findet auf Servern in der EU statt. Du
+                        kannst dieser Verarbeitung jederzeit widersprechen —
+                        siehe Abschnitt „Deine Rechte".
+                    </p>
+                </Block>
+
                 <Block title="Hosting">
                     <p>
                         Diese Website wird über GitHub Pages ausgeliefert
@@ -147,7 +168,7 @@ export default function DatenschutzPage() {
                         borderTop: '1px solid rgba(201, 184, 163, 0.1)',
                     }}
                 >
-                    ↳ stand: 25. juni 2026 · sunbyte
+                    ↳ stand: 8. oktober 2026 · sunbyte
                 </p>
             </div>
         </div>

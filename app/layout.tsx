@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -108,6 +109,18 @@ export default function RootLayout({
                 <JsonLd data={WEBSITE} />
                 <Header />
                 <main id="main">{children}</main>
+                {/* Reichweitenmessung ohne Cookies (Plausible, EU). Die Variante
+                    outbound-links zählt zusätzlich Klicks auf die Kundenseiten —
+                    damit sehen wir, wie viele Besucher über die Fußzeile
+                    „Website gebaut und betreut von SunByte" kommen (Referrer)
+                    und wie viele von hier zu den Referenzen klicken.
+                    Voraussetzung: sunbyte.at ist im Plausible-Konto angelegt. */}
+                <Script
+                    defer
+                    data-domain="sunbyte.at"
+                    src="https://plausible.io/js/script.outbound-links.js"
+                    strategy="afterInteractive"
+                />
                 <Footer />
                 <IdlePrefetch />
             </body>

@@ -33,9 +33,9 @@ export const CASES: CaseItem[] = [
         domain: 'printmywall.at',
         href: 'https://printmywall.at',
         outcome:
-            'Unsere eigene Marke, unser Schaufenster — hier zeigen wir, was wir können, bevor wir es verkaufen.',
+            'Unsere eigene Marke, neu gebaut im Oktober 2026 — die Seite nimmt Anfragen mit Fotos und Sprachnachricht an und bestätigt sie in Sekunden im eigenen Stil.',
         meta: 'eigene marke · direktdruck auf wände',
-        desc: 'Website für unsere eigene Marke — Direktdruck auf Wände, Wien. Hier testen wir zuerst, was wir Kunden verkaufen.',
+        desc: 'Website für unsere eigene Marke — Direktdruck auf Wände, Wien. Eigenes Design-System, Projekt-Anfrage in drei Schritten mit Fotos, Maßen und Sprachnachricht: Jede Anfrage landet sortiert im richtigen Ordner, der Kunde hat sofort eine Bestätigung. Echte Drucke im Film und auf der Ideen-Seite, cookielos gemessen, alle 30 Minuten automatisch überwacht. Hier testen wir zuerst, was wir Kunden verkaufen.',
         status: 'live',
     },
     {
@@ -397,7 +397,11 @@ function CaseBlock({ item, index }: { item: CaseItem; index: number }) {
 
     return (
         <Reveal>
-            <article className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <article
+                id={item.slug}
+                className="group grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center"
+                style={{ scrollMarginTop: '6rem' }}
+            >
                 <div
                     className={
                         left

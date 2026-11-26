@@ -177,3 +177,89 @@ export const BRANCHEN: { slug: string; name: string; beispiele: string[] }[] = [
         ],
     },
 ]
+
+/**
+ * Was ein Agent tut — die Liste, die beim Zeigen auf eine Agenten-Figur
+ * aufgeht (Zakir, 26.11.2026: „wie eine File-Liste, was er macht, zum
+ * Beispiel"). Von Claude als Beispiele geschrieben, aus den Tätigkeiten in
+ * Zakirs Sätzen abgeleitet; auf der Seite steht „Beispiel" darüber.
+ * Zakir ersetzt sie durch das, was die echten Agenten tun.
+ */
+export const AGENT_AUFGABEN: Record<string, string[]> = {
+    'Such-Agent': [
+        'sucht Betriebe und Kontakte, die zu Ihnen passen',
+        'prüft, ob sie zu Ihrem Angebot passen',
+        'legt die Liste im Kernsystem ab',
+    ],
+    'Nacht-Agent': [
+        'arbeitet weiter, wenn Ihr Betrieb geschlossen ist',
+        'sammelt, was über Nacht hereinkommt',
+        'legt Ihnen morgens eine Übersicht vor',
+    ],
+    'Antwort-Agent': [
+        'liest die Anfrage',
+        'antwortet sofort',
+        'fragt nach, wenn eine Angabe fehlt',
+    ],
+    'Termin-Agent': [
+        'schlägt freie Termine vor',
+        'trägt den Termin ein',
+        'erinnert vor dem Termin',
+    ],
+    'Social-Media-Agent': [
+        'schreibt Beiträge',
+        'plant sie ein',
+        'wartet auf Ihre Freigabe',
+    ],
+    'Video-Agent': [
+        'schneidet kurze Videos',
+        'setzt Untertitel',
+        'legt sie Ihnen zur Freigabe vor',
+    ],
+    'Website-Agent': [
+        'hält Texte und Bilder aktuell',
+        'ergänzt neue Projekte',
+        'meldet, was veraltet ist',
+    ],
+    'Beobachter-Agent': [
+        'beobachtet Ihre Mitbewerber',
+        'bemerkt neue Preise und Angebote',
+        'fasst zusammen, was sich geändert hat',
+    ],
+    'Reaktions-Agent': [
+        'schlägt eine Antwort vor',
+        'bereitet sie vor',
+        'wartet auf Ihre Freigabe',
+    ],
+    'Verteiler-Agent': [
+        'verteilt Aufgaben an Ihr Team',
+        'achtet auf Fristen',
+        'sagt Bescheid, wenn etwas dazukommt',
+    ],
+    'Kontroll-Agent': [
+        'prüft, was erledigt ist',
+        'fragt nach, was offen ist',
+        'meldet Verzug',
+    ],
+    'Erinnerungs-Agent': [
+        'erinnert an Termine',
+        'erinnert an offene Angebote',
+        'vergisst nichts',
+    ],
+    'Bau-Agent': [
+        'erkennt, was im Betrieb fehlt',
+        'schlägt eine neue Funktion vor',
+        'baut sie nach Ihrer Freigabe',
+    ],
+}
+
+/**
+ * Der Austausch zwischen Handy und Denksystem. Frage und Antwort sind Zakirs
+ * Beispiel vom 26.11.2026 (leicht geglättet); die zwei Antwort-Knöpfe hat
+ * Claude ergänzt, damit man sieht: Die Entscheidung bleibt beim Chef.
+ */
+export const ZUGRIFF_BEISPIEL = {
+    sie: 'Finde alle Materialien für dieses Projekt.',
+    system: 'Die Liste steht bereit. Soll ich bestellen und die Planung vorbereiten?',
+    wahl: ['Ja, bestellen', 'Erst ansehen'],
+}

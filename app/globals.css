@@ -1535,3 +1535,173 @@ select option {
         padding: 0 0.15rem;
     }
 }
+
+/* ── Kernsystem, fünfte Stufe: Aufgabenliste am Agenten, Austausch mit dem Handy ── */
+.kern-agentknopf {
+    position: absolute;
+    width: clamp(1.9rem, 6.6cqw, 2.5rem);
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -56%);
+    border-radius: 9px;
+    background: transparent;
+    cursor: help;
+    z-index: 2;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.kern-agentknopf:hover,
+.kern-agentknopf:focus-visible {
+    background: rgba(232, 90, 31, 0.14);
+    box-shadow: 0 0 0 1px rgba(232, 90, 31, 0.6);
+}
+.kern-geraeteknopf {
+    position: absolute;
+    width: 17%;
+    height: 14%;
+    transform: translate(-50%, -50%);
+    border-radius: 9px;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.2s ease;
+}
+.kern-geraeteknopf:hover {
+    background: rgba(255, 243, 228, 0.07);
+}
+.kern-zugriff.ist-aktiv .kern-geraet {
+    stroke: var(--spark);
+    filter: drop-shadow(0 0 2.5px rgba(232, 90, 31, 0.9));
+}
+.kern-zugriff.ist-aktiv .kern-zugriff__linie {
+    stroke: var(--spark);
+    stroke-width: 2;
+}
+/* Aufgabenliste: sieht aus wie ein kleiner Dateibaum */
+.kern-tipp {
+    position: absolute;
+    z-index: 6;
+    --w: min(13rem, 70cqw);
+    width: var(--w);
+    padding: 0.8rem 0.95rem 0.9rem;
+    background: #17110a;
+    border: 1px solid rgba(232, 90, 31, 0.55);
+    border-radius: 6px;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    animation: kern-agent-ein 0.16s ease both;
+}
+/* Lage über --x und --y (Ort der Figur), in den Grenzen der Bühne gehalten */
+.kern-tipp[data-h='r'] { left: min(calc(var(--x) + 1.3rem), calc(100% - var(--w))); }
+.kern-tipp[data-h='l'] { right: min(calc(100% - var(--x) + 1.3rem), calc(100% - var(--w))); }
+.kern-tipp[data-v='u'] { top: max(0px, calc(var(--y) + 0.2rem)); }
+.kern-tipp[data-v='o'] { top: max(10.5rem, calc(var(--y) - 0.2rem)); transform: translateY(-100%); }
+.kern-tipp__kopf {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--lit);
+}
+.kern-tipp__kopf span:last-child {
+    color: var(--muted);
+    text-transform: lowercase;
+}
+.kern-tipp ul {
+    margin: 0.6rem 0 0 0.3rem;
+    border-left: 1px solid rgba(201, 184, 163, 0.35);
+}
+.kern-tipp li {
+    position: relative;
+    padding: 0.22rem 0 0.22rem 1.05rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.7rem;
+    line-height: 1.45;
+    color: var(--soft);
+}
+.kern-tipp li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.82rem;
+    width: 0.7rem;
+    border-top: 1px solid rgba(201, 184, 163, 0.35);
+}
+/* letzter Ast: die senkrechte Linie endet am Querstrich */
+.kern-tipp li:last-child::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: calc(0.82rem + 1px);
+    bottom: 0;
+    width: 1px;
+    background: #17110a;
+}
+/* Austausch zwischen Handy und Denksystem */
+.kern-chat {
+    display: grid;
+    gap: 0.6rem;
+}
+.kern-chat__zeile {
+    max-width: 90%;
+    padding: 0.65rem 0.9rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    animation: branche-ein 0.45s ease both;
+}
+.kern-chat__zeile--sie {
+    justify-self: end;
+    background: var(--lit);
+    color: var(--bg);
+    border-bottom-right-radius: 3px;
+    animation-delay: 0.3s;
+}
+.kern-chat__zeile--system {
+    justify-self: start;
+    background: rgba(232, 90, 31, 0.1);
+    border: 1px solid rgba(232, 90, 31, 0.5);
+    color: var(--lit);
+    border-bottom-left-radius: 3px;
+    animation-delay: 1.8s;
+}
+.kern-chat__wer {
+    display: block;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+    opacity: 0.65;
+    margin-bottom: 0.15rem;
+}
+.kern-chat__wahl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    animation: branche-ein 0.45s ease 2.9s both;
+}
+.kern-chat__wahl span {
+    border: 1px solid rgba(201, 184, 163, 0.3);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.86rem;
+    color: var(--soft);
+}
+.kern-chat__wahl span:first-child {
+    border-color: var(--spark);
+    color: var(--lit);
+}
+@media (prefers-reduced-motion: reduce) {
+    .kern-tipp,
+    .kern-chat__zeile,
+    .kern-chat__wahl {
+        animation: none !important;
+    }
+}
+/* Ab 1280 px ist links der Bühne Platz: Listen der linken Agenten dürfen
+   2,5 rem hinausragen, damit sie die Figur nicht verdecken. */
+@media (min-width: 1280px) {
+    .kern-tipp[data-h='l'] {
+        right: min(calc(100% - var(--x) + 1.3rem), calc(100% - var(--w) + 2.5rem));
+    }
+}

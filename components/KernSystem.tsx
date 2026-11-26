@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import KiosIcon from '@/components/KiosIcon'
-import { FUNKTIONEN } from '@/lib/kios'
+import { FUNKTIONEN, AGENT_AUFGABEN, ZUGRIFF_BEISPIEL } from '@/lib/kios'
 
 /**
  * KernSystem — Schaubild des KI-Betriebssystems (Zakir, 26.11.2026).
@@ -21,12 +21,18 @@ import { FUNKTIONEN } from '@/lib/kios'
  * wandert die Auswahl weiter, ein Klick hält den Lauf an. Bei „weniger
  * Bewegung" läuft nichts von selbst. Ohne JavaScript ist alles sichtbar.
  *
+ * Fünfte Stufe: Wer auf eine Agenten-Figur zeigt (oder sie antippt), sieht
+ * eine kurze Liste, was dieser Agent tut. Und der Lauf hat einen siebten
+ * Schritt „Ihr Zugriff": ein Beispiel-Austausch zwischen Handy und Denksystem.
+ *
  * Die Module sitzen bei −90°, −30°, 30° … Damit bleiben die Waagrechten frei:
  * links für das Plus, rechts für die Linie zu Laptop und Handy. Die
  * Zeichenfläche ist deshalb 118 Einheiten breit und 100 hoch.
  */
 
 const DAUER = 4000
+/** Der Schritt „Ihr Zugriff" braucht länger: Man liest zwei Nachrichten */
+const DAUER_ZUGRIFF = 7500
 const R_MODUL = 30 // in Einheiten der Zeichenfläche (100 breit)
 const R_AGENT = 46
 /** Breite der Zeichenfläche: 100 für das System, 18 rechts für Laptop und Handy */
@@ -75,6 +81,15 @@ const PLUS = punkt(180, R_MODUL)
 /** Wo die Linie vom Kern bei Laptop und Handy ankommt */
 const ZUGRIFF = { x: 99.4, y: 50.6 }
 const SCHUTZ = ['Sicherheit', 'Prüfung', 'Datenschutz']
+
+/** Schritt nach den sechs Modulen: der Zugriff über Handy und Laptop */
+const ZUGRIFF_NR = MODULE.length
+const SCHRITTE = MODULE.length + 1
+
+/** Alle Agenten in einer Liste, für die Zeige-Flächen und die Aufgabenliste */
+const AGENTEN = MODULE.flatMap((m, modulNr) =>
+    m.aeste.map(a => ({ ...a, modulNr })),
+)
 
 type Phase = 'ruhe' | 'vor' | 'wach'
 
@@ -145,6 +160,8 @@ export default function KernSystem() {
     const [angehalten, setAngehalten] = useState(false)
     const [bewegung, setBewegung] = useState(false)
     const [phase, setPhase] = useState<Phase>('ruhe')
+    /** Name des Agenten, dessen Aufgabenliste gerade offen ist */
+    const [tipp, setTipp] = useState<string | null>(null)
     const buehne = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -167,23 +184,25 @@ export default function KernSystem() {
         return () => io.disconnect()
     }, [])
 
-    // Der Film: alle vier Sekunden ein Modul weiter
+    // Der Film: Schritt für Schritt weiter; hält an, solange eine Liste offen ist
     useEffect(() => {
-        if (!sichtbar || angehalten || !bewegung) return
-        const t = window.setInterval(
-            () => setAktiv(a => (a + 1) % MODULE.length),
-            DAUER,
+        if (!sichtbar || angehalten || !bewegung || tipp) return
+        const t = window.setTimeout(
+            () => setAktiv(a => (a + 1) % SCHRITTE),
+            aktiv === ZUGRIFF_NR ? DAUER_ZUGRIFF : DAUER,
         )
-        return () => window.clearInterval(t)
-    }, [sichtbar, angehalten, bewegung])
+        return () => window.clearTimeout(t)
+    }, [sichtbar, angehalten, bewegung, aktiv, tipp])
 
     const waehle = (i: number) => {
         setAngehalten(true)
         setAktiv(i)
     }
 
-    const modul = MODULE[aktiv]
-    const filmt = sichtbar && !angehalten && bewegung
+    const zugriffAn = aktiv === ZUGRIFF_NR
+    const modul = zugriffAn ? null : MODULE[aktiv]
+    const filmt = sichtbar && !angehalten && bewegung && !tipp
+    const gezeigt = tipp ? AGENTEN.find(a => a.name === tipp) : undefined
     const lichter = sichtbar && bewegung
 
     return (
@@ -197,7 +216,7 @@ export default function KernSystem() {
                         aria-hidden
                     >
                         {/* Zugriff: Linie vom Kern nach rechts zu Laptop und Handy */}
-                        <g className="kern-zugriff">
+                        <g className={zugriffAn ? 'kern-zugriff ist-aktiv' : 'kern-zugriff'}>
                             <path
                                 className="kern-zugriff__linie"
                                 d={`M50 50 L${ZUGRIFF.x} ${ZUGRIFF.y}`}
@@ -308,7 +327,7 @@ export default function KernSystem() {
                         )}
 
                         {/* … und hell beim gewählten Modul: hinaus zu den Agenten, zurück zum Kern */}
-                        {lichter && (
+                        {lichter && modul && (
                             <g key={`hell-${aktiv}`}>
                                 {modul.aeste.map((a, k) => (
                                     <g key={a.name}>
@@ -323,6 +342,28 @@ export default function KernSystem() {
                                             pfad={`M${a.ort.x} ${a.ort.y} L${modul.ort.x} ${modul.ort.y} L50 50`}
                                             dauer={1.8}
                                             start={0.9 + k * 0.3}
+                                        />
+                                    </g>
+                                ))}
+                            </g>
+                        )}
+
+                        {/* Schritt „Ihr Zugriff": dichter Verkehr zwischen Geräten und Kern */}
+                        {lichter && zugriffAn && (
+                            <g>
+                                {[0, 0.5, 1].map(start => (
+                                    <g key={start}>
+                                        <Licht
+                                            hell
+                                            pfad={`M${ZUGRIFF.x} ${ZUGRIFF.y} L50 50`}
+                                            dauer={1.5}
+                                            start={start}
+                                        />
+                                        <Licht
+                                            hell
+                                            pfad={`M50 50 L${ZUGRIFF.x} ${ZUGRIFF.y}`}
+                                            dauer={1.5}
+                                            start={start + 0.25}
                                         />
                                     </g>
                                 ))}
@@ -380,7 +421,7 @@ export default function KernSystem() {
 
                     {/* Namen der Agenten am gewählten Modul (ab 1280 px, sonst im Feld) */}
                     <div key={aktiv} aria-hidden>
-                        {modul.aeste.map((a, k) => (
+                        {modul?.aeste.map((a, k) => (
                             <span
                                 key={a.name}
                                 className="kern-agent"
@@ -395,6 +436,76 @@ export default function KernSystem() {
                             </span>
                         ))}
                     </div>
+
+                    {/* Zeige-Flächen über den Agenten-Figuren: öffnen die Aufgabenliste */}
+                    {AGENTEN.map(a => (
+                        <button
+                            key={a.name}
+                            type="button"
+                            className="kern-agentknopf"
+                            aria-label={`${a.name}: zeigen, was er tut`}
+                            aria-describedby={tipp === a.name ? 'kern-tipp' : undefined}
+                            style={{ left: links(a.ort.x), top: top(a.ort.y) }}
+                            onMouseEnter={() => setTipp(a.name)}
+                            onMouseLeave={() => setTipp(null)}
+                            onFocus={() => setTipp(a.name)}
+                            onBlur={() => setTipp(null)}
+                            onClick={() => {
+                                waehle(a.modulNr)
+                                setTipp(a.name)
+                            }}
+                        />
+                    ))}
+
+                    {/* Aufgabenliste des gezeigten Agenten. Lage: bei Agenten oben und unten
+                        seitlich nach außen, sonst seitlich zur Mitte und senkrecht vom
+                        Kern weg — so bleiben Gehirn und eigenes Modul frei. Die Grenzen
+                        der Bühne hält globals.css ein (clamp über --x und --y). */}
+                    {gezeigt && (
+                        <div
+                            id="kern-tipp"
+                            role="tooltip"
+                            className="kern-tipp"
+                            data-h={
+                                Math.abs(gezeigt.ort.x - 50) < 20
+                                    ? gezeigt.ort.x < 50 ? 'l' : 'r'
+                                    : gezeigt.ort.x > 50 ? 'l' : 'r'
+                            }
+                            data-v={
+                                Math.abs(gezeigt.ort.x - 50) < 20
+                                    ? gezeigt.ort.y < 50 ? 'u' : 'o'
+                                    : gezeigt.ort.y < 50 ? 'o' : 'u'
+                            }
+                            style={
+                                {
+                                    '--x': links(gezeigt.ort.x),
+                                    '--y': top(gezeigt.ort.y),
+                                } as React.CSSProperties
+                            }
+                        >
+                            <p className="kern-tipp__kopf">
+                                <span>{gezeigt.name}</span>
+                                <span>beispiel</span>
+                            </p>
+                            <ul>
+                                {(AGENT_AUFGABEN[gezeigt.name] ?? []).map(t => (
+                                    <li key={t}>{t}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+
+                    {/* Fläche über Laptop und Handy: wählt den Schritt „Ihr Zugriff" */}
+                    <button
+                        type="button"
+                        className="kern-geraeteknopf"
+                        aria-pressed={zugriffAn}
+                        aria-controls="kern-feld"
+                        aria-label="Ihr Zugriff über Handy und Laptop"
+                        style={{ left: links(109.1), top: top(49.4) }}
+                        onClick={() => waehle(ZUGRIFF_NR)}
+                        onFocus={() => setAngehalten(true)}
+                    />
 
                     {/* Plus: Es können weitere Module dazukommen */}
                     <span
@@ -411,42 +522,83 @@ export default function KernSystem() {
             {/* ── Feld zum gewählten Modul ──────────────── */}
             <div className="lg:col-span-5">
                 <div id="kern-feld" className="kern-feld" aria-live="polite">
-                    <div key={aktiv} className="kern-wechsel">
-                        <p className="mono-label text-spark">
-                            modul {String(aktiv + 1).padStart(2, '0')} ·{' '}
-                            {modul.modul}
-                        </p>
-                        <p className="kern-feld__satz">{modul.text}</p>
-
-                        <p className="mono-label text-muted mt-7 mb-3">
-                            spezialisierte agenten
-                        </p>
-                        <ul className="kern-agenten">
-                            {modul.agenten.map(a => (
-                                <li key={a}>
-                                    <span className="kern-agenten__punkt" />
-                                    {a}
-                                </li>
-                            ))}
-                        </ul>
-
-                        {/* Die Nacht in Beispielen: Uhrzeit groß, ein Satz dazu */}
-                        <div className="kern-beispiel">
-                            <span className="kern-beispiel__zeit">
-                                {modul.beispiel.zeit}
-                            </span>
-                            <p>
-                                <span className="mono-label text-muted">
-                                    beispiel
-                                </span>
-                                {modul.beispiel.text}
+                    {modul ? (
+                        <div key={aktiv} className="kern-wechsel">
+                            <p className="mono-label text-spark">
+                                modul {String(aktiv + 1).padStart(2, '0')} ·{' '}
+                                {modul.modul}
                             </p>
+                            <p className="kern-feld__satz">{modul.text}</p>
+
+                            <p className="mono-label text-muted mt-7 mb-3">
+                                spezialisierte agenten
+                            </p>
+                            <ul className="kern-agenten">
+                                {modul.agenten.map(a => (
+                                    <li key={a}>
+                                        <span className="kern-agenten__punkt" />
+                                        {a}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* Die Nacht in Beispielen: Uhrzeit groß, ein Satz dazu */}
+                            <div className="kern-beispiel">
+                                <span className="kern-beispiel__zeit">
+                                    {modul.beispiel.zeit}
+                                </span>
+                                <p>
+                                    <span className="mono-label text-muted">
+                                        beispiel
+                                    </span>
+                                    {modul.beispiel.text}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <div key="zugriff" className="kern-wechsel">
+                            <p className="mono-label text-spark">
+                                ihr zugriff · handy und laptop
+                            </p>
+                            <p className="kern-feld__satz">
+                                Sie bleiben der Chef und haben die volle
+                                Kontrolle
+                            </p>
+
+                            <p className="mono-label text-muted mt-7 mb-3">
+                                beispiel · sie schreiben vom handy
+                            </p>
+                            <div className="kern-chat">
+                                <p className="kern-chat__zeile kern-chat__zeile--sie">
+                                    <span className="kern-chat__wer">sie</span>
+                                    {ZUGRIFF_BEISPIEL.sie}
+                                </p>
+                                <p className="kern-chat__zeile kern-chat__zeile--system">
+                                    <span className="kern-chat__wer">
+                                        ihr denksystem
+                                    </span>
+                                    {ZUGRIFF_BEISPIEL.system}
+                                </p>
+                                <p className="kern-chat__wahl" aria-hidden>
+                                    {ZUGRIFF_BEISPIEL.wahl.map(w => (
+                                        <span key={w}>{w}</span>
+                                    ))}
+                                </p>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Lauf-Anzeige: füllt sich, bis das nächste Modul kommt */}
                     <div className="kern-lauf" aria-hidden>
-                        {filmt && <span key={aktiv} className="kern-lauf__balken" />}
+                        {filmt && (
+                            <span
+                                key={aktiv}
+                                className="kern-lauf__balken"
+                                style={{
+                                    animationDuration: `${zugriffAn ? DAUER_ZUGRIFF : DAUER}ms`,
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
 

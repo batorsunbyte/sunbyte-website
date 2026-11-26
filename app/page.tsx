@@ -8,8 +8,8 @@ import LogoWall from '@/components/LogoWall'
 import SystemStack from '@/components/SystemStack'
 import Branchen from '@/components/Branchen'
 import NetzwerkRinge from '@/components/NetzwerkRinge'
-import KiosIcon from '@/components/KiosIcon'
-import { FUNKTIONEN, LEISTUNGEN } from '@/lib/kios'
+import KernSystem from '@/components/KernSystem'
+import { LEISTUNGEN } from '@/lib/kios'
 import { faqLd } from '@/lib/seo'
 
 /**
@@ -153,41 +153,14 @@ export default function Home() {
                             <Spark>im Alltag.</Spark>
                         </>
                     }
+                    sub="In der Mitte arbeitet Ihr Denksystem. Rundherum liegen die Module, jedes mit eigenen, spezialisierten Agenten."
                     className="mb-12 md:mb-16"
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                    {FUNKTIONEN.map((f, i) => (
-                        <Reveal key={f.text} delay={(i % 3) * 80}>
-                            <div
-                                className="h-full"
-                                style={{
-                                    border: '1px solid rgba(201, 184, 163, 0.16)',
-                                    borderRadius: '6px',
-                                    padding: 'clamp(1.5rem, 2.4vw, 2rem)',
-                                }}
-                            >
-                                <div className="flex items-center justify-between">
-                                    <KiosIcon name={f.icon} />
-                                    <span className="mono-label text-muted">
-                                        {String(i + 1).padStart(2, '0')}
-                                    </span>
-                                </div>
-                                <h3
-                                    className="font-display-card mt-6"
-                                    style={{
-                                        fontSize: 'clamp(1.25rem, 1.9vw, 1.55rem)',
-                                        color: 'var(--lit)',
-                                        lineHeight: 1.2,
-                                        maxWidth: '20ch',
-                                    }}
-                                >
-                                    {f.text}
-                                </h3>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
+                {/* Kernsystem in der Mitte, Module rundherum (Zakir, 26.11.2026). */}
+                <Reveal>
+                    <KernSystem />
+                </Reveal>
             </section>
 
             {/* ── 03 Was Sie bekommen ─────────────────────── */}

@@ -59,9 +59,11 @@ const PFADE: Record<IconKey, React.ReactNode> = {
 export default function KiosIcon({
     name,
     size = 30,
+    farbe = 'var(--spark)',
 }: {
     name: IconKey
     size?: number
+    farbe?: string
 }) {
     return (
         <svg
@@ -74,7 +76,7 @@ export default function KiosIcon({
             strokeLinecap="round"
             strokeLinejoin="round"
             aria-hidden
-            style={{ color: 'var(--spark)' }}
+            style={{ color: farbe }}
         >
             {PFADE[name]}
         </svg>

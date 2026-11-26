@@ -21,13 +21,55 @@ export type IconKey =
     | 'aufgaben'
     | 'bauen'
 
-export const FUNKTIONEN: { icon: IconKey; text: string }[] = [
-    { icon: 'kunden', text: 'Findet neue Kunden, während Sie schlafen' },
-    { icon: 'anfragen', text: 'Beantwortet Anfragen sofort und vereinbart Termine für Sie' },
-    { icon: 'werbung', text: 'Macht Ihre Werbung: Social Media, Videos, Website' },
-    { icon: 'konkurrenz', text: 'Hat Ihre Konkurrenz im Auge und reagiert sofort' },
-    { icon: 'aufgaben', text: 'Verteilt Aufgaben, kontrolliert sie und vergisst nichts' },
-    { icon: 'bauen', text: 'Baut sich selbst, was Ihr Betrieb braucht, ohne teure Zusatz-Software' },
+/**
+ * Die sechs Module rund um das Kernsystem (Schaubild KernSystem.tsx).
+ * `text` ist Zakirs Satz, wörtlich. `modul` ist ein Kurzname für den Knoten.
+ * `agenten`: Zakir will je Modul spezialisierte Agenten zeigen (26.11.2026).
+ * Die Namen sind aus den Tätigkeiten in seinem Satz abgeleitet, nicht aus der
+ * Software ausgelesen — Zakir ersetzt sie durch die echten Agenten-Namen.
+ */
+export const FUNKTIONEN: {
+    icon: IconKey
+    modul: string
+    text: string
+    agenten: string[]
+}[] = [
+    {
+        icon: 'kunden',
+        modul: 'Neukunden',
+        text: 'Findet neue Kunden, während Sie schlafen',
+        agenten: ['Such-Agent', 'Nacht-Agent'],
+    },
+    {
+        icon: 'anfragen',
+        modul: 'Anfragen',
+        text: 'Beantwortet Anfragen sofort und vereinbart Termine für Sie',
+        agenten: ['Antwort-Agent', 'Termin-Agent'],
+    },
+    {
+        icon: 'werbung',
+        modul: 'Werbung',
+        text: 'Macht Ihre Werbung: Social Media, Videos, Website',
+        agenten: ['Social-Media-Agent', 'Video-Agent', 'Website-Agent'],
+    },
+    {
+        icon: 'konkurrenz',
+        modul: 'Konkurrenz',
+        text: 'Hat Ihre Konkurrenz im Auge und reagiert sofort',
+        agenten: ['Beobachter-Agent', 'Reaktions-Agent'],
+    },
+    {
+        icon: 'aufgaben',
+        modul: 'Aufgaben',
+        text: 'Verteilt Aufgaben, kontrolliert sie und vergisst nichts',
+        agenten: ['Verteiler-Agent', 'Kontroll-Agent', 'Erinnerungs-Agent'],
+    },
+    {
+        icon: 'bauen',
+        modul: 'Ausbau',
+        text: 'Baut sich selbst, was Ihr Betrieb braucht, ohne teure Zusatz-Software',
+        agenten: ['Bau-Agent'],
+    },
 ]
 
 /** Kurzform für das Laufband im Hero */

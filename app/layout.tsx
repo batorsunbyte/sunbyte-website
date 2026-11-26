@@ -8,7 +8,7 @@ import IdlePrefetch from '@/components/IdlePrefetch'
 import { ORGANIZATION, WEBSITE, SITE_URL, OG_IMAGE } from '@/lib/seo'
 
 const DESCRIPTION =
-    'Sunbyte ist dein IT-Dienstleister aus Wien: professionelle Webseiten (ab 3.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google UND ChatGPT finden und weiterempfehlen. Erstgespräch gratis.'
+    'Sunbyte installiert ein KI-Betriebssystem für Ihren Betrieb: ein selbstlernendes Denksystem mit KI-Agenten, das Tag und Nacht arbeitet. Erstgespräch gratis.'
 
 export const viewport = {
     width: 'device-width',
@@ -19,11 +19,15 @@ export const viewport = {
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
-        default: 'Sunbyte – Webdesign & KI-Sichtbarkeit aus Wien',
+        default: 'Sunbyte – KI-Betriebssystem für Ihren Betrieb',
         template: '%s | Sunbyte Wien',
     },
     description: DESCRIPTION,
     keywords: [
+        'KI-Betriebssystem',
+        'KI-OS',
+        'KI-Agenten für Betriebe',
+        'KI für Unternehmen Wien',
         'Webdesign Wien',
         'Website erstellen Wien',
         'Webagentur Wien',
@@ -44,20 +48,20 @@ export const metadata: Metadata = {
         locale: 'de_AT',
         siteName: 'Sunbyte',
         url: SITE_URL,
-        title: 'Sunbyte – Webdesign & KI-Sichtbarkeit aus Wien',
+        title: 'Sunbyte – KI-Betriebssystem für Ihren Betrieb',
         description: DESCRIPTION,
         images: [
             {
                 url: OG_IMAGE,
                 width: 1200,
                 height: 630,
-                alt: 'Sunbyte – IT-Dienstleister aus Wien · Webseiten & KI-Sichtbarkeit',
+                alt: 'Sunbyte – KI-Betriebssysteme für Betriebe, aus Wien',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Sunbyte – Webdesign & KI-Sichtbarkeit aus Wien',
+        title: 'Sunbyte – KI-Betriebssystem für Ihren Betrieb',
         description: DESCRIPTION,
         images: [OG_IMAGE],
     },

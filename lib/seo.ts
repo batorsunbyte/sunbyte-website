@@ -47,12 +47,12 @@ export const ORGANIZATION: Record<string, unknown> = {
     '@type': 'ProfessionalService',
     '@id': `${SITE_URL}/#organization`,
     name: 'Sunbyte',
-    alternateName: 'Sunbyte IT-Dienstleister',
+    alternateName: 'Sunbyte KI-OS',
     url: SITE_URL,
     logo: OG_IMAGE,
     image: OG_IMAGE,
     description:
-        'IT-Dienstleister aus Wien. Professionelle Webseiten und KI-Sichtbarkeit — damit dich auch ChatGPT & Co. finden und weiterempfehlen.',
+        'Sunbyte aus Wien installiert KI-Betriebssysteme, die auf den Betrieb zugeschnitten sind: ein selbstlernendes Denksystem mit mehreren KI-Agenten. Webseiten und KI-Sichtbarkeit gibt es als einzelne Bausteine.',
     slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
     foundingDate: '2026',
@@ -91,6 +91,8 @@ export const ORGANIZATION: Record<string, unknown> = {
         },
     ],
     knowsAbout: [
+        'KI-Betriebssystem',
+        'KI-Agenten',
         'Webentwicklung',
         'Webdesign Wien',
         'Website erstellen',
@@ -104,6 +106,16 @@ export const ORGANIZATION: Record<string, unknown> = {
         '@type': 'OfferCatalog',
         name: 'Leistungen',
         itemListElement: [
+            {
+                /* Hauptangebot seit 27.11.2026 — bewusst ohne Preis (Angebot nach dem Erstgespräch) */
+                '@type': 'Offer',
+                itemOffered: {
+                    '@type': 'Service',
+                    name: 'KI-Betriebssystem (KI-OS) für Betriebe',
+                    description:
+                        'Ein auf den Betrieb zugeschnittenes KI-Betriebssystem mit einem selbstlernenden Denksystem aus mehreren KI-Agenten.',
+                },
+            },
             {
                 '@type': 'Offer',
                 itemOffered: {

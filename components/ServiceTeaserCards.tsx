@@ -3,8 +3,9 @@ import Reveal from '@/components/Reveal'
 import { PRICING } from '@/lib/seo'
 
 /**
- * Die zwei Dienste als Teaser-Karten (Home).
+ * Die zwei Bausteine als Teaser-Karten (Home).
  * KI-Sichtbarkeit bekommt den Akzent-Glow — der Differenzierer.
+ * Seit der KI-OS-Welle (27.11.2026) in Sie-Form: Die Startseite spricht Chefs an.
  */
 
 interface Service {
@@ -39,9 +40,9 @@ const SERVICES: Service[] = [
         name: 'KI-Sichtbarkeit',
         price: PRICING.aiVisibility.label,
         promise:
-            'Damit ChatGPT & Co. dein Unternehmen kennen — und weiterempfehlen.',
+            'Damit ChatGPT & Co. Ihr Unternehmen kennen — und weiterempfehlen.',
         bullets: [
-            'Analyse: Wirst du von KI genannt?',
+            'Analyse: Werden Sie von KI genannt?',
             'Strukturierte Daten, die LLMs lesen',
             'Präsenz in den Quellen, die KI nutzt',
         ],

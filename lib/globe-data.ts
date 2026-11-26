@@ -22,7 +22,7 @@ export const CONTINENT_DATA: Record<ContinentKey, ContinentInfo> = {
     },
     eu: {
         n: 'europa',
-        t: 'Vertrauen entscheidet in Sekunden. Deine Website ist der erste Handschlag — wirkt sie billig, wirkt das Angebot billig.',
+        t: 'Vertrauen entscheidet in Sekunden. Ihre Website ist der erste Handschlag — wirkt sie billig, wirkt das Angebot billig.',
     },
     af: {
         n: 'afrika',
@@ -34,7 +34,7 @@ export const CONTINENT_DATA: Record<ContinentKey, ContinentInfo> = {
     },
     oc: {
         n: 'ozeanien',
-        t: 'Distanz zählt im Web nicht. Eine starke Seite holt Kunden, egal wie weit weg dein Studio sitzt.',
+        t: 'Distanz zählt im Web nicht. Eine starke Seite holt Kunden, egal wie weit weg Ihr Betrieb sitzt.',
     },
     an: {
         n: 'antarktis',
@@ -46,14 +46,19 @@ export const CONTINENT_DATA: Record<ContinentKey, ContinentInfo> = {
     },
 }
 
+/* KI-OS-Welle (27.11.2026): Sie-Form; der Satz stammt aus Zakirs Text
+   („Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag & Nacht."). */
+const DEFAULT_TEXT =
+    'Ein selbstlernendes Denksystem mit mehreren KI-Agenten arbeitet Tag & Nacht für Ihren Betrieb.'
+
 export const DEFAULT_INFO: ContinentInfo = {
-    n: '↳ dreh die welt, wähl einen kontinent',
-    t: 'Web ist überall — und überall entscheidet die Seite über Vertrauen, Kunden und Wachstum.',
+    n: '↳ drehen sie die welt, wählen sie einen kontinent',
+    t: DEFAULT_TEXT,
 }
 
 export const DEFAULT_INFO_TOUCH: ContinentInfo = {
-    n: '↳ dreh die welt, tippe einen kontinent',
-    t: 'Web ist überall — und überall entscheidet die Seite über Vertrauen, Kunden und Wachstum.',
+    n: '↳ drehen sie die welt, tippen sie auf einen kontinent',
+    t: DEFAULT_TEXT,
 }
 
 /** Wien-Koordinaten [lon, lat] */

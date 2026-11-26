@@ -5,25 +5,50 @@ import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
 import { CASES, CaseVisual } from '@/components/Cases'
-import ProofBar from '@/components/ProofBar'
+import LogoWall from '@/components/LogoWall'
 import { faqLd } from '@/lib/seo'
+
+/**
+ * Startseite — KI-OS-Welle (27.11.2026).
+ *
+ * Sunbyte verkauft jetzt ein KI-Betriebssystem für Betriebe. Der Text im Hero,
+ * in „01 — ihr ki-os" und die sechs Punkte in „02 — im alltag" stammen von
+ * Zakir (26.11.2026) und stehen wörtlich. Webseiten und KI-Sichtbarkeit bleiben
+ * als Bausteine mit Preis. Die Startseite spricht in Sie-Form.
+ * Der frühere Ablauf-Block („So läuft das.") beschrieb den Bau einer Webseite
+ * und ist hier raus; für das KI-OS gibt es noch keinen bestätigten Ablauf.
+ */
+
+/** Zakirs sechs Punkte, wörtlich */
+const ALLTAG = [
+    'Findet neue Kunden, während Sie schlafen',
+    'Beantwortet Anfragen sofort und vereinbart Termine für Sie',
+    'Macht Ihre Werbung: Social Media, Videos, Website',
+    'Hat Ihre Konkurrenz im Auge und reagiert sofort',
+    'Verteilt Aufgaben, kontrolliert sie und vergisst nichts',
+    'Baut sich selbst, was Ihr Betrieb braucht, ohne teure Zusatz-Software',
+]
 
 const FAQ_ITEMS = [
     {
         q: 'Was macht Sunbyte?',
-        a: 'Sunbyte ist ein IT-Dienstleister aus Wien mit zwei Diensten: professionelle Webseiten (erstellen oder modernisieren, ab 3.000 €) und KI-Sichtbarkeit (1.000 €) — damit dich Google und KI wie ChatGPT finden und weiterempfehlen.',
+        a: 'Sunbyte installiert ein KI-Betriebssystem, das auf Ihren Betrieb zugeschnitten ist. Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag und Nacht. Sie bleiben der Chef und haben die volle Kontrolle, auch unterwegs von Ihrem Handy.',
     },
     {
-        q: 'Was kostet eine Website?',
-        a: 'Der Einstieg liegt bei ab 3.000 € (Paket Standard). Premium — das voll interaktive Erlebnis — startet ab 6.000 €. Du bekommst vorab einen klaren Fixpreis.',
+        q: 'Was kostet das KI-OS?',
+        a: 'Das hängt von Ihrem Betrieb ab. Das Erstgespräch ist kostenlos und unverbindlich, danach bekommen Sie ein Angebot.',
     },
     {
-        q: 'Was kostet KI-Sichtbarkeit?',
-        a: 'KI-Sichtbarkeit kostet 1.000 € als fixes Paket — inklusive Analyse, Umsetzung und einem belegten Vorher/Nachher-Report.',
+        q: 'Gibt es Webseite und KI-Sichtbarkeit auch einzeln?',
+        a: 'Ja. Eine Webseite gibt es ab 3.000 € (Paket Standard) und ab 6.000 € (Premium). KI-Sichtbarkeit kostet 1.000 € als fixes Paket.',
     },
     {
-        q: 'Für wen und wo arbeitet ihr?',
-        a: 'Wir arbeiten mit Unternehmen in Wien und ganz Österreich. Sitz ist Wien — gearbeitet wird remote und persönlich.',
+        q: 'Was ist mit kleinen und speziellen Aufträgen?',
+        a: 'Kleine und spezielle Aufträge übermitteln wir gerne an unsere geprüften Netzwerkpartner.',
+    },
+    {
+        q: 'Für wen und wo arbeiten Sie?',
+        a: 'Wir arbeiten mit Betrieben in Wien und ganz Österreich. Der Sitz ist Wien, gearbeitet wird remote und persönlich.',
     },
     {
         q: 'Wie schnell bekomme ich eine Antwort?',
@@ -40,32 +65,162 @@ export default function Home() {
             <JsonLd data={faqLd(FAQ_ITEMS)} />
             <Hero />
 
-            <ProofBar />
+            <LogoWall />
 
-            {/* ── 01 Leistungen ───────────────────────────── */}
+            {/* ── 01 Ihr KI-OS ────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="01 — leistungen"
+                    kicker="01 — ihr ki-os"
                     title={
                         <>
-                            Zwei Dienste.
+                            Einmal erklärt,
                             <br />
-                            <Spark>Ein Ziel: dass man dich sieht.</Spark>
+                            <Spark>nie vergessen.</Spark>
                         </>
                     }
-                    sub="Eine Seite, die in Sekunden überzeugt — und KI-Sichtbarkeit, damit dich auch ChatGPT empfiehlt."
+                    className="mb-12 md:mb-16"
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+                    <Reveal className="md:col-span-7">
+                        <p
+                            className="leading-relaxed"
+                            style={{
+                                fontSize: 'clamp(1.15rem, 1.7vw, 1.45rem)',
+                                color: 'var(--lit)',
+                                maxWidth: '34ch',
+                            }}
+                        >
+                            In Ihrem KI-Betriebssystem arbeitet ein
+                            selbstlernendes Denksystem mit mehreren KI-Agenten
+                            Tag &amp; Nacht.
+                        </p>
+                        <p
+                            className="text-soft leading-relaxed mt-6"
+                            style={{
+                                fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
+                                maxWidth: '44ch',
+                            }}
+                        >
+                            Ihr Denksystem kennt Ihre Kunden, Mitarbeiter und
+                            Abläufe jeden Tag ein Stück besser.
+                        </p>
+                    </Reveal>
+
+                    <Reveal delay={90} className="md:col-span-5">
+                        <div
+                            style={{
+                                borderLeft: '2px solid var(--spark)',
+                                paddingLeft: 'clamp(1.2rem, 2.4vw, 2rem)',
+                            }}
+                        >
+                            <p
+                                className="font-display-card"
+                                style={{
+                                    fontSize: 'clamp(1.5rem, 2.6vw, 2.1rem)',
+                                    color: 'var(--lit)',
+                                    lineHeight: 1.15,
+                                }}
+                            >
+                                Sie bleiben der Chef.
+                            </p>
+                            <p
+                                className="text-soft leading-relaxed mt-4"
+                                style={{
+                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
+                                    maxWidth: '30ch',
+                                }}
+                            >
+                                Sie haben die volle Kontrolle – sogar unterwegs
+                                von Ihrem Handy.
+                            </p>
+                        </div>
+                    </Reveal>
+                </div>
+            </section>
+
+            {/* ── 02 Im Alltag ────────────────────────────── */}
+            <section id="alltag" className="container-edge section-pad" style={{ scrollMarginTop: '5rem' }}>
+                <SectionHeader
+                    kicker="02 — im alltag"
+                    title={
+                        <>
+                            Ihr KI-Denksystem
+                            <br />
+                            <Spark>im Alltag.</Spark>
+                        </>
+                    }
+                    className="mb-12 md:mb-16"
+                />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+                    {ALLTAG.map((punkt, i) => (
+                        <Reveal key={punkt} delay={(i % 3) * 80}>
+                            <div
+                                style={{
+                                    borderTop: '1px solid rgba(232, 90, 31, 0.35)',
+                                    paddingTop: '1.4rem',
+                                }}
+                            >
+                                <span className="mono-label text-spark">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <h3
+                                    className="font-display-card mt-3"
+                                    style={{
+                                        fontSize: 'clamp(1.2rem, 1.9vw, 1.5rem)',
+                                        color: 'var(--lit)',
+                                        lineHeight: 1.2,
+                                        maxWidth: '22ch',
+                                    }}
+                                >
+                                    {punkt}
+                                </h3>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+            </section>
+
+            {/* ── 03 Bausteine ────────────────────────────── */}
+            <section className="container-edge section-pad">
+                <SectionHeader
+                    kicker="03 — bausteine"
+                    title={
+                        <>
+                            Zwei Bausteine
+                            <br />
+                            <Spark>gibt es auch einzeln.</Spark>
+                        </>
+                    }
+                    sub="Webseite und KI-Sichtbarkeit sind Teile des Systems. Beide bekommen Sie auch für sich, zum festen Preis."
                     className="mb-14 md:mb-20"
                 />
                 <ServiceTeaserCards />
+
+                <Reveal
+                    as="p"
+                    className="text-soft leading-relaxed mt-10"
+                    style={{
+                        fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
+                        maxWidth: '52ch',
+                    }}
+                >
+                    <span aria-hidden className="text-spark">
+                        ↳{' '}
+                    </span>
+                    Kleine und spezielle Aufträge übermitteln wir gerne an
+                    unsere geprüften Netzwerkpartner.
+                </Reveal>
             </section>
 
-            {/* ── 02 Referenzen (Bild-Teaser) ─────────────── */}
+            {/* ── 04 Referenzen (Bild-Teaser) ─────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="02 — referenzen"
+                    kicker="04 — referenzen"
                     title={
                         <>
-                            Sieh selbst.
+                            Sehen Sie selbst.
                             <br />
                             <Spark>Alles live im Netz.</Spark>
                         </>
@@ -144,70 +299,6 @@ export default function Home() {
                 </Reveal>
             </section>
 
-            {/* ── 03 So läuft's ───────────────────────────── */}
-            <section className="container-edge section-pad">
-                <SectionHeader
-                    kicker="03 — ablauf"
-                    title={
-                        <>
-                            So läuft das.
-                            <br />
-                            <Spark>Ohne Überraschungen.</Spark>
-                        </>
-                    }
-                    sub="Du weißt vorher, was passiert, was es kostet und wann du was siehst."
-                    className="mb-12 md:mb-16"
-                />
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-                    {[
-                        {
-                            n: '01',
-                            t: 'gespräch',
-                            d: 'Gratis und unverbindlich. Du erzählst, wir hören zu — Antwort in unter 24 Stunden.',
-                        },
-                        {
-                            n: '02',
-                            t: 'konzept & fixpreis',
-                            d: 'Struktur, Texte und Design werden abgestimmt, bevor eine Zeile Code entsteht. Dazu ein Angebot mit klarem Fixpreis.',
-                        },
-                        {
-                            n: '03',
-                            t: 'bau & übergabe',
-                            d: 'Du siehst laufend Fortschritt, nicht erst am Ende. Am Schluss gehört die Seite dir — inklusive Zugängen.',
-                        },
-                    ].map((s, i) => (
-                        <Reveal key={s.n} delay={i * 80}>
-                            <div
-                                style={{
-                                    borderTop: '1px solid rgba(232, 90, 31, 0.35)',
-                                    paddingTop: '1.4rem',
-                                }}
-                            >
-                                <span className="mono-label text-spark">
-                                    {s.n}
-                                </span>
-                                <h3
-                                    className="font-display-card mt-3 mb-3"
-                                    style={{
-                                        fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
-                                        color: 'var(--lit)',
-                                    }}
-                                >
-                                    {s.t}
-                                </h3>
-                                <p
-                                    className="text-soft leading-relaxed"
-                                    style={{ fontSize: '1rem', maxWidth: '30ch' }}
-                                >
-                                    {s.d}
-                                </p>
-                            </div>
-                        </Reveal>
-                    ))}
-                </div>
-            </section>
-
             {/* ── Vision-Zeile ────────────────────────────── */}
             <section
                 className="container-edge section-pad relative overflow-hidden"
@@ -254,7 +345,7 @@ export default function Home() {
             {/* ── FAQ ─────────────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="04 — faq"
+                    kicker="05 — faq"
                     title={
                         <>
                             Kurz <Spark>geklärt.</Spark>
@@ -269,10 +360,17 @@ export default function Home() {
             <CtaBand
                 headline={
                     <>
-                        Lass uns über dein <Spark>Projekt reden.</Spark>
+                        Sprechen wir über <Spark>Ihren Betrieb.</Spark>
                     </>
                 }
-                sub="Noch 2 Projekt-Slots für 2026. Der erste Call ist gratis — danach weißt du, wie dein Auftritt aussehen würde."
+                sub="Das Erstgespräch ist kostenlos und unverbindlich. Sie erzählen von Ihrem Betrieb, wir zeigen, was ein KI-Betriebssystem dort übernehmen kann."
+                primaryLabel="erstgespräch anfragen"
+                note={
+                    <>
+                        ↳ erstgespräch gratis &amp; unverbindlich · antwort in
+                        unter 24 h
+                    </>
+                }
             />
         </>
     )

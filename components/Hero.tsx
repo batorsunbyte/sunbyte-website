@@ -76,7 +76,7 @@ export default function Hero() {
                 >
                     {/* Kicker */}
                     <p className="mono-label text-spark hero-reveal -mb-2">
-                        it-dienstleister · wien · seit 2026
+                        ki-betriebssystem · wien · seit 2026
                     </p>
 
                     {/* Info-Panel (zeigt Kontinent-Texte) */}
@@ -108,20 +108,26 @@ export default function Hero() {
                             color: 'var(--lit)',
                         }}
                     >
-                        Zeig der Welt,
-                        <br />
-                        <span style={{ color: 'var(--spark)' }}>
-                            wie stark du bist.
+                        {/* Eine Zeile, damit Text und Knöpfe im ersten Bildschirm bleiben.
+                            nowrap statt geschütztem Bindestrich: Die Schrift ist beschnitten. */}
+                        <span style={{ whiteSpace: 'nowrap' }}>
+                            Ihr{' '}
+                            <span style={{ color: 'var(--spark)' }}>
+                                KI-OS.
+                            </span>
                         </span>
                     </h1>
 
-                    {/* Sub */}
+                    {/* Sub — Zakirs Text vom 26.11.2026, wörtlich */}
                     <p
-                        className="text-soft max-w-[40ch] leading-relaxed hero-reveal-3"
+                        className="text-soft max-w-[46ch] leading-relaxed hero-reveal-3"
                         style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                     >
-                        Webdesign und KI-Sichtbarkeit aus Wien.
-                        Damit dich Kunden finden — und die KI dich empfiehlt.
+                        Sie haben viel Geld und Zeit in Werbung, (KI-)Tools und
+                        Agenturen gesteckt. Und am Ende ist es für Sie immer
+                        noch nicht zufriedenstellend. Sunbyte installiert ein
+                        KI-Betriebssystem, welches auf Ihren Betrieb
+                        zugeschnitten ist.
                     </p>
 
                     {/* CTA-Zeile — Conversion im ersten Viewport */}
@@ -138,10 +144,10 @@ export default function Hero() {
                                 letterSpacing: '0.16em',
                             }}
                         >
-                            projekt anfragen <span aria-hidden>→</span>
+                            erstgespräch anfragen <span aria-hidden>→</span>
                         </Link>
                         <Link
-                            href="/arbeiten"
+                            href="/#alltag"
                             className="inline-flex items-center gap-2 font-mono transition-all duration-300 hover:border-spark hover:text-spark"
                             style={{
                                 border: '1px solid rgba(201, 184, 163, 0.3)',
@@ -152,7 +158,7 @@ export default function Hero() {
                                 letterSpacing: '0.16em',
                             }}
                         >
-                            referenzen ansehen <span aria-hidden>→</span>
+                            was es im alltag tut <span aria-hidden>→</span>
                         </Link>
                     </div>
                 </div>
@@ -176,11 +182,10 @@ export default function Hero() {
                             className="text-lit font-medium"
                             style={{ fontWeight: 500 }}
                         >
-                            Dein Auftritt ist die Investition mit dem höchsten
-                            Hebel.
+                            Sie bleiben der Chef und haben die volle
+                            Kontrolle
                         </b>{' '}
-                        Er verkauft und baut Vertrauen — rund um die Uhr,
-                        weltweit.
+                        – sogar unterwegs von Ihrem Handy.
                     </p>
 
                     {/* Globe — voll interaktiv */}
@@ -214,13 +219,25 @@ export default function Hero() {
             {/* Marquee unten */}
             <div className="marquee absolute left-0 right-0 bottom-0 z-[5]">
                 <div className="marquee-track">
-                    {Array.from({ length: 10 }).map((_, i) => (
-                        <span key={i} style={{ display: 'inline-flex' }}>
-                            <span>printmywall</span>
-                            <span>impulsiv fitness</span>
-                            <span>kfz22</span>
-                            <span>mstyle beauty</span>
-                            <span>safety pro</span>
+                    {/* 6 Kopien: Die halbe Spur (~4.200 px) deckt jeden Bildschirm,
+                        das Tempo bleibt bei 130 s ruhig. Abstand zwischen den
+                        Punkten über gap, außen je die Hälfte. */}
+                    {Array.from({ length: 6 }).map((_, i) => (
+                        <span
+                            key={i}
+                            style={{
+                                display: 'inline-flex',
+                                gap: '4.75rem',
+                                padding: '0 2.375rem',
+                            }}
+                        >
+                            {/* Die sechs Alltags-Punkte in Kurzform (Abschnitt #alltag) */}
+                            <span>findet neue kunden</span>
+                            <span>beantwortet anfragen</span>
+                            <span>vereinbart termine</span>
+                            <span>macht werbung</span>
+                            <span>hat die konkurrenz im auge</span>
+                            <span>vergisst nichts</span>
                         </span>
                     ))}
                 </div>

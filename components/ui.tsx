@@ -124,11 +124,14 @@ export function CtaBand({
     sub,
     primaryLabel = 'projekt anfragen',
     primaryHref = '/kontakt',
+    note,
 }: {
     headline: ReactNode
     sub?: ReactNode
     primaryLabel?: string
     primaryHref?: string
+    /** ersetzt die Standard-Zeile unter den Knöpfen (Startseite: Sie-Form) */
+    note?: ReactNode
 }) {
     return (
         <section className="container-edge section-pad">
@@ -186,8 +189,12 @@ export function CtaBand({
                         maxWidth: '52ch',
                     }}
                 >
-                    ↳ erstgespräch gratis &amp; unverbindlich · fixpreis vor
-                    dem start · du redest mit dem, der baut
+                    {note ?? (
+                        <>
+                            ↳ erstgespräch gratis &amp; unverbindlich · fixpreis
+                            vor dem start · du redest mit dem, der baut
+                        </>
+                    )}
                 </Reveal>
             </div>
         </section>

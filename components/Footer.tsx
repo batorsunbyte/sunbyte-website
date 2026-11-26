@@ -31,8 +31,8 @@ export default function Footer() {
                         className="text-soft mt-2 max-w-sm leading-snug"
                         style={{ fontSize: 'clamp(0.8rem, 0.95vw, 0.9rem)' }}
                     >
-                        IT-Dienstleister aus Wien. Webseiten & KI-Sichtbarkeit —
-                        ehrlich gerechnet.
+                        KI-Betriebssysteme für Betriebe, aus Wien. Webseiten &
+                        KI-Sichtbarkeit als Bausteine — ehrlich gerechnet.
                     </p>
                 </div>
 
@@ -47,6 +47,7 @@ export default function Footer() {
                     >
                         sitemap
                     </p>
+                    <FooterLink href="/">KI-OS</FooterLink>
                     <FooterLink href="/webseiten">Webseiten</FooterLink>
                     <FooterLink href="/ki-sichtbarkeit">
                         KI-Sichtbarkeit

@@ -16,6 +16,7 @@ import { CONTACT } from '@/lib/seo'
  */
 
 const NAV = [
+    { href: '/', label: 'ki-os' },
     { href: '/webseiten', label: 'webseiten' },
     { href: '/ki-sichtbarkeit', label: 'ki-sichtbarkeit' },
     { href: '/arbeiten', label: 'referenzen' },
@@ -148,7 +149,7 @@ export default function Header() {
                             letterSpacing: '0.16em',
                         }}
                     >
-                        projekt anfragen <span aria-hidden>→</span>
+                        erstgespräch anfragen <span aria-hidden>→</span>
                     </Link>
 
                     {/* Mobile-Toggle */}
@@ -260,7 +261,7 @@ export default function Header() {
                             letterSpacing: '0.12em',
                         }}
                     >
-                        projekt anfragen <span aria-hidden>→</span>
+                        erstgespräch anfragen <span aria-hidden>→</span>
                     </Link>
                     <a
                         href={`https://wa.me/${CONTACT.whatsapp}`}

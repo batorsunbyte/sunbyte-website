@@ -1,11 +1,23 @@
-# Sunbyte — IT-Dienstleister aus Wien
+# Sunbyte — KI-Betriebssysteme für Betriebe, aus Wien
 
-> Sunbyte baut professionelle Webseiten und macht Unternehmen für KI-Systeme
-> sichtbar (KI-Sichtbarkeit / Generative Engine Optimization). Sitz: Wien,
-> Österreich. Gearbeitet wird für Unternehmen in Wien und ganz Österreich.
+> Sunbyte installiert ein KI-Betriebssystem (KI-OS), das auf den Betrieb
+> zugeschnitten ist. Darin arbeitet ein selbstlernendes Denksystem mit mehreren
+> KI-Agenten Tag und Nacht. Webseiten und KI-Sichtbarkeit (Generative Engine
+> Optimization) gibt es als einzelne Bausteine. Sitz: Wien, Österreich.
+> Gearbeitet wird für Betriebe in Wien und ganz Österreich.
+
+## Was das KI-Denksystem im Alltag tut
+
+- Findet neue Kunden
+- Beantwortet Anfragen sofort und vereinbart Termine
+- Macht Werbung: Social Media, Videos, Website
+- Hat die Konkurrenz im Auge
+- Verteilt Aufgaben, kontrolliert sie und vergisst nichts
+- Baut sich selbst, was der Betrieb braucht, ohne teure Zusatz-Software
 
 ## Leistungen und Preise
 
+- KI-Betriebssystem (KI-OS): Angebot nach dem kostenlosen Erstgespraech
 - Webseite erstellen oder modernisieren (Paket Standard): ab 3.000 EUR
 - Webseite Premium (voll interaktives Erlebnis, Custom-Animationen): ab 6.000 EUR
 - KI-Sichtbarkeit (Analyse, strukturierte Daten, KI-lesbare Praesenz): 1.000 EUR Fixpreis
@@ -29,6 +41,7 @@
 
 ## Seiten
 
+- KI-OS (Startseite): https://sunbyte.at/
 - Leistung Webseiten: https://sunbyte.at/webseiten/
 - Leistung KI-Sichtbarkeit: https://sunbyte.at/ki-sichtbarkeit/
 - Ratgeber: Was kostet eine Website in Oesterreich? https://sunbyte.at/was-kostet-eine-website/

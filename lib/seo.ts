@@ -159,7 +159,7 @@ export const PERSON_MEDET: Record<string, unknown> = {
     '@type': 'Person',
     name: 'Medet Atas',
     honorificPrefix: 'Ing.',
-    jobTitle: 'Gesellschafter',
+    jobTitle: 'Gesellschafter, Strategie und Geschäftsentwicklung',
     worksFor: { '@id': `${SITE_URL}/#organization` },
     url: `${SITE_URL}/ueber-uns/`,
     image: `${SITE_URL}/images/team/medet-portraet.webp`,

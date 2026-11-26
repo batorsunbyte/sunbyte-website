@@ -82,7 +82,7 @@ const KOEPFE: Kopf[] = [
         bild: '/images/team/medet-portraet.webp',
         alt: 'Ing. Medet Atas, Gesellschafter von Sunbyte.',
         name: 'Ing. Medet Atas',
-        rolle: 'Gesellschafter',
+        rolle: 'Gesellschafter, Strategie und Geschäftsentwicklung',
         text: [
             <>
                 Medet ist österreichischer Unternehmer mit technischem

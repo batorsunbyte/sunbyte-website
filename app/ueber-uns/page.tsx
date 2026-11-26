@@ -319,10 +319,10 @@ export default function UeberUnsPage() {
                     style={{
                         fontSize: 'clamp(2.25rem, 6.5vw, 5rem)',
                         color: 'var(--lit)',
-                        maxWidth: '18ch',
+                        maxWidth: '16ch',
                     }}
                 >
-                    Wir bauen Sunbyte &amp;&nbsp;SocialTalents zu einer{' '}
+                    Wir bauen Sunbyte zu einer{' '}
                     <span style={{ whiteSpace: 'nowrap' }}>
                         <Spark>IT-Weltmacht.</Spark>
                     </span>

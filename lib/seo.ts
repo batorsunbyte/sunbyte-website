@@ -55,7 +55,7 @@ export const ORGANIZATION: Record<string, unknown> = {
     image: OG_IMAGE,
     description:
         'Sunbyte aus Wien entwickelt ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
-    slogan: 'Wir bauen Sunbyte & SocialTalents zu einer IT-Weltmacht.',
+    slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
     email: CONTACT.email,
     telephone: CONTACT.phoneRaw,

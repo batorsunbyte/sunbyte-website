@@ -6,10 +6,8 @@
  *  - LEISTUNGEN: aus Zakirs Beschreibung („Software mit einer Bibliothek von
  *    Funktionen, Aktualisierungen, Sicherheit, Beratung, Hilfe bei der
  *    Installation, Betreuung"). Keine Zusagen zu Fristen oder Umfang.
- *  - BRANCHEN: Beispiele, die Zakir ausdrücklich bestellt hat („ein paar
- *    Vorteile und Nutzungen je Branche erstellen"). Jeder Punkt ist eine
- *    Anwendung der sechs Funktionen auf die Branche und als Beispiel
- *    gekennzeichnet — keine Kundenfälle, keine Zahlen.
+ *  - BRANCHEN: je Branche drei Fälle „Problem → Lösung" (siehe dort).
+ *    Keine Kundenfälle, keine Zahlen.
  *  - Preise: noch nicht festgelegt, deshalb steht nirgends ein Betrag.
  */
 
@@ -125,55 +123,170 @@ export const LEISTUNGEN: { titel: string; text: string; partner: string }[] = [
     },
 ]
 
-export const BRANCHEN: { slug: string; name: string; beispiele: string[] }[] = [
+/**
+ * Branchen (zweite Fassung, 26.11.2026). Zakir: „Hier sollen sehr gute
+ * Beispiele bzw. Lösungen für Probleme stehen, die die verschiedenen Branchen
+ * haben, wo sie auch viel Geld ausgeben — eines davon ist Kundengewinnung."
+ *
+ * Je Branche drei Fälle: `problem` = wo heute Geld oder Zeit verloren geht,
+ * `loesung` = was das System dort übernimmt, `modul` = welches Modul aus dem
+ * Schaubild das tut. Die Probleme sind bekannte, allgemeine Kostenstellen der
+ * Branche, bewusst ohne Zahlen und ohne Kundennamen. Die Lösungen bleiben bei
+ * dem, was Zakirs sechs Sätze zusagen. Von Claude geschrieben — Zakir liest gegen.
+ */
+export const BRANCHEN: {
+    slug: string
+    name: string
+    faelle: { thema: string; problem: string; loesung: string; modul: string }[]
+}[] = [
     {
         slug: 'bau',
         name: 'Bau',
-        beispiele: [
-            'Beantwortet Anfragen zu Angeboten sofort und vereinbart Besichtigungstermine.',
-            'Verteilt Aufgaben an die Mannschaft und erinnert an offene Punkte auf der Baustelle.',
-            'Hat Ausschreibungen und Mitbewerber im Auge.',
-            'Macht aus Baustellenfotos Beiträge für Social Media und die Website.',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Aufträge kommen über Vermittlungsportale, Anzeigen und Empfehlungen. Portale und Anzeigen kosten Geld, auch wenn kein Auftrag daraus wird.',
+                loesung:
+                    'Das System sucht selbst nach passenden Ausschreibungen und Kontakten und legt sie Ihnen vor. Auch nachts.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Anfragen und Besichtigungen',
+                problem:
+                    'Anfragen kommen, während Sie auf der Baustelle stehen. Wer erst am Abend zurückruft, hat den Auftrag oft schon verloren.',
+                loesung:
+                    'Das System antwortet sofort, fragt die wichtigsten Angaben ab und vereinbart den Besichtigungstermin.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Koordination',
+                problem:
+                    'Wer macht was bis wann? Die Abstimmung läuft über Telefon und WhatsApp, kostet Stunden, und Offenes geht unter.',
+                loesung:
+                    'Das System verteilt die Aufgaben an die Mannschaft, kontrolliert sie und erinnert an offene Punkte auf der Baustelle.',
+                modul: 'Aufgaben',
+            },
         ],
     },
     {
         slug: 'handwerk',
         name: 'Handwerk',
-        beispiele: [
-            'Nimmt Anfragen auch nach Feierabend an und vereinbart Termine.',
-            'Erinnert an Wartungen und an Angebote, die noch offen sind.',
-            'Verteilt Aufträge im Team und kontrolliert, was erledigt ist.',
-            'Zeigt fertige Arbeiten auf Social Media.',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Für neue Aufträge zahlen Betriebe an Portale oder für Anzeigen. Bezahlt wird die Anfrage, nicht der Auftrag.',
+                loesung:
+                    'Das System findet Kunden in Ihrer Umgebung und zeigt Ihre fertigen Arbeiten auf Social Media und der Website.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Erreichbarkeit',
+                problem:
+                    'Das Telefon läutet, während Sie beim Kunden arbeiten. Ein verpasster Anruf ist oft ein verlorener Auftrag.',
+                loesung:
+                    'Das System nimmt Anfragen an, auch nach Feierabend, beantwortet sie und trägt den Termin ein.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Offene Angebote',
+                problem:
+                    'Das Angebot ist geschrieben, aber niemand fasst nach. So bleibt Geld liegen, das schon fast verdient war.',
+                loesung:
+                    'Das System erinnert an offene Angebote und fällige Wartungen und vergisst keinen Kunden.',
+                modul: 'Aufgaben',
+            },
         ],
     },
     {
         slug: 'gastronomie',
         name: 'Gastronomie',
-        beispiele: [
-            'Beantwortet Fragen zu Reservierung, Öffnungszeiten und Gruppen sofort.',
-            'Macht Werbung für Mittagsmenü, Aktionen und Veranstaltungen.',
-            'Hat Bewertungen und die Lokale in der Umgebung im Auge.',
-            'Erinnert das Team an Bestellungen und wiederkehrende Aufgaben.',
+        faelle: [
+            {
+                thema: 'Gäste gewinnen',
+                problem:
+                    'Lieferdienste und Reservierungsportale bringen Gäste, verlangen dafür aber Provision. Der Gast gehört dann dem Portal.',
+                loesung:
+                    'Das System macht Ihre eigene Werbung für Mittagsmenü, Aktionen und Veranstaltungen und bringt Gäste direkt zu Ihnen.',
+                modul: 'Werbung',
+            },
+            {
+                thema: 'Reservierungen',
+                problem:
+                    'Das Telefon läutet mitten im Service. Niemand hebt ab, und der Tisch bleibt leer.',
+                loesung:
+                    'Das System beantwortet Fragen zu Reservierung, Öffnungszeiten und Gruppen sofort.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Bewertungen und Umgebung',
+                problem:
+                    'Eine schlechte Bewertung bleibt tagelang unbeantwortet. Was das Lokal nebenan gerade macht, erfahren Sie zufällig.',
+                loesung:
+                    'Das System hat Bewertungen und die Lokale in der Umgebung im Auge und gibt Ihnen sofort Bescheid.',
+                modul: 'Konkurrenz',
+            },
         ],
     },
     {
         slug: 'fitness-beauty',
         name: 'Fitness und Beauty',
-        beispiele: [
-            'Beantwortet Anfragen zu Probetraining und Behandlungen und vereinbart Termine.',
-            'Meldet sich bei Interessenten, die noch nicht gebucht haben.',
-            'Macht Ihre Werbung: Beiträge, Videos, Aktionen.',
-            'Hat Mitbewerber und deren Angebote im Auge.',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Werbung auf Social Media kostet jeden Monat. Viele Interessenten melden sich einmal und dann nie wieder.',
+                loesung:
+                    'Das System meldet sich bei Interessenten, die noch nicht gebucht haben, und vereinbart den Termin.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Termine',
+                problem:
+                    'Leere Termine und vergessene Buchungen kosten Umsatz, der sich nicht nachholen lässt.',
+                loesung:
+                    'Das System beantwortet Anfragen zu Probetraining und Behandlungen sofort und erinnert vor dem Termin.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Inhalte',
+                problem:
+                    'Für Beiträge und Videos zahlen Sie eine Agentur, oder Sie machen es am Abend selbst.',
+                loesung:
+                    'Das System macht Ihre Werbung: Beiträge, Videos, Aktionen. Sie geben frei.',
+                modul: 'Werbung',
+            },
         ],
     },
     {
         slug: 'kfz',
         name: 'Kfz und Fahrzeugpflege',
-        beispiele: [
-            'Beantwortet Anfragen zu Service und Pflege und vereinbart Termine.',
-            'Erinnert Kunden an Pickerl, Service und Reifenwechsel.',
-            'Verteilt Aufträge in der Werkstatt und kontrolliert den Stand.',
-            'Macht Werbung mit Vorher-nachher-Bildern.',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Neue Kunden kosten Werbung. Dabei kommen Kunden, die schon einmal da waren, oft nicht wieder, weil niemand sie erinnert.',
+                loesung:
+                    'Das System erinnert Ihre Kunden an Pickerl, Service und Reifenwechsel und vereinbart den Termin.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Preisanfragen',
+                problem:
+                    'Anfragen kommen per Telefon, WhatsApp und E-Mail. Wer keine schnelle Antwort bekommt, fährt zur nächsten Werkstatt.',
+                loesung:
+                    'Das System beantwortet Anfragen zu Service und Pflege sofort und trägt den Termin ein.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Werkstatt-Ablauf',
+                problem:
+                    'Welches Auto ist fertig, was fehlt noch, wer macht was? Die Antwort kostet jeden Tag Zeit.',
+                loesung:
+                    'Das System verteilt die Aufträge in der Werkstatt, kontrolliert den Stand und vergisst nichts.',
+                modul: 'Aufgaben',
+            },
         ],
     },
 ]

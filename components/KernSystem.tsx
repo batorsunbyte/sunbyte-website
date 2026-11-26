@@ -162,6 +162,8 @@ export default function KernSystem() {
     const [phase, setPhase] = useState<Phase>('ruhe')
     /** Name des Agenten, dessen Aufgabenliste gerade offen ist */
     const [tipp, setTipp] = useState<string | null>(null)
+    /** Klick-Hinweis an Laptop und Handy: weg, sobald jemand sie anklickt */
+    const [hinweis, setHinweis] = useState(true)
     const buehne = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -503,9 +505,28 @@ export default function KernSystem() {
                         aria-controls="kern-feld"
                         aria-label="Ihr Zugriff über Handy und Laptop"
                         style={{ left: links(109.1), top: top(49.4) }}
-                        onClick={() => waehle(ZUGRIFF_NR)}
+                        onClick={() => {
+                            setHinweis(false)
+                            waehle(ZUGRIFF_NR)
+                        }}
                         onFocus={() => setAngehalten(true)}
-                    />
+                    >
+                        {/* Klick-Zeichen (Zakir, 26.11.2026: damit die Leute darauf klicken) */}
+                        {hinweis && (
+                            <span className="kern-hinweis" aria-hidden>
+                                <span className="kern-hinweis__ring" />
+                                <svg
+                                    className="kern-hinweis__hand"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                >
+                                    <path d="M9 9l5 12 1.8-5.2L21 14z" />
+                                    <path d="M7.2 2.2l.8 2.9M2.2 7.2l2.9.8M5.1 13.9l-2.1 2.1M13.9 5.1l2.1-2.1" />
+                                </svg>
+                                <span className="kern-hinweis__text">klicken</span>
+                            </span>
+                        )}
+                    </button>
 
                     {/* Plus: Es können weitere Module dazukommen */}
                     <span

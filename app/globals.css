@@ -1705,3 +1705,142 @@ select option {
         right: min(calc(100% - var(--x) + 1.3rem), calc(100% - var(--w) + 2.5rem));
     }
 }
+
+/* ── Klick-Zeichen an Laptop und Handy ─────────────────────────── */
+.kern-hinweis {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.kern-hinweis__ring {
+    position: absolute;
+    inset: -4%;
+    border: 1.5px solid var(--spark);
+    border-radius: 12px;
+    animation: kern-hinweis-ring 1.8s ease-out infinite;
+}
+@keyframes kern-hinweis-ring {
+    0% { transform: scale(0.9); opacity: 0.95; }
+    80%, 100% { transform: scale(1.28); opacity: 0; }
+}
+.kern-hinweis__hand {
+    position: absolute;
+    left: 56%;
+    top: 62%;
+    width: clamp(1.15rem, 4.2cqw, 1.7rem);
+    height: auto;
+    stroke: var(--lit);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8));
+    animation: kern-hinweis-tipp 1.8s ease-in-out infinite;
+}
+.kern-hinweis__hand path:first-child {
+    fill: var(--spark);
+}
+@keyframes kern-hinweis-tipp {
+    0%, 55%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-3px, -3px) scale(0.92); }
+}
+.kern-hinweis__text {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 1.15rem);
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: lowercase;
+    color: var(--spark);
+    white-space: nowrap;
+}
+@container (max-width: 430px) {
+    .kern-hinweis__text {
+        top: calc(100% + 0.7rem);
+        font-size: 0.55rem;
+    }
+}
+
+/* ── Branchen: Problem → Lösung ────────────────────────────────── */
+.branche-faelle {
+    display: grid;
+    gap: 1rem;
+}
+.branche-fall {
+    display: grid;
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) auto minmax(0, 1.15fr);
+    gap: clamp(1rem, 2.4vw, 2.2rem);
+    align-items: start;
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-radius: 6px;
+    padding: clamp(1.4rem, 2.4vw, 2rem);
+}
+.branche-fall__kopf h3 {
+    margin-top: 0.6rem;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    line-height: 1.12;
+    color: var(--lit);
+}
+.branche-fall__heute .mono-label {
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+.branche-fall__heute p:last-child {
+    color: var(--soft);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+.branche-fall__pfeil {
+    align-self: center;
+    color: var(--spark);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+.branche-fall__system {
+    border-left: 2px solid var(--spark);
+    padding-left: clamp(1rem, 1.8vw, 1.5rem);
+}
+.branche-fall__system .mono-label {
+    color: var(--spark);
+    margin-bottom: 0.5rem;
+}
+.branche-fall__system p:nth-child(2) {
+    color: var(--lit);
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    line-height: 1.45;
+}
+.branche-fall__modul {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+    border: 1px solid rgba(201, 184, 163, 0.24);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.82rem;
+    color: var(--soft);
+}
+.branche-fall__modul span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--spark);
+}
+@media (max-width: 900px) {
+    .branche-fall {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .branche-fall__pfeil {
+        display: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .kern-hinweis__ring,
+    .kern-hinweis__hand {
+        animation: none !important;
+    }
+    .kern-hinweis__ring {
+        opacity: 0.8;
+    }
+}

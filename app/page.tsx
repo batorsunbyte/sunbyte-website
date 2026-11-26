@@ -227,7 +227,7 @@ export default function Home() {
                             <Spark>Für Ihre Branche.</Spark>
                         </>
                     }
-                    sub="Das Betriebssystem ist ein Standard. Was es in Ihrem Betrieb tut, richtet sich nach Ihrer Branche."
+                    sub="Wo in Ihrer Branche heute Zeit und Geld verloren gehen, setzt das Betriebssystem an. Drei Beispiele je Branche."
                     className="mb-12 md:mb-14"
                 />
                 <Reveal>

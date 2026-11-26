@@ -4,9 +4,11 @@ import { useState } from 'react'
 import { BRANCHEN } from '@/lib/kios'
 
 /**
- * Branchen-Umschalter: eine Branche wählen, vier Beispiele lesen.
- * Die Beispiele stehen in lib/kios.ts und sind als Beispiele gekennzeichnet.
- * Bedienbar mit Maus, Finger und Tastatur (Pfeiltasten wechseln den Reiter).
+ * Branchen-Umschalter: eine Branche wählen, drei Fälle lesen.
+ * Jeder Fall stellt gegenüber, wo heute Geld oder Zeit verloren geht, und was
+ * das System dort übernimmt — samt dem Modul aus dem Schaubild, das es tut.
+ * Inhalte in lib/kios.ts. Bedienbar mit Maus, Finger und Tastatur
+ * (Pfeiltasten wechseln den Reiter).
  */
 export default function Branchen() {
     const [aktiv, setAktiv] = useState(0)
@@ -64,42 +66,49 @@ export default function Branchen() {
                 aria-labelledby={`branche-reiter-${branche.slug}`}
                 className="mt-10 md:mt-12"
             >
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7">
-                    {branche.beispiele.map((b, i) => (
+                <ol className="branche-faelle">
+                    {branche.faelle.map((f, i) => (
                         <li
                             key={`${branche.slug}-${i}`}
-                            className="branche-punkt"
-                            style={{
-                                borderTop: '1px solid rgba(232, 90, 31, 0.35)',
-                                paddingTop: '1.2rem',
-                                animationDelay: `${i * 70}ms`,
-                            }}
+                            className="branche-fall branche-punkt"
+                            style={{ animationDelay: `${i * 80}ms` }}
                         >
-                            <span className="mono-label text-spark">
-                                {String(i + 1).padStart(2, '0')}
+                            <div className="branche-fall__kopf">
+                                <span className="mono-label text-spark">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <h3 className="font-display-card">{f.thema}</h3>
+                            </div>
+
+                            <div className="branche-fall__heute">
+                                <p className="mono-label">heute</p>
+                                <p>{f.problem}</p>
+                            </div>
+
+                            <span className="branche-fall__pfeil" aria-hidden>
+                                →
                             </span>
-                            <p
-                                className="mt-2.5"
-                                style={{
-                                    color: 'var(--lit)',
-                                    fontSize: 'clamp(1.05rem, 1.5vw, 1.25rem)',
-                                    lineHeight: 1.4,
-                                    maxWidth: '36ch',
-                                }}
-                            >
-                                {b}
-                            </p>
+
+                            <div className="branche-fall__system">
+                                <p className="mono-label">mit ihrem ki-os</p>
+                                <p>{f.loesung}</p>
+                                <span className="branche-fall__modul">
+                                    <span aria-hidden />
+                                    Modul {f.modul}
+                                </span>
+                            </div>
                         </li>
                     ))}
-                </ul>
+                </ol>
             </div>
 
             <p
                 className="text-muted mt-10"
-                style={{ fontSize: '0.9rem', maxWidth: '52ch' }}
+                style={{ fontSize: '0.9rem', maxWidth: '56ch' }}
             >
-                Das sind Beispiele. Was Ihr System übernimmt, legen wir gemeinsam
-                fest. Ihre Branche ist nicht dabei? Dann sprechen wir darüber.
+                Das sind typische Beispiele. Was Ihr System übernimmt, legen wir
+                gemeinsam fest. Ihre Branche ist nicht dabei? Dann sprechen wir
+                darüber.
             </p>
         </div>
     )

@@ -100,6 +100,12 @@ export default function Branchen() {
                         </li>
                     ))}
                 </ol>
+                {branche.hinweis && (
+                    <p className="branche-hinweis">
+                        <span aria-hidden>↳ </span>
+                        {branche.hinweis}
+                    </p>
+                )}
             </div>
 
             <p

@@ -1844,3 +1844,139 @@ select option {
         opacity: 0.8;
     }
 }
+
+/* ── Abschnitt „Warum": viele Rechnungen → ein System ───────────── */
+.warum-verluste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+}
+.warum-verluste li {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height: 1.05;
+    color: var(--lit);
+    text-decoration: line-through;
+    text-decoration-color: var(--spark);
+    text-decoration-thickness: 0.09em;
+}
+.warum-bild {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) auto minmax(0, 1fr);
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: center;
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-radius: 6px;
+    padding: clamp(1.4rem, 3vw, 2.5rem);
+}
+.warum-posten {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+/* Jeder Posten wird der Reihe nach durchgestrichen und blasser */
+.warum-posten li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(201, 184, 163, 0.28);
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.92rem;
+    color: var(--soft);
+    animation: warum-weg 8.1s ease-in-out infinite;
+}
+.warum-posten li:nth-child(odd) { transform: rotate(-1.4deg); }
+.warum-posten li:nth-child(3n) { transform: rotate(1.8deg); }
+.warum-posten__euro {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--spark);
+}
+@keyframes warum-weg {
+    0%, 6% { opacity: 1; text-decoration: none; }
+    12%, 82% { opacity: 0.32; text-decoration: line-through; }
+    94%, 100% { opacity: 1; text-decoration: none; }
+}
+.warum-bild__pfeil {
+    color: var(--spark);
+    font-size: 1.8rem;
+    line-height: 1;
+}
+.warum-eins {
+    text-align: center;
+}
+.warum-eins__kern {
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 11rem);
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 35% 30%, #ff8a4a 0%, var(--spark) 45%, #9c330d 100%);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    line-height: 1.05;
+    color: var(--bg);
+}
+.warum-eins__halo {
+    position: absolute;
+    inset: -30%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 90, 31, 0.34) 0%, rgba(232, 90, 31, 0) 65%);
+    z-index: -1;
+    animation: kern-atmen 4s ease-in-out infinite;
+}
+.warum-ziel {
+    height: 100%;
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-top: 2px solid var(--spark);
+    border-radius: 6px;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+}
+.warum-ziel h3 {
+    margin-top: 1rem;
+    font-size: clamp(1.8rem, 2.7vw, 2.4rem);
+    line-height: 1.05;
+    color: var(--lit);
+}
+.warum-ziel p {
+    margin-top: 1rem;
+    color: var(--soft);
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 1.55;
+    max-width: 32ch;
+}
+@media (max-width: 640px) {
+    .warum-bild {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .warum-bild__pfeil {
+        transform: rotate(90deg);
+        justify-self: center;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .warum-posten li,
+    .warum-eins__halo {
+        animation: none !important;
+    }
+}
+.branche-hinweis {
+    margin-top: 1.25rem;
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed rgba(201, 184, 163, 0.3);
+    border-radius: 6px;
+    color: var(--soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 62ch;
+}
+.branche-hinweis span {
+    color: var(--spark);
+}

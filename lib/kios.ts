@@ -134,10 +134,12 @@ export const LEISTUNGEN: { titel: string; text: string; partner: string }[] = [
  * Branche, bewusst ohne Zahlen und ohne Kundennamen. Die Lösungen bleiben bei
  * dem, was Zakirs sechs Sätze zusagen. Von Claude geschrieben — Zakir liest gegen.
  */
-export const BRANCHEN: {
+const BRANCHEN_ALLE: {
     slug: string
     name: string
     faelle: { thema: string; problem: string; loesung: string; modul: string }[]
+    /** Grenze, die bei dieser Branche ausdrücklich dastehen soll */
+    hinweis?: string
 }[] = [
     {
         slug: 'bau',
@@ -289,7 +291,147 @@ export const BRANCHEN: {
             },
         ],
     },
+    {
+        slug: 'produktion',
+        name: 'Produktion',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Der Vertrieb hängt an wenigen Personen und an Messen. Neue Abnehmer und neue Märkte zu finden kostet Reisen, Zeit und Personal.',
+                loesung:
+                    'Das System sucht passende Abnehmer und Ausschreibungen und legt sie Ihrem Vertrieb vor. Auch nachts.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Anfragen',
+                problem:
+                    'Anfragen landen in verschiedenen Postfächern. Bis jemand antwortet, hat der Interessent schon beim Mitbewerber angefragt.',
+                loesung:
+                    'Das System beantwortet Anfragen sofort, fragt fehlende Angaben nach und vereinbart den Termin mit Ihrem Vertrieb.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Programme und Lizenzen',
+                problem:
+                    'Jede Abteilung hat ihr eigenes Programm, dazu kommen Listen in Excel. Lizenzen und Anpassungen kosten jedes Jahr.',
+                loesung:
+                    'Das System baut sich selbst, was Ihr Betrieb braucht, ohne teure Zusatz-Software.',
+                modul: 'Ausbau',
+            },
+        ],
+    },
+    {
+        slug: 'arztpraxen',
+        name: 'Arztpraxen',
+        hinweis:
+            'Medizinische Auskünfte gibt das System nicht. Gesundheitsdaten brauchen besonderen Schutz. Wie das in Ihrer Praxis gelöst wird, klären wir vor dem Start.',
+        faelle: [
+            {
+                thema: 'Telefon und Termine',
+                problem:
+                    'Das Telefon läutet ununterbrochen. Die Assistenz kommt nicht zu ihrer eigentlichen Arbeit, und Patienten erreichen niemanden.',
+                loesung:
+                    'Das System beantwortet Fragen zu Terminen, Öffnungszeiten und Ablauf sofort und vereinbart den Termin.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Versäumte Termine',
+                problem:
+                    'Termine, zu denen niemand kommt, kosten Umsatz, der sich nicht nachholen lässt.',
+                loesung:
+                    'Das System erinnert vor dem Termin und an fällige Kontrollen. Es vergisst niemanden.',
+                modul: 'Aufgaben',
+            },
+            {
+                thema: 'Organisation',
+                problem:
+                    'Bestellungen, Dienstplan, wiederkehrende Aufgaben: Vieles hängt an einer Person. Fällt sie aus, bleibt es liegen.',
+                loesung:
+                    'Das System verteilt die Aufgaben im Team, kontrolliert sie und erinnert an Offenes.',
+                modul: 'Aufgaben',
+            },
+        ],
+    },
+    {
+        slug: 'immobilien',
+        name: 'Immobilien',
+        faelle: [
+            {
+                thema: 'Kundengewinnung',
+                problem:
+                    'Portale verlangen Geld für jedes Inserat. Eigentümer, die verkaufen oder vermieten wollen, finden Sie nur mit viel Aufwand.',
+                loesung:
+                    'Das System sucht nach passenden Kontakten und Objekten und legt sie Ihnen vor.',
+                modul: 'Neukunden',
+            },
+            {
+                thema: 'Anfragen und Besichtigungen',
+                problem:
+                    'Auf ein Inserat kommen viele Anfragen, die meisten mit denselben Fragen. Die Antworten kosten jeden Tag Stunden.',
+                loesung:
+                    'Das System beantwortet Anfragen sofort und vereinbart die Besichtigungstermine.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Markt beobachten',
+                problem:
+                    'Preise und neue Objekte der Mitbewerber ändern sich täglich. Wer es zu spät merkt, verliert den Auftrag.',
+                loesung:
+                    'Das System hat Ihre Mitbewerber und deren Angebote im Auge und gibt Ihnen sofort Bescheid.',
+                modul: 'Konkurrenz',
+            },
+        ],
+    },
+    {
+        slug: 'kanzleien',
+        name: 'Kanzleien',
+        hinweis:
+            'Rechts- und Steuerauskünfte gibt das System nicht. Es übernimmt Organisation und Kommunikation.',
+        faelle: [
+            {
+                thema: 'Mandanten gewinnen',
+                problem:
+                    'Neue Mandanten kommen fast nur über Empfehlung. Wer wachsen will, zahlt für Anzeigen und Verzeichnisse.',
+                loesung:
+                    'Das System macht Ihre Kanzlei sichtbar: Beiträge, Website, Social Media. Sie geben frei.',
+                modul: 'Werbung',
+            },
+            {
+                thema: 'Erstkontakt',
+                problem:
+                    'Anrufe und E-Mails unterbrechen die Arbeit an den Akten. Rückrufe bleiben liegen.',
+                loesung:
+                    'Das System beantwortet Fragen zu Terminen und Ablauf sofort und vereinbart das Erstgespräch.',
+                modul: 'Anfragen',
+            },
+            {
+                thema: 'Unterlagen und Termine',
+                problem:
+                    'Unterlagen von Mandanten fehlen, Termine rücken näher, und jemand muss nachtelefonieren.',
+                loesung:
+                    'Das System erinnert Mandanten an fehlende Unterlagen und Ihr Team an offene Punkte.',
+                modul: 'Aufgaben',
+            },
+        ],
+    },
 ]
+
+/** Reihenfolge der Reiter auf der Seite */
+const BRANCHEN_FOLGE = [
+    'bau',
+    'handwerk',
+    'produktion',
+    'arztpraxen',
+    'immobilien',
+    'kanzleien',
+    'gastronomie',
+    'fitness-beauty',
+    'kfz',
+]
+export const BRANCHEN = BRANCHEN_FOLGE.map(
+    slug => BRANCHEN_ALLE.find(b => b.slug === slug)!,
+)
 
 /**
  * Was ein Agent tut — die Liste, die beim Zeigen auf eine Agenten-Figur

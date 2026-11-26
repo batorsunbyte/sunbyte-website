@@ -9,6 +9,7 @@ import SystemStack from '@/components/SystemStack'
 import Branchen from '@/components/Branchen'
 import NetzwerkRinge from '@/components/NetzwerkRinge'
 import KernSystem from '@/components/KernSystem'
+import Warum from '@/components/Warum'
 import { LEISTUNGEN } from '@/lib/kios'
 import { faqLd } from '@/lib/seo'
 
@@ -19,8 +20,8 @@ import { faqLd } from '@/lib/seo'
  * ein Netzwerk von Agenturen. Webseiten und KI-Sichtbarkeit gibt es nicht mehr
  * als eigene Angebote. Freie Hand bei Aufbau und Gestaltung, der Globus bleibt.
  *
- * Wörtlich von Zakir: der Hero-Text, die Sätze in „01" und die sechs Punkte in
- * „02" (lib/kios.ts). Alles andere ordnet seine Angaben; Beispiele je Branche
+ * Wörtlich von Zakir: der Hero-Text, die Sätze in „02" und die sechs Punkte in
+ * „03" (lib/kios.ts). „01 Warum" gibt seine Begründung wieder (Warum.tsx). Alles andere ordnet seine Angaben; Beispiele je Branche
  * sind als Beispiele gekennzeichnet. Kein Preis: Er ist noch nicht festgelegt.
  * Die Seite spricht in Sie-Form.
  */
@@ -29,6 +30,10 @@ const FAQ_ITEMS = [
     {
         q: 'Was ist das KI-Betriebssystem von Sunbyte?',
         a: 'Eine Software, die auf Ihren Betrieb zugeschnitten wird. Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag und Nacht. Es kennt Ihre Kunden, Mitarbeiter und Abläufe jeden Tag ein Stück besser. Sie bleiben der Chef und haben die volle Kontrolle, auch unterwegs von Ihrem Handy.',
+    },
+    {
+        q: 'Was bringt mir das KI-Betriebssystem?',
+        a: 'Unser Ziel sind drei Dinge: mehr freie Zeit für Sie, weniger Kosten für Produkte, Programme und Agenturen, und mehr Umsatz. Was Ihr Betrieb braucht, baut das System selbst.',
     },
     {
         q: 'Was bekomme ich außer der Software?',
@@ -40,7 +45,7 @@ const FAQ_ITEMS = [
     },
     {
         q: 'Für welche Branchen ist es gedacht?',
-        a: 'Für Betriebe aus verschiedenen Branchen, zum Beispiel Bau, Handwerk, Gastronomie, Fitness und Beauty oder Kfz. Was das System bei Ihnen übernimmt, legen wir gemeinsam fest.',
+        a: 'Für Betriebe aus verschiedenen Branchen, zum Beispiel Bau, Handwerk, Produktion, Arztpraxen, Immobilien, Kanzleien, Gastronomie, Fitness und Beauty oder Kfz. Was das System bei Ihnen übernimmt, legen wir gemeinsam fest.',
     },
     {
         q: 'Ich führe eine Agentur. Kann ich das System weiterverkaufen?',
@@ -60,10 +65,13 @@ export default function Home() {
 
             <LogoWall />
 
-            {/* ── 01 Ihr KI-OS ────────────────────────────── */}
+            {/* ── 01 Warum ────────────────────────────────── */}
+            <Warum />
+
+            {/* ── 02 Ihr KI-OS ────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="01 — ihr ki-os"
+                    kicker="02 — ihr ki-os"
                     title={
                         <>
                             Einmal erklärt,
@@ -138,14 +146,14 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ── 02 Im Alltag ────────────────────────────── */}
+            {/* ── 03 Im Alltag ────────────────────────────── */}
             <section
                 id="alltag"
                 className="container-edge section-pad"
                 style={{ scrollMarginTop: '5rem' }}
             >
                 <SectionHeader
-                    kicker="02 — im alltag"
+                    kicker="03 — im alltag"
                     title={
                         <>
                             Ihr KI-Denksystem
@@ -163,10 +171,10 @@ export default function Home() {
                 </Reveal>
             </section>
 
-            {/* ── 03 Was Sie bekommen ─────────────────────── */}
+            {/* ── 04 Was Sie bekommen ─────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="03 — was sie bekommen"
+                    kicker="04 — was sie bekommen"
                     title={
                         <>
                             Software,
@@ -212,14 +220,14 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ── 04 Branchen ─────────────────────────────── */}
+            {/* ── 05 Branchen ─────────────────────────────── */}
             <section
                 id="branchen"
                 className="container-edge section-pad"
                 style={{ scrollMarginTop: '5rem' }}
             >
                 <SectionHeader
-                    kicker="04 — branchen"
+                    kicker="05 — branchen"
                     title={
                         <>
                             Ein Standard.
@@ -235,10 +243,10 @@ export default function Home() {
                 </Reveal>
             </section>
 
-            {/* ── 05 Zwei Wege ────────────────────────────── */}
+            {/* ── 06 Zwei Wege ────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="05 — zwei wege"
+                    kicker="06 — zwei wege"
                     title={
                         <>
                             Für Betriebe.
@@ -316,7 +324,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ── 06 Netzwerk ─────────────────────────────── */}
+            {/* ── Netzwerk ─────────────────────────────── */}
             <section
                 className="container-edge section-pad relative overflow-hidden"
                 style={{

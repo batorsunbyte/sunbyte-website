@@ -324,6 +324,24 @@ select option {
     );
 }
 
+/* Hero — Platzhalter-Kugel: gleiche Lage und gleicher Verlauf wie die
+   gezeichnete Erde (Globe.tsx: 10 px Rand, Lichtpunkt links oben) */
+.globe-kugel {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+        ellipse 74% 74% at 34% 32%,
+        #ffe2c2 0%,
+        #f9923f 16%,
+        #e85a1f 46%,
+        #c8430f 80%,
+        #9c330d 100%
+    );
+}
+
 /* Hero — Info-Panel mit border-left Akzent */
 .info-panel {
     border-left: 2px solid var(--spark);

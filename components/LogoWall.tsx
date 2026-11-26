@@ -22,15 +22,15 @@ interface Referenz {
 }
 
 const REFERENZEN: Referenz[] = [
-    { name: 'WKO', logo: '/images/logos/wko.png', w: 514, h: 270 },
+    { name: 'WKO', logo: '/images/logos/wko-klein.webp', w: 280, h: 147 },
     { name: 'SocialTalents' },
-    { name: 'AutoSPA', logo: '/images/logos/autospa.png', w: 375, h: 243 },
-    { name: 'PrintMyWall', logo: '/images/logos/printmywall.png', w: 251, h: 200 },
-    { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness.png', w: 384, h: 181 },
-    { name: 'Stadt Wien – Wiener Wohnen', logo: '/images/logos/wiener-wohnen.png', w: 531, h: 376 },
-    { name: 'Integrationshaus', logo: '/images/logos/integrationshaus.jpg', w: 220, h: 220 },
-    { name: 'Safety Pro Electrical', logo: '/images/logos/safety-pro-electrical.png', w: 260, h: 260 },
-    { name: 'Next Move', logo: '/images/logos/next-move.webp', w: 400, h: 400, dunkel: true },
+    { name: 'AutoSPA', logo: '/images/logos/autospa-klein.webp', w: 280, h: 181 },
+    { name: 'PrintMyWall', logo: '/images/logos/printmywall-klein.webp', w: 251, h: 200 },
+    { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness-klein.webp', w: 280, h: 132 },
+    { name: 'Stadt Wien – Wiener Wohnen', logo: '/images/logos/wiener-wohnen-klein.webp', w: 280, h: 198 },
+    { name: 'Integrationshaus', logo: '/images/logos/integrationshaus-klein.webp', w: 200, h: 200 },
+    { name: 'Safety Pro Electrical', logo: '/images/logos/safety-pro-electrical-klein.webp', w: 200, h: 200 },
+    { name: 'Next Move', logo: '/images/logos/next-move-klein.webp', w: 200, h: 200, dunkel: true },
 ]
 
 export default function LogoWall() {

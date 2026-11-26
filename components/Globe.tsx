@@ -541,14 +541,31 @@ export default function Globe({
                 }}
             />
 
+            {/* Platzhalter-Kugel: steht schon da, während die Weltkarte lädt,
+                und blendet aus, sobald die gezeichnete Erde sichtbar ist. */}
+            <div
+                aria-hidden
+                className="globe-kugel"
+                style={{
+                    opacity: ready ? 0 : 1,
+                    transition: 'opacity 0.5s ease 0.5s',
+                }}
+            />
+
             <canvas
                 ref={canvasRef}
                 aria-label={ariaLabel}
                 role="img"
                 className={`relative block w-full ${cursorClass}`}
                 /* aspectRatio reserviert die Flaeche ab dem ersten Frame —
-                   ohne das springt das Layout, sobald JS den Canvas misst (CLS). */
-                style={{ zIndex: 1, aspectRatio: '1 / 1' }}
+                   ohne das springt das Layout, sobald JS den Canvas misst (CLS).
+                   Die Erde blendet weich ein, statt aufzuspringen. */
+                style={{
+                    zIndex: 1,
+                    aspectRatio: '1 / 1',
+                    opacity: ready ? 1 : 0,
+                    transition: 'opacity 0.6s ease',
+                }}
             />
 
             {/* Wien-Marker */}

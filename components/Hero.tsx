@@ -15,7 +15,18 @@ import { FUNKTIONEN_KURZ } from '@/lib/kios'
 /**
  * Globe lazy laden (Code-Split):
  *   - SSR off, weil Globe Canvas + Browser-APIs braucht.
+ *   - Bis er da ist, steht eine Platzhalter-Kugel im HTML (.globe-kugel), damit
+ *     die Erde nicht erst nach ein, zwei Sekunden aus dem Nichts auftaucht
+ *     (Zakir, 27.11.2026). Die gezeichnete Erde blendet dann weich darüber ein.
  */
+
+/* Baustein und Weltkarte gleichzeitig anfordern, sobald dieses Modul im Browser
+   läuft. Vorher kam die Karte erst, nachdem der Baustein geladen und eingehängt
+   war: zwei Abrufe hintereinander. */
+if (typeof window !== 'undefined') {
+    void import('@/components/Globe')
+    void import('world-atlas/countries-110m.json')
+}
 const Globe = dynamic(() => import('@/components/Globe'), {
     ssr: false,
     loading: () => (
@@ -24,7 +35,8 @@ const Globe = dynamic(() => import('@/components/Globe'), {
             style={{ aspectRatio: '1 / 1', maxWidth: 560 }}
             aria-hidden
         >
-            <div className="globe-halo" style={{ opacity: 0.4 }} />
+            <div className="globe-halo" />
+            <div className="globe-kugel" />
         </div>
     ),
 })

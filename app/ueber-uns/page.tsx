@@ -29,6 +29,12 @@ import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
  * wiederholen nur, was in LEISTUNGEN (lib/kios.ts) steht.
  * Regel von PrintMyWall übernommen: Medets Text ist nie länger als Zakirs.
  *
+ * Der Bruder (Zakir, 27.11.2026): „Mein Bruder kann auch genannt werden. Er
+ * bringt circa 15 Jahre Erfahrung, ist unser KI-Spezialist, hat KI oder in
+ * diesem Bereich in Nürnberg studiert und kennt sich mit KI-Parametern sehr
+ * gut aus. Wir müssen nicht sehr viel über ihn erzählen." Deshalb ein kurzer
+ * Block, per Rolle und ohne Namen und Foto (so war es auch auf der alten Seite).
+ *
  * Die frühere Fassung („zwei Brüder", AboutHero, TeamBlock, Studio) ist nicht
  * mehr eingebunden; die Dateien liegen unverändert in components/.
  */
@@ -277,6 +283,29 @@ export default function UeberUnsPage() {
                         </Reveal>
                     ))}
                 </div>
+            </section>
+
+            {/* ── Dritter im Team ─────────────────────────── */}
+            <section className="container-edge pt-16 md:pt-24">
+                <Reveal>
+                    <div className="kopf-dritter">
+                        <div>
+                            <p className="mono-label text-spark">
+                                ↳ dazu im team
+                            </p>
+                            <h2 className="font-display kopf-dritter__titel">
+                                Unser KI-Spezialist
+                            </h2>
+                        </div>
+                        <p className="kopf-dritter__text">
+                            Zum Team gehört auch Zakirs Bruder. Er bringt rund
+                            15 Jahre Erfahrung mit, hat in Nürnberg im Bereich
+                            künstliche Intelligenz studiert und kennt KI-Modelle
+                            bis in ihre Parameter. Bei uns ist er für die KI
+                            zuständig.
+                        </p>
+                    </div>
+                </Reveal>
             </section>
 
             {/* ── Zusagen ─────────────────────────────────── */}

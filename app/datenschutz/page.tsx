@@ -30,9 +30,9 @@ export default function DatenschutzPage() {
             <div className="space-y-10 max-w-2xl text-soft leading-relaxed">
                 <Block title="Verantwortlicher">
                     <p>
-                        Sunbyte — Inhaber: Zakir Daryabi
+                        Sunbyte GmbH (FN 692174d, Handelsgericht Wien)
                         <br />
-                        {CONTACT.street}, {CONTACT.zip} {CONTACT.city},{' '}
+                        {CONTACT.streetFull}, {CONTACT.zip} {CONTACT.city},{' '}
                         {CONTACT.country}
                         <br />
                         Kontakt:{' '}
@@ -54,12 +54,14 @@ export default function DatenschutzPage() {
 
                 <Block title="Welche Daten wir verarbeiten">
                     <p>
-                        Diese Website setzt selbst keine eigenen Cookies und
-                        kein Tracking/Analytics. Beim bloßen Besuch erheben wir
-                        selbst keine personenbezogenen Daten.
+                        Diese Website setzt keine Cookies. Die Reichweite
+                        messen wir ohne Cookies und ohne Wiedererkennung
+                        einzelner Besucher (siehe „Reichweitenmessung"). Beim
+                        bloßen Besuch erheben wir selbst keine
+                        personenbezogenen Daten.
                     </p>
                     <p className="mt-3">
-                        Auf den Seiten „Referenzen" und „Webseiten" betten wir
+                        Auf der Seite „Referenzen" betten wir
                         zur Vorschau fremde Websites (u.a. kfz22.com,
                         mstyle.beauty, safetypro-electrical.au, printmywall.at)
                         per iframe ein. Beim Laden dieser Vorschau kann die
@@ -120,7 +122,7 @@ export default function DatenschutzPage() {
                         <strong style={{ color: 'var(--lit)' }}>
                             iframe-Vorschauen
                         </strong>{' '}
-                        — auf „Referenzen" und „Webseiten" werden u.a.
+                        — auf „Referenzen" werden u.a.
                         kfz22.com, mstyle.beauty, safetypro-electrical.au und
                         printmywall.at zur Live-Vorschau eingebettet; dabei
                         können Daten (u.a. IP-Adresse) an diese Seiten übertragen
@@ -169,7 +171,7 @@ export default function DatenschutzPage() {
                         borderTop: '1px solid rgba(201, 184, 163, 0.1)',
                     }}
                 >
-                    ↳ stand: 8. oktober 2026 · sunbyte
+                    ↳ stand: 27. november 2026 · sunbyte gmbh
                 </p>
             </div>
         </div>

@@ -93,7 +93,7 @@ export default function Footer() {
                     className="mono-label text-muted"
                     style={{ fontSize: '0.6rem' }}
                 >
-                    © 2026 sunbyte · zakir daryabi · wien
+                    © 2026 sunbyte gmbh · wien
                 </p>
                 <p
                     className="mono-label text-muted"

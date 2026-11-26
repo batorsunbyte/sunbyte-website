@@ -2052,6 +2052,34 @@ select option {
     text-underline-offset: 3px;
     transition: color 0.2s ease;
 }
+.kopf-dritter {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-left: 2px solid var(--spark);
+    border-radius: 6px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+.kopf-dritter__titel {
+    margin-top: 0.8rem;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    line-height: 1.08;
+    color: var(--lit);
+}
+.kopf-dritter__text {
+    color: var(--soft);
+    font-size: clamp(1rem, 1.25vw, 1.1rem);
+    line-height: 1.65;
+    max-width: 56ch;
+}
+@media (min-width: 768px) {
+    .kopf-dritter {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        align-items: center;
+        gap: 3rem;
+    }
+}
 .kopf-link:hover {
     color: var(--spark);
 }

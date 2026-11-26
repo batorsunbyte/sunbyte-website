@@ -18,6 +18,8 @@ export const CONTACT = {
     phoneRaw: '+436603610642',
     whatsapp: '436603610642', // wa.me/<dieser Wert>
     street: 'Jedlersdorfer Straße',
+    /** volle Anschrift laut Firmenbuch — für Impressum und Datenschutz */
+    streetFull: 'Jedlersdorfer Straße 99/9/43',
     zip: '1210',
     city: 'Wien',
     country: 'Österreich',
@@ -49,6 +51,7 @@ export const ORGANIZATION: Record<string, unknown> = {
     '@type': 'ProfessionalService',
     '@id': `${SITE_URL}/#organization`,
     name: 'Sunbyte',
+    legalName: 'Sunbyte GmbH',
     alternateName: 'Sunbyte KI-OS',
     url: SITE_URL,
     logo: OG_IMAGE,

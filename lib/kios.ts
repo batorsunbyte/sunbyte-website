@@ -33,42 +33,50 @@ export const FUNKTIONEN: {
     modul: string
     text: string
     agenten: string[]
+    /** Erfundenes Beispiel für den Film im Schaubild; auf der Seite als Beispiel gekennzeichnet */
+    beispiel: { zeit: string; text: string }
 }[] = [
     {
         icon: 'kunden',
         modul: 'Neukunden',
         text: 'Findet neue Kunden, während Sie schlafen',
         agenten: ['Such-Agent', 'Nacht-Agent'],
+        beispiel: { zeit: '22:40', text: 'Der Such-Agent findet neue Kontakte, die zu Ihrem Angebot passen.' },
     },
     {
         icon: 'anfragen',
         modul: 'Anfragen',
         text: 'Beantwortet Anfragen sofort und vereinbart Termine für Sie',
         agenten: ['Antwort-Agent', 'Termin-Agent'],
+        beispiel: { zeit: '23:15', text: 'Eine Anfrage kommt über die Website. Sie ist beantwortet, der Termin ist eingetragen.' },
     },
     {
         icon: 'werbung',
         modul: 'Werbung',
         text: 'Macht Ihre Werbung: Social Media, Videos, Website',
         agenten: ['Social-Media-Agent', 'Video-Agent', 'Website-Agent'],
+        beispiel: { zeit: '06:30', text: 'Der Beitrag für heute ist vorbereitet und wartet auf Ihre Freigabe.' },
     },
     {
         icon: 'konkurrenz',
         modul: 'Konkurrenz',
         text: 'Hat Ihre Konkurrenz im Auge und reagiert sofort',
         agenten: ['Beobachter-Agent', 'Reaktions-Agent'],
+        beispiel: { zeit: '07:10', text: 'Ein Mitbewerber hat sein Angebot geändert. Sie bekommen einen Hinweis.' },
     },
     {
         icon: 'aufgaben',
         modul: 'Aufgaben',
         text: 'Verteilt Aufgaben, kontrolliert sie und vergisst nichts',
         agenten: ['Verteiler-Agent', 'Kontroll-Agent', 'Erinnerungs-Agent'],
+        beispiel: { zeit: '08:00', text: 'Die Aufgaben für heute sind verteilt. Offenes von gestern ist markiert.' },
     },
     {
         icon: 'bauen',
         modul: 'Ausbau',
         text: 'Baut sich selbst, was Ihr Betrieb braucht, ohne teure Zusatz-Software',
         agenten: ['Bau-Agent'],
+        beispiel: { zeit: '09:20', text: 'Eine Funktion fehlt im Betrieb. Das System schlägt sie vor und baut sie.' },
     },
 ]
 

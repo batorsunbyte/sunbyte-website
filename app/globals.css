@@ -1198,3 +1198,122 @@ select option {
         display: none;
     }
 }
+
+/* ── Kernsystem, dritte Stufe: das System bei der Arbeit ─────────── */
+/* Ringe um den Kern, gegenläufig */
+.kern-kranz {
+    fill: none;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transform-origin: 50% 50%;
+}
+.kern-kranz--a {
+    stroke: rgba(232, 90, 31, 0.7);
+    stroke-dasharray: 0.5 2.4;
+    animation: kern-dreh 38s linear infinite;
+}
+.kern-kranz--b {
+    stroke: rgba(255, 243, 228, 0.3);
+    stroke-dasharray: 10 22;
+    animation: kern-dreh 24s linear infinite reverse;
+}
+/* Glanz, der über den Kern wandert */
+.kern-mitte__glanz {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0 62%, rgba(255, 243, 228, 0.55) 82%, transparent 100%);
+    mix-blend-mode: soft-light;
+    animation: kern-dreh 7s linear infinite;
+}
+.kern-mitte__label,
+.kern-mitte__titel {
+    position: relative;
+    z-index: 1;
+}
+/* Lichtpunkte auf den Linien */
+.kern-licht__schein {
+    fill: var(--spark);
+    opacity: 0.22;
+}
+.kern-licht__kern {
+    fill: var(--spark);
+}
+.kern-licht--hell .kern-licht__schein {
+    opacity: 0.45;
+}
+.kern-licht--hell .kern-licht__kern {
+    fill: var(--lit);
+}
+/* Beispiel mit Uhrzeit im Feld */
+.kern-feld {
+    min-height: 27rem;
+}
+.kern-beispiel {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin-top: 1.6rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(201, 184, 163, 0.16);
+}
+.kern-beispiel__zeit {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: 1.9rem;
+    line-height: 1;
+    color: var(--spark);
+    font-variant-numeric: tabular-nums;
+    flex: none;
+}
+.kern-beispiel p {
+    color: var(--soft);
+    font-size: 0.96rem;
+    line-height: 1.5;
+}
+.kern-beispiel .mono-label {
+    display: block;
+    font-size: 0.6rem;
+    margin-bottom: 0.2rem;
+}
+/* Hochfahren: „vor" = noch unter dem Bildrand, „wach" = kommt ins Bild */
+.kern-buehne[data-phase='vor'] .kern-linien,
+.kern-buehne[data-phase='vor'] .kern-mitte,
+.kern-buehne[data-phase='vor'] .kern-knoten,
+.kern-buehne[data-phase='vor'] .kern-plus,
+.kern-buehne[data-phase='vor'] .kern-agent {
+    opacity: 0;
+}
+.kern-buehne[data-phase='wach'] .kern-mitte {
+    animation: kern-auf 0.8s cubic-bezier(0.2, 1.3, 0.4, 1) backwards;
+}
+.kern-buehne[data-phase='wach'] .kern-linien {
+    animation: kern-agent-ein 0.9s ease 0.35s backwards;
+}
+.kern-buehne[data-phase='wach'] .kern-knoten {
+    animation-name: kern-pop;
+    animation-duration: 0.55s;
+    animation-timing-function: cubic-bezier(0.2, 1.4, 0.4, 1);
+    animation-fill-mode: backwards;
+}
+.kern-buehne[data-phase='wach'] .kern-plus {
+    animation: kern-agent-ein 0.5s ease 1.3s backwards;
+}
+@keyframes kern-auf {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+}
+@keyframes kern-pop {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .kern-kranz,
+    .kern-mitte__glanz {
+        animation: none !important;
+    }
+}
+/* Am Handy sind die Texte höher: feste Mindesthöhe, damit beim Wechsel nichts springt */
+@media (max-width: 1023px) {
+    .kern-feld {
+        min-height: 30.5rem;
+    }
+}

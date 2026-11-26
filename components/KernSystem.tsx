@@ -7,18 +7,20 @@ import { FUNKTIONEN } from '@/lib/kios'
 /**
  * KernSystem — das Kernsystem in der Mitte, sechs Module rundherum, und von
  * jedem Modul verzweigen sich nach außen seine spezialisierten Agenten
- * (Zakir, 26.11.2026: „Kernsystem in der Mitte und Abteilungen oder Module
- * rund um das Kernsystem, jeder mit Agents"; dazu seine Skizze mit den Ästen
- * und einem Plus für weitere Module).
+ * (Zakir, 26.11.2026, samt seiner Skizze mit Ästen und Plus).
  *
- * Läuft wie ein kurzer Film: Solange das Schaubild im Bild ist, wandert die
- * Auswahl alle vier Sekunden zum nächsten Modul. Sobald jemand ein Modul
- * anklickt, antippt oder mit der Tastatur wählt, hält der Lauf an.
- * Bei „weniger Bewegung" läuft nichts von selbst.
+ * Dritte Fassung (Zakir: „schaut gut aus, aber nicht dieser echte Wow-Effekt"):
+ * Das Schaubild zeigt das System jetzt BEI DER ARBEIT.
+ *  1. Es fährt hoch, wenn es ins Bild kommt: Kern, Ring, Module, Äste.
+ *  2. Lichtpunkte laufen auf den Linien — vom Kern zu jedem Modul, beim
+ *     gewählten Modul weiter bis zu den Agenten und wieder zurück.
+ *  3. Der Lauf erzählt eine Nacht: Zu jedem Modul steht ein Beispiel mit
+ *     Uhrzeit (22:40 bis 09:20). Die Beispiele sind erfunden und so
+ *     gekennzeichnet (lib/kios.ts → beispiel).
  *
- * Die Knoten sind echte Knöpfe (aria-pressed). Linien, Äste, Ring und das Plus
- * sind Dekoration; die Namen der Agenten stehen zusätzlich im Feld daneben
- * (unter 1280 px Breite nur dort, im Schaubild ist dafür kein Platz).
+ * Alle vier Sekunden wandert die Auswahl weiter; ein Klick hält den Lauf an.
+ * Bei „weniger Bewegung" läuft nichts von selbst und es gibt keine Lichtpunkte.
+ * Ohne JavaScript ist alles sichtbar. Die Knoten sind echte Knöpfe.
  */
 
 const DAUER = 4000
@@ -27,8 +29,8 @@ const R_AGENT = 46
 
 const rad = (grad: number) => (grad * Math.PI) / 180
 const punkt = (grad: number, r: number) => ({
-    x: 50 + r * Math.cos(rad(grad)),
-    y: 50 + r * Math.sin(rad(grad)),
+    x: +(50 + r * Math.cos(rad(grad))).toFixed(2),
+    y: +(50 + r * Math.sin(rad(grad))).toFixed(2),
 })
 
 /** Fächer der Agenten um die Richtung des Moduls, in Grad */
@@ -63,34 +65,79 @@ const MODULE = FUNKTIONEN.map((f, i) => {
 /** Das Plus sitzt links zwischen „Ausbau" und „Aufgaben" */
 const PLUS = punkt(180, R_MODUL)
 
+type Phase = 'ruhe' | 'vor' | 'wach'
+
+/** Ein Lichtpunkt, der einen Pfad entlangläuft */
+function Licht({
+    pfad,
+    dauer,
+    start = 0,
+    hell = false,
+}: {
+    pfad: string
+    dauer: number
+    start?: number
+    hell?: boolean
+}) {
+    return (
+        <g className={hell ? 'kern-licht kern-licht--hell' : 'kern-licht'}>
+            <circle r={hell ? 2.4 : 1.7} className="kern-licht__schein" />
+            <circle r={hell ? 0.95 : 0.7} className="kern-licht__kern" />
+            <animateMotion
+                path={pfad}
+                dur={`${dauer}s`}
+                begin={`${start}s`}
+                repeatCount="indefinite"
+            />
+            <animate
+                attributeName="opacity"
+                values="0;1;1;0"
+                keyTimes="0;0.12;0.85;1"
+                dur={`${dauer}s`}
+                begin={`${start}s`}
+                repeatCount="indefinite"
+            />
+        </g>
+    )
+}
+
 export default function KernSystem() {
     const [aktiv, setAktiv] = useState(0)
-    const [laeuft, setLaeuft] = useState(false)
+    const [sichtbar, setSichtbar] = useState(false)
     const [angehalten, setAngehalten] = useState(false)
+    const [bewegung, setBewegung] = useState(false)
+    const [phase, setPhase] = useState<Phase>('ruhe')
     const buehne = useRef<HTMLDivElement>(null)
 
-    // Nur laufen, wenn das Schaubild sichtbar ist und Bewegung erwünscht ist
     useEffect(() => {
-        if (angehalten) return
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
         const el = buehne.current
         if (!el || !('IntersectionObserver' in window)) return
+        const darf = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        setBewegung(darf)
+        // Hochfahren nur, wenn das Schaubild noch unter dem Bildrand liegt
+        if (darf && el.getBoundingClientRect().top > window.innerHeight * 0.85) {
+            setPhase('vor')
+        }
         const io = new IntersectionObserver(
-            ([e]) => setLaeuft(e.isIntersecting),
-            { threshold: 0.35 },
+            ([e]) => {
+                setSichtbar(e.isIntersecting)
+                if (e.isIntersecting) setPhase(p => (p === 'vor' ? 'wach' : p))
+            },
+            { threshold: 0.3 },
         )
         io.observe(el)
         return () => io.disconnect()
-    }, [angehalten])
+    }, [])
 
+    // Der Film: alle vier Sekunden ein Modul weiter
     useEffect(() => {
-        if (!laeuft || angehalten) return
+        if (!sichtbar || angehalten || !bewegung) return
         const t = window.setInterval(
             () => setAktiv(a => (a + 1) % MODULE.length),
             DAUER,
         )
         return () => window.clearInterval(t)
-    }, [laeuft, angehalten])
+    }, [sichtbar, angehalten, bewegung])
 
     const waehle = (i: number) => {
         setAngehalten(true)
@@ -98,13 +145,14 @@ export default function KernSystem() {
     }
 
     const modul = MODULE[aktiv]
-    const filmt = laeuft && !angehalten
+    const filmt = sichtbar && !angehalten && bewegung
+    const lichter = sichtbar && bewegung
 
     return (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
             {/* ── Bühne ─────────────────────────────────── */}
             <div className="lg:col-span-7">
-                <div ref={buehne} className="kern-buehne">
+                <div ref={buehne} className="kern-buehne" data-phase={phase}>
                     <svg
                         className="kern-linien"
                         viewBox="0 0 100 100"
@@ -116,6 +164,10 @@ export default function KernSystem() {
                             cy="50"
                             r={R_MODUL}
                         />
+                        {/* Zwei Ringe um den Kern, gegenläufig */}
+                        <circle className="kern-kranz kern-kranz--a" cx="50" cy="50" r="17.6" />
+                        <circle className="kern-kranz kern-kranz--b" cx="50" cy="50" r="20.4" />
+
                         {MODULE.map((m, i) => (
                             <g
                                 key={m.modul}
@@ -147,11 +199,45 @@ export default function KernSystem() {
                                 ))}
                             </g>
                         ))}
+
+                        {/* Lichtpunkte: ruhig zu allen Modulen … */}
+                        {lichter &&
+                            MODULE.map((m, i) => (
+                                <Licht
+                                    key={`ruhe-${m.modul}`}
+                                    pfad={`M50 50 L${m.ort.x} ${m.ort.y}`}
+                                    dauer={3.2}
+                                    start={i * 0.53}
+                                />
+                            ))}
+
+                        {/* … und hell beim gewählten Modul: hinaus zu den Agenten, zurück zum Kern */}
+                        {lichter && (
+                            <g key={`hell-${aktiv}`}>
+                                {modul.aeste.map((a, k) => (
+                                    <g key={a.name}>
+                                        <Licht
+                                            hell
+                                            pfad={`M50 50 L${modul.ort.x} ${modul.ort.y} L${a.ort.x} ${a.ort.y}`}
+                                            dauer={1.8}
+                                            start={k * 0.3}
+                                        />
+                                        <Licht
+                                            hell
+                                            pfad={`M${a.ort.x} ${a.ort.y} L${modul.ort.x} ${modul.ort.y} L50 50`}
+                                            dauer={1.8}
+                                            start={0.9 + k * 0.3}
+                                        />
+                                    </g>
+                                ))}
+                            </g>
+                        )}
                     </svg>
 
                     {/* Kern */}
                     <div className="kern-mitte" aria-hidden>
                         <span className="kern-mitte__halo" />
+                        <span className="kern-mitte__glanz" />
                         <span className="mono-label kern-mitte__label">
                             kernsystem
                         </span>
@@ -173,6 +259,7 @@ export default function KernSystem() {
                                 style={{
                                     left: `${m.ort.x}%`,
                                     top: `${m.ort.y}%`,
+                                    animationDelay: `${450 + i * 110}ms`,
                                 }}
                             >
                                 <KiosIcon
@@ -227,7 +314,7 @@ export default function KernSystem() {
                         </p>
                         <p className="kern-feld__satz">{modul.text}</p>
 
-                        <p className="mono-label text-muted mt-8 mb-3">
+                        <p className="mono-label text-muted mt-7 mb-3">
                             spezialisierte agenten
                         </p>
                         <ul className="kern-agenten">
@@ -238,6 +325,19 @@ export default function KernSystem() {
                                 </li>
                             ))}
                         </ul>
+
+                        {/* Die Nacht in Beispielen: Uhrzeit groß, ein Satz dazu */}
+                        <div className="kern-beispiel">
+                            <span className="kern-beispiel__zeit">
+                                {modul.beispiel.zeit}
+                            </span>
+                            <p>
+                                <span className="mono-label text-muted">
+                                    beispiel
+                                </span>
+                                {modul.beispiel.text}
+                            </p>
+                        </div>
                     </div>
 
                     {/* Lauf-Anzeige: füllt sich, bis das nächste Modul kommt */}
@@ -248,10 +348,11 @@ export default function KernSystem() {
 
                 <p
                     className="text-muted mt-5"
-                    style={{ fontSize: '0.88rem', maxWidth: '44ch' }}
+                    style={{ fontSize: '0.88rem', maxWidth: '46ch' }}
                 >
-                    Wählen Sie ein Modul. Alle Module greifen auf dasselbe
-                    Kernsystem zu, und es können weitere dazukommen.
+                    So kann eine Nacht in Ihrem Betrieb aussehen. Wählen Sie ein
+                    Modul. Alle greifen auf dasselbe Kernsystem zu, und es
+                    können weitere dazukommen.
                 </p>
             </div>
         </div>

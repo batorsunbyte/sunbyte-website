@@ -6,12 +6,12 @@ import type { IconKey } from '@/lib/kios'
  * Display-Schrift nicht lauter sind als der Text.
  */
 const PFADE: Record<IconKey, React.ReactNode> = {
-    // Zielscheibe: neue Kunden finden
+    // Person mit Plus: ein neuer Kunde kommt dazu
     kunden: (
         <>
-            <circle cx="12" cy="12" r="8.5" />
-            <circle cx="12" cy="12" r="4.5" />
-            <circle cx="12" cy="12" r="0.9" fill="currentColor" />
+            <circle cx="9.5" cy="8" r="3.6" />
+            <path d="M3 20c0-3.6 2.9-6.2 6.5-6.2s6.5 2.6 6.5 6.2" />
+            <path d="M18.5 6.5v6M15.5 9.5h6" />
         </>
     ),
     // Sprechblase mit Haken: Anfrage beantwortet, Termin vereinbart

@@ -18,7 +18,7 @@ import { useEffect } from 'react'
 // Nur die zwei Routen, die von der Startseite aus real am haeufigsten
 // angesteuert werden. Frueher standen hier alle 5 — das war Datenvolumen
 // fuer Seiten, die die meisten Besucher nie oeffnen.
-const ROUTES = ['/webseiten/', '/arbeiten/']
+const ROUTES = ['/partner/', '/kontakt/']
 
 // Nur die Bilder, die auf /arbeiten zuerst sichtbar werden.
 // safetypro lag frueher mit drin, kommt aber auf der Startseite gar nicht vor.

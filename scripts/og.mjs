@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const out = join(__dirname, '..', 'public', 'og-image.png')
+const out = join(__dirname, '..', 'public', 'og-kios.png')
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
@@ -23,8 +23,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   <circle cx="960" cy="300" r="300" fill="url(#glow)"/>
   <circle cx="960" cy="300" r="120" fill="url(#sun)"/>
   <text x="90" y="250" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="700" fill="#FFF3E4">Sunbyte</text>
-  <text x="94" y="320" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#C9B8A3">IT-Dienstleister aus Wien</text>
-  <text x="94" y="385" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="600" fill="#E85A1F">Webseiten &#183; KI-Sichtbarkeit</text>
+  <text x="94" y="320" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#C9B8A3">KI-Betriebssystem für Ihren Betrieb</text>
+  <text x="94" y="385" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="600" fill="#E85A1F">Für Betriebe &#183; Für Agenturen</text>
   <text x="94" y="560" font-family="'Courier New', monospace" font-size="26" letter-spacing="3" fill="#9C8F7E">sunbyte.at</text>
 </svg>`
 

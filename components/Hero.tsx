@@ -10,6 +10,7 @@ import {
     type ContinentKey,
     type ContinentInfo,
 } from '@/lib/globe-data'
+import { FUNKTIONEN_KURZ } from '@/lib/kios'
 
 /**
  * Globe lazy laden (Code-Split):
@@ -147,7 +148,7 @@ export default function Hero() {
                             erstgespräch anfragen <span aria-hidden>→</span>
                         </Link>
                         <Link
-                            href="/#alltag"
+                            href="/partner"
                             className="inline-flex items-center gap-2 font-mono transition-all duration-300 hover:border-spark hover:text-spark"
                             style={{
                                 border: '1px solid rgba(201, 184, 163, 0.3)',
@@ -158,7 +159,7 @@ export default function Hero() {
                                 letterSpacing: '0.16em',
                             }}
                         >
-                            was es im alltag tut <span aria-hidden>→</span>
+                            für agenturen <span aria-hidden>→</span>
                         </Link>
                     </div>
                 </div>
@@ -219,25 +220,18 @@ export default function Hero() {
             {/* Marquee unten */}
             <div className="marquee absolute left-0 right-0 bottom-0 z-[5]">
                 <div className="marquee-track">
-                    {/* 6 Kopien: Die halbe Spur (~4.200 px) deckt jeden Bildschirm,
-                        das Tempo bleibt bei 130 s ruhig. Abstand zwischen den
-                        Punkten über gap, außen je die Hälfte. */}
+                    {/* Die Funktionen in Kurzform (lib/kios.ts), groß und lesbar.
+                        6 Kopien: Die halbe Spur deckt jeden Bildschirm. Abstände
+                        und der Funke als Trenner stehen in globals.css. */}
                     {Array.from({ length: 6 }).map((_, i) => (
                         <span
                             key={i}
-                            style={{
-                                display: 'inline-flex',
-                                gap: '4.75rem',
-                                padding: '0 2.375rem',
-                            }}
+                            aria-hidden={i > 0}
+                            style={{ display: 'inline-flex', alignItems: 'center' }}
                         >
-                            {/* Die sechs Alltags-Punkte in Kurzform (Abschnitt #alltag) */}
-                            <span>findet neue kunden</span>
-                            <span>beantwortet anfragen</span>
-                            <span>vereinbart termine</span>
-                            <span>macht werbung</span>
-                            <span>hat die konkurrenz im auge</span>
-                            <span>vergisst nichts</span>
+                            {FUNKTIONEN_KURZ.map(f => (
+                                <span key={f}>{f}</span>
+                            ))}
                         </span>
                     ))}
                 </div>

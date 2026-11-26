@@ -6,9 +6,9 @@ export const dynamic = 'force-static'
 
 const ROUTES: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
     { path: '', priority: 1.0, freq: 'weekly' },
-    { path: '/webseiten', priority: 0.9, freq: 'monthly' },
-    { path: '/ki-sichtbarkeit', priority: 0.9, freq: 'monthly' },
-    { path: '/was-kostet-eine-website', priority: 0.7, freq: 'monthly' },
+    /* /webseiten, /ki-sichtbarkeit und /was-kostet-eine-website sind seit
+       26.11.2026 stillgelegt (noindex) und stehen deshalb nicht mehr hier. */
+    { path: '/partner', priority: 0.9, freq: 'monthly' },
     { path: '/arbeiten', priority: 0.7, freq: 'monthly' },
     { path: '/ueber-uns', priority: 0.6, freq: 'monthly' },
     { path: '/kontakt', priority: 0.8, freq: 'monthly' },

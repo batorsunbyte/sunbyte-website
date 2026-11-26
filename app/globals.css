@@ -692,3 +692,177 @@ select option {
 @media (prefers-reduced-motion: reduce) {
     .hint-swipe-icon { animation: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   KI-OS-Welle (26.11.2026)
+   ══════════════════════════════════════════════════════════════════ */
+
+/* Laufband im Hero: groß und lesbar (Zakir: „so groß wie die Logos, damit
+   man die Texte besser lesen kann"). Display-Schrift statt Mono, heller Ton,
+   ein Funke als Trenner. Überschreibt die Regeln weiter oben. */
+.marquee {
+    padding: 1.15rem 0;
+    background: rgba(14, 10, 5, 0.55);
+}
+.marquee-track {
+    animation-duration: 150s;
+}
+.marquee-track > span {
+    padding: 0 1.6rem;
+    gap: 3.2rem;
+    color: var(--lit);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    letter-spacing: -0.005em;
+    text-transform: none;
+    font-size: clamp(1.15rem, 1.9vw, 1.6rem);
+    line-height: 1.2;
+}
+.marquee-track > span > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3.2rem;
+}
+.marquee-track > span > span::after {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--spark);
+    flex: none;
+}
+
+/* Schaubild „So ist es aufgebaut" */
+.stack {
+    position: relative;
+    display: grid;
+    gap: 0.9rem;
+    padding-left: 1.75rem;
+}
+.stack-linie {
+    position: absolute;
+    left: 0.35rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 1px;
+    background: rgba(232, 90, 31, 0.35);
+}
+.stack-puls {
+    position: absolute;
+    left: -3px;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--spark);
+    box-shadow: 0 0 14px 3px rgba(232, 90, 31, 0.55);
+    animation: stack-lauf 5.5s ease-in-out infinite;
+}
+@keyframes stack-lauf {
+    0% { top: 0; opacity: 0; }
+    8% { opacity: 1; }
+    92% { opacity: 1; }
+    100% { top: calc(100% - 7px); opacity: 0; }
+}
+.stack-ebene {
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem 1.2rem;
+    background: rgba(14, 10, 5, 0.6);
+}
+.stack-ebene--kern {
+    border-color: rgba(232, 90, 31, 0.55);
+    background: radial-gradient(circle at 85% 0%, rgba(232, 90, 31, 0.14) 0%, transparent 60%);
+}
+.stack-titel {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    color: var(--lit);
+    font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+    line-height: 1.2;
+    margin-top: 0.45rem;
+}
+.stack-text {
+    color: var(--soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 0.3rem;
+}
+.stack-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.8rem;
+}
+.stack-chips li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgba(201, 184, 163, 0.2);
+    border-radius: 999px;
+    padding: 0.3rem 0.7rem;
+    color: var(--soft);
+    font-size: 0.82rem;
+}
+.stack-punkt {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--spark);
+    animation: stack-blink 2.4s ease-in-out infinite;
+}
+.stack-chips li:nth-child(2) .stack-punkt { animation-delay: 0.45s; }
+.stack-chips li:nth-child(3) .stack-punkt { animation-delay: 0.9s; }
+.stack-chips li:nth-child(4) .stack-punkt { animation-delay: 1.35s; }
+.stack-chips li:nth-child(5) .stack-punkt { animation-delay: 1.8s; }
+@keyframes stack-blink {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+}
+.stack-zellen {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 5px;
+    margin-top: 0.85rem;
+}
+.stack-zellen span {
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    background: rgba(201, 184, 163, 0.14);
+    animation: stack-zelle 6s ease-in-out infinite;
+}
+@keyframes stack-zelle {
+    0%, 55%, 100% { background: rgba(201, 184, 163, 0.14); }
+    70%, 85% { background: var(--spark); }
+}
+
+/* Netzwerk-Ringe: pulsieren von innen nach außen */
+.ring-kreis {
+    opacity: 0.3;
+    animation: ring-puls 3.6s ease-in-out infinite;
+}
+@keyframes ring-puls {
+    0%, 100% { opacity: 0.3; }
+    30% { opacity: 1; }
+}
+
+/* Branchen: Beispiele blenden beim Wechsel kurz ein */
+.branche-punkt {
+    animation: branche-ein 0.4s ease both;
+}
+@keyframes branche-ein {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stack-puls,
+    .stack-punkt,
+    .stack-zellen span,
+    .ring-kreis,
+    .branche-punkt {
+        animation: none !important;
+    }
+    .stack-puls { display: none; }
+    .ring-kreis { opacity: 0.7; }
+}

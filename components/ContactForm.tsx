@@ -37,7 +37,7 @@ export default function ContactForm() {
     const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>(
         'idle',
     )
-    const [interesse, setInteresse] = useState('Webseite')
+    const [interesse, setInteresse] = useState('KI-Betriebssystem für meinen Betrieb')
 
     // Vorauswahl aus ?thema= lesen (rein clientseitig, static-export-sicher)
     useEffect(() => {
@@ -112,11 +112,11 @@ export default function ContactForm() {
                         lineHeight: 1.1,
                     }}
                 >
-                    Danke — ich melde mich.
+                    Danke — wir melden uns.
                 </p>
                 <p className="text-soft mt-3" style={{ fontSize: '0.95rem' }}>
-                    Antwort meist innerhalb von 24 Stunden. Eilig? Ruf an oder
-                    schreib auf WhatsApp.
+                    Antwort meist innerhalb von 24 Stunden. Eilig? Rufen Sie
+                    an oder schreiben Sie auf WhatsApp.
                 </p>
             </div>
         )
@@ -164,7 +164,7 @@ export default function ContactForm() {
                 </div>
                 <div>
                     <label htmlFor="cf-service" className={labelCls}>
-                        worum geht&apos;s
+                        worum geht es
                     </label>
                     <select
                         id="cf-service"
@@ -174,9 +174,8 @@ export default function ContactForm() {
                         className="mt-2 focus:border-spark"
                         style={inputBase}
                     >
-                        <option>Webseite</option>
-                        <option>KI-Sichtbarkeit</option>
-                        <option>Beides</option>
+                        <option>KI-Betriebssystem für meinen Betrieb</option>
+                        <option>Partnerschaft als Agentur</option>
                         <option>Etwas anderes</option>
                     </select>
                 </div>
@@ -191,7 +190,7 @@ export default function ContactForm() {
                     name="message"
                     required
                     rows={5}
-                    placeholder="Erzähl kurz von deinem Vorhaben …"
+                    placeholder="Erzählen Sie kurz von Ihrem Betrieb …"
                     className="mt-2 focus:border-spark"
                     style={{ ...inputBase, resize: 'vertical' }}
                 />
@@ -235,8 +234,8 @@ export default function ContactForm() {
                 className="mono-label text-muted"
                 style={{ fontSize: '0.62rem' }}
             >
-                ↳ erstgespräch gratis &amp; unverbindlich · deine daten nur
-                für deine anfrage
+                ↳ erstgespräch gratis &amp; unverbindlich · ihre daten nur
+                für ihre anfrage
             </p>
         </form>
     )

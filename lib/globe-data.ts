@@ -46,7 +46,7 @@ export const CONTINENT_DATA: Record<ContinentKey, ContinentInfo> = {
     },
 }
 
-/* KI-OS-Welle (27.11.2026): Sie-Form; der Satz stammt aus Zakirs Text
+/* KI-OS-Welle (26.11.2026): Sie-Form; der Satz stammt aus Zakirs Text
    („Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag & Nacht."). */
 const DEFAULT_TEXT =
     'Ein selbstlernendes Denksystem mit mehreren KI-Agenten arbeitet Tag & Nacht für Ihren Betrieb.'

@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Contact from '@/components/Contact'
 
 export const metadata: Metadata = {
-    title: 'Kontakt — Webdesign & KI-Sichtbarkeit in Wien',
+    title: 'Kontakt — Erstgespräch zum KI-Betriebssystem',
     description:
-        'Sprich direkt mit Sunbyte aus Wien — Formular, E-Mail, Telefon oder WhatsApp. Erstgespräch gratis & unverbindlich. Webseiten ab 3.000 €, KI-Sichtbarkeit 1.000 €.',
+        'Sprechen Sie direkt mit Sunbyte aus Wien: Formular, E-Mail, Telefon oder WhatsApp. Erstgespräch zum KI-Betriebssystem gratis und unverbindlich, für Betriebe und Agenturen.',
     alternates: { canonical: '/kontakt/' },
 }
 

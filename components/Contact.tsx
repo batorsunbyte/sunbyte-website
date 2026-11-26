@@ -29,9 +29,9 @@ export default function Contact() {
                     color: 'var(--lit)',
                 }}
             >
-                Lass uns
+                Sprechen
                 <br />
-                <span style={{ color: 'var(--spark)' }}>reden.</span>
+                <span style={{ color: 'var(--spark)' }}>wir.</span>
             </Reveal>
 
             <Reveal
@@ -40,8 +40,7 @@ export default function Contact() {
                 className="mt-8 text-soft max-w-2xl leading-relaxed"
                 style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)' }}
             >
-                Erzähl mir in einer Minute von deinem Vorhaben — neue Website,
-                Auffrischung oder KI-Sichtbarkeit.{' '}
+                Erzählen Sie kurz von Ihrem Betrieb oder Ihrer Agentur.{' '}
                 <span className="text-lit">
                     Erstgespräch gratis &amp; unverbindlich
                 </span>
@@ -133,7 +132,7 @@ export default function Contact() {
             <p
                 className="mt-16 mono-label text-muted"
             >
-                ↳ noch 2 projekt-slots für 2026
+                ↳ für betriebe und für agenturen
             </p>
         </section>
     )

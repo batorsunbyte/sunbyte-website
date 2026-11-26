@@ -5,7 +5,7 @@ import { PRICING } from '@/lib/seo'
 /**
  * Die zwei Bausteine als Teaser-Karten (Home).
  * KI-Sichtbarkeit bekommt den Akzent-Glow — der Differenzierer.
- * Seit der KI-OS-Welle (27.11.2026) in Sie-Form: Die Startseite spricht Chefs an.
+ * Seit der KI-OS-Welle (26.11.2026) in Sie-Form: Die Startseite spricht Chefs an.
  */
 
 interface Service {

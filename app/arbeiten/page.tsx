@@ -48,10 +48,12 @@ export default function ArbeitenPage() {
             <CtaBand
                 headline={
                     <>
-                        Dein Projekt <Spark>wäre das nächste.</Spark>
+                        Sprechen wir über <Spark>Ihren Betrieb.</Spark>
                     </>
                 }
-                sub="Noch 2 Slots für 2026. Wenn dein Vorhaben den Anspruch hat, neben diesen Projekten zu stehen — sprich mit uns."
+                sub="Diese Projekte haben wir gebaut. Heute bauen wir KI-Betriebssysteme für Betriebe. Das Erstgespräch ist kostenlos und unverbindlich."
+                primaryLabel="erstgespräch anfragen"
+                note={<>↳ erstgespräch gratis &amp; unverbindlich · antwort in unter 24 h</>}
             />
         </>
     )

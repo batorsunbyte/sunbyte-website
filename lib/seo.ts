@@ -7,7 +7,9 @@
  */
 
 export const SITE_URL = 'https://sunbyte.at'
-export const OG_IMAGE = `${SITE_URL}/og-image.png`
+/* Neuer Dateiname seit der KI-OS-Welle (26.11.2026): WhatsApp und LinkedIn
+   behalten ein Vorschaubild unter gleichem Namen sonst lange im Speicher. */
+export const OG_IMAGE = `${SITE_URL}/og-kios.png`
 
 /** Kontaktdaten (aus PrintMyWall-Impressum übernommen) */
 export const CONTACT = {
@@ -52,13 +54,12 @@ export const ORGANIZATION: Record<string, unknown> = {
     logo: OG_IMAGE,
     image: OG_IMAGE,
     description:
-        'Sunbyte aus Wien installiert KI-Betriebssysteme, die auf den Betrieb zugeschnitten sind: ein selbstlernendes Denksystem mit mehreren KI-Agenten. Webseiten und KI-Sichtbarkeit gibt es als einzelne Bausteine.',
+        'Sunbyte aus Wien entwickelt ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
     slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
     foundingDate: '2026',
     email: CONTACT.email,
     telephone: CONTACT.phoneRaw,
-    priceRange: 'ab 1.000 €',
     currenciesAccepted: 'EUR',
     address: {
         '@type': 'PostalAddress',
@@ -93,21 +94,16 @@ export const ORGANIZATION: Record<string, unknown> = {
     knowsAbout: [
         'KI-Betriebssystem',
         'KI-Agenten',
-        'Webentwicklung',
-        'Webdesign Wien',
-        'Website erstellen',
-        'KI-Sichtbarkeit',
-        'Generative Engine Optimization',
-        'AI Search Optimization',
-        'Suchmaschinenoptimierung',
-        'Strukturierte Daten',
+        'KI für Betriebe',
+        'Automatisierung im Betrieb',
+        'Partnernetzwerk für Agenturen',
     ],
     hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Leistungen',
         itemListElement: [
             {
-                /* Hauptangebot seit 27.11.2026 — bewusst ohne Preis (Angebot nach dem Erstgespräch) */
+                /* Hauptangebot seit 26.11.2026 — bewusst ohne Preis (Angebot nach dem Erstgespräch) */
                 '@type': 'Offer',
                 itemOffered: {
                     '@type': 'Service',
@@ -115,33 +111,6 @@ export const ORGANIZATION: Record<string, unknown> = {
                     description:
                         'Ein auf den Betrieb zugeschnittenes KI-Betriebssystem mit einem selbstlernenden Denksystem aus mehreren KI-Agenten.',
                 },
-            },
-            {
-                '@type': 'Offer',
-                itemOffered: {
-                    '@type': 'Service',
-                    name: 'Webseite erstellen / aktualisieren',
-                },
-                priceCurrency: 'EUR',
-                price: PRICING.website.from,
-            },
-            {
-                '@type': 'Offer',
-                itemOffered: {
-                    '@type': 'Service',
-                    name: 'Webseite Premium — voll interaktives Erlebnis',
-                },
-                priceCurrency: 'EUR',
-                price: PRICING.websitePremium.from,
-            },
-            {
-                '@type': 'Offer',
-                itemOffered: {
-                    '@type': 'Service',
-                    name: 'KI-Sichtbarkeit',
-                },
-                priceCurrency: 'EUR',
-                price: PRICING.aiVisibility.fixed,
             },
         ],
     },

@@ -31,8 +31,8 @@ export default function Footer() {
                         className="text-soft mt-2 max-w-sm leading-snug"
                         style={{ fontSize: 'clamp(0.8rem, 0.95vw, 0.9rem)' }}
                     >
-                        KI-Betriebssysteme für Betriebe, aus Wien. Webseiten &
-                        KI-Sichtbarkeit als Bausteine — ehrlich gerechnet.
+                        KI-Betriebssysteme für Betriebe und Agenturen, aus
+                        Wien.
                     </p>
                 </div>
 
@@ -48,14 +48,8 @@ export default function Footer() {
                         sitemap
                     </p>
                     <FooterLink href="/">KI-OS</FooterLink>
-                    <FooterLink href="/webseiten">Webseiten</FooterLink>
-                    <FooterLink href="/ki-sichtbarkeit">
-                        KI-Sichtbarkeit
-                    </FooterLink>
-                    <FooterLink href="/was-kostet-eine-website">
-                        Was kostet eine Website?
-                    </FooterLink>
-                    <FooterLink href="/arbeiten">Referenzen</FooterLink>
+                    <FooterLink href="/partner">Für Agenturen</FooterLink>
+                    <FooterLink href="/arbeiten">Arbeiten</FooterLink>
                     <FooterLink href="/ueber-uns">Über uns</FooterLink>
                     <FooterLink href="/kontakt">Kontakt</FooterLink>
                 </nav>

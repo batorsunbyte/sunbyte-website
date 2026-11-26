@@ -1,7 +1,7 @@
 /**
  * LogoWall — die Referenz-Leiste direkt unter dem Hero.
  *
- * Löst seit der KI-OS-Welle (27.11.2026) den ProofBar an dieser Stelle ab.
+ * Löst seit der KI-OS-Welle (26.11.2026) den ProofBar an dieser Stelle ab.
  * Zakir hat am 26.11.2026 bestätigt: Alle acht sind Kunden bzw. eigene Marken,
  * die Freigabe für die Logos liegt vor.
  *
@@ -29,6 +29,7 @@ const REFERENZEN: Referenz[] = [
     { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness.png', w: 384, h: 181 },
     { name: 'Stadt Wien – Wiener Wohnen', logo: '/images/logos/wiener-wohnen.png', w: 531, h: 376 },
     { name: 'Integrationshaus', logo: '/images/logos/integrationshaus.jpg', w: 220, h: 220 },
+    { name: 'Safety Pro Electrical', logo: '/images/logos/safety-pro-electrical.png', w: 260, h: 260 },
     { name: 'Next Move', logo: '/images/logos/next-move.webp', w: 400, h: 400, dunkel: true },
 ]
 
@@ -41,7 +42,8 @@ export default function LogoWall() {
         >
             {/* Ohne Überschrift — Zakir, 26.11.2026: „das Wort Referenzen soll weg". */}
             <div className="py-8 md:py-10">
-                <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+                {/* Neun Kacheln: 3 × 3 am Handy und Tablet, eine Reihe ab lg. */}
+                <ul className="grid grid-cols-3 lg:grid-cols-9 gap-3">
                     {REFERENZEN.map(r => (
                         <li
                             key={r.name}

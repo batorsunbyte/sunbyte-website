@@ -8,7 +8,7 @@ import IdlePrefetch from '@/components/IdlePrefetch'
 import { ORGANIZATION, WEBSITE, SITE_URL, OG_IMAGE } from '@/lib/seo'
 
 const DESCRIPTION =
-    'Sunbyte installiert ein KI-Betriebssystem für Ihren Betrieb: ein selbstlernendes Denksystem mit KI-Agenten, das Tag und Nacht arbeitet. Erstgespräch gratis.'
+    'Sunbyte installiert ein KI-Betriebssystem für Ihren Betrieb: ein selbstlernendes Denksystem mit KI-Agenten, das Tag und Nacht arbeitet. Für Betriebe und Agenturen.'
 
 export const viewport = {
     width: 'device-width',
@@ -28,14 +28,9 @@ export const metadata: Metadata = {
         'KI-OS',
         'KI-Agenten für Betriebe',
         'KI für Unternehmen Wien',
-        'Webdesign Wien',
-        'Website erstellen Wien',
-        'Webagentur Wien',
-        'Homepage erstellen lassen',
-        'KI-Sichtbarkeit',
-        'von ChatGPT empfohlen werden',
-        'Generative Engine Optimization',
-        'IT-Dienstleister Wien',
+        'KI-Betriebssystem für Agenturen',
+        'KI Partnerprogramm Agentur',
+        'KI für Bau und Handwerk',
     ],
     authors: [{ name: 'Sunbyte' }],
     creator: 'Sunbyte',
@@ -55,7 +50,7 @@ export const metadata: Metadata = {
                 url: OG_IMAGE,
                 width: 1200,
                 height: 630,
-                alt: 'Sunbyte – KI-Betriebssysteme für Betriebe, aus Wien',
+                alt: 'Sunbyte – KI-Betriebssystem für Ihren Betrieb. Für Betriebe und für Agenturen.',
             },
         ],
     },

@@ -10,8 +10,16 @@ import { useEffect, useRef, useState } from 'react'
  * SLOT (Zakir): kostenlosen Access-Key auf https://web3forms.com holen (2 Min,
  * nur E-Mail nötig) und unten eintragen. Bis dahin landet nichts in deinem
  * Postfach — die direkten Kanäle (Mail/Tel/WhatsApp) funktionieren aber sofort.
+ *
+ * Solange der Schlüssel fehlt (26.11.2026): Das Formular geht nicht ins Leere,
+ * sondern öffnet das E-Mail-Programm des Besuchers mit der fertigen Nachricht
+ * und bietet dieselbe Nachricht für WhatsApp an. Es wird nichts an Dritte
+ * gesendet. Sobald ein echter Schlüssel eingetragen ist, läuft es wie gedacht.
  */
 const WEB3FORMS_ACCESS_KEY = 'DEIN-WEB3FORMS-ACCESS-KEY'
+const OHNE_DIENST = WEB3FORMS_ACCESS_KEY === 'DEIN-WEB3FORMS-ACCESS-KEY'
+const EMAIL = 'office@sunbyte.at'
+const WHATSAPP = '436603610642'
 
 const inputBase: React.CSSProperties = {
     width: '100%',
@@ -26,17 +34,18 @@ const inputBase: React.CSSProperties = {
 
 const labelCls = 'mono-label text-muted'
 
-/* Vorauswahl je nach Absprungseite: /kontakt/?thema=webseite|ki|beides */
+/* Vorauswahl je nach Absprungseite: /kontakt/?thema=betrieb|agentur */
 const THEMA_MAP: Record<string, string> = {
-    webseite: 'Webseite',
-    ki: 'KI-Sichtbarkeit',
-    beides: 'Beides',
+    betrieb: 'KI-Betriebssystem für meinen Betrieb',
+    agentur: 'Partnerschaft als Agentur',
 }
 
 export default function ContactForm() {
-    const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'err'>(
-        'idle',
-    )
+    const [status, setStatus] = useState<
+        'idle' | 'sending' | 'ok' | 'err' | 'entwurf'
+    >('idle')
+    /* fertige Nachricht für E-Mail und WhatsApp, solange kein Formulardienst läuft */
+    const [entwurf, setEntwurf] = useState('')
     const [interesse, setInteresse] = useState('KI-Betriebssystem für meinen Betrieb')
 
     // Vorauswahl aus ?thema= lesen (rein clientseitig, static-export-sicher)
@@ -59,9 +68,22 @@ export default function ContactForm() {
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        // Ohne echten Key NICHT an den US-Dienst senden (kein Datenabfluss).
-        if (WEB3FORMS_ACCESS_KEY === 'DEIN-WEB3FORMS-ACCESS-KEY') {
-            setStatus('err')
+        // Ohne echten Key NICHT an den US-Dienst senden (kein Datenabfluss):
+        // die Nachricht geht über das E-Mail-Programm des Besuchers.
+        if (OHNE_DIENST) {
+            const d = new FormData(e.currentTarget)
+            const text = [
+                `Name: ${d.get('name')}`,
+                `E-Mail: ${d.get('email')}`,
+                `Thema: ${d.get('interesse')}`,
+                '',
+                String(d.get('message') ?? ''),
+            ].join('\n')
+            setEntwurf(text)
+            setStatus('entwurf')
+            window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+                'Anfrage über sunbyte.at',
+            )}&body=${encodeURIComponent(text)}`
             return
         }
         setStatus('sending')
@@ -212,6 +234,26 @@ export default function ContactForm() {
             >
                 {status === 'sending' ? 'sende …' : 'anfrage senden →'}
             </button>
+
+            {status === 'entwurf' && (
+                <p
+                    role="status"
+                    className="text-soft"
+                    style={{ fontSize: '0.9rem', lineHeight: 1.6 }}
+                >
+                    Ihr E-Mail-Programm öffnet sich mit Ihrer Nachricht. Bitte
+                    dort auf Senden drücken. Kein E-Mail-Programm zur Hand?{' '}
+                    <a
+                        href={`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(entwurf)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-spark hover:text-lit transition-colors"
+                    >
+                        Nachricht per WhatsApp senden
+                    </a>
+                    .
+                </p>
+            )}
 
             {status === 'err' && (
                 <p

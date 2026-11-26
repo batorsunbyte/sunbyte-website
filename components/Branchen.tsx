@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { BRANCHEN } from '@/lib/kios'
+import { CtaButton } from '@/components/ui'
 
 /**
  * Branchen-Umschalter: eine Branche wählen, drei Fälle lesen.
@@ -9,10 +10,12 @@ import { BRANCHEN } from '@/lib/kios'
  * das System dort übernimmt — samt dem Modul aus dem Schaubild, das es tut.
  * Inhalte in lib/kios.ts. Bedienbar mit Maus, Finger und Tastatur
  * (Pfeiltasten wechseln den Reiter).
+ *
+ * Alle Felder stehen im HTML, die nicht gewählten mit `hidden`: So lesen
+ * Suchmaschinen und KI-Dienste alle Branchen, nicht nur die erste.
  */
 export default function Branchen() {
     const [aktiv, setAktiv] = useState(0)
-    const branche = BRANCHEN[aktiv]
 
     const mitTaste = (e: React.KeyboardEvent<HTMLButtonElement>) => {
         if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return
@@ -35,7 +38,7 @@ export default function Branchen() {
                             type="button"
                             role="tab"
                             aria-selected={an}
-                            aria-controls="branche-feld"
+                            aria-controls={`branche-feld-${b.slug}`}
                             tabIndex={an ? 0 : -1}
                             onClick={() => setAktiv(i)}
                             onKeyDown={mitTaste}
@@ -60,12 +63,18 @@ export default function Branchen() {
                 })}
             </div>
 
+            {BRANCHEN.map((branche, nr) => (
             <div
-                id="branche-feld"
+                key={branche.slug}
+                id={`branche-feld-${branche.slug}`}
                 role="tabpanel"
                 aria-labelledby={`branche-reiter-${branche.slug}`}
+                hidden={nr !== aktiv}
                 className="mt-10 md:mt-12"
             >
+                <h3 className="sr-only">
+                    KI-Betriebssystem für {branche.name}
+                </h3>
                 <ol className="branche-faelle">
                     {branche.faelle.map((f, i) => (
                         <li
@@ -77,7 +86,7 @@ export default function Branchen() {
                                 <span className="mono-label text-spark">
                                     {String(i + 1).padStart(2, '0')}
                                 </span>
-                                <h3 className="font-display-card">{f.thema}</h3>
+                                <h4 className="font-display-card">{f.thema}</h4>
                             </div>
 
                             <div className="branche-fall__heute">
@@ -107,15 +116,19 @@ export default function Branchen() {
                     </p>
                 )}
             </div>
+            ))}
 
-            <p
-                className="text-muted mt-10"
-                style={{ fontSize: '0.9rem', maxWidth: '56ch' }}
-            >
-                Das sind typische Beispiele. Was Ihr System übernimmt, legen wir
-                gemeinsam fest. Ihre Branche ist nicht dabei? Dann sprechen wir
-                darüber.
-            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6">
+                <p
+                    className="text-muted"
+                    style={{ fontSize: '0.9rem', maxWidth: '56ch' }}
+                >
+                    Das sind typische Beispiele. Was Ihr System übernimmt, legen
+                    wir gemeinsam fest. Ihre Branche ist nicht dabei? Dann
+                    sprechen wir darüber.
+                </p>
+                <CtaButton href="/kontakt">erstgespräch anfragen</CtaButton>
+            </div>
         </div>
     )
 }

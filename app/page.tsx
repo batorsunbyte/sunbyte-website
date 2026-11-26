@@ -3,7 +3,7 @@ import Hero from '@/components/Hero'
 import Reveal from '@/components/Reveal'
 import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
-import { SectionHeader, Spark, CtaBand } from '@/components/ui'
+import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
 import LogoWall from '@/components/LogoWall'
 import SystemStack from '@/components/SystemStack'
 import Branchen from '@/components/Branchen'
@@ -168,6 +168,22 @@ export default function Home() {
                 {/* Kernsystem in der Mitte, Module rundherum (Zakir, 26.11.2026). */}
                 <Reveal>
                     <KernSystem />
+                </Reveal>
+
+                {/* Aufruf mitten auf der Seite: wer das Schaubild verstanden hat, soll nicht bis ganz unten scrollen müssen */}
+                <Reveal className="mt-14 md:mt-20 flex flex-wrap items-center gap-x-10 gap-y-6">
+                    <p
+                        className="font-display-card"
+                        style={{
+                            fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
+                            color: 'var(--lit)',
+                            lineHeight: 1.2,
+                            maxWidth: '24ch',
+                        }}
+                    >
+                        Was soll Ihr System zuerst übernehmen?
+                    </p>
+                    <CtaButton href="/kontakt">erstgespräch anfragen</CtaButton>
                 </Reveal>
             </section>
 

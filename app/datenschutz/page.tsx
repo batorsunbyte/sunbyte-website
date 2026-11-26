@@ -4,6 +4,7 @@ import { CONTACT } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'Datenschutz',
     description: 'Datenschutzerklärung gemäß DSGVO.',
+    alternates: { canonical: '/datenschutz/' },
 }
 
 /**
@@ -62,7 +63,7 @@ export default function DatenschutzPage() {
                         zur Vorschau fremde Websites (u.a. kfz22.com,
                         mstyle.beauty, safetypro-electrical.au, printmywall.at)
                         per iframe ein. Beim Laden dieser Vorschau kann die
-                        eingebettete Seite deine IP-Adresse erhalten und ggf.
+                        eingebettete Seite Ihre IP-Adresse erhalten und ggf.
                         eigene Inhalte laden (siehe „Eingebundene Drittdienste").
                     </p>
                     <p className="mt-3">
@@ -75,18 +76,18 @@ export default function DatenschutzPage() {
 
                 <Block title="Kontaktaufnahme">
                     <p>
-                        Wenn du uns per E-Mail, Telefon oder WhatsApp
-                        kontaktierst, verarbeiten wir die übermittelten Daten
+                        Wenn Sie uns per E-Mail, Telefon oder WhatsApp
+                        kontaktieren, verarbeiten wir die übermittelten Daten
                         (Name, Kontaktdaten, Inhalt der Nachricht) nur, soweit
-                        nötig, um deine Anfrage zu bearbeiten.
+                        nötig, um Ihre Anfrage zu bearbeiten.
                     </p>
                     <p className="mt-3">
                         Das Kontaktformular auf dieser Seite wird über den Dienst
                         Web3Forms (web3forms.com, Anbieter mit Sitz in den USA)
-                        verarbeitet: Deine Formulardaten werden an Web3Forms
+                        verarbeitet: Ihre Formulardaten werden an Web3Forms
                         übermittelt, die uns die Anfrage per E-Mail zustellen.
                         Dabei findet eine Übermittlung in ein Drittland (USA)
-                        statt. Wenn du das nicht möchtest, kontaktiere uns bitte
+                        statt. Wenn Sie das nicht möchten, kontaktieren Sie uns bitte
                         direkt per E-Mail oder Telefon.
                     </p>
                 </Block>
@@ -99,9 +100,9 @@ export default function DatenschutzPage() {
                     </p>
                 </Block>
 
-                <Block title="Deine Rechte">
+                <Block title="Ihre Rechte">
                     <p>
-                        Du hast jederzeit das Recht auf Auskunft, Berichtigung,
+                        Sie haben jederzeit das Recht auf Auskunft, Berichtigung,
                         Löschung, Einschränkung der Verarbeitung,
                         Datenübertragbarkeit und Widerspruch. Beschwerden bei
                         der österreichischen Datenschutzbehörde (dsb.gv.at)
@@ -142,14 +143,14 @@ export default function DatenschutzPage() {
                         ausschließlich aggregierte Nutzungsdaten: aufgerufene
                         Seiten, Klicks auf Links zu externen Seiten, Referrer,
                         Browser, Betriebssystem, Gerätetyp und ungefähre
-                        Herkunft (Land, Region, Stadt). Deine IP-Adresse wird
+                        Herkunft (Land, Region, Stadt). Ihre IP-Adresse wird
                         dabei nicht gespeichert — einzelne Besucher können nicht
                         identifiziert werden. Rechtsgrundlage ist unser
                         berechtigtes Interesse an einer statistischen Auswertung
                         der Website-Nutzung (Art. 6 Abs. 1 lit. f DSGVO). Die
-                        Verarbeitung findet auf Servern in der EU statt. Du
-                        kannst dieser Verarbeitung jederzeit widersprechen —
-                        siehe Abschnitt „Deine Rechte".
+                        Verarbeitung findet auf Servern in der EU statt. Sie
+                        können dieser Verarbeitung jederzeit widersprechen —
+                        siehe Abschnitt „Ihre Rechte".
                     </p>
                 </Block>
 

@@ -36,7 +36,7 @@ import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'Über uns — Zakir Daryabi und Ing. Medet Atas',
     description:
-        'Sie arbeiten direkt mit uns: Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas, Unternehmer seit 2008. Wer das KI-Betriebssystem baut und worauf Sie sich verlassen können.',
+        'Sie arbeiten direkt mit uns: Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas, Unternehmer seit 2008. Wer Ihr KI-Betriebssystem baut.',
     alternates: { canonical: '/ueber-uns/' },
 }
 

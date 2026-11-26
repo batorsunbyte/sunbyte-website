@@ -4,7 +4,7 @@ import Contact from '@/components/Contact'
 export const metadata: Metadata = {
     title: 'Kontakt — Erstgespräch zum KI-Betriebssystem',
     description:
-        'Sprechen Sie direkt mit Sunbyte aus Wien: Formular, E-Mail, Telefon oder WhatsApp. Erstgespräch zum KI-Betriebssystem gratis und unverbindlich, für Betriebe und Agenturen.',
+        'Erstgespräch zum KI-Betriebssystem, gratis und unverbindlich: Formular, E-Mail, Telefon oder WhatsApp. Sunbyte Wien, für Betriebe und Agenturen.',
     alternates: { canonical: '/kontakt/' },
 }
 

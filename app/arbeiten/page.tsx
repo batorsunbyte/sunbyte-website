@@ -30,7 +30,7 @@ const PORTFOLIO_LD: Record<string, unknown> = {
 export const metadata: Metadata = {
     title: 'Referenzen — Projekte von Sunbyte',
     description:
-        'Referenzen von Sunbyte: kfz22, MStyle Beauty Lounge, Impulsiv Fitness (Wien), Safety Pro Electrical (Melbourne), PrintMyWall. Premium-Webauftritte, live im Netz.',
+        'Projekte, die Sunbyte gebaut hat: kfz22, MStyle Beauty Lounge, Impulsiv Fitness (Wien), Safety Pro Electrical (Melbourne) und PrintMyWall. Alle live im Netz.',
     alternates: { canonical: '/arbeiten/' },
 }
 

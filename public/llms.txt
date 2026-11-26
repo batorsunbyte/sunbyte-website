@@ -24,31 +24,32 @@
 
 ## Preis
 
-- Der Preis wird im Erstgespraech besprochen. Das Erstgespraech ist gratis und unverbindlich.
+- Der Preis wird im Erstgespräch besprochen. Das Erstgespräch ist gratis und unverbindlich.
 
 ## Für Agenturen
 
 - Sunbyte baut ein Netzwerk von Agenturen auf, die das KI-Betriebssystem vertreiben und selbst nutzen.
 - Ziel: ein gemeinsamer Standard für Österreich, den DACH-Raum, die EU und weltweit.
-- Konditionen werden im Partnergespraech besprochen.
+- Jede Agentur bringt ihre Stärke als eigene Funktionen ein. Andere Agenturen im Netzwerk können diese Funktionen an ihre Kunden weitergeben.
+- Konditionen werden im Partnergespräch besprochen.
 
 ## Nicht mehr im Angebot
 
 - Einzelne Webseiten und KI-Sichtbarkeit bietet Sunbyte seit November 2026 nicht mehr an.
-  Kleine und spezielle Auftraege gehen an gepruefte Netzwerkpartner.
+  Kleine und spezielle Aufträge gehen an geprüfte Netzwerkpartner.
 
 ## Kontakt
 
 - Website: https://sunbyte.at
 - E-Mail: office@sunbyte.at
 - Telefon: +43 660 3610642
-- Gruender und Geschaeftsfuehrer: Zakir Daryabi (Softwareentwickler)
-- Gesellschafter: Zakir Daryabi, Ing. Medet Atas
+- Gründer und Geschäftsführer: Zakir Daryabi (Softwareentwickler)
+- Gesellschafter, Strategie und Geschäftsentwicklung: Ing. Medet Atas
 
 ## Seiten
 
 - KI-Betriebssystem (Startseite): https://sunbyte.at/
 - Für Agenturen: https://sunbyte.at/partner/
 - Arbeiten: https://sunbyte.at/arbeiten/
-- Ueber uns: https://sunbyte.at/ueber-uns/
+- Über uns: https://sunbyte.at/ueber-uns/
 - Kontakt: https://sunbyte.at/kontakt/

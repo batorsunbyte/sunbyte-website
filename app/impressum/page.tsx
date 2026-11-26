@@ -4,6 +4,7 @@ import { CONTACT } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'Impressum',
     description: 'Impressum & Offenlegung gemäß §5 ECG und §25 MedienG.',
+    alternates: { canonical: '/impressum/' },
 }
 
 /**

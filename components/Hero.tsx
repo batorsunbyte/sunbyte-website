@@ -77,7 +77,7 @@ export default function Hero() {
                 >
                     {/* Kicker */}
                     <p className="mono-label text-spark hero-reveal -mb-2">
-                        ki-betriebssystem · wien · seit 2026
+                        ki-betriebssystem · ki-agenten · wien
                     </p>
 
                     {/* Info-Panel (zeigt Kontinent-Texte) */}
@@ -116,6 +116,11 @@ export default function Hero() {
                             <span style={{ color: 'var(--spark)' }}>
                                 KI-OS.
                             </span>
+                        </span>
+                        {/* Für Vorlesegeräte und Suchmaschinen: die Abkürzung ausgeschrieben */}
+                        <span className="sr-only">
+                            {' '}
+                            Das KI-Betriebssystem für Ihren Betrieb.
                         </span>
                     </h1>
 

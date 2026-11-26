@@ -28,9 +28,9 @@ import { breadcrumbLd, faqLd } from '@/lib/seo'
  */
 
 export const metadata: Metadata = {
-    title: 'Für Agenturen — Partner im KI-OS-Netzwerk',
+    title: 'KI-Betriebssystem für Agenturen — Partner werden',
     description:
-        'Sunbyte baut ein Netzwerk von Agenturen auf, die das KI-Betriebssystem vertreiben und selbst nutzen. Jede Agentur bringt ihre Stärke ein, und alle wachsen gemeinsam.',
+        'Partner werden im KI-OS-Netzwerk von Sunbyte: Agenturen vertreiben das KI-Betriebssystem, nutzen es selbst und bringen ihre Stärke ein.',
     alternates: { canonical: '/partner/' },
 }
 

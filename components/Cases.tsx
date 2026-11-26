@@ -261,7 +261,7 @@ export default function Cases() {
                         color: 'var(--lit)',
                     }}
                 >
-                    Sieh selbst.
+                    Sehen Sie selbst.
                     <br />
                     <span style={{ color: 'var(--spark)' }}>
                         Alles live im Netz.
@@ -271,9 +271,9 @@ export default function Cases() {
                     className="text-soft mt-6 max-w-xl leading-relaxed"
                     style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                 >
-                    Webdesign-Referenzen aus Wien — jedes Fenster hier ist
+                    Projekte, die wir gebaut haben. Jedes Fenster hier ist
                     die echte, live eingebettete Website. Kein Mockup, kein
-                    Konzept-PDF. Scroll und klick direkt hinein.
+                    Konzept-PDF. Scrollen und klicken Sie direkt hinein.
                 </p>
             </header>
 
@@ -295,7 +295,7 @@ export default function Cases() {
                         }}
                     >
                         <p className="mono-label text-spark mb-4">
-                            freier slot · 2026
+                            heute
                         </p>
                         <h2
                             className="font-display-card mb-5"
@@ -305,21 +305,20 @@ export default function Cases() {
                                 maxWidth: '20ch',
                             }}
                         >
-                            Der nächste Screenshot hier ist{' '}
+                            Heute bauen wir{' '}
                             <span style={{ color: 'var(--spark)' }}>
-                                dein Projekt.
+                                KI-Betriebssysteme.
                             </span>
                         </h2>
                         <p
                             className="text-soft mb-8 leading-relaxed"
                             style={{ maxWidth: '44ch' }}
                         >
-                            Wir nehmen 2026 noch zwei Projekte an — mehr geht
-                            nicht, ohne dass die Qualität leidet.
+                            Einzelne Webseiten bieten wir nicht mehr an. Was
+                            ein KI-Betriebssystem in Ihrem Betrieb übernimmt,
+                            sehen Sie auf der Startseite.
                         </p>
-                        <CtaButton href="/kontakt">
-                            projekt anfragen
-                        </CtaButton>
+                        <CtaButton href="/">zum ki-os</CtaButton>
                     </div>
                 </Reveal>
             </div>

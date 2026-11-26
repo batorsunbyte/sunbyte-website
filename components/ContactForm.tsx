@@ -36,7 +36,7 @@ const labelCls = 'mono-label text-muted'
 
 /* Vorauswahl je nach Absprungseite: /kontakt/?thema=betrieb|agentur */
 const THEMA_MAP: Record<string, string> = {
-    betrieb: 'KI-Betriebssystem für meinen Betrieb',
+    betrieb: 'Sunbyte für meinen Betrieb',
     agentur: 'Partnerschaft als Agentur',
 }
 
@@ -46,7 +46,7 @@ export default function ContactForm() {
     >('idle')
     /* fertige Nachricht für E-Mail und WhatsApp, solange kein Formulardienst läuft */
     const [entwurf, setEntwurf] = useState('')
-    const [interesse, setInteresse] = useState('KI-Betriebssystem für meinen Betrieb')
+    const [interesse, setInteresse] = useState('Sunbyte für meinen Betrieb')
 
     // Vorauswahl aus ?thema= lesen (rein clientseitig, static-export-sicher)
     useEffect(() => {
@@ -196,7 +196,7 @@ export default function ContactForm() {
                         className="mt-2 focus:border-spark"
                         style={inputBase}
                     >
-                        <option>KI-Betriebssystem für meinen Betrieb</option>
+                        <option>Sunbyte für meinen Betrieb</option>
                         <option>Partnerschaft als Agentur</option>
                         <option>Etwas anderes</option>
                     </select>

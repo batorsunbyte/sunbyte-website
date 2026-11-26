@@ -8,7 +8,7 @@ import IdlePrefetch from '@/components/IdlePrefetch'
 import { ORGANIZATION, WEBSITE, SITE_URL, OG_IMAGE } from '@/lib/seo'
 
 const DESCRIPTION =
-    'KI-Betriebssystem für Betriebe und KMU aus Wien: KI-Agenten finden Kunden, beantworten Anfragen und verteilen Aufgaben. Erstgespräch gratis.'
+    'Sunbyte ist das KI-Betriebssystem für Betriebe und KMU: KI-Agenten finden Kunden, beantworten Anfragen und verteilen Aufgaben. Aus Wien.'
 
 export const viewport = {
     width: 'device-width',
@@ -19,13 +19,13 @@ export const viewport = {
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
-        default: 'KI-Betriebssystem für Betriebe und KMU | Sunbyte Wien',
+        default: 'Sunbyte – KI-Betriebssystem für Betriebe und KMU',
         template: '%s | Sunbyte Wien',
     },
     description: DESCRIPTION,
     keywords: [
         'KI-Betriebssystem',
-        'KI-OS',
+        'Sunbyte',
         'KI-Agenten für Betriebe',
         'KI für Unternehmen Wien',
         'KI-Automatisierung für KMU',
@@ -45,20 +45,20 @@ export const metadata: Metadata = {
         locale: 'de_AT',
         siteName: 'Sunbyte',
         url: SITE_URL,
-        title: 'KI-Betriebssystem für Betriebe und KMU | Sunbyte Wien',
+        title: 'Sunbyte – KI-Betriebssystem für Betriebe und KMU',
         description: DESCRIPTION,
         images: [
             {
                 url: OG_IMAGE,
                 width: 1200,
                 height: 630,
-                alt: 'Sunbyte – KI-Betriebssystem für Ihren Betrieb. Für Betriebe und für Agenturen.',
+                alt: 'Sunbyte. KI-Betriebssystem für Ihren Betrieb. Für Betriebe und für Agenturen.',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'KI-Betriebssystem für Betriebe und KMU | Sunbyte Wien',
+        title: 'Sunbyte – KI-Betriebssystem für Betriebe und KMU',
         description: DESCRIPTION,
         images: [OG_IMAGE],
     },

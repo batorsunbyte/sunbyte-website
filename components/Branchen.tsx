@@ -99,7 +99,7 @@ export default function Branchen() {
                             </span>
 
                             <div className="branche-fall__system">
-                                <p className="mono-label">mit ihrem ki-os</p>
+                                <p className="mono-label">mit sunbyte</p>
                                 <p>{f.loesung}</p>
                                 <span className="branche-fall__modul">
                                     <span aria-hidden />

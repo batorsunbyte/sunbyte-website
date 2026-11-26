@@ -60,18 +60,18 @@ interface Kopf {
 const KOEPFE: Kopf[] = [
     {
         bild: '/images/team/zakir-portraet.webp',
-        alt: 'Zakir Daryabi, Gründer und Geschäftsführer von Sunbyte.',
+        alt: 'Zakir Daryabi, Gründer und Geschäftsführer der Sunbyte GmbH.',
         name: 'Zakir Daryabi',
         rolle: 'Gründer, Gesellschafter und Geschäftsführer',
         text: [
-            'Mit sechs Jahren hat Zakir zu Hause alle Elektronikgeräte aufgemacht, weil ihn Technologie interessiert hat. Diese Neugier ist geblieben. Heute ist er Softwareentwickler, arbeitet seit über sechs Jahren mit IT und KI und baut mit Sunbyte KI-Betriebssysteme für Betriebe.',
+            'Mit sechs Jahren hat Zakir zu Hause alle Elektronikgeräte aufgemacht, weil ihn Technologie interessiert hat. Diese Neugier ist geblieben. Heute ist er Softwareentwickler, arbeitet seit über sechs Jahren mit IT und KI und baut Sunbyte, das KI-Betriebssystem für Betriebe.',
             'Er programmiert selbst, in Java, C# und Python, und hat eigene Programme gebaut. In einem wichtigen Migrationsprojekt mit Altsystemen hat er an allem gearbeitet, was ein System ausmacht: Datenbanksysteme, Schnittstellen, Benutzeroberflächen und Tests. Fachlich führte er bis zu 15 Personen.',
             'Daher kommt sein Denken in Architektur: wie ein System aufgebaut sein muss, damit es hält und mit Ihrem Betrieb wachsen kann. Für Sie heißt das: Ihr KI-Betriebssystem baut jemand, der die Technik von Grund auf kennt. Was er verspricht, baut er selbst.',
         ],
         wort: 'Träume als Antrieb. Technik als Werkzeug. Qualität als Versprechen.',
         firmenTitel: 'Unternehmen und Projekte',
         firmen: [
-            { name: 'Sunbyte', rolle: 'Gesellschafter und Geschäftsführer' },
+            { name: 'Sunbyte GmbH', rolle: 'Gesellschafter und Geschäftsführer' },
             {
                 name: 'PrintMyWall',
                 href: 'https://printmywall.at',
@@ -86,7 +86,7 @@ const KOEPFE: Kopf[] = [
     },
     {
         bild: '/images/team/medet-portraet.webp',
-        alt: 'Ing. Medet Atas, Gesellschafter von Sunbyte.',
+        alt: 'Ing. Medet Atas, Gesellschafter der Sunbyte GmbH.',
         name: 'Ing. Medet Atas',
         rolle: 'Gesellschafter, Strategie und Geschäftsentwicklung',
         text: [
@@ -107,12 +107,12 @@ const KOEPFE: Kopf[] = [
                 Standorten in Wien aufgebaut.
             </>,
             'Seine Erfahrung liegt im Großhandel, im Vertrieb und in der internationalen Geschäftsentwicklung: neue Märkte erschließen, Vertrieb aufbauen, langfristige Partnerschaften mit Unternehmen.',
-            'Seine Stärke: Potenziale früh erkennen, Menschen verbinden und aus Ideen Geschäftsmodelle entwickeln. Für Sie heißt das: Bei Sunbyte spricht jemand mit, der selbst einen Betrieb aufgebaut hat und weiß, worauf es im Alltag ankommt.',
+            'Seine Stärke: Potenziale früh erkennen, Menschen verbinden und aus Ideen Geschäftsmodelle entwickeln. Für Sie heißt das: Bei uns spricht jemand mit, der selbst einen Betrieb aufgebaut hat und weiß, worauf es im Alltag ankommt.',
         ],
         wort: 'Der Mensch im Mittelpunkt. Vertrauen als Fundament. Erfolg als Ergebnis.',
         firmenTitel: 'Unternehmen',
         firmen: [
-            { name: 'Sunbyte', rolle: 'Gesellschafter' },
+            { name: 'Sunbyte GmbH', rolle: 'Gesellschafter' },
             {
                 name: 'PrintMyWall',
                 href: 'https://printmywall.at',
@@ -131,7 +131,7 @@ const KOEPFE: Kopf[] = [
 const ZUSAGEN = [
     {
         titel: 'Eine ehrliche Einschätzung',
-        text: 'Im Erstgespräch sagen wir Ihnen offen, ob und wie das KI-Betriebssystem zu Ihrem Betrieb passt. Gratis und unverbindlich.',
+        text: 'Im Erstgespräch sagen wir Ihnen offen, ob und wie Sunbyte zu Ihrem Betrieb passt. Gratis und unverbindlich.',
     },
     {
         titel: 'Hilfe, bis es läuft',
@@ -177,7 +177,7 @@ export default function UeberUnsPage() {
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
                                 src="/images/team/team.webp"
-                                alt="Zakir Daryabi und Ing. Medet Atas, die Gesellschafter von Sunbyte, vor den Logos von SunByte und PrintMyWall."
+                                alt="Zakir Daryabi und Ing. Medet Atas, die Gesellschafter der Sunbyte GmbH, vor den Logos von SunByte und PrintMyWall."
                                 width={1600}
                                 height={1067}
                                 decoding="async"
@@ -213,9 +213,10 @@ export default function UeberUnsPage() {
                                     maxWidth: '40ch',
                                 }}
                             >
-                                Sunbyte ist ein Softwareunternehmen aus Wien.
-                                Wir entwickeln ein KI-Betriebssystem für
-                                Betriebe. Der eine von uns baut das System. Der
+                                Wir sind ein Softwareunternehmen aus Wien.
+                                Unser Produkt heißt Sunbyte: ein
+                                KI-Betriebssystem für Betriebe. Der eine von uns
+                                baut das System. Der
                                 andere weiß aus eigener Erfahrung, wie man ein
                                 Unternehmen aufbaut und führt. Sie bekommen
                                 beides.
@@ -361,7 +362,7 @@ export default function UeberUnsPage() {
                     style={{ maxWidth: '70rem' }}
                 >
                     <Reveal as="p" delay={120} className="text-soft leading-relaxed" style={absatz}>
-                        Wir wollen das KI-Betriebssystem standardisieren, damit
+                        Wir wollen Sunbyte standardisieren, damit
                         es in Österreich, im DACH-Raum, in der EU und weltweit
                         eingesetzt werden kann. Dafür bauen wir ein Netzwerk von
                         Agenturen auf, die es vertreiben und selbst nutzen.
@@ -402,7 +403,7 @@ export default function UeberUnsPage() {
                         Sprechen Sie <Spark>mit uns.</Spark>
                     </>
                 }
-                sub="Erzählen Sie von Ihrem Betrieb oder Ihrer Agentur. Sie bekommen eine ehrliche Einschätzung, ob und wie das KI-Betriebssystem bei Ihnen passt."
+                sub="Erzählen Sie von Ihrem Betrieb oder Ihrer Agentur. Sie bekommen eine ehrliche Einschätzung, ob und wie Sunbyte bei Ihnen passt."
                 primaryLabel="erstgespräch anfragen"
                 note={
                     <>

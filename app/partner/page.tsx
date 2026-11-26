@@ -30,14 +30,14 @@ import { breadcrumbLd, faqLd } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'KI-Betriebssystem für Agenturen — Partner werden',
     description:
-        'Partner werden im KI-OS-Netzwerk von Sunbyte: Agenturen vertreiben das KI-Betriebssystem, nutzen es selbst und bringen ihre Stärke ein.',
+        'Partner werden im Sunbyte-Netzwerk: Agenturen vertreiben das KI-Betriebssystem Sunbyte, nutzen es selbst und bringen ihre Stärke ein.',
     alternates: { canonical: '/partner/' },
 }
 
 const GRUENDE = [
     {
         titel: 'Ein Standard',
-        text: 'Wir standardisieren das KI-Betriebssystem, damit es in Österreich, im DACH-Raum, in der EU und weltweit eingesetzt werden kann.',
+        text: 'Wir standardisieren Sunbyte, damit es in Österreich, im DACH-Raum, in der EU und weltweit eingesetzt werden kann.',
     },
     {
         titel: 'Gemeinsam besser',
@@ -45,7 +45,7 @@ const GRUENDE = [
     },
     {
         titel: 'Verkaufen und selbst nutzen',
-        text: 'Sie vertreiben das Betriebssystem an Ihre Kunden und setzen es in der eigenen Agentur ein.',
+        text: 'Sie vertreiben Sunbyte an Ihre Kunden und setzen es in der eigenen Agentur ein.',
     },
 ]
 
@@ -64,7 +64,7 @@ const SCHWERPUNKTE = [
 const SCHRITTE = [
     {
         titel: 'Nutzen',
-        text: 'Sie setzen das KI-Betriebssystem in Ihrer Agentur ein und bringen es zu Ihren Kunden.',
+        text: 'Sie setzen Sunbyte in Ihrer Agentur ein und bringen es zu Ihren Kunden.',
     },
     {
         titel: 'Einbringen',
@@ -83,7 +83,7 @@ const FAQ_ITEMS = [
     },
     {
         q: 'Darf ich das System auch in der eigenen Agentur einsetzen?',
-        a: 'Ja. Partner vertreiben das KI-Betriebssystem und nutzen es selbst.',
+        a: 'Ja. Partner vertreiben Sunbyte und nutzen es selbst.',
     },
     {
         q: 'Kann ich eigene Funktionen ins Netzwerk einbringen?',
@@ -125,7 +125,7 @@ export default function PartnerPage() {
                                 maxWidth: '14ch',
                             }}
                         >
-                            Ein KI-Betriebssystem{' '}
+                            Sunbyte{' '}
                             <Spark>für Ihre Kunden.</Spark>
                         </h1>
                         <p
@@ -135,9 +135,9 @@ export default function PartnerPage() {
                                 maxWidth: '46ch',
                             }}
                         >
-                            Sunbyte baut ein Netzwerk von Agenturen auf, die das
-                            KI-Betriebssystem vertreiben und selbst nutzen.
-                            Werden Sie Partner.
+                            Sunbyte ist ein KI-Betriebssystem für Betriebe. Wir
+                            bauen ein Netzwerk von Agenturen auf, die es
+                            vertreiben und selbst nutzen. Werden Sie Partner.
                         </p>
                         <div className="mt-10 flex flex-wrap gap-4">
                             <CtaButton href="/kontakt">
@@ -331,7 +331,7 @@ export default function PartnerPage() {
                             <Spark>und alles drumherum.</Spark>
                         </>
                     }
-                    sub="Das bekommen Betriebe mit dem KI-Betriebssystem. Als Partner bringen Sie es zu Ihren Kunden."
+                    sub="Das bekommen Betriebe mit Sunbyte. Als Partner bringen Sie es zu Ihren Kunden."
                     className="mb-12 md:mb-16"
                 />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
@@ -385,7 +385,7 @@ export default function PartnerPage() {
                         Bauen wir das Netzwerk <Spark>gemeinsam.</Spark>
                     </>
                 }
-                sub="Im Partnergespräch klären wir, wie Ihre Agentur das KI-Betriebssystem vertreibt und selbst nutzt, und zu welchen Konditionen."
+                sub="Im Partnergespräch klären wir, wie Ihre Agentur Sunbyte vertreibt und selbst nutzt, und zu welchen Konditionen."
                 primaryLabel="partnergespräch anfragen"
                 note={<>↳ unverbindlich · antwort in unter 24 h</>}
             />

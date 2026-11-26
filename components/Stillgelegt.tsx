@@ -27,7 +27,7 @@ export default function Stillgelegt({ angebot }: { angebot: string }) {
                 className="text-soft leading-relaxed mt-8"
                 style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)', maxWidth: '46ch' }}
             >
-                Sunbyte baut heute KI-Betriebssysteme für Betriebe. Kleine und
+                Heute bauen wir Sunbyte, das KI-Betriebssystem für Betriebe. Kleine und
                 spezielle Aufträge übermitteln wir gerne an unsere geprüften
                 Netzwerkpartner.
             </p>

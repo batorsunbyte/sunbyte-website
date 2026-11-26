@@ -65,7 +65,7 @@ export default function Hero() {
         >
             {/* Spine (desktop only) */}
             <div className="spine font-mono hidden md:block">
-                light / spark — est. 2026
+                light / spark — wien
             </div>
 
             {/* === Hero Grid === */}
@@ -121,29 +121,27 @@ export default function Hero() {
                             color: 'var(--lit)',
                         }}
                     >
-                        {/* Eine Zeile, damit Text und Knöpfe im ersten Bildschirm bleiben.
-                            nowrap statt geschütztem Bindestrich: Die Schrift ist beschnitten. */}
+                        {/* Der Produktname groß, der Punkt orange wie das Quadrat im Logo.
+                            Darunter, was es ist — klein genug, damit Text und Knöpfe im
+                            ersten Bildschirm bleiben. */}
                         <span style={{ whiteSpace: 'nowrap' }}>
-                            Ihr{' '}
-                            <span style={{ color: 'var(--spark)' }}>
-                                KI-OS.
-                            </span>
+                            Sunbyte
+                            <span style={{ color: 'var(--spark)' }}>.</span>
                         </span>
-                        {/* Für Vorlesegeräte und Suchmaschinen: die Abkürzung ausgeschrieben */}
-                        <span className="sr-only">
-                            {' '}
-                            Das KI-Betriebssystem für Ihren Betrieb.
+                        <span className="hero-headline__zeile">
+                            Ihr KI-Betriebssystem.
                         </span>
                     </h1>
 
-                    {/* Sub — Zakirs Text vom 26.11.2026, wörtlich */}
+                    {/* Sub — Zakirs Text vom 26.11.2026; seit das Produkt Sunbyte heißt
+                        (27.11.2026), „ist" statt „installiert" im letzten Satz */}
                     <p
                         className="text-soft max-w-[46ch] leading-relaxed hero-reveal-3"
                         style={{ fontSize: 'clamp(1rem, 1.3vw, 1.1rem)' }}
                     >
                         Sie haben viel Geld und Zeit in Werbung, (KI-)Tools und
                         Agenturen gesteckt. Und am Ende ist es für Sie immer
-                        noch nicht zufriedenstellend. Sunbyte installiert ein
+                        noch nicht zufriedenstellend. Sunbyte ist ein
                         KI-Betriebssystem, welches auf Ihren Betrieb
                         zugeschnitten ist.
                     </p>

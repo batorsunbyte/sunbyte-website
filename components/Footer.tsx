@@ -31,8 +31,8 @@ export default function Footer() {
                         className="text-soft mt-2 max-w-sm leading-snug"
                         style={{ fontSize: 'clamp(0.8rem, 0.95vw, 0.9rem)' }}
                     >
-                        KI-Betriebssysteme für Betriebe und Agenturen, aus
-                        Wien.
+                        Sunbyte ist das KI-Betriebssystem für Betriebe und
+                        Agenturen. Aus Wien.
                     </p>
                 </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
                     >
                         sitemap
                     </p>
-                    <FooterLink href="/">KI-OS</FooterLink>
+                    <FooterLink href="/">Das System</FooterLink>
                     <FooterLink href="/partner">Für Agenturen</FooterLink>
                     <FooterLink href="/arbeiten">Arbeiten</FooterLink>
                     <FooterLink href="/ueber-uns">Über uns</FooterLink>

@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import Contact from '@/components/Contact'
 
 export const metadata: Metadata = {
-    title: 'Kontakt — Erstgespräch zum KI-Betriebssystem',
+    title: 'Kontakt — Erstgespräch vereinbaren',
     description:
-        'Erstgespräch zum KI-Betriebssystem, gratis und unverbindlich: Formular, E-Mail, Telefon oder WhatsApp. Sunbyte Wien, für Betriebe und Agenturen.',
+        'Erstgespräch zu Sunbyte, dem KI-Betriebssystem für Betriebe: gratis und unverbindlich. Formular, E-Mail, Telefon oder WhatsApp. Aus Wien.',
     alternates: { canonical: '/kontakt/' },
 }
 

@@ -93,8 +93,8 @@ export const FUNKTIONEN_KURZ = [
 export const LEISTUNGEN: { titel: string; text: string; partner: string }[] = [
     {
         titel: 'Das Betriebssystem',
-        text: 'Die Software selbst: ein KI-Betriebssystem, zugeschnitten auf Ihren Betrieb.',
-        partner: 'Die Software selbst: ein KI-Betriebssystem, das auf den Betrieb Ihres Kunden zugeschnitten wird.',
+        text: 'Die Software selbst: Sunbyte, das KI-Betriebssystem, zugeschnitten auf Ihren Betrieb.',
+        partner: 'Die Software selbst: Sunbyte, das KI-Betriebssystem, das auf den Betrieb Ihres Kunden zugeschnitten wird.',
     },
     {
         titel: 'Bibliothek von Funktionen',

@@ -16,7 +16,7 @@ import { CONTACT } from '@/lib/seo'
  */
 
 const NAV = [
-    { href: '/', label: 'ki-os' },
+    { href: '/', label: 'das system' },
     { href: '/#branchen', label: 'branchen' },
     { href: '/partner', label: 'für agenturen' },
     { href: '/ueber-uns', label: 'über uns' },

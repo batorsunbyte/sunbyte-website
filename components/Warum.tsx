@@ -124,7 +124,7 @@ export default function Warum() {
 
                         <div className="warum-eins">
                             <p className="mono-label text-spark mb-4">
-                                mit ihrem ki-os
+                                mit sunbyte
                             </p>
                             <div className="warum-eins__kern">
                                 <span className="warum-eins__halo" />
@@ -139,8 +139,7 @@ export default function Warum() {
                     <p className="sr-only">
                         Heute bezahlen Sie viele einzelne Posten: Agentur,
                         IT-Firma, Website, Werbeanzeigen und verschiedene
-                        Programme. Mit dem KI-Betriebssystem haben Sie ein
-                        System.
+                        Programme. Mit Sunbyte haben Sie ein System.
                     </p>
                 </Reveal>
             </div>

@@ -8,7 +8,7 @@ import { Spark, CtaButton } from '@/components/ui'
 export const metadata: Metadata = {
     title: 'Seite nicht gefunden',
     description:
-        'Diese Seite gibt es nicht oder nicht mehr. Zurück zum KI-Betriebssystem von Sunbyte.',
+        'Diese Seite gibt es nicht oder nicht mehr. Zurück zu Sunbyte, dem KI-Betriebssystem für Betriebe.',
     robots: { index: false, follow: true },
 }
 
@@ -36,11 +36,11 @@ export default function NotFound() {
                     maxWidth: '44ch',
                 }}
             >
-                Vielleicht wurde sie verschoben. Sunbyte entwickelt heute ein
-                KI-Betriebssystem für Betriebe. Hier geht es weiter.
+                Vielleicht wurde sie verschoben. Heute finden Sie hier
+                Sunbyte, das KI-Betriebssystem für Betriebe.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-                <CtaButton href="/">zum ki-os</CtaButton>
+                <CtaButton href="/">zu sunbyte</CtaButton>
                 <CtaButton href="/partner" variant="ghost">
                     für agenturen
                 </CtaButton>

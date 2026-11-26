@@ -307,7 +307,7 @@ export default function Cases() {
                         >
                             Heute bauen wir{' '}
                             <span style={{ color: 'var(--spark)' }}>
-                                KI-Betriebssysteme.
+                                Sunbyte.
                             </span>
                         </h2>
                         <p
@@ -315,10 +315,10 @@ export default function Cases() {
                             style={{ maxWidth: '44ch' }}
                         >
                             Einzelne Webseiten bieten wir nicht mehr an. Was
-                            ein KI-Betriebssystem in Ihrem Betrieb übernimmt,
-                            sehen Sie auf der Startseite.
+                            Sunbyte, unser KI-Betriebssystem, in Ihrem Betrieb
+                            übernimmt, sehen Sie auf der Startseite.
                         </p>
-                        <CtaButton href="/">zum ki-os</CtaButton>
+                        <CtaButton href="/">zu sunbyte</CtaButton>
                     </div>
                 </Reveal>
             </div>

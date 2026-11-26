@@ -28,11 +28,11 @@ import { faqLd } from '@/lib/seo'
 
 const FAQ_ITEMS = [
     {
-        q: 'Was ist das KI-Betriebssystem von Sunbyte?',
-        a: 'Eine Software, die auf Ihren Betrieb zugeschnitten wird. Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag und Nacht. Es kennt Ihre Kunden, Mitarbeiter und Abläufe jeden Tag ein Stück besser. Sie bleiben der Chef und haben die volle Kontrolle, auch unterwegs von Ihrem Handy.',
+        q: 'Was ist Sunbyte?',
+        a: 'Sunbyte ist ein KI-Betriebssystem: eine Software, die auf Ihren Betrieb zugeschnitten wird. Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag und Nacht. Es kennt Ihre Kunden, Mitarbeiter und Abläufe jeden Tag ein Stück besser. Sie bleiben der Chef und haben die volle Kontrolle, auch unterwegs von Ihrem Handy.',
     },
     {
-        q: 'Was bringt mir das KI-Betriebssystem?',
+        q: 'Was bringt mir Sunbyte?',
         a: 'Unser Ziel sind drei Dinge: mehr freie Zeit für Sie, weniger Kosten für Produkte, Programme und Agenturen, und mehr Umsatz. Was Ihr Betrieb braucht, baut das System selbst.',
     },
     {
@@ -40,7 +40,7 @@ const FAQ_ITEMS = [
         a: 'Eine Bibliothek von Funktionen, laufende Aktualisierungen und Sicherheit. Dazu beraten wir Sie, helfen bei der Installation und betreuen Sie nach dem Start.',
     },
     {
-        q: 'Was kostet das KI-Betriebssystem?',
+        q: 'Was kostet Sunbyte?',
         a: 'Den Preis besprechen wir im Erstgespräch. Es ist kostenlos und unverbindlich.',
     },
     {
@@ -48,8 +48,8 @@ const FAQ_ITEMS = [
         a: 'Für Betriebe aus verschiedenen Branchen, zum Beispiel Bau, Handwerk, Produktion, Arztpraxen, Immobilien, Kanzleien, Gastronomie, Fitness und Beauty oder Kfz. Was das System bei Ihnen übernimmt, legen wir gemeinsam fest.',
     },
     {
-        q: 'Ich führe eine Agentur. Kann ich das System weiterverkaufen?',
-        a: 'Ja. Sunbyte baut ein Netzwerk von Agenturen auf, die das KI-Betriebssystem vertreiben und selbst nutzen. Die Konditionen besprechen wir im Partnergespräch.',
+        q: 'Ich führe eine Agentur. Kann ich Sunbyte weiterverkaufen?',
+        a: 'Ja. Wir bauen ein Netzwerk von Agenturen auf, die Sunbyte vertreiben und selbst nutzen. Die Konditionen besprechen wir im Partnergespräch.',
     },
     {
         q: 'Was ist mit kleinen und speziellen Aufträgen?',
@@ -68,10 +68,10 @@ export default function Home() {
             {/* ── 01 Warum ────────────────────────────────── */}
             <Warum />
 
-            {/* ── 02 Ihr KI-OS ────────────────────────────── */}
+            {/* ── 02 Sunbyte ──────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="02 — ihr ki-os"
+                    kicker="02 — sunbyte"
                     title={
                         <>
                             Einmal erklärt,
@@ -93,9 +93,9 @@ export default function Home() {
                                     maxWidth: '32ch',
                                 }}
                             >
-                                In Ihrem KI-Betriebssystem arbeitet ein
-                                selbstlernendes Denksystem mit mehreren
-                                KI-Agenten Tag &amp; Nacht.
+                                In Sunbyte arbeitet ein selbstlernendes
+                                Denksystem mit mehreren KI-Agenten Tag &amp;
+                                Nacht.
                             </p>
                             <p
                                 className="text-soft leading-relaxed mt-6"
@@ -198,7 +198,7 @@ export default function Home() {
                             <Spark>die betreut wird.</Spark>
                         </>
                     }
-                    sub="Sie bleiben mit dem System nicht allein. Zum KI-Betriebssystem gehören Beratung, Installation, Aktualisierungen und Betreuung."
+                    sub="Sie bleiben mit dem System nicht allein. Zu Sunbyte gehören Beratung, Installation, Aktualisierungen und Betreuung."
                     className="mb-12 md:mb-16"
                 />
 
@@ -251,7 +251,7 @@ export default function Home() {
                             <Spark>Für Ihre Branche.</Spark>
                         </>
                     }
-                    sub="Wo in Ihrer Branche heute Zeit und Geld verloren gehen, setzt das Betriebssystem an. Drei Beispiele je Branche."
+                    sub="Wo in Ihrer Branche heute Zeit und Geld verloren gehen, setzt Sunbyte an. Drei Beispiele je Branche."
                     className="mb-12 md:mb-14"
                 />
                 <Reveal>
@@ -278,7 +278,7 @@ export default function Home() {
                         {
                             href: '/kontakt',
                             label: 'für betriebe',
-                            titel: 'Sie kaufen direkt bei Sunbyte.',
+                            titel: 'Sie kaufen Sunbyte direkt bei uns.',
                             text: 'Wir beraten Sie, helfen bei der Installation und betreuen Ihr System. Den Preis besprechen wir im Erstgespräch.',
                             cta: 'erstgespräch anfragen',
                             accent: false,
@@ -286,7 +286,7 @@ export default function Home() {
                         {
                             href: '/partner',
                             label: 'für agenturen',
-                            titel: 'Sie vertreiben das KI-OS und nutzen es selbst.',
+                            titel: 'Sie vertreiben Sunbyte und nutzen es selbst.',
                             text: 'Werden Sie Teil des Netzwerks: ein gemeinsamer Standard, den wir zusammen verbessern und erweitern.',
                             cta: 'partner werden',
                             accent: true,
@@ -379,8 +379,8 @@ export default function Home() {
                                 maxWidth: '46ch',
                             }}
                         >
-                            Wir wollen das KI-Betriebssystem standardisieren,
-                            damit es in Österreich, im DACH-Raum, in der EU und
+                            Wir wollen Sunbyte standardisieren, damit es in
+                            Österreich, im DACH-Raum, in der EU und
                             weltweit eingesetzt werden kann. Dafür bauen wir ein
                             Netzwerk von Agenturen auf, die es vertreiben und
                             selbst nutzen. Gemeinsam verbessern und erweitern
@@ -427,7 +427,7 @@ export default function Home() {
                         Sprechen wir über <Spark>Ihren Betrieb.</Spark>
                     </>
                 }
-                sub="Das Erstgespräch ist kostenlos und unverbindlich. Sie erzählen von Ihrem Betrieb, wir zeigen, was ein KI-Betriebssystem dort übernehmen kann."
+                sub="Das Erstgespräch ist kostenlos und unverbindlich. Sie erzählen von Ihrem Betrieb, wir zeigen, was Sunbyte dort übernehmen kann."
                 primaryLabel="erstgespräch anfragen"
                 note={
                     <>

@@ -437,6 +437,14 @@ select option {
 .hero-headline {
     animation: hero-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+.hero-headline__zeile {
+    display: block;
+    margin-top: 0.3em;
+    font-size: 0.36em;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--spark);
+}
 @keyframes hero-rise {
     from {
         transform: translateY(0.6rem);

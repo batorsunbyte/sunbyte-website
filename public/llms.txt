@@ -1,10 +1,10 @@
-# Sunbyte — KI-Betriebssystem für Betriebe, aus Wien
+# Sunbyte — das KI-Betriebssystem für Betriebe, aus Wien
 
-> Sunbyte entwickelt ein KI-Betriebssystem (KI-OS), das auf den Betrieb
-> zugeschnitten wird. Darin arbeitet ein selbstlernendes Denksystem mit mehreren
-> KI-Agenten Tag und Nacht. Betriebe kaufen direkt bei Sunbyte. Agenturen
-> können das System als Partner vertreiben und selbst nutzen. Sitz: Wien,
-> Österreich.
+> Sunbyte ist ein KI-Betriebssystem, das auf den Betrieb zugeschnitten wird.
+> Darin arbeitet ein selbstlernendes Denksystem mit mehreren KI-Agenten Tag
+> und Nacht. Das Produkt heißt wie sein Hersteller, die Sunbyte GmbH aus Wien.
+> Betriebe kaufen Sunbyte direkt beim Hersteller. Agenturen können Sunbyte
+> als Partner vertreiben und selbst nutzen. Sitz: Wien, Österreich.
 
 ## Was das KI-Denksystem im Alltag tut
 

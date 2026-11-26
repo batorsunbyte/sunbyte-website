@@ -10,7 +10,7 @@ const PORTFOLIO_LD: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': `${SITE_URL}/arbeiten/`,
-    name: 'Referenzen — Projekte von Sunbyte',
+    name: 'Referenzen — Projekte der Sunbyte GmbH',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     mainEntity: {
         '@type': 'ItemList',
@@ -28,9 +28,9 @@ const PORTFOLIO_LD: Record<string, unknown> = {
 }
 
 export const metadata: Metadata = {
-    title: 'Referenzen — Projekte von Sunbyte',
+    title: 'Referenzen — unsere Projekte',
     description:
-        'Projekte, die Sunbyte gebaut hat: kfz22, MStyle Beauty Lounge, Impulsiv Fitness (Wien), Safety Pro Electrical (Melbourne) und PrintMyWall. Alle live im Netz.',
+        'Projekte, die wir gebaut haben: kfz22, MStyle Beauty Lounge, Impulsiv Fitness (Wien), Safety Pro Electrical (Melbourne) und PrintMyWall. Alle live im Netz.',
     alternates: { canonical: '/arbeiten/' },
 }
 
@@ -51,7 +51,7 @@ export default function ArbeitenPage() {
                         Sprechen wir über <Spark>Ihren Betrieb.</Spark>
                     </>
                 }
-                sub="Diese Projekte haben wir gebaut. Heute bauen wir KI-Betriebssysteme für Betriebe. Das Erstgespräch ist kostenlos und unverbindlich."
+                sub="Diese Projekte haben wir gebaut. Heute bauen wir Sunbyte, das KI-Betriebssystem für Betriebe. Das Erstgespräch ist kostenlos und unverbindlich."
                 primaryLabel="erstgespräch anfragen"
                 note={<>↳ erstgespräch gratis &amp; unverbindlich · antwort in unter 24 h</>}
             />

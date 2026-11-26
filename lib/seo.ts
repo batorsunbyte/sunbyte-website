@@ -54,12 +54,12 @@ export const ORGANIZATION: Record<string, unknown> = {
     '@id': `${SITE_URL}/#organization`,
     name: 'Sunbyte',
     legalName: 'Sunbyte GmbH',
-    alternateName: 'Sunbyte KI-OS',
+    alternateName: 'Sunbyte KI-Betriebssystem',
     url: SITE_URL,
     logo: LOGO_IMAGE,
     image: OG_IMAGE,
     description:
-        'Sunbyte aus Wien entwickelt ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
+        'Die Sunbyte GmbH aus Wien entwickelt Sunbyte, ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
     slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
     email: CONTACT.email,
@@ -113,9 +113,9 @@ export const ORGANIZATION: Record<string, unknown> = {
                 '@type': 'Offer',
                 itemOffered: {
                     '@type': 'Service',
-                    name: 'KI-Betriebssystem (KI-OS) für Betriebe',
+                    name: 'Sunbyte – KI-Betriebssystem für Betriebe',
                     description:
-                        'Ein auf den Betrieb zugeschnittenes KI-Betriebssystem mit einem selbstlernenden Denksystem aus mehreren KI-Agenten.',
+                        'Sunbyte ist ein auf den Betrieb zugeschnittenes KI-Betriebssystem mit einem selbstlernenden Denksystem aus mehreren KI-Agenten.',
                 },
             },
         ],

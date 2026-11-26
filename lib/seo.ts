@@ -133,14 +133,36 @@ export const PERSON_ZAKIR: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Zakir Daryabi',
-    jobTitle: 'Gründer & Designer',
+    jobTitle: 'Gründer und Geschäftsführer',
+    url: `${SITE_URL}/ueber-uns/`,
+    image: `${SITE_URL}/images/team/zakir-portraet.webp`,
     worksFor: { '@id': `${SITE_URL}/#organization` },
     address: {
         '@type': 'PostalAddress',
         addressLocality: 'Wien',
         addressCountry: 'AT',
     },
-    knowsAbout: ['Webdesign', 'KI', 'IT', 'Frontend-Entwicklung'],
+    knowsAbout: [
+        'Softwareentwicklung',
+        'Softwarearchitektur',
+        'Java',
+        'C#',
+        'Python',
+        'Datenbanken',
+        'KI-Agenten',
+    ],
+}
+
+/** Person — Ing. Medet Atas (für /ueber-uns) */
+export const PERSON_MEDET: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Medet Atas',
+    honorificPrefix: 'Ing.',
+    jobTitle: 'Gesellschafter',
+    worksFor: { '@id': `${SITE_URL}/#organization` },
+    url: `${SITE_URL}/ueber-uns/`,
+    image: `${SITE_URL}/images/team/medet-portraet.webp`,
 }
 
 /** Service-Helper für Service-Seiten */

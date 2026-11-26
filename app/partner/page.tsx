@@ -3,6 +3,7 @@ import Reveal from '@/components/Reveal'
 import Faq from '@/components/Faq'
 import JsonLd from '@/components/JsonLd'
 import NetzwerkRinge from '@/components/NetzwerkRinge'
+import Regal from '@/components/Regal'
 import { SectionHeader, Spark, CtaBand, CtaButton } from '@/components/ui'
 import { LEISTUNGEN } from '@/lib/kios'
 import { breadcrumbLd, faqLd } from '@/lib/seo'
@@ -22,8 +23,9 @@ import { breadcrumbLd, faqLd } from '@/lib/seo'
  * ist — das ergänzt das System. Agenturen nutzen das System und geben ihre
  * eigenen Funktionen im Netzwerk weiter, sodass andere Agenturen diesen Teil
  * auch weiterverkaufen. So stärkt man einander und wächst gemeinsam.
- * Die Kacheln im Schaubild (SCHWERPUNKTE) sind allgemeine Beispiele für
- * Spezialisierungen, keine Zusage und keine Partnerliste. WIE Funktionen
+ * Das Schaubild dazu ist components/Regal.tsx („ein Baustein hinein, das
+ * ganze System heraus"); die Fächer dort sind allgemeine Beispiele, keine
+ * Zusage und keine Partnerliste. WIE Funktionen
  * weitergegeben und abgerechnet werden, steht nicht fest → Verweis aufs Gespräch.
  */
 
@@ -47,18 +49,6 @@ const GRUENDE = [
         titel: 'Verkaufen und selbst nutzen',
         text: 'Sie vertreiben Sunbyte an Ihre Kunden und setzen es in der eigenen Agentur ein.',
     },
-]
-
-/** Beispiele für Schwerpunkte von Agenturen — nur zur Veranschaulichung */
-const SCHWERPUNKTE = [
-    'Recruiting',
-    'Werbeanzeigen',
-    'Social Media',
-    'Websites',
-    'Video',
-    'Suchmaschinen',
-    'IT-Betreuung',
-    'Branchenwissen',
 ]
 
 const SCHRITTE = [
@@ -215,81 +205,52 @@ export default function PartnerPage() {
                     className="mb-12 md:mb-16"
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10 items-center">
-                    <div className="md:col-span-5">
-                        <Reveal>
-                            <p
-                                className="leading-relaxed"
-                                style={{
-                                    fontSize: 'clamp(1.15rem, 1.7vw, 1.45rem)',
-                                    color: 'var(--lit)',
-                                    maxWidth: '30ch',
-                                }}
-                            >
-                                Jede Agentur ist auf einen Bereich
-                                spezialisiert. Genau das macht das Netzwerk
-                                stark.
-                            </p>
-                        </Reveal>
-                        <Reveal delay={90}>
-                            <p
-                                className="text-soft leading-relaxed mt-6"
-                                style={{
-                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
-                                    maxWidth: '40ch',
-                                }}
-                            >
-                                Ihre Stärke ergänzt das System, und die Stärken
-                                der anderen ergänzen Ihr Angebot. So stärken wir
-                                einander und wachsen gemeinsam.
-                            </p>
-                        </Reveal>
-                    </div>
-
-                    {/* Bild: viele Schwerpunkte links, eine Bibliothek rechts */}
-                    <Reveal delay={120} className="md:col-span-7">
-                        <div className="warum-bild" aria-hidden>
-                            <div>
-                                <p className="mono-label text-muted mb-4">
-                                    jede agentur bringt, zum beispiel
-                                </p>
-                                <ul className="staerke-chips">
-                                    {SCHWERPUNKTE.map((name, i) => (
-                                        <li
-                                            key={name}
-                                            style={{ animationDelay: `${i * 0.8}s` }}
-                                        >
-                                            {name}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <span className="warum-bild__pfeil">→</span>
-
-                            <div className="warum-eins">
-                                <p className="mono-label text-spark mb-4">
-                                    alle nutzen
-                                </p>
-                                <div className="warum-eins__kern">
-                                    <span className="warum-eins__halo" />
-                                    <span>
-                                        Eine
-                                        <br />
-                                        Bibliothek
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <p className="sr-only">
-                            Jede Agentur bringt ihren Schwerpunkt ein, zum
-                            Beispiel Recruiting, Werbeanzeigen, Social Media
-                            oder Websites. Daraus entsteht eine gemeinsame
-                            Bibliothek von Funktionen, die alle Agenturen im
-                            Netzwerk nutzen.
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start">
+                    <Reveal className="md:col-span-6">
+                        <p
+                            className="leading-relaxed"
+                            style={{
+                                fontSize: 'clamp(1.15rem, 1.7vw, 1.45rem)',
+                                color: 'var(--lit)',
+                                maxWidth: '32ch',
+                            }}
+                        >
+                            Jede Agentur ist auf einen Bereich spezialisiert.
+                            Genau das macht das Netzwerk stark.
+                        </p>
+                    </Reveal>
+                    <Reveal delay={90} className="md:col-span-6">
+                        <p
+                            className="text-soft leading-relaxed"
+                            style={{
+                                fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
+                                maxWidth: '44ch',
+                            }}
+                        >
+                            Sie bringen einen Baustein mit: das, was Ihre
+                            Agentur besonders gut kann. Dafür bekommen Sie das
+                            ganze System. So stärken wir einander und wachsen
+                            gemeinsam.
                         </p>
                     </Reveal>
                 </div>
+
+                {/* Bild: ein Baustein hinein, das ganze System heraus */}
+                <Reveal delay={120} className="mt-12 md:mt-16">
+                    <Regal />
+                </Reveal>
+                <Reveal
+                    as="p"
+                    delay={160}
+                    className="font-display-card mt-8"
+                    style={{
+                        fontSize: 'clamp(1.3rem, 2.2vw, 1.75rem)',
+                        color: 'var(--lit)',
+                        lineHeight: 1.2,
+                    }}
+                >
+                    Ein Baustein hinein. <Spark>Das ganze System heraus.</Spark>
+                </Reveal>
 
                 <Reveal as="p" className="mono-label text-spark mt-16 md:mt-24 mb-6">
                     ↳ so wachsen wir gemeinsam

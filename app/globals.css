@@ -2143,3 +2143,261 @@ select option {
 @media (prefers-reduced-motion: reduce) {
     .staerke-chips li { animation: none; }
 }
+
+/* /partner — Schaubild „Regal": ein Baustein hinein, das ganze System heraus */
+.regal {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+    border: 1px solid rgba(201, 184, 163, 0.16);
+    border-radius: 6px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+.regal-seite {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    justify-content: center;
+}
+.regal-geber {
+    display: grid;
+    gap: 0.6rem;
+}
+.regal-geber li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid rgba(201, 184, 163, 0.2);
+    border-radius: 4px;
+    padding: 0.65rem 0.8rem;
+}
+.regal-geber li.ist-sie {
+    border-color: var(--spark);
+    background: rgba(232, 90, 31, 0.08);
+}
+.regal-geber strong {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--lit);
+    line-height: 1.2;
+}
+.regal-geber small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+.regal-geber li.ist-sie small {
+    color: var(--spark);
+}
+/* der kleine Baustein */
+.regal-stein {
+    flex: none;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 2px;
+    background: var(--spark);
+}
+.regal-notiz {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+/* Weg zwischen den Teilen: Linie, auf der die Stücke wandern (mobil senkrecht) */
+.regal-weg {
+    position: relative;
+    justify-self: center;
+    width: 1px;
+    height: 3.2rem;
+    background: rgba(232, 90, 31, 0.35);
+}
+.regal-weg__stueck {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-left: -0.275rem;
+    border-radius: 2px;
+    background: var(--spark);
+    opacity: 0;
+    animation: regal-runter 2.7s linear infinite;
+}
+.regal-weg__stueck:nth-child(2) { animation-delay: 0.9s; }
+.regal-weg__stueck:nth-child(3) { animation-delay: 1.8s; }
+/* heraus: ein großes Raster statt eines kleinen Steins */
+.regal-weg--gross .regal-weg__stueck {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: -0.75rem;
+    border-radius: 3px;
+    background: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    animation-duration: 3.2s;
+}
+.regal-weg--gross .regal-weg__stueck i {
+    background: var(--spark);
+    border-radius: 1px;
+}
+@keyframes regal-runter {
+    0% { top: -10%; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+@keyframes regal-rechts {
+    0% { left: -10%; opacity: 0; }
+    15%, 80% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+/* das Regal */
+.regal-schrank {
+    border: 1px solid rgba(232, 90, 31, 0.45);
+    border-radius: 6px;
+    padding: clamp(1rem, 2vw, 1.5rem);
+    background: radial-gradient(circle at 50% 0%, rgba(232, 90, 31, 0.1) 0%, transparent 70%);
+}
+.regal-faecher {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* Regalböden: eine Linie unter jeder Reihe */
+    row-gap: 0;
+    column-gap: 0.5rem;
+}
+.regal-faecher li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 3.1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.3rem 0.5rem;
+    border-bottom: 2px solid rgba(201, 184, 163, 0.28);
+    border-radius: 3px 3px 0 0;
+    background: rgba(201, 184, 163, 0.05);
+    font-size: clamp(0.72rem, 1vw, 0.88rem);
+    line-height: 1.15;
+    color: var(--soft);
+}
+.regal-faecher li.von-agentur {
+    border-bottom-color: rgba(232, 90, 31, 0.6);
+    color: var(--lit);
+}
+.regal-faecher li.ist-neu {
+    border: 1px solid var(--spark);
+    border-bottom-width: 2px;
+    background: rgba(232, 90, 31, 0.16);
+    color: var(--lit);
+    font-weight: 500;
+    animation: regal-neu 2.7s ease-in-out infinite;
+}
+.regal-faecher li.ist-frei {
+    border: 1px dashed rgba(201, 184, 163, 0.3);
+    background: none;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+@keyframes regal-neu {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232, 90, 31, 0); }
+    50% { box-shadow: 0 0 0 5px rgba(232, 90, 31, 0.18); }
+}
+.regal-legende {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    margin-top: 0.4rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+.regal-legende i {
+    display: inline-block;
+    width: 0.9rem;
+    height: 2px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    background: rgba(201, 184, 163, 0.45);
+}
+.regal-legende i.von-agentur {
+    background: var(--spark);
+}
+.regal-schutz {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(232, 90, 31, 0.25);
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-align: center;
+    color: var(--spark);
+}
+
+/* rechts: das ganze System */
+.regal-alles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    border: 1px solid var(--spark);
+    border-radius: 6px;
+    padding: 1.1rem;
+    background: rgba(232, 90, 31, 0.1);
+}
+.regal-alles__raster {
+    display: grid;
+    grid-template-columns: repeat(3, 0.85rem);
+    gap: 3px;
+    margin-bottom: 0.6rem;
+}
+.regal-alles__raster i {
+    height: 0.6rem;
+    border-radius: 1px;
+    background: var(--spark);
+}
+.regal-alles strong {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    line-height: 1.1;
+    color: var(--lit);
+}
+.regal-alles > span:last-child {
+    font-size: 0.85rem;
+    color: var(--soft);
+}
+
+/* ab 1180 px: drei Teile nebeneinander, die Wege waagrecht (darunter werden die Fächer zu schmal) */
+@media (min-width: 1180px) {
+    .regal {
+        grid-template-columns: minmax(0, 1fr) clamp(2.5rem, 5vw, 4.5rem) minmax(0, 1.55fr) clamp(2.5rem, 5vw, 4.5rem) minmax(0, 1fr);
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .regal-weg {
+        width: 100%;
+        height: 1px;
+    }
+    .regal-weg__stueck {
+        top: 50%;
+        left: 0;
+        margin-left: 0;
+        margin-top: -0.275rem;
+        animation-name: regal-rechts;
+    }
+    .regal-weg--gross .regal-weg__stueck {
+        margin-left: 0;
+        margin-top: -0.75rem;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .regal-weg__stueck {
+        display: none;
+    }
+    .regal-faecher li.ist-neu {
+        animation: none;
+    }
+}

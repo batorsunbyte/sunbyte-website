@@ -5,7 +5,7 @@
  * Zakir hat am 26.11.2026 bestätigt: Alle acht sind Kunden bzw. eigene Marken,
  * die Freigabe für die Logos liegt vor.
  *
- * Jede Referenz ist eine helle Kachel. Liegt eine Logo-Datei unter
+ * Jede Referenz ist eine weiße Kachel. Liegt eine Logo-Datei unter
  * /public/images/logos/, steht das Logo in der Kachel, sonst der Name als
  * Schrift. Ein Logo ergänzen: Datei ablegen, unten `logo`, `w` und `h` eintragen.
  * `dunkel: true` für Logos, die einen dunklen Grund brauchen.
@@ -22,13 +22,13 @@ interface Referenz {
 }
 
 const REFERENZEN: Referenz[] = [
-    { name: 'WKO' },
+    { name: 'WKO', logo: '/images/logos/wko.png', w: 514, h: 270 },
     { name: 'Social Talents' },
-    { name: 'AutoSPA' },
+    { name: 'AutoSPA', logo: '/images/logos/autospa.png', w: 375, h: 243 },
     { name: 'PrintMyWall', logo: '/images/logos/printmywall.png', w: 251, h: 200 },
     { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness.png', w: 384, h: 181 },
-    { name: 'Wiener Wohnen' },
-    { name: 'Integrationshaus' },
+    { name: 'Stadt Wien – Wiener Wohnen', logo: '/images/logos/wiener-wohnen.png', w: 531, h: 376 },
+    { name: 'Integrationshaus', logo: '/images/logos/integrationshaus.jpg', w: 220, h: 220 },
     { name: 'Next Move', logo: '/images/logos/next-move.webp', w: 400, h: 400, dunkel: true },
 ]
 
@@ -39,16 +39,17 @@ export default function LogoWall() {
             style={{ borderBottom: '1px solid rgba(201, 184, 163, 0.10)' }}
             aria-label="Referenzen von Sunbyte"
         >
+            {/* Ohne Überschrift — Zakir, 26.11.2026: „das Wort Referenzen soll weg". */}
             <div className="py-8 md:py-10">
-                <p className="mono-label text-muted mb-5">referenzen</p>
-
                 <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
                     {REFERENZEN.map(r => (
                         <li
                             key={r.name}
                             className="flex items-center justify-center"
                             style={{
-                                background: r.dunkel ? '#000' : 'var(--lit)',
+                                // Weiß statt Creme: WKO, Wiener Wohnen und Integrationshaus
+                                // haben einen weißen Grund in der Datei.
+                                background: r.dunkel ? '#000' : '#fff',
                                 borderRadius: '4px',
                                 height: '5.25rem',
                                 padding: r.dunkel ? 0 : '0.8rem 0.9rem',

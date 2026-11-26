@@ -100,15 +100,18 @@ export default function Header() {
                     <Link
                         href="/"
                         aria-label="Sunbyte — Startseite"
-                        className="font-display hover:text-spark transition-colors"
-                        style={{
-                            fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)',
-                            color: 'var(--lit)',
-                            letterSpacing: '-0.01em',
-                            lineHeight: 1,
-                        }}
+                        className="block hover:opacity-80 transition-opacity"
+                        style={{ lineHeight: 0 }}
                     >
-                        sunbyte
+                        {/* Neue Wortmarke (Zakir, 27.11.2026), freigestellt, Schrift creme */}
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/images/brand/sunbyte-wortmarke-hell.webp"
+                            alt="Sunbyte"
+                            width={1200}
+                            height={341}
+                            style={{ height: 'clamp(1.7rem, 2.4vw, 2rem)', width: 'auto' }}
+                        />
                     </Link>
 
                     {/* Desktop-Nav */}

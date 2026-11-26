@@ -18,15 +18,15 @@ export default function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 items-start">
                 {/* Marke + Tagline */}
                 <div className="md:col-span-5">
-                    <p
-                        className="font-display"
-                        style={{
-                            fontSize: 'clamp(1.5rem, 2vw, 1.75rem)',
-                            color: 'var(--lit)',
-                        }}
-                    >
-                        sunbyte
-                    </p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                        src="/images/brand/sunbyte-wortmarke-hell.webp"
+                        alt="Sunbyte"
+                        width={1200}
+                        height={341}
+                        loading="lazy"
+                        style={{ height: 'clamp(2.4rem, 3.4vw, 3rem)', width: 'auto' }}
+                    />
                     <p
                         className="text-soft mt-2 max-w-sm leading-snug"
                         style={{ fontSize: 'clamp(0.8rem, 0.95vw, 0.9rem)' }}

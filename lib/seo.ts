@@ -9,7 +9,9 @@
 export const SITE_URL = 'https://sunbyte.at'
 /* Neuer Dateiname seit der KI-OS-Welle (26.11.2026): WhatsApp und LinkedIn
    behalten ein Vorschaubild unter gleichem Namen sonst lange im Speicher. */
-export const OG_IMAGE = `${SITE_URL}/og-kios.png`
+export const OG_IMAGE = `${SITE_URL}/og-sunbyte.png`
+/** Quadratisches Logo für Strukturdaten und Profile (neues Logo, 27.11.2026) */
+export const LOGO_IMAGE = `${SITE_URL}/images/brand/sunbyte-app-icon.png`
 
 /** Kontaktdaten (aus PrintMyWall-Impressum übernommen) */
 export const CONTACT = {
@@ -54,7 +56,7 @@ export const ORGANIZATION: Record<string, unknown> = {
     legalName: 'Sunbyte GmbH',
     alternateName: 'Sunbyte KI-OS',
     url: SITE_URL,
-    logo: OG_IMAGE,
+    logo: LOGO_IMAGE,
     image: OG_IMAGE,
     description:
         'Sunbyte aus Wien entwickelt ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',

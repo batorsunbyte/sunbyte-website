@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Reveal from '@/components/Reveal'
 import JsonLd from '@/components/JsonLd'
-import { Spark, CtaBand } from '@/components/ui'
+import { Spark, CtaBand, CtaButton } from '@/components/ui'
 import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
 
 /**
@@ -12,13 +12,22 @@ import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
  * printmywall.at/mission/ (Zusammenfoto, zwei Karten mit Rolle, Text, Leitsatz
  * und Unternehmensliste).
  *
- * Zakirs Karte: seine Angaben vom 26.11.2026 zu Lehre, Sprachen und dem
- * Projekt nach der Lehre; „führte fachlich bis zu 15 Personen" und der
- * Leitsatz stehen so auf printmywall.at; „über sechs Jahre IT und KI" und
- * „Was er verspricht, baut er selbst" stammen von der früheren Sunbyte-Seite.
- * Regel von PrintMyWall übernommen: Medets Text ist nie länger als Zakirs. Medets Karte: sein Text von dort,
- * ohne den Satz zu seiner Rolle bei PrintMyWall.
- * Bewusst weggelassen: das Gründungsdatum (Zakir: „muss man nicht schreiben").
+ * Zweite Fassung am selben Tag. Zakir: „Über Einzelunternehmen sollten wir gar
+ * nicht berichten und auch nicht über meine Lehre. Die Texte sollen die Leute
+ * motivieren, Vertrauen wecken und zum Mitmachen bewegen, dass sie die gute
+ * Entscheidung bei den richtigen Personen haben." Deshalb: kein Wort zu
+ * Einzelunternehmen, Lehre, Abschlussjahr oder Gründungsdatum.
+ *
+ * Zakirs Karte: „Mit 6 habe ich alle Elektronikgeräte zu Hause aufgemacht,
+ * weil Technologie mich interessierte" (Zakir, 26.11.2026); Sprachen und
+ * Migrationsprojekt aus seinen Angaben; „führte fachlich bis zu 15 Personen"
+ * und der Leitsatz stehen so auf printmywall.at; „über sechs Jahre IT und KI"
+ * und „Was er verspricht, baut er selbst" stammen von der früheren
+ * Sunbyte-Seite. Medets Karte: sein Text von printmywall.at, gekürzt um die
+ * Sätze zu PrintMyWall. Die Sätze „Für Sie heißt das …" und der Abschnitt
+ * „Darauf können Sie sich verlassen" sind von Claude; die drei Zusagen
+ * wiederholen nur, was in LEISTUNGEN (lib/kios.ts) steht.
+ * Regel von PrintMyWall übernommen: Medets Text ist nie länger als Zakirs.
  *
  * Die frühere Fassung („zwei Brüder", AboutHero, TeamBlock, Studio) ist nicht
  * mehr eingebunden; die Dateien liegen unverändert in components/.
@@ -27,7 +36,7 @@ import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'Über uns — Zakir Daryabi und Ing. Medet Atas',
     description:
-        'Hinter Sunbyte stehen Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas. Wer das KI-Betriebssystem baut und was wir vorhaben.',
+        'Wem Sie Ihren Betrieb anvertrauen: Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas, Unternehmer seit 2008. Wer das KI-Betriebssystem baut und worauf Sie sich verlassen können.',
     alternates: { canonical: '/ueber-uns/' },
 }
 
@@ -49,9 +58,9 @@ const KOEPFE: Kopf[] = [
         name: 'Zakir Daryabi',
         rolle: 'Gründer, Gesellschafter und Geschäftsführer',
         text: [
-            'Zakir ist Softwareentwickler und arbeitet seit über sechs Jahren mit IT und KI. In seiner Lehre hat er das Handwerk von Grund auf gelernt und selbst programmiert, in Java, C# und Python. Nebenbei baute er eigene Programme. 2023 schloss er die Lehre ab.',
-            'Danach arbeitete er an einem wichtigen Migrationsprojekt mit Altsystemen. Dort hat er an allem gearbeitet, was dazwischenliegt: verschiedene Datenbanksysteme, Schnittstellen, Benutzeroberflächen und Tests. Fachlich führte er bis zu 15 Personen.',
-            'Aus dieser Arbeit kommt sein Denken in Architektur: wie ein System aufgebaut sein muss, damit es hält und wachsen kann. Mit Sunbyte baut er KI-Betriebssysteme für Betriebe. Als Geschäftsführer verantwortet er die Technik. Was er verspricht, baut er selbst.',
+            'Mit sechs Jahren hat Zakir zu Hause alle Elektronikgeräte aufgemacht, weil ihn Technologie interessiert hat. Diese Neugier ist geblieben. Heute ist er Softwareentwickler, arbeitet seit über sechs Jahren mit IT und KI und baut mit Sunbyte KI-Betriebssysteme für Betriebe.',
+            'Er programmiert selbst, in Java, C# und Python, und hat eigene Programme gebaut. In einem wichtigen Migrationsprojekt mit Altsystemen hat er an allem gearbeitet, was ein System ausmacht: Datenbanksysteme, Schnittstellen, Benutzeroberflächen und Tests. Fachlich führte er bis zu 15 Personen.',
+            'Daher kommt sein Denken in Architektur: wie ein System aufgebaut sein muss, damit es hält und mit Ihrem Betrieb wachsen kann. Für Sie heißt das: Ihr KI-Betriebssystem baut jemand, der die Technik von Grund auf kennt. Was er verspricht, baut er selbst.',
         ],
         wort: 'Träume als Antrieb. Technik als Werkzeug. Qualität als Versprechen.',
         firmenTitel: 'Unternehmen und Projekte',
@@ -92,7 +101,7 @@ const KOEPFE: Kopf[] = [
                 Standorten in Wien aufgebaut.
             </>,
             'Seine Erfahrung liegt im Großhandel, im Vertrieb und in der internationalen Geschäftsentwicklung: neue Märkte erschließen, Vertrieb aufbauen, langfristige Partnerschaften mit Unternehmen.',
-            'Als Mitgesellschafter von PrintMyWall und SunByte investiert er in Drucktechnologie, Digitalisierung und künstliche Intelligenz. Seine Stärke: Potenziale früh erkennen, Menschen verbinden und aus Ideen Geschäftsmodelle entwickeln.',
+            'Seine Stärke: Potenziale früh erkennen, Menschen verbinden und aus Ideen Geschäftsmodelle entwickeln. Für Sie heißt das: Bei Sunbyte spricht jemand mit, der selbst einen Betrieb aufgebaut hat und weiß, worauf es im Alltag ankommt.',
         ],
         wort: 'Der Mensch im Mittelpunkt. Vertrauen als Fundament. Erfolg als Ergebnis.',
         firmenTitel: 'Unternehmen',
@@ -109,6 +118,22 @@ const KOEPFE: Kopf[] = [
                 rolle: 'Gründer und Inhaber',
             },
         ],
+    },
+]
+
+/** Wiederholt nur, was in LEISTUNGEN (lib/kios.ts) und im CTA zugesagt ist. */
+const ZUSAGEN = [
+    {
+        titel: 'Eine ehrliche Einschätzung',
+        text: 'Im Erstgespräch sagen wir Ihnen offen, ob und wie das KI-Betriebssystem zu Ihrem Betrieb passt. Gratis und unverbindlich.',
+    },
+    {
+        titel: 'Hilfe, bis es läuft',
+        text: 'Wir beraten Sie und helfen bei der Installation, bis das System in Ihrem Betrieb läuft.',
+    },
+    {
+        titel: 'Wir bleiben da',
+        text: 'Nach dem Start bleiben wir Ihr Ansprechpartner. Updates und Sicherheit gehören dazu.',
     },
 ]
 
@@ -170,9 +195,8 @@ export default function UeberUnsPage() {
                                     maxWidth: '30ch',
                                 }}
                             >
-                                Sunbyte ist ein Softwareunternehmen aus Wien.
-                                Wir entwickeln ein KI-Betriebssystem für
-                                Betriebe.
+                                Wem Sie Ihren Betrieb anvertrauen, sollten Sie
+                                kennen.
                             </p>
                         </Reveal>
                         <Reveal delay={80}>
@@ -183,10 +207,12 @@ export default function UeberUnsPage() {
                                     maxWidth: '40ch',
                                 }}
                             >
-                                Aus dem Einzelunternehmen ist eine GmbH mit zwei
-                                Gesellschaftern geworden. Der eine baut das
-                                System, der andere kennt Vertrieb und Aufbau von
-                                Unternehmen aus eigener Erfahrung.
+                                Sunbyte ist ein Softwareunternehmen aus Wien.
+                                Wir entwickeln ein KI-Betriebssystem für
+                                Betriebe. Der eine von uns baut das System. Der
+                                andere weiß aus eigener Erfahrung, wie man ein
+                                Unternehmen aufbaut und führt. Sie bekommen
+                                beides.
                             </p>
                         </Reveal>
                     </div>
@@ -253,6 +279,28 @@ export default function UeberUnsPage() {
                 </div>
             </section>
 
+            {/* ── Zusagen ─────────────────────────────────── */}
+            <section className="container-edge section-pad">
+                <Reveal as="p" className="mono-label text-spark mb-6">
+                    ↳ darauf können sie sich verlassen
+                </Reveal>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+                    {ZUSAGEN.map((z, i) => (
+                        <Reveal key={z.titel} delay={i * 90}>
+                            <div className="warum-ziel">
+                                <span className="mono-label text-muted">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <h2 className="font-display kopf__zusage">
+                                    {z.titel}
+                                </h2>
+                                <p>{z.text}</p>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+            </section>
+
             {/* ── Was wir vorhaben ────────────────────────── */}
             <section
                 className="container-edge section-pad relative overflow-hidden"
@@ -296,6 +344,26 @@ export default function UeberUnsPage() {
                         Wirtschaft stärken und nach vorne bringen lässt.
                     </Reveal>
                 </div>
+                <Reveal
+                    as="p"
+                    delay={200}
+                    className="leading-relaxed mt-12"
+                    style={{
+                        fontSize: 'clamp(1.15rem, 1.7vw, 1.45rem)',
+                        color: 'var(--lit)',
+                        maxWidth: '36ch',
+                    }}
+                >
+                    Gehen Sie diesen Weg mit uns: als Betrieb, der das System
+                    einsetzt, oder als Agentur, die es vertreibt und selbst
+                    nutzt.
+                </Reveal>
+                <Reveal delay={240} className="mt-8 flex flex-wrap gap-4">
+                    <CtaButton href="/kontakt">erstgespräch anfragen</CtaButton>
+                    <CtaButton href="/partner" variant="ghost">
+                        für agenturen
+                    </CtaButton>
+                </Reveal>
             </section>
 
             {/* ── CTA ─────────────────────────────────────── */}

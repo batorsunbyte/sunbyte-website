@@ -36,7 +36,7 @@ import { PERSON_ZAKIR, PERSON_MEDET, breadcrumbLd } from '@/lib/seo'
 export const metadata: Metadata = {
     title: 'Über uns — Zakir Daryabi und Ing. Medet Atas',
     description:
-        'Wem Sie Ihren Betrieb anvertrauen: Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas, Unternehmer seit 2008. Wer das KI-Betriebssystem baut und worauf Sie sich verlassen können.',
+        'Sie arbeiten direkt mit uns: Zakir Daryabi, Softwareentwickler und Geschäftsführer, und Ing. Medet Atas, Unternehmer seit 2008. Wer das KI-Betriebssystem baut und worauf Sie sich verlassen können.',
     alternates: { canonical: '/ueber-uns/' },
 }
 
@@ -195,8 +195,8 @@ export default function UeberUnsPage() {
                                     maxWidth: '30ch',
                                 }}
                             >
-                                Wem Sie Ihren Betrieb anvertrauen, sollten Sie
-                                kennen.
+                                Sie arbeiten direkt mit uns. Wir hören zu und
+                                bringen Ergebnisse.
                             </p>
                         </Reveal>
                         <Reveal delay={80}>
@@ -319,10 +319,10 @@ export default function UeberUnsPage() {
                     style={{
                         fontSize: 'clamp(2.25rem, 6.5vw, 5rem)',
                         color: 'var(--lit)',
-                        maxWidth: '16ch',
+                        maxWidth: '18ch',
                     }}
                 >
-                    Wir bauen Sunbyte zu einer{' '}
+                    Wir bauen Sunbyte &amp;&nbsp;SocialTalents zu einer{' '}
                     <span style={{ whiteSpace: 'nowrap' }}>
                         <Spark>IT-Weltmacht.</Spark>
                     </span>

@@ -23,7 +23,7 @@ interface Referenz {
 
 const REFERENZEN: Referenz[] = [
     { name: 'WKO', logo: '/images/logos/wko.png', w: 514, h: 270 },
-    { name: 'Social Talents' },
+    { name: 'SocialTalents' },
     { name: 'AutoSPA', logo: '/images/logos/autospa.png', w: 375, h: 243 },
     { name: 'PrintMyWall', logo: '/images/logos/printmywall.png', w: 251, h: 200 },
     { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness.png', w: 384, h: 181 },

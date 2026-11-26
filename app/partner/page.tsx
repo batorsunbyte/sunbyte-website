@@ -16,12 +16,21 @@ import { breadcrumbLd, faqLd } from '@/lib/seo'
  * Konditionen und Preise stehen noch nicht fest — deshalb nennt die Seite
  * keine und verweist auf das Gespräch. Keine Zusagen zu Gebieten, Provision
  * oder Schulung, solange Zakir sie nicht vorgibt.
+ *
+ * Abschnitt 02 „Ihre Stärke" (Zakir, 26.11.2026, sinngemäß): Jede Agentur
+ * bringt ihre eigene Stärke mit, weil jede auf einen Bereich spezialisiert
+ * ist — das ergänzt das System. Agenturen nutzen das System und geben ihre
+ * eigenen Funktionen im Netzwerk weiter, sodass andere Agenturen diesen Teil
+ * auch weiterverkaufen. So stärkt man einander und wächst gemeinsam.
+ * Die Kacheln im Schaubild (SCHWERPUNKTE) sind allgemeine Beispiele für
+ * Spezialisierungen, keine Zusage und keine Partnerliste. WIE Funktionen
+ * weitergegeben und abgerechnet werden, steht nicht fest → Verweis aufs Gespräch.
  */
 
 export const metadata: Metadata = {
     title: 'Für Agenturen — Partner im KI-OS-Netzwerk',
     description:
-        'Sunbyte baut ein Netzwerk von Agenturen auf, die das KI-Betriebssystem vertreiben und selbst nutzen. Ein Standard für Österreich, DACH und die EU.',
+        'Sunbyte baut ein Netzwerk von Agenturen auf, die das KI-Betriebssystem vertreiben und selbst nutzen. Jede Agentur bringt ihre Stärke ein, und alle wachsen gemeinsam.',
     alternates: { canonical: '/partner/' },
 }
 
@@ -40,6 +49,33 @@ const GRUENDE = [
     },
 ]
 
+/** Beispiele für Schwerpunkte von Agenturen — nur zur Veranschaulichung */
+const SCHWERPUNKTE = [
+    'Recruiting',
+    'Werbeanzeigen',
+    'Social Media',
+    'Websites',
+    'Video',
+    'Suchmaschinen',
+    'IT-Betreuung',
+    'Branchenwissen',
+]
+
+const SCHRITTE = [
+    {
+        titel: 'Nutzen',
+        text: 'Sie setzen das KI-Betriebssystem in Ihrer Agentur ein und bringen es zu Ihren Kunden.',
+    },
+    {
+        titel: 'Einbringen',
+        text: 'Aus dem, was Ihre Agentur besonders gut kann, entstehen eigene Funktionen für das System.',
+    },
+    {
+        titel: 'Weitergeben',
+        text: 'Ihre Funktionen geben Sie im Netzwerk weiter. Andere Agenturen verkaufen sie an ihre Kunden, und Sie nutzen die Funktionen der anderen.',
+    },
+]
+
 const FAQ_ITEMS = [
     {
         q: 'Für welche Agenturen ist das Netzwerk gedacht?',
@@ -48,6 +84,10 @@ const FAQ_ITEMS = [
     {
         q: 'Darf ich das System auch in der eigenen Agentur einsetzen?',
         a: 'Ja. Partner vertreiben das KI-Betriebssystem und nutzen es selbst.',
+    },
+    {
+        q: 'Kann ich eigene Funktionen ins Netzwerk einbringen?',
+        a: 'Ja, das ist die Idee des Netzwerks. Jede Agentur bringt ihre Stärke als Funktionen ein, und andere Agenturen können sie an ihre Kunden weitergeben. Die Konditionen besprechen wir im Partnergespräch.',
     },
     {
         q: 'Was kostet die Partnerschaft?',
@@ -161,10 +201,129 @@ export default function PartnerPage() {
                 </div>
             </section>
 
-            {/* ── 02 Was dazugehört ───────────────────────── */}
+            {/* ── 02 Ihre Stärke ──────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="02 — was dazugehört"
+                    kicker="02 — ihre stärke"
+                    title={
+                        <>
+                            Jede Agentur bringt
+                            <br />
+                            <Spark>ihre Stärke mit.</Spark>
+                        </>
+                    }
+                    className="mb-12 md:mb-16"
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-10 items-center">
+                    <div className="md:col-span-5">
+                        <Reveal>
+                            <p
+                                className="leading-relaxed"
+                                style={{
+                                    fontSize: 'clamp(1.15rem, 1.7vw, 1.45rem)',
+                                    color: 'var(--lit)',
+                                    maxWidth: '30ch',
+                                }}
+                            >
+                                Jede Agentur ist auf einen Bereich
+                                spezialisiert. Genau das macht das Netzwerk
+                                stark.
+                            </p>
+                        </Reveal>
+                        <Reveal delay={90}>
+                            <p
+                                className="text-soft leading-relaxed mt-6"
+                                style={{
+                                    fontSize: 'clamp(1rem, 1.3vw, 1.1rem)',
+                                    maxWidth: '40ch',
+                                }}
+                            >
+                                Ihre Stärke ergänzt das System, und die Stärken
+                                der anderen ergänzen Ihr Angebot. So stärken wir
+                                einander und wachsen gemeinsam.
+                            </p>
+                        </Reveal>
+                    </div>
+
+                    {/* Bild: viele Schwerpunkte links, eine Bibliothek rechts */}
+                    <Reveal delay={120} className="md:col-span-7">
+                        <div className="warum-bild" aria-hidden>
+                            <div>
+                                <p className="mono-label text-muted mb-4">
+                                    jede agentur bringt, zum beispiel
+                                </p>
+                                <ul className="staerke-chips">
+                                    {SCHWERPUNKTE.map((name, i) => (
+                                        <li
+                                            key={name}
+                                            style={{ animationDelay: `${i * 0.8}s` }}
+                                        >
+                                            {name}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <span className="warum-bild__pfeil">→</span>
+
+                            <div className="warum-eins">
+                                <p className="mono-label text-spark mb-4">
+                                    alle nutzen
+                                </p>
+                                <div className="warum-eins__kern">
+                                    <span className="warum-eins__halo" />
+                                    <span>
+                                        Eine
+                                        <br />
+                                        Bibliothek
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <p className="sr-only">
+                            Jede Agentur bringt ihren Schwerpunkt ein, zum
+                            Beispiel Recruiting, Werbeanzeigen, Social Media
+                            oder Websites. Daraus entsteht eine gemeinsame
+                            Bibliothek von Funktionen, die alle Agenturen im
+                            Netzwerk nutzen.
+                        </p>
+                    </Reveal>
+                </div>
+
+                <Reveal as="p" className="mono-label text-spark mt-16 md:mt-24 mb-6">
+                    ↳ so wachsen wir gemeinsam
+                </Reveal>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+                    {SCHRITTE.map((s, i) => (
+                        <Reveal key={s.titel} delay={i * 90}>
+                            <div className="warum-ziel">
+                                <span className="mono-label text-muted">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <h3 className="font-display staerke-schritt">
+                                    {s.titel}
+                                </h3>
+                                <p>{s.text}</p>
+                            </div>
+                        </Reveal>
+                    ))}
+                </div>
+                <Reveal
+                    as="p"
+                    delay={120}
+                    className="text-muted mt-8"
+                    style={{ fontSize: '0.9rem', maxWidth: '60ch' }}
+                >
+                    Wie Funktionen im Netzwerk weitergegeben und verkauft
+                    werden, besprechen wir im Partnergespräch.
+                </Reveal>
+            </section>
+
+            {/* ── 03 Was dazugehört ───────────────────────── */}
+            <section className="container-edge section-pad">
+                <SectionHeader
+                    kicker="03 — was dazugehört"
                     title={
                         <>
                             Software
@@ -209,7 +368,7 @@ export default function PartnerPage() {
             {/* ── FAQ ─────────────────────────────────────── */}
             <section className="container-edge section-pad">
                 <SectionHeader
-                    kicker="03 — faq"
+                    kicker="04 — faq"
                     title={
                         <>
                             Kurz <Spark>geklärt.</Spark>

@@ -2062,3 +2062,30 @@ select option {
     line-height: 1.08;
     color: var(--lit);
 }
+
+/* /partner — „Jede Agentur bringt ihre Stärke mit": Schwerpunkte leuchten der Reihe nach auf */
+.staerke-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+.staerke-chips li {
+    border: 1px solid rgba(201, 184, 163, 0.28);
+    border-radius: 4px;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.92rem;
+    color: var(--soft);
+    animation: staerke-an 6.4s ease-in-out infinite;
+}
+@keyframes staerke-an {
+    0%, 4% { border-color: rgba(201, 184, 163, 0.28); color: var(--soft); }
+    9%, 20% { border-color: var(--spark); color: var(--lit); }
+    28%, 100% { border-color: rgba(201, 184, 163, 0.28); color: var(--soft); }
+}
+.warum-ziel h3.staerke-schritt {
+    font-size: clamp(1.5rem, 2.2vw, 1.95rem);
+    line-height: 1.1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .staerke-chips li { animation: none; }
+}

@@ -1066,3 +1066,135 @@ select option {
         animation: none !important;
     }
 }
+
+/* ── Kernsystem, zweite Stufe: Agenten als Äste, Plus für weitere Module ── */
+.kern-buehne {
+    container-type: inline-size;
+}
+/* Namen der Agenten erst ab 1280 px: Darunter reicht der Platz neben der
+   Bühne nicht, dort stehen die Namen nur im Feld. */
+@media (min-width: 1280px) {
+    /* Platz links und rechts für die Namen der Agenten */
+    .kern-buehne {
+        max-width: min(560px, calc(100% - 10rem));
+    }
+}
+.kern-mitte {
+    width: 29%;
+}
+.kern-mitte__titel {
+    font-size: clamp(0.72rem, 3.7cqw, 1.25rem);
+}
+.kern-knoten {
+    width: clamp(3.2rem, 15cqw, 4.9rem);
+}
+.kern-knoten__name {
+    background: var(--bg);
+    padding: 0 0.3rem;
+    z-index: 1;
+}
+/* Äste: vom Modul zu seinen Agenten. Ruhig bei allen, kräftig beim gewählten. */
+.kern-ast {
+    stroke: rgba(201, 184, 163, 0.22);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 0.35s ease;
+}
+.kern-blatt {
+    fill: rgba(201, 184, 163, 0.38);
+    transition: fill 0.35s ease;
+}
+.ist-aktiv > g > .kern-ast {
+    stroke: var(--spark);
+    stroke-dasharray: 1 1.6;
+    animation: kern-fluss 0.9s linear infinite;
+}
+.ist-aktiv > g > .kern-blatt {
+    fill: var(--spark);
+    animation: stack-blink 2.4s ease-in-out infinite;
+}
+.ist-aktiv > .kern-linie {
+    stroke: var(--spark);
+    stroke-width: 2;
+    animation-duration: 0.9s;
+}
+.kern-agent {
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--lit);
+    animation: kern-agent-ein 0.4s ease both;
+}
+.kern-agent[data-seite='r'] { transform: translate(0.7rem, -50%); }
+.kern-agent[data-seite='l'] { transform: translate(calc(-100% - 0.7rem), -50%); }
+.kern-agent[data-seite='o'] { transform: translate(-50%, calc(-100% - 0.6rem)); }
+.kern-agent[data-seite='u'] { transform: translate(-50%, 0.6rem); }
+@keyframes kern-agent-ein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@media (min-width: 1280px) {
+    .kern-agent {
+        display: block;
+    }
+}
+.kern-plus {
+    position: absolute;
+    width: clamp(1.7rem, 7cqw, 2.3rem);
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px dashed rgba(201, 184, 163, 0.45);
+    background: var(--bg);
+    color: var(--soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    line-height: 1;
+}
+.kern-plus__name {
+    display: none;
+    position: absolute;
+    right: calc(100% + 0.55rem);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: lowercase;
+    color: var(--muted);
+}
+@media (min-width: 1024px) {
+    .kern-plus__name {
+        display: block;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .kern-ast,
+    .kern-blatt,
+    .kern-agent {
+        animation: none !important;
+    }
+}
+
+/* Kleine Bühne (Handy): kleinerer Kern, kein Plus — sonst verdeckt es die
+   Namen der Module. Der Satz unter dem Feld nennt die weiteren Module. */
+@container (max-width: 430px) {
+    .kern-mitte {
+        width: 24%;
+    }
+    .kern-mitte__label {
+        display: none;
+    }
+    .kern-mitte__titel {
+        font-size: 0.66rem;
+    }
+    .kern-plus {
+        display: none;
+    }
+}

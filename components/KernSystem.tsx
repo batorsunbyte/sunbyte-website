@@ -5,29 +5,63 @@ import KiosIcon from '@/components/KiosIcon'
 import { FUNKTIONEN } from '@/lib/kios'
 
 /**
- * KernSystem — das Kernsystem in der Mitte, sechs Module rundherum, jedes mit
- * seinen spezialisierten Agenten (Zakir, 26.11.2026: „Kernsystem in der Mitte
- * und Abteilungen oder Module rund um das Kernsystem, jeder mit Agents").
+ * KernSystem — das Kernsystem in der Mitte, sechs Module rundherum, und von
+ * jedem Modul verzweigen sich nach außen seine spezialisierten Agenten
+ * (Zakir, 26.11.2026: „Kernsystem in der Mitte und Abteilungen oder Module
+ * rund um das Kernsystem, jeder mit Agents"; dazu seine Skizze mit den Ästen
+ * und einem Plus für weitere Module).
  *
  * Läuft wie ein kurzer Film: Solange das Schaubild im Bild ist, wandert die
  * Auswahl alle vier Sekunden zum nächsten Modul. Sobald jemand ein Modul
  * anklickt, antippt oder mit der Tastatur wählt, hält der Lauf an.
  * Bei „weniger Bewegung" läuft nichts von selbst.
  *
- * Die Knoten sind echte Knöpfe (aria-pressed). Linien und Ring sind Dekoration.
+ * Die Knoten sind echte Knöpfe (aria-pressed). Linien, Äste, Ring und das Plus
+ * sind Dekoration; die Namen der Agenten stehen zusätzlich im Feld daneben
+ * (unter 1280 px Breite nur dort, im Schaubild ist dafür kein Platz).
  */
 
 const DAUER = 4000
-const RADIUS = 36 // Prozent der Bühne
+const R_MODUL = 30 // Prozent der Bühne
+const R_AGENT = 46
 
-/** Lage der sechs Knoten: oben beginnen, im Uhrzeigersinn */
-const LAGE = FUNKTIONEN.map((_, i) => {
-    const winkel = ((-90 + i * 60) * Math.PI) / 180
+const rad = (grad: number) => (grad * Math.PI) / 180
+const punkt = (grad: number, r: number) => ({
+    x: 50 + r * Math.cos(rad(grad)),
+    y: 50 + r * Math.sin(rad(grad)),
+})
+
+/** Fächer der Agenten um die Richtung des Moduls, in Grad */
+const FAECHER: Record<number, number[]> = {
+    1: [0],
+    2: [-15, 15],
+    3: [-20, 0, 20],
+}
+
+/** Auf welcher Seite des Punkts der Name steht */
+function seite(grad: number): 'r' | 'l' | 'o' | 'u' {
+    const c = Math.cos(rad(grad))
+    if (c > 0.25) return 'r'
+    if (c < -0.25) return 'l'
+    return Math.sin(rad(grad)) < 0 ? 'o' : 'u'
+}
+
+/** Module: oben beginnen, im Uhrzeigersinn. Jedes mit seinen Ästen. */
+const MODULE = FUNKTIONEN.map((f, i) => {
+    const grad = -90 + i * 60
+    const faecher = FAECHER[f.agenten.length] ?? FAECHER[3]
     return {
-        x: 50 + RADIUS * Math.cos(winkel),
-        y: 50 + RADIUS * Math.sin(winkel),
+        ...f,
+        ort: punkt(grad, R_MODUL),
+        aeste: f.agenten.map((name, k) => {
+            const g = grad + faecher[k % faecher.length]
+            return { name, ort: punkt(g, R_AGENT), seite: seite(g) }
+        }),
     }
 })
+
+/** Das Plus sitzt links zwischen „Ausbau" und „Aufgaben" */
+const PLUS = punkt(180, R_MODUL)
 
 export default function KernSystem() {
     const [aktiv, setAktiv] = useState(0)
@@ -52,7 +86,7 @@ export default function KernSystem() {
     useEffect(() => {
         if (!laeuft || angehalten) return
         const t = window.setInterval(
-            () => setAktiv(a => (a + 1) % FUNKTIONEN.length),
+            () => setAktiv(a => (a + 1) % MODULE.length),
             DAUER,
         )
         return () => window.clearInterval(t)
@@ -63,7 +97,7 @@ export default function KernSystem() {
         setAktiv(i)
     }
 
-    const modul = FUNKTIONEN[aktiv]
+    const modul = MODULE[aktiv]
     const filmt = laeuft && !angehalten
 
     return (
@@ -80,17 +114,38 @@ export default function KernSystem() {
                             className="kern-ring"
                             cx="50"
                             cy="50"
-                            r={RADIUS}
+                            r={R_MODUL}
                         />
-                        {LAGE.map((p, i) => (
-                            <line
-                                key={i}
-                                className={`kern-linie${i === aktiv ? ' ist-aktiv' : ''}`}
-                                x1="50"
-                                y1="50"
-                                x2={p.x}
-                                y2={p.y}
-                            />
+                        {MODULE.map((m, i) => (
+                            <g
+                                key={m.modul}
+                                className={i === aktiv ? 'ist-aktiv' : undefined}
+                            >
+                                <line
+                                    className="kern-linie"
+                                    x1="50"
+                                    y1="50"
+                                    x2={m.ort.x}
+                                    y2={m.ort.y}
+                                />
+                                {m.aeste.map(a => (
+                                    <g key={a.name}>
+                                        <line
+                                            className="kern-ast"
+                                            x1={m.ort.x}
+                                            y1={m.ort.y}
+                                            x2={a.ort.x}
+                                            y2={a.ort.y}
+                                        />
+                                        <circle
+                                            className="kern-blatt"
+                                            cx={a.ort.x}
+                                            cy={a.ort.y}
+                                            r="1.05"
+                                        />
+                                    </g>
+                                ))}
+                            </g>
                         ))}
                     </svg>
 
@@ -104,11 +159,11 @@ export default function KernSystem() {
                     </div>
 
                     {/* Module */}
-                    {FUNKTIONEN.map((f, i) => {
+                    {MODULE.map((m, i) => {
                         const an = i === aktiv
                         return (
                             <button
-                                key={f.modul}
+                                key={m.modul}
                                 type="button"
                                 aria-pressed={an}
                                 aria-controls="kern-feld"
@@ -116,21 +171,49 @@ export default function KernSystem() {
                                 onFocus={() => setAngehalten(true)}
                                 className={`kern-knoten${an ? ' ist-aktiv' : ''}`}
                                 style={{
-                                    left: `${LAGE[i].x}%`,
-                                    top: `${LAGE[i].y}%`,
+                                    left: `${m.ort.x}%`,
+                                    top: `${m.ort.y}%`,
                                 }}
                             >
                                 <KiosIcon
-                                    name={f.icon}
+                                    name={m.icon}
                                     size={26}
                                     farbe={an ? 'var(--bg)' : 'var(--spark)'}
                                 />
                                 <span className="kern-knoten__name">
-                                    {f.modul}
+                                    {m.modul}
                                 </span>
                             </button>
                         )
                     })}
+
+                    {/* Namen der Agenten am gewählten Modul (ab 1280 px, sonst im Feld) */}
+                    <div key={aktiv} aria-hidden>
+                        {modul.aeste.map((a, k) => (
+                            <span
+                                key={a.name}
+                                className="kern-agent"
+                                data-seite={a.seite}
+                                style={{
+                                    left: `${a.ort.x}%`,
+                                    top: `${a.ort.y}%`,
+                                    animationDelay: `${120 + k * 90}ms`,
+                                }}
+                            >
+                                {a.name}
+                            </span>
+                        ))}
+                    </div>
+
+                    {/* Plus: Es können weitere Module dazukommen */}
+                    <span
+                        className="kern-plus"
+                        aria-hidden
+                        style={{ left: `${PLUS.x}%`, top: `${PLUS.y}%` }}
+                    >
+                        +
+                        <span className="kern-plus__name">weitere module</span>
+                    </span>
                 </div>
             </div>
 
@@ -165,10 +248,10 @@ export default function KernSystem() {
 
                 <p
                     className="text-muted mt-5"
-                    style={{ fontSize: '0.88rem' }}
+                    style={{ fontSize: '0.88rem', maxWidth: '44ch' }}
                 >
                     Wählen Sie ein Modul. Alle Module greifen auf dasselbe
-                    Kernsystem zu.
+                    Kernsystem zu, und es können weitere dazukommen.
                 </p>
             </div>
         </div>

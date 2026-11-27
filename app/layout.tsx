@@ -34,6 +34,8 @@ export const metadata: Metadata = {
         'KI Partnerprogramm Agentur',
         'KI für Bau und Handwerk',
     ],
+    /* Bing Webmaster Tools: Bestätigung der Inhaberschaft (27.11.2026) — nicht entfernen */
+    other: { 'msvalidate.01': '9476E1241FF1CB4F80683853817540F0' },
     authors: [{ name: 'Sunbyte' }],
     creator: 'Sunbyte',
     publisher: 'Sunbyte',

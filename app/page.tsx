@@ -398,7 +398,8 @@ export default function Home() {
                                 maxWidth: '26ch',
                             }}
                         >
-                            Wir bauen Sunbyte zu einer{' '}
+                            Wir bauen Sunbyte &amp;&nbsp;SocialTalents zu
+                            einer{' '}
                             <span style={{ whiteSpace: 'nowrap' }}>
                                 <Spark>IT-Weltmacht.</Spark>
                             </span>

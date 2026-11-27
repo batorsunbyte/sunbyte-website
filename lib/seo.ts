@@ -60,7 +60,7 @@ export const ORGANIZATION: Record<string, unknown> = {
     image: OG_IMAGE,
     description:
         'Die Sunbyte GmbH aus Wien entwickelt Sunbyte, ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
-    slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
+    slogan: 'Wir bauen Sunbyte & SocialTalents zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
     brand: { '@type': 'Brand', name: 'Sunbyte' },
     hasMap: 'https://maps.google.com/?cid=10635698540192696563',

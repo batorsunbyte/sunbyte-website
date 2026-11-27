@@ -3,7 +3,8 @@
  *
  * Löst seit der KI-OS-Welle (26.11.2026) den ProofBar an dieser Stelle ab.
  * Zakir hat am 26.11.2026 bestätigt: Alle acht sind Kunden bzw. eigene Marken,
- * die Freigabe für die Logos liegt vor.
+ * die Freigabe für die Logos liegt vor. SocialTalents: Geschäftsführer hat die
+ * Nutzung des Logos am 27.11.2026 per WhatsApp bestätigt („Jaaa sicher! logisch“).
  *
  * Jede Referenz ist eine weiße Kachel. Liegt eine Logo-Datei unter
  * /public/images/logos/, steht das Logo in der Kachel, sonst der Name als
@@ -23,7 +24,7 @@ interface Referenz {
 
 const REFERENZEN: Referenz[] = [
     { name: 'WKO', logo: '/images/logos/wko-klein.webp', w: 280, h: 147 },
-    { name: 'SocialTalents' },
+    { name: 'SocialTalents', logo: '/images/logos/socialtalents-klein.webp', w: 420, h: 200 },
     { name: 'AutoSPA', logo: '/images/logos/autospa-klein.webp', w: 280, h: 181 },
     { name: 'PrintMyWall', logo: '/images/logos/printmywall-klein.webp', w: 251, h: 200 },
     { name: 'Impulsiv Fitness', logo: '/images/logos/impulsiv-fitness-klein.webp', w: 280, h: 132 },

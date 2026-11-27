@@ -62,6 +62,16 @@ export const ORGANIZATION: Record<string, unknown> = {
         'Die Sunbyte GmbH aus Wien entwickelt Sunbyte, ein KI-Betriebssystem für Betriebe: ein selbstlernendes Denksystem mit mehreren KI-Agenten und einer Bibliothek von Funktionen. Vertrieb direkt und über ein Netzwerk von Agenturen.',
     slogan: 'Wir bauen Sunbyte zu einer IT-Weltmacht.',
     founder: { '@type': 'Person', name: 'Zakir Daryabi' },
+    brand: { '@type': 'Brand', name: 'Sunbyte' },
+    hasMap: 'https://maps.google.com/?cid=10635698540192696563',
+    contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: CONTACT.phoneRaw,
+        email: CONTACT.email,
+        availableLanguage: ['de'],
+        areaServed: 'AT',
+    },
     email: CONTACT.email,
     telephone: CONTACT.phoneRaw,
     currenciesAccepted: 'EUR',
@@ -84,15 +94,17 @@ export const ORGANIZATION: Record<string, unknown> = {
     openingHoursSpecification: [
         {
             '@type': 'OpeningHoursSpecification',
+            /* Zakir, 27.11.2026: Mo–Sa 8–19 Uhr, wie im Google-Unternehmensprofil */
             dayOfWeek: [
                 'Monday',
                 'Tuesday',
                 'Wednesday',
                 'Thursday',
                 'Friday',
+                'Saturday',
             ],
-            opens: '09:00',
-            closes: '18:00',
+            opens: '08:00',
+            closes: '19:00',
         },
     ],
     knowsAbout: [
@@ -132,6 +144,24 @@ export const WEBSITE: Record<string, unknown> = {
     name: 'Sunbyte',
     inLanguage: 'de-AT',
     publisher: { '@id': `${SITE_URL}/#organization` },
+}
+
+/** Das Produkt Sunbyte (Startseite). Ohne Preis: Angebot nach dem Erstgespräch. */
+export const PRODUKT_SUNBYTE: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${SITE_URL}/#produkt`,
+    name: 'Sunbyte',
+    alternateName: 'Sunbyte KI-Betriebssystem',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description:
+        'Sunbyte ist ein KI-Betriebssystem für Betriebe und KMU: ein selbstlernendes Denksystem mit mehreren KI-Agenten, das Kunden findet, Anfragen beantwortet, Termine vereinbart und Aufgaben verteilt.',
+    url: SITE_URL,
+    image: OG_IMAGE,
+    inLanguage: 'de-AT',
+    provider: { '@id': `${SITE_URL}/#organization` },
+    audience: { '@type': 'BusinessAudience', audienceType: 'Betriebe, KMU und Agenturen' },
 }
 
 /** Person — Zakir (für /ueber-uns) */

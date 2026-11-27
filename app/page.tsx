@@ -11,7 +11,7 @@ import NetzwerkRinge from '@/components/NetzwerkRinge'
 import KernSystem from '@/components/KernSystem'
 import Warum from '@/components/Warum'
 import { LEISTUNGEN } from '@/lib/kios'
-import { faqLd } from '@/lib/seo'
+import { faqLd, PRODUKT_SUNBYTE } from '@/lib/seo'
 
 /**
  * Startseite — das KI-Betriebssystem (KI-OS-Welle, 26.11.2026).
@@ -61,6 +61,7 @@ export default function Home() {
     return (
         <>
             <JsonLd data={faqLd(FAQ_ITEMS)} />
+            <JsonLd data={PRODUKT_SUNBYTE} />
             <Hero />
 
             <LogoWall />

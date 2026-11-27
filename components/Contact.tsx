@@ -124,6 +124,14 @@ export default function Contact() {
                             {CONTACT.street}, {CONTACT.zip} {CONTACT.city},{' '}
                             {CONTACT.country}
                         </p>
+                        <p
+                            className="text-soft leading-snug mt-3"
+                            style={{
+                                fontSize: 'clamp(1rem, 1.2vw, 1.05rem)',
+                            }}
+                        >
+                            Erreichbar Montag bis Samstag, 8 bis 19 Uhr.
+                        </p>
                     </Reveal>
                 </div>
             </div>
